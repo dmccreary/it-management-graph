@@ -1,0 +1,2094 @@
+{
+  "metadata": {
+    "title": "IT Management Graphs - From Legacy CMDB to Modern Graph-Based Solutions",
+    "description": "This graduate-level course examines the evolution of IT configuration management from traditional relational database approaches to modern graph-based solutions. Students explore why legacy CMDB implementations have failed and how graph databases revolutionize IT management through real-time multi-hop transitive dependency analysis.",
+    "creator": "Dan McCreary",
+    "date": "2025-11-03",
+    "version": "1.0",
+    "format": "Learning Graph JSON v1.0",
+    "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+    "license": "CC BY-NC-SA 4.0 DEED"
+  },
+  "groups": {
+    "ITIL": {
+      "classifierName": "ITIL",
+      "color": "red",
+      "font": {
+        "color": "white"
+      }
+    },
+    "RDBMS": {
+      "classifierName": "RDBMS",
+      "color": "orange",
+      "font": {
+        "color": "black"
+      }
+    },
+    "GRAPH": {
+      "classifierName": "GRAPH",
+      "color": "gold",
+      "font": {
+        "color": "black"
+      }
+    },
+    "GOPS": {
+      "classifierName": "GOPS",
+      "color": "green",
+      "font": {
+        "color": "black"
+      }
+    },
+    "QPERF": {
+      "classifierName": "QPERF",
+      "color": "cyan",
+      "font": {
+        "color": "white"
+      }
+    },
+    "DATA": {
+      "classifierName": "DATA",
+      "color": "blue",
+      "font": {
+        "color": "white"
+      }
+    },
+    "OBSRV": {
+      "classifierName": "OBSRV",
+      "color": "purple",
+      "font": {
+        "color": "black"
+      }
+    },
+    "COMP": {
+      "classifierName": "COMP",
+      "color": "brown",
+      "font": {
+        "color": "black"
+      }
+    },
+    "BIZS": {
+      "classifierName": "BIZS",
+      "color": "pink",
+      "font": {
+        "color": "black"
+      }
+    },
+    "ASSET": {
+      "classifierName": "ASSET",
+      "color": "lightblue",
+      "font": {
+        "color": "black"
+      }
+    },
+    "TRANS": {
+      "classifierName": "TRANS",
+      "color": "olive",
+      "font": {
+        "color": "black"
+      }
+    },
+    "AI": {
+      "classifierName": "AI",
+      "color": "magenta",
+      "font": {
+        "color": "black"
+      }
+    },
+    "VALID": {
+      "classifierName": "VALID",
+      "color": "teal",
+      "font": {
+        "color": "black"
+      }
+    },
+    "OPS": {
+      "classifierName": "OPS",
+      "color": "darkgreen",
+      "font": {
+        "color": "black"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Configuration Item",
+      "group": "ITIL",
+      "shape": "box"
+    },
+    {
+      "id": 2,
+      "label": "Configuration Management",
+      "group": "ITIL"
+    },
+    {
+      "id": 3,
+      "label": "Configuration Management Database",
+      "group": "ITIL"
+    },
+    {
+      "id": 4,
+      "label": "CMDB",
+      "group": "ITIL"
+    },
+    {
+      "id": 5,
+      "label": "Information Technology Infrastructure Library",
+      "group": "ITIL",
+      "shape": "box"
+    },
+    {
+      "id": 6,
+      "label": "ITIL",
+      "group": "ITIL"
+    },
+    {
+      "id": 7,
+      "label": "ITIL Version 1",
+      "group": "ITIL"
+    },
+    {
+      "id": 8,
+      "label": "Service Support",
+      "group": "ITIL"
+    },
+    {
+      "id": 9,
+      "label": "Service Delivery",
+      "group": "ITIL"
+    },
+    {
+      "id": 10,
+      "label": "Change Management",
+      "group": "ITIL"
+    },
+    {
+      "id": 11,
+      "label": "Incident Management",
+      "group": "OPS"
+    },
+    {
+      "id": 12,
+      "label": "Problem Management",
+      "group": "OPS"
+    },
+    {
+      "id": 13,
+      "label": "Release Management",
+      "group": "ITIL"
+    },
+    {
+      "id": 14,
+      "label": "Configuration Baseline",
+      "group": "ITIL"
+    },
+    {
+      "id": 15,
+      "label": "Configuration Audit",
+      "group": "ITIL"
+    },
+    {
+      "id": 16,
+      "label": "Military-Spec Configuration",
+      "group": "ITIL"
+    },
+    {
+      "id": 17,
+      "label": "Asset Management",
+      "group": "ASSET"
+    },
+    {
+      "id": 18,
+      "label": "IT Asset",
+      "group": "ASSET"
+    },
+    {
+      "id": 19,
+      "label": "Hardware Asset",
+      "group": "ASSET"
+    },
+    {
+      "id": 20,
+      "label": "Software Asset",
+      "group": "ASSET"
+    },
+    {
+      "id": 21,
+      "label": "Relational Database",
+      "group": "RDBMS",
+      "shape": "box"
+    },
+    {
+      "id": 22,
+      "label": "RDBMS",
+      "group": "RDBMS"
+    },
+    {
+      "id": 23,
+      "label": "Structured Query Language",
+      "group": "RDBMS"
+    },
+    {
+      "id": 24,
+      "label": "SQL",
+      "group": "RDBMS"
+    },
+    {
+      "id": 25,
+      "label": "Database Schema",
+      "group": "RDBMS"
+    },
+    {
+      "id": 26,
+      "label": "Table",
+      "group": "RDBMS"
+    },
+    {
+      "id": 27,
+      "label": "Column",
+      "group": "RDBMS"
+    },
+    {
+      "id": 28,
+      "label": "Row",
+      "group": "RDBMS"
+    },
+    {
+      "id": 29,
+      "label": "Primary Key",
+      "group": "RDBMS"
+    },
+    {
+      "id": 30,
+      "label": "Foreign Key",
+      "group": "RDBMS"
+    },
+    {
+      "id": 31,
+      "label": "Join Operation",
+      "group": "RDBMS"
+    },
+    {
+      "id": 32,
+      "label": "Inner Join",
+      "group": "RDBMS"
+    },
+    {
+      "id": 33,
+      "label": "Outer Join",
+      "group": "RDBMS"
+    },
+    {
+      "id": 34,
+      "label": "Transitive Dependency",
+      "group": "RDBMS"
+    },
+    {
+      "id": 35,
+      "label": "Multi-Hop Query",
+      "group": "RDBMS"
+    },
+    {
+      "id": 36,
+      "label": "Query Performance",
+      "group": "QPERF"
+    },
+    {
+      "id": 37,
+      "label": "Database Index",
+      "group": "RDBMS"
+    },
+    {
+      "id": 38,
+      "label": "Query Optimization",
+      "group": "QPERF"
+    },
+    {
+      "id": 39,
+      "label": "Schema Rigidity",
+      "group": "RDBMS"
+    },
+    {
+      "id": 40,
+      "label": "Schema Evolution",
+      "group": "RDBMS"
+    },
+    {
+      "id": 41,
+      "label": "Graph Database",
+      "group": "GRAPH"
+    },
+    {
+      "id": 42,
+      "label": "Graph Theory",
+      "group": "GRAPH",
+      "shape": "box"
+    },
+    {
+      "id": 43,
+      "label": "Node",
+      "group": "GRAPH"
+    },
+    {
+      "id": 44,
+      "label": "Edge",
+      "group": "GRAPH"
+    },
+    {
+      "id": 45,
+      "label": "Vertex",
+      "group": "GRAPH"
+    },
+    {
+      "id": 46,
+      "label": "Relationship",
+      "group": "GRAPH"
+    },
+    {
+      "id": 47,
+      "label": "Property Graph",
+      "group": "GRAPH"
+    },
+    {
+      "id": 48,
+      "label": "Node Property",
+      "group": "GRAPH"
+    },
+    {
+      "id": 49,
+      "label": "Edge Property",
+      "group": "GRAPH"
+    },
+    {
+      "id": 50,
+      "label": "Graph Traversal",
+      "group": "GOPS"
+    },
+    {
+      "id": 51,
+      "label": "Depth-First Search",
+      "group": "GOPS"
+    },
+    {
+      "id": 52,
+      "label": "Breadth-First Search",
+      "group": "GOPS"
+    },
+    {
+      "id": 53,
+      "label": "Path Finding",
+      "group": "GOPS"
+    },
+    {
+      "id": 54,
+      "label": "Shortest Path",
+      "group": "GOPS"
+    },
+    {
+      "id": 55,
+      "label": "Graph Algorithm",
+      "group": "GOPS"
+    },
+    {
+      "id": 56,
+      "label": "Directed Graph",
+      "group": "GRAPH"
+    },
+    {
+      "id": 57,
+      "label": "Undirected Graph",
+      "group": "GRAPH"
+    },
+    {
+      "id": 58,
+      "label": "Directed Acyclic Graph",
+      "group": "GRAPH"
+    },
+    {
+      "id": 59,
+      "label": "DAG",
+      "group": "GRAPH"
+    },
+    {
+      "id": 60,
+      "label": "Cycle Detection",
+      "group": "GOPS"
+    },
+    {
+      "id": 61,
+      "label": "Native Graph Storage",
+      "group": "GRAPH"
+    },
+    {
+      "id": 62,
+      "label": "Graph Layer",
+      "group": "GRAPH"
+    },
+    {
+      "id": 63,
+      "label": "Neo4j",
+      "group": "GRAPH"
+    },
+    {
+      "id": 64,
+      "label": "Cypher Query Language",
+      "group": "GRAPH"
+    },
+    {
+      "id": 65,
+      "label": "Graph Query",
+      "group": "GOPS"
+    },
+    {
+      "id": 66,
+      "label": "Pattern Matching",
+      "group": "GOPS"
+    },
+    {
+      "id": 67,
+      "label": "Dependency Tracing",
+      "group": "GOPS"
+    },
+    {
+      "id": 68,
+      "label": "Upstream Dependency",
+      "group": "GOPS"
+    },
+    {
+      "id": 69,
+      "label": "Downstream Dependency",
+      "group": "GOPS"
+    },
+    {
+      "id": 70,
+      "label": "Blast Radius",
+      "group": "GOPS"
+    },
+    {
+      "id": 71,
+      "label": "Impact Analysis",
+      "group": "GOPS"
+    },
+    {
+      "id": 72,
+      "label": "Root Cause Analysis",
+      "group": "GOPS"
+    },
+    {
+      "id": 73,
+      "label": "Change Impact Assessment",
+      "group": "GOPS"
+    },
+    {
+      "id": 74,
+      "label": "Dependency Chain",
+      "group": "GOPS"
+    },
+    {
+      "id": 75,
+      "label": "Dependency Map",
+      "group": "GOPS"
+    },
+    {
+      "id": 76,
+      "label": "Circular Dependency",
+      "group": "GOPS"
+    },
+    {
+      "id": 77,
+      "label": "Service Dependency",
+      "group": "BIZS"
+    },
+    {
+      "id": 78,
+      "label": "Application Dependency",
+      "group": "ASSET"
+    },
+    {
+      "id": 79,
+      "label": "Infrastructure Dependency",
+      "group": "ASSET"
+    },
+    {
+      "id": 80,
+      "label": "Business Service",
+      "group": "BIZS",
+      "shape": "box"
+    },
+    {
+      "id": 81,
+      "label": "Technical Service",
+      "group": "BIZS"
+    },
+    {
+      "id": 82,
+      "label": "Service Mapping",
+      "group": "BIZS"
+    },
+    {
+      "id": 83,
+      "label": "Business Service Mapping",
+      "group": "BIZS"
+    },
+    {
+      "id": 84,
+      "label": "Application Portfolio",
+      "group": "ASSET"
+    },
+    {
+      "id": 85,
+      "label": "Digital Estate",
+      "group": "ASSET"
+    },
+    {
+      "id": 86,
+      "label": "IT Portfolio",
+      "group": "ASSET"
+    },
+    {
+      "id": 87,
+      "label": "Technical Debt",
+      "group": "TRANS"
+    },
+    {
+      "id": 88,
+      "label": "Legacy System",
+      "group": "TRANS"
+    },
+    {
+      "id": 89,
+      "label": "System Integration",
+      "group": "ASSET"
+    },
+    {
+      "id": 90,
+      "label": "Data Quality",
+      "group": "DATA",
+      "shape": "box"
+    },
+    {
+      "id": 91,
+      "label": "Data Governance",
+      "group": "DATA"
+    },
+    {
+      "id": 92,
+      "label": "Data Management",
+      "group": "DATA"
+    },
+    {
+      "id": 93,
+      "label": "DMBOK",
+      "group": "DATA"
+    },
+    {
+      "id": 94,
+      "label": "Data Quality Dimension",
+      "group": "DATA"
+    },
+    {
+      "id": 95,
+      "label": "Accuracy",
+      "group": "DATA"
+    },
+    {
+      "id": 96,
+      "label": "Completeness",
+      "group": "DATA"
+    },
+    {
+      "id": 97,
+      "label": "Consistency",
+      "group": "DATA"
+    },
+    {
+      "id": 98,
+      "label": "Timeliness",
+      "group": "DATA"
+    },
+    {
+      "id": 99,
+      "label": "Validity",
+      "group": "DATA"
+    },
+    {
+      "id": 100,
+      "label": "Fitness for Purpose",
+      "group": "DATA"
+    },
+    {
+      "id": 101,
+      "label": "Data Steward",
+      "group": "DATA"
+    },
+    {
+      "id": 102,
+      "label": "Data Owner",
+      "group": "DATA"
+    },
+    {
+      "id": 103,
+      "label": "Data Custodian",
+      "group": "DATA"
+    },
+    {
+      "id": 104,
+      "label": "Metadata",
+      "group": "DATA"
+    },
+    {
+      "id": 105,
+      "label": "Data Lineage",
+      "group": "DATA"
+    },
+    {
+      "id": 106,
+      "label": "Data Catalog",
+      "group": "DATA"
+    },
+    {
+      "id": 107,
+      "label": "Master Data Management",
+      "group": "DATA"
+    },
+    {
+      "id": 108,
+      "label": "Reference Data",
+      "group": "DATA"
+    },
+    {
+      "id": 109,
+      "label": "Real-Time Query",
+      "group": "QPERF"
+    },
+    {
+      "id": 110,
+      "label": "Query Latency",
+      "group": "QPERF"
+    },
+    {
+      "id": 111,
+      "label": "Response Time",
+      "group": "QPERF"
+    },
+    {
+      "id": 112,
+      "label": "Performance Metric",
+      "group": "QPERF"
+    },
+    {
+      "id": 113,
+      "label": "Scalability",
+      "group": "QPERF"
+    },
+    {
+      "id": 114,
+      "label": "Horizontal Scaling",
+      "group": "QPERF"
+    },
+    {
+      "id": 115,
+      "label": "Vertical Scaling",
+      "group": "QPERF"
+    },
+    {
+      "id": 116,
+      "label": "Graph Complexity",
+      "group": "QPERF"
+    },
+    {
+      "id": 117,
+      "label": "Graph Density",
+      "group": "QPERF"
+    },
+    {
+      "id": 118,
+      "label": "Node Degree",
+      "group": "QPERF"
+    },
+    {
+      "id": 119,
+      "label": "In-Degree",
+      "group": "QPERF"
+    },
+    {
+      "id": 120,
+      "label": "Out-Degree",
+      "group": "QPERF"
+    },
+    {
+      "id": 121,
+      "label": "Graph Metric",
+      "group": "QPERF"
+    },
+    {
+      "id": 122,
+      "label": "Observability",
+      "group": "OBSRV",
+      "shape": "box"
+    },
+    {
+      "id": 123,
+      "label": "Monitoring",
+      "group": "OBSRV"
+    },
+    {
+      "id": 124,
+      "label": "Telemetry",
+      "group": "OBSRV"
+    },
+    {
+      "id": 125,
+      "label": "OpenTelemetry",
+      "group": "OBSRV"
+    },
+    {
+      "id": 126,
+      "label": "eBPF",
+      "group": "OBSRV"
+    },
+    {
+      "id": 127,
+      "label": "Extended Berkeley Packet Filter",
+      "group": "OBSRV"
+    },
+    {
+      "id": 128,
+      "label": "Automated Discovery",
+      "group": "OBSRV"
+    },
+    {
+      "id": 129,
+      "label": "Auto-Discovery",
+      "group": "OBSRV"
+    },
+    {
+      "id": 130,
+      "label": "Network Topology",
+      "group": "ASSET"
+    },
+    {
+      "id": 131,
+      "label": "Service Topology",
+      "group": "BIZS"
+    },
+    {
+      "id": 132,
+      "label": "Dynamic Topology",
+      "group": "OBSRV"
+    },
+    {
+      "id": 133,
+      "label": "Configuration Drift",
+      "group": "OBSRV"
+    },
+    {
+      "id": 134,
+      "label": "Drift Detection",
+      "group": "OBSRV"
+    },
+    {
+      "id": 135,
+      "label": "Compliance",
+      "group": "COMP",
+      "shape": "box"
+    },
+    {
+      "id": 136,
+      "label": "Regulatory Compliance",
+      "group": "COMP"
+    },
+    {
+      "id": 137,
+      "label": "HIPAA",
+      "group": "COMP"
+    },
+    {
+      "id": 138,
+      "label": "Health Insurance Portability",
+      "group": "COMP"
+    },
+    {
+      "id": 139,
+      "label": "GDPR",
+      "group": "COMP"
+    },
+    {
+      "id": 140,
+      "label": "General Data Protection Regulation",
+      "group": "COMP"
+    },
+    {
+      "id": 141,
+      "label": "DORA",
+      "group": "COMP"
+    },
+    {
+      "id": 142,
+      "label": "Digital Operational Resilience Act",
+      "group": "COMP"
+    },
+    {
+      "id": 143,
+      "label": "Audit Trail",
+      "group": "COMP"
+    },
+    {
+      "id": 144,
+      "label": "Compliance Reporting",
+      "group": "COMP"
+    },
+    {
+      "id": 145,
+      "label": "Risk Management",
+      "group": "COMP"
+    },
+    {
+      "id": 146,
+      "label": "Risk Assessment",
+      "group": "COMP"
+    },
+    {
+      "id": 147,
+      "label": "Vendor Management",
+      "group": "TRANS",
+      "shape": "box"
+    },
+    {
+      "id": 148,
+      "label": "ServiceNow",
+      "group": "TRANS"
+    },
+    {
+      "id": 149,
+      "label": "Dynatrace",
+      "group": "TRANS"
+    },
+    {
+      "id": 150,
+      "label": "Atlassian",
+      "group": "TRANS"
+    },
+    {
+      "id": 151,
+      "label": "Vendor Evaluation",
+      "group": "TRANS"
+    },
+    {
+      "id": 152,
+      "label": "Technology Selection",
+      "group": "TRANS"
+    },
+    {
+      "id": 153,
+      "label": "Build vs Buy",
+      "group": "TRANS"
+    },
+    {
+      "id": 154,
+      "label": "Total Cost of Ownership",
+      "group": "TRANS"
+    },
+    {
+      "id": 155,
+      "label": "TCO",
+      "group": "TRANS"
+    },
+    {
+      "id": 156,
+      "label": "Return on Investment",
+      "group": "TRANS"
+    },
+    {
+      "id": 157,
+      "label": "ROI",
+      "group": "TRANS"
+    },
+    {
+      "id": 158,
+      "label": "Business Case",
+      "group": "TRANS"
+    },
+    {
+      "id": 159,
+      "label": "Digital Transformation",
+      "group": "TRANS"
+    },
+    {
+      "id": 160,
+      "label": "IT Modernization",
+      "group": "TRANS"
+    },
+    {
+      "id": 161,
+      "label": "Legacy Migration",
+      "group": "TRANS"
+    },
+    {
+      "id": 162,
+      "label": "Migration Strategy",
+      "group": "TRANS"
+    },
+    {
+      "id": 163,
+      "label": "Data Migration",
+      "group": "TRANS"
+    },
+    {
+      "id": 164,
+      "label": "System Cutover",
+      "group": "TRANS"
+    },
+    {
+      "id": 165,
+      "label": "Artificial Intelligence",
+      "group": "AI",
+      "shape": "box"
+    },
+    {
+      "id": 166,
+      "label": "Machine Learning",
+      "group": "AI"
+    },
+    {
+      "id": 167,
+      "label": "AI-Assisted Curation",
+      "group": "AI"
+    },
+    {
+      "id": 168,
+      "label": "Graph RAG",
+      "group": "AI"
+    },
+    {
+      "id": 169,
+      "label": "Retrieval Augmented Generation",
+      "group": "AI"
+    },
+    {
+      "id": 170,
+      "label": "Knowledge Graph",
+      "group": "AI"
+    },
+    {
+      "id": 171,
+      "label": "Semantic Model",
+      "group": "AI"
+    },
+    {
+      "id": 172,
+      "label": "Ontology",
+      "group": "AI"
+    },
+    {
+      "id": 173,
+      "label": "Taxonomy",
+      "group": "AI"
+    },
+    {
+      "id": 174,
+      "label": "Classification System",
+      "group": "VALID"
+    },
+    {
+      "id": 175,
+      "label": "Exception Reporting",
+      "group": "VALID"
+    },
+    {
+      "id": 176,
+      "label": "Anomaly Detection",
+      "group": "AI"
+    },
+    {
+      "id": 177,
+      "label": "Data Validation",
+      "group": "VALID"
+    },
+    {
+      "id": 178,
+      "label": "Validation Rule",
+      "group": "VALID"
+    },
+    {
+      "id": 179,
+      "label": "Business Rule",
+      "group": "VALID"
+    },
+    {
+      "id": 180,
+      "label": "Policy Enforcement",
+      "group": "DATA"
+    },
+    {
+      "id": 181,
+      "label": "Access Control",
+      "group": "COMP"
+    },
+    {
+      "id": 182,
+      "label": "Role-Based Access Control",
+      "group": "COMP"
+    },
+    {
+      "id": 183,
+      "label": "RBAC",
+      "group": "COMP"
+    },
+    {
+      "id": 184,
+      "label": "Security Model",
+      "group": "COMP"
+    },
+    {
+      "id": 185,
+      "label": "Incident Response",
+      "group": "OPS"
+    },
+    {
+      "id": 186,
+      "label": "Mean Time to Detect",
+      "group": "OPS"
+    },
+    {
+      "id": 187,
+      "label": "MTTD",
+      "group": "OPS"
+    },
+    {
+      "id": 188,
+      "label": "Mean Time to Resolve",
+      "group": "OPS"
+    },
+    {
+      "id": 189,
+      "label": "MTTR",
+      "group": "OPS"
+    },
+    {
+      "id": 190,
+      "label": "Service Level Agreement",
+      "group": "BIZS"
+    },
+    {
+      "id": 191,
+      "label": "SLA",
+      "group": "BIZS"
+    },
+    {
+      "id": 192,
+      "label": "Key Performance Indicator",
+      "group": "OPS"
+    },
+    {
+      "id": 193,
+      "label": "KPI",
+      "group": "OPS"
+    },
+    {
+      "id": 194,
+      "label": "Operational Excellence",
+      "group": "OPS"
+    },
+    {
+      "id": 195,
+      "label": "Continuous Improvement",
+      "group": "OPS"
+    },
+    {
+      "id": 196,
+      "label": "Best Practice",
+      "group": "OPS"
+    },
+    {
+      "id": 197,
+      "label": "Industry Standard",
+      "group": "OPS"
+    },
+    {
+      "id": 198,
+      "label": "Framework Adoption",
+      "group": "OPS"
+    },
+    {
+      "id": 199,
+      "label": "Process Maturity",
+      "group": "OPS"
+    },
+    {
+      "id": 200,
+      "label": "Capability Model",
+      "group": "OPS"
+    }
+  ],
+  "edges": [
+    {
+      "from": 2,
+      "to": 1
+    },
+    {
+      "from": 3,
+      "to": 2
+    },
+    {
+      "from": 4,
+      "to": 3
+    },
+    {
+      "from": 6,
+      "to": 5
+    },
+    {
+      "from": 7,
+      "to": 6
+    },
+    {
+      "from": 8,
+      "to": 6
+    },
+    {
+      "from": 9,
+      "to": 6
+    },
+    {
+      "from": 10,
+      "to": 2
+    },
+    {
+      "from": 10,
+      "to": 8
+    },
+    {
+      "from": 11,
+      "to": 8
+    },
+    {
+      "from": 12,
+      "to": 8
+    },
+    {
+      "from": 12,
+      "to": 11
+    },
+    {
+      "from": 13,
+      "to": 8
+    },
+    {
+      "from": 13,
+      "to": 10
+    },
+    {
+      "from": 14,
+      "to": 2
+    },
+    {
+      "from": 15,
+      "to": 2
+    },
+    {
+      "from": 15,
+      "to": 14
+    },
+    {
+      "from": 16,
+      "to": 2
+    },
+    {
+      "from": 17,
+      "to": 1
+    },
+    {
+      "from": 18,
+      "to": 17
+    },
+    {
+      "from": 19,
+      "to": 18
+    },
+    {
+      "from": 20,
+      "to": 18
+    },
+    {
+      "from": 22,
+      "to": 21
+    },
+    {
+      "from": 23,
+      "to": 22
+    },
+    {
+      "from": 24,
+      "to": 23
+    },
+    {
+      "from": 25,
+      "to": 22
+    },
+    {
+      "from": 26,
+      "to": 25
+    },
+    {
+      "from": 27,
+      "to": 26
+    },
+    {
+      "from": 28,
+      "to": 26
+    },
+    {
+      "from": 29,
+      "to": 26
+    },
+    {
+      "from": 30,
+      "to": 26
+    },
+    {
+      "from": 30,
+      "to": 29
+    },
+    {
+      "from": 31,
+      "to": 26
+    },
+    {
+      "from": 31,
+      "to": 30
+    },
+    {
+      "from": 32,
+      "to": 31
+    },
+    {
+      "from": 33,
+      "to": 31
+    },
+    {
+      "from": 34,
+      "to": 30
+    },
+    {
+      "from": 35,
+      "to": 31
+    },
+    {
+      "from": 35,
+      "to": 34
+    },
+    {
+      "from": 36,
+      "to": 23
+    },
+    {
+      "from": 37,
+      "to": 26
+    },
+    {
+      "from": 37,
+      "to": 36
+    },
+    {
+      "from": 38,
+      "to": 36
+    },
+    {
+      "from": 38,
+      "to": 37
+    },
+    {
+      "from": 39,
+      "to": 25
+    },
+    {
+      "from": 40,
+      "to": 25
+    },
+    {
+      "from": 40,
+      "to": 39
+    },
+    {
+      "from": 41,
+      "to": 21
+    },
+    {
+      "from": 43,
+      "to": 42
+    },
+    {
+      "from": 44,
+      "to": 42
+    },
+    {
+      "from": 44,
+      "to": 43
+    },
+    {
+      "from": 45,
+      "to": 43
+    },
+    {
+      "from": 46,
+      "to": 44
+    },
+    {
+      "from": 47,
+      "to": 41
+    },
+    {
+      "from": 47,
+      "to": 43
+    },
+    {
+      "from": 47,
+      "to": 44
+    },
+    {
+      "from": 48,
+      "to": 43
+    },
+    {
+      "from": 48,
+      "to": 47
+    },
+    {
+      "from": 49,
+      "to": 44
+    },
+    {
+      "from": 49,
+      "to": 47
+    },
+    {
+      "from": 50,
+      "to": 43
+    },
+    {
+      "from": 50,
+      "to": 44
+    },
+    {
+      "from": 51,
+      "to": 50
+    },
+    {
+      "from": 52,
+      "to": 50
+    },
+    {
+      "from": 53,
+      "to": 50
+    },
+    {
+      "from": 54,
+      "to": 53
+    },
+    {
+      "from": 55,
+      "to": 50
+    },
+    {
+      "from": 56,
+      "to": 42
+    },
+    {
+      "from": 56,
+      "to": 44
+    },
+    {
+      "from": 57,
+      "to": 42
+    },
+    {
+      "from": 57,
+      "to": 44
+    },
+    {
+      "from": 58,
+      "to": 56
+    },
+    {
+      "from": 59,
+      "to": 58
+    },
+    {
+      "from": 60,
+      "to": 56
+    },
+    {
+      "from": 61,
+      "to": 41
+    },
+    {
+      "from": 62,
+      "to": 41
+    },
+    {
+      "from": 62,
+      "to": 22
+    },
+    {
+      "from": 63,
+      "to": 41
+    },
+    {
+      "from": 64,
+      "to": 63
+    },
+    {
+      "from": 65,
+      "to": 41
+    },
+    {
+      "from": 65,
+      "to": 50
+    },
+    {
+      "from": 66,
+      "to": 65
+    },
+    {
+      "from": 67,
+      "to": 50
+    },
+    {
+      "from": 67,
+      "to": 46
+    },
+    {
+      "from": 68,
+      "to": 67
+    },
+    {
+      "from": 69,
+      "to": 67
+    },
+    {
+      "from": 70,
+      "to": 67
+    },
+    {
+      "from": 70,
+      "to": 69
+    },
+    {
+      "from": 71,
+      "to": 67
+    },
+    {
+      "from": 71,
+      "to": 70
+    },
+    {
+      "from": 72,
+      "to": 67
+    },
+    {
+      "from": 72,
+      "to": 68
+    },
+    {
+      "from": 73,
+      "to": 71
+    },
+    {
+      "from": 73,
+      "to": 10
+    },
+    {
+      "from": 74,
+      "to": 67
+    },
+    {
+      "from": 75,
+      "to": 74
+    },
+    {
+      "from": 76,
+      "to": 60
+    },
+    {
+      "from": 76,
+      "to": 74
+    },
+    {
+      "from": 77,
+      "to": 74
+    },
+    {
+      "from": 78,
+      "to": 74
+    },
+    {
+      "from": 79,
+      "to": 74
+    },
+    {
+      "from": 81,
+      "to": 80
+    },
+    {
+      "from": 82,
+      "to": 77
+    },
+    {
+      "from": 82,
+      "to": 81
+    },
+    {
+      "from": 83,
+      "to": 82
+    },
+    {
+      "from": 83,
+      "to": 80
+    },
+    {
+      "from": 84,
+      "to": 20
+    },
+    {
+      "from": 85,
+      "to": 18
+    },
+    {
+      "from": 85,
+      "to": 84
+    },
+    {
+      "from": 86,
+      "to": 85
+    },
+    {
+      "from": 87,
+      "to": 85
+    },
+    {
+      "from": 88,
+      "to": 87
+    },
+    {
+      "from": 89,
+      "to": 81
+    },
+    {
+      "from": 91,
+      "to": 90
+    },
+    {
+      "from": 92,
+      "to": 90
+    },
+    {
+      "from": 93,
+      "to": 92
+    },
+    {
+      "from": 94,
+      "to": 90
+    },
+    {
+      "from": 95,
+      "to": 94
+    },
+    {
+      "from": 96,
+      "to": 94
+    },
+    {
+      "from": 97,
+      "to": 94
+    },
+    {
+      "from": 98,
+      "to": 94
+    },
+    {
+      "from": 99,
+      "to": 94
+    },
+    {
+      "from": 100,
+      "to": 90
+    },
+    {
+      "from": 101,
+      "to": 91
+    },
+    {
+      "from": 102,
+      "to": 91
+    },
+    {
+      "from": 103,
+      "to": 91
+    },
+    {
+      "from": 104,
+      "to": 92
+    },
+    {
+      "from": 105,
+      "to": 92
+    },
+    {
+      "from": 105,
+      "to": 104
+    },
+    {
+      "from": 106,
+      "to": 104
+    },
+    {
+      "from": 107,
+      "to": 92
+    },
+    {
+      "from": 108,
+      "to": 107
+    },
+    {
+      "from": 109,
+      "to": 23
+    },
+    {
+      "from": 109,
+      "to": 65
+    },
+    {
+      "from": 110,
+      "to": 36
+    },
+    {
+      "from": 110,
+      "to": 109
+    },
+    {
+      "from": 111,
+      "to": 110
+    },
+    {
+      "from": 112,
+      "to": 36
+    },
+    {
+      "from": 113,
+      "to": 112
+    },
+    {
+      "from": 114,
+      "to": 113
+    },
+    {
+      "from": 115,
+      "to": 113
+    },
+    {
+      "from": 116,
+      "to": 42
+    },
+    {
+      "from": 116,
+      "to": 55
+    },
+    {
+      "from": 117,
+      "to": 116
+    },
+    {
+      "from": 118,
+      "to": 43
+    },
+    {
+      "from": 119,
+      "to": 118
+    },
+    {
+      "from": 119,
+      "to": 56
+    },
+    {
+      "from": 120,
+      "to": 118
+    },
+    {
+      "from": 120,
+      "to": 56
+    },
+    {
+      "from": 121,
+      "to": 116
+    },
+    {
+      "from": 123,
+      "to": 122
+    },
+    {
+      "from": 124,
+      "to": 123
+    },
+    {
+      "from": 125,
+      "to": 124
+    },
+    {
+      "from": 126,
+      "to": 124
+    },
+    {
+      "from": 127,
+      "to": 126
+    },
+    {
+      "from": 128,
+      "to": 123
+    },
+    {
+      "from": 129,
+      "to": 128
+    },
+    {
+      "from": 130,
+      "to": 79
+    },
+    {
+      "from": 131,
+      "to": 77
+    },
+    {
+      "from": 131,
+      "to": 82
+    },
+    {
+      "from": 132,
+      "to": 130
+    },
+    {
+      "from": 132,
+      "to": 131
+    },
+    {
+      "from": 133,
+      "to": 2
+    },
+    {
+      "from": 133,
+      "to": 14
+    },
+    {
+      "from": 134,
+      "to": 133
+    },
+    {
+      "from": 136,
+      "to": 135
+    },
+    {
+      "from": 137,
+      "to": 136
+    },
+    {
+      "from": 138,
+      "to": 137
+    },
+    {
+      "from": 139,
+      "to": 136
+    },
+    {
+      "from": 140,
+      "to": 139
+    },
+    {
+      "from": 141,
+      "to": 136
+    },
+    {
+      "from": 142,
+      "to": 141
+    },
+    {
+      "from": 143,
+      "to": 2
+    },
+    {
+      "from": 143,
+      "to": 135
+    },
+    {
+      "from": 144,
+      "to": 136
+    },
+    {
+      "from": 144,
+      "to": 143
+    },
+    {
+      "from": 145,
+      "to": 135
+    },
+    {
+      "from": 146,
+      "to": 145
+    },
+    {
+      "from": 148,
+      "to": 3
+    },
+    {
+      "from": 149,
+      "to": 123
+    },
+    {
+      "from": 150,
+      "to": 147
+    },
+    {
+      "from": 151,
+      "to": 147
+    },
+    {
+      "from": 152,
+      "to": 151
+    },
+    {
+      "from": 153,
+      "to": 152
+    },
+    {
+      "from": 154,
+      "to": 147
+    },
+    {
+      "from": 155,
+      "to": 154
+    },
+    {
+      "from": 156,
+      "to": 154
+    },
+    {
+      "from": 157,
+      "to": 156
+    },
+    {
+      "from": 158,
+      "to": 157
+    },
+    {
+      "from": 159,
+      "to": 85
+    },
+    {
+      "from": 159,
+      "to": 158
+    },
+    {
+      "from": 160,
+      "to": 159
+    },
+    {
+      "from": 161,
+      "to": 88
+    },
+    {
+      "from": 161,
+      "to": 160
+    },
+    {
+      "from": 162,
+      "to": 161
+    },
+    {
+      "from": 163,
+      "to": 162
+    },
+    {
+      "from": 163,
+      "to": 92
+    },
+    {
+      "from": 164,
+      "to": 162
+    },
+    {
+      "from": 166,
+      "to": 165
+    },
+    {
+      "from": 167,
+      "to": 166
+    },
+    {
+      "from": 167,
+      "to": 92
+    },
+    {
+      "from": 168,
+      "to": 166
+    },
+    {
+      "from": 168,
+      "to": 41
+    },
+    {
+      "from": 169,
+      "to": 168
+    },
+    {
+      "from": 170,
+      "to": 41
+    },
+    {
+      "from": 170,
+      "to": 104
+    },
+    {
+      "from": 171,
+      "to": 170
+    },
+    {
+      "from": 172,
+      "to": 171
+    },
+    {
+      "from": 173,
+      "to": 172
+    },
+    {
+      "from": 174,
+      "to": 173
+    },
+    {
+      "from": 175,
+      "to": 90
+    },
+    {
+      "from": 175,
+      "to": 144
+    },
+    {
+      "from": 176,
+      "to": 166
+    },
+    {
+      "from": 176,
+      "to": 90
+    },
+    {
+      "from": 177,
+      "to": 90
+    },
+    {
+      "from": 178,
+      "to": 177
+    },
+    {
+      "from": 179,
+      "to": 178
+    },
+    {
+      "from": 180,
+      "to": 179
+    },
+    {
+      "from": 180,
+      "to": 91
+    },
+    {
+      "from": 181,
+      "to": 91
+    },
+    {
+      "from": 182,
+      "to": 181
+    },
+    {
+      "from": 183,
+      "to": 182
+    },
+    {
+      "from": 184,
+      "to": 181
+    },
+    {
+      "from": 185,
+      "to": 11
+    },
+    {
+      "from": 185,
+      "to": 123
+    },
+    {
+      "from": 186,
+      "to": 185
+    },
+    {
+      "from": 187,
+      "to": 186
+    },
+    {
+      "from": 188,
+      "to": 185
+    },
+    {
+      "from": 189,
+      "to": 188
+    },
+    {
+      "from": 190,
+      "to": 80
+    },
+    {
+      "from": 191,
+      "to": 190
+    },
+    {
+      "from": 192,
+      "to": 112
+    },
+    {
+      "from": 193,
+      "to": 192
+    },
+    {
+      "from": 194,
+      "to": 112
+    },
+    {
+      "from": 194,
+      "to": 91
+    },
+    {
+      "from": 195,
+      "to": 194
+    },
+    {
+      "from": 196,
+      "to": 194
+    },
+    {
+      "from": 197,
+      "to": 196
+    },
+    {
+      "from": 198,
+      "to": 6
+    },
+    {
+      "from": 198,
+      "to": 93
+    },
+    {
+      "from": 199,
+      "to": 198
+    },
+    {
+      "from": 200,
+      "to": 199
+    }
+  ]
+}

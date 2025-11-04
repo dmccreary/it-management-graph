@@ -1,0 +1,16 @@
+{
+  "ITIL": "red",
+  "RDBMS": "orange",
+  "GRAPH": "gold",
+  "GOPS": "green",
+  "QPERF": "cyan",
+  "DATA": "blue",
+  "OBSRV": "purple",
+  "COMP": "brown",
+  "BIZS": "pink",
+  "ASSET": "lightblue",
+  "TRANS": "olive",
+  "AI": "magenta",
+  "VALID": "teal",
+  "OPS": "darkgreen"
+}
