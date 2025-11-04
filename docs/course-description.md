@@ -113,7 +113,7 @@ This course does NOT cover:
 
 ### Required Resources
 
-- Primary text: "Graph Databases for IT Management" (https://dmccreary.github.io/it-managment-graph/)
+- Primary text: "Graph Databases for IT Management" (https://dmccreary.github.io/it-management-graph/)
 - Access to graph database sandbox environment (Neo4j or similar)
 - Industry reports from Forrester, Gartner on IT management evolution
 

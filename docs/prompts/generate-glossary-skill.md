@@ -59,7 +59,7 @@
      from typing import List, Dict, Tuple
      … +102 lines (ctrl+o to expand)
 
-⏺ Bash(cd /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph
+⏺ Bash(cd /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph
       && python3 analyze-concept-quality.py)
   ⎿  # Concept List Quality Analysis
 
@@ -97,7 +97,7 @@
 
   Let me create the glossary in batches, organizing by taxonomy categories:
 
-⏺ Write(~/Documents/ws/it-managment-graph/docs/glossary-complete.md)
+⏺ Write(~/Documents/ws/it-management-graph/docs/glossary-complete.md)
   ⎿  Wrote 1454 lines to ../glossary-complete.md                            
      # Glossary of Terms
      This glossary provides ISO 11179-compliant definitions for all concepts
@@ -115,7 +115,7 @@
   11179-compliant definitions. Now let me replace the template glossary with
   this complete version.
 
-⏺ Bash(cd /Users/danmccreary/Documents/ws/it-managment-graph/docs && mv
+⏺ Bash(cd /Users/danmccreary/Documents/ws/it-management-graph/docs && mv
       glossary.md glossary-old.md && mv glossary-complete.md glossary.md)
   ⎿  (No content)
 
@@ -135,7 +135,7 @@
          """Parse the glossary markdown file into structured data"""
      … +207 lines (ctrl+o to expand)
 
-⏺ Bash(cd /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph
+⏺ Bash(cd /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph
       && python3 generate-quality-report.py)
   ⎿  Parsing glossary...                                   
      Analyzing 197 terms...
@@ -175,7 +175,7 @@
 
   Let me check the glossary and add the missing terms:
 
-⏺ Bash(cd /Users/danmccreary/Documents/ws/it-managment-graph/docs && grep -n
+⏺ Bash(cd /Users/danmccreary/Documents/ws/it-management-graph/docs && grep -n
       "^#### R" glossary.md | head -20)
   ⎿  1069:#### RBAC                
      1075:#### Real-Time Query
@@ -385,7 +385,7 @@
 ⏺ Excellent! Now let me verify all corrections by running the validation
   again:
 
-⏺ Bash(cd /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph
+⏺ Bash(cd /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph
       && python3 find-missing-terms.py)
   ⎿  CSV has 200 terms            
      Glossary has 200 terms

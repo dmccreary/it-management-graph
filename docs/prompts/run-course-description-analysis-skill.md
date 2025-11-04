@@ -172,7 +172,7 @@
        14      - Glossary: glossary.md
 
 ⏺ Perfect! I've added "Course Description" to your mkdocs.yml navigation at
-  /Users/danmccreary/Documents/ws/it-managment-graph/mkdocs.yml:11. It's now positioned as the second item after
+  /Users/danmccreary/Documents/ws/it-management-graph/mkdocs.yml:11. It's now positioned as the second item after
   the Home page, which is the ideal location for a course description.
 
   Your course description is now:

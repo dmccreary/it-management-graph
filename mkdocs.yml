@@ -2,8 +2,8 @@ site_name: IT Management Graph
 site_description: 'DESCRIPTION All content licensed Creative Commons ShareAlike Attribution Noncommercial'
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
-site_url: 'https://dmccreary.github.io/it-managment-graph/'
-repo_url: 'https://github.com/dmccreary/it-managment-graph'
+site_url: 'https://dmccreary.github.io/it-management-graph/'
+repo_url: 'https://github.com/dmccreary/it-management-graph'
 edit_uri: 'blob/master/docs'
 
 nav:

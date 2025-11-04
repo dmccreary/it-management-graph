@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is an **IT Management Graph educational website** built with MkDocs Material. It documents a graduate-level course (ISMG 620) on the evolution from legacy CMDB (Configuration Management Database) systems to modern graph-based IT management solutions. The site includes learning graphs, interactive visualizations (MicroSims), and educational content about graph databases in IT operations.
 
-**Live Site**: https://dmccreary.github.io/it-managment-graph/
+**Live Site**: https://dmccreary.github.io/it-management-graph/
 
 ## Key Commands
 

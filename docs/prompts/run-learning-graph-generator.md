@@ -135,10 +135,10 @@
   ⎿  Error: Exit code 1
      (eval):cd:1: no such file or directory: docs/learning-graph
 
-⏺ Bash(python /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/analyze-graph.py
-      /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-…)
+⏺ Bash(python /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/analyze-graph.py
+      /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-…)
   ⎿ ✅ Quality metrics report generated:                                                                           
-    /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/qua
+    /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/qua
     lity-metrics.md
 
 ⏺ Read(quality-metrics.md)
@@ -620,12 +620,12 @@
      }
      … +1 line (ctrl+o to expand)
 
-⏺ Bash(python /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/csv-to-json.py
-      /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-gr…)
-  ⎿ 📋 Loaded color config from: /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/metadata.j
+⏺ Bash(python /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/csv-to-json.py
+      /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-gr…)
+  ⎿ 📋 Loaded color config from: /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/metadata.j
     son
     ✅ JSON graph created:
-    /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/learning-graph.js
+    /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/learning-graph.js
     … +30 lines (ctrl+o to expand)
 
 
@@ -655,21 +655,21 @@
        "BIZS": "pink",
      … +7 lines (ctrl+o to expand)
 
-⏺ Bash(python /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/csv-to-json.py
-      /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-gr…)
-  ⎿ 📋 Loaded color config from: /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/color-conf
+⏺ Bash(python /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/csv-to-json.py
+      /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-gr…)
+  ⎿ 📋 Loaded color config from: /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/color-conf
     ig.json
-    📋 Loaded metadata from: /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/metadata.json
+    📋 Loaded metadata from: /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/metadata.json
     … +34 lines (ctrl+o to expand)
 
 
 ⏺ Perfect! The learning-graph.json has been successfully created with all 14 taxonomies and 200 concepts. Now let
   me generate the taxonomy distribution report:
 
-⏺ Bash(python /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-graph/taxonomy-distribution.py
-      /Users/danmccreary/Documents/ws/it-managment-graph/docs/l…)
+⏺ Bash(python /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-graph/taxonomy-distribution.py
+      /Users/danmccreary/Documents/ws/it-management-graph/docs/l…)
   ⎿ ✅ Taxonomy distribution report generated:                                                                     
-    /Users/danmccreary/Documents/ws/it-managment-graph/docs/learning-gra
+    /Users/danmccreary/Documents/ws/it-management-graph/docs/learning-gra
     ph/taxonomy-distribution.md
 
 ⏺ Read(taxonomy-distribution.md)
@@ -693,10 +693,10 @@
      A learning graph is like a roadmap of concepts to help students arrive at their learning goals.
      … +86 lines (ctrl+o to expand)
 
-⏺ Read(~/Documents/ws/it-managment-graph/mkdocs.yml)
+⏺ Read(~/Documents/ws/it-management-graph/mkdocs.yml)
   ⎿  Read 63 lines
 
-⏺ Update(~/Documents/ws/it-managment-graph/mkdocs.yml)
+⏺ Update(~/Documents/ws/it-management-graph/mkdocs.yml)
   ⎿  Updated ../../mkdocs.yml with 7 additions                                                   
         9    nav:
        10      - Home: index.md

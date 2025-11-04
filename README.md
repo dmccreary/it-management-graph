@@ -5,7 +5,7 @@
 ![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-222222?logo=github)
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 
-**Live Site**: [https://dmccreary.github.io/it-managment-graph/](https://dmccreary.github.io/it-managment-graph/)
+**Live Site**: [https://dmccreary.github.io/it-management-graph/](https://dmccreary.github.io/it-management-graph/)
 
 ## About
 
@@ -40,8 +40,8 @@ The site explores why legacy Configuration Management Database (CMDB) implementa
 
 ```bash
 # Clone the repository
-git clone https://github.com/dmccreary/it-managment-graph.git
-cd it-managment-graph
+git clone https://github.com/dmccreary/it-management-graph.git
+cd it-management-graph
 
 # Install MkDocs (if not already installed)
 pip install mkdocs mkdocs-material
