@@ -12,18 +12,18 @@ nav:
   - Course Description: course-description.md
   - Chapters:
     - Overview: chapters/index.md
-    - Chapter 1 - Introduction to ITIL and Configuration Management: chapters/01-intro-to-itil-and-config-mgmt/index.md
-    - Chapter 2 - IT Asset Management Fundamentals: chapters/02-it-asset-management/index.md
-    - Chapter 3 - Relational Database Fundamentals: chapters/03-relational-database-fundamentals/index.md
-    - Chapter 4 - Graph Theory and Graph Database Foundations: chapters/04-graph-theory-and-database-foundations/index.md
-    - Chapter 5 - Graph Database Technologies and Query Languages: chapters/05-graph-database-technologies/index.md
-    - Chapter 6 - Graph Traversal and Dependency Analysis: chapters/06-graph-traversal-and-dependency-analysis/index.md
-    - Chapter 7 - Business Services and IT Portfolio Management: chapters/07-business-services-and-portfolio/index.md
-    - Chapter 8 - Data Quality and Data Management Excellence: chapters/08-data-quality-and-management/index.md
-    - Chapter 9 - Query Performance and Real-Time Operations: chapters/09-query-performance-and-real-time-ops/index.md
-    - Chapter 10 - Observability, Monitoring, and Automated Discovery: chapters/10-observability-and-automated-discovery/index.md
-    - Chapter 11 - Compliance, Risk Management, and Security: chapters/11-compliance-risk-and-security/index.md
-    - Chapter 12 - Digital Transformation and Advanced Topics: chapters/12-digital-transformation-and-advanced-topics/index.md
+    - Ch 1 - Introduction to ITIL and Configuration Management: chapters/01-intro-to-itil-and-config-mgmt/index.md
+    - Ch 2 - IT Asset Management Fundamentals: chapters/02-it-asset-management/index.md
+    - Ch 3 - Relational Database Fundamentals: chapters/03-relational-database-fundamentals/index.md
+    - Ch 4 - Graph Theory and Graph Database Foundations: chapters/04-graph-theory-and-database-foundations/index.md
+    - Ch 5 - Graph Database Technologies and Query Languages: chapters/05-graph-database-technologies/index.md
+    - Ch 6 - Graph Traversal and Dependency Analysis: chapters/06-graph-traversal-and-dependency-analysis/index.md
+    - Ch 7 - Business Services and IT Portfolio Management: chapters/07-business-services-and-portfolio/index.md
+    - Ch 8 - Data Quality and Data Management Excellence: chapters/08-data-quality-and-management/index.md
+    - Ch 9 - Query Performance and Real-Time Operations: chapters/09-query-performance-and-real-time-ops/index.md
+    - Ch 10 - Observability, Monitoring, and Automated Discovery: chapters/10-observability-and-automated-discovery/index.md
+    - Ch 11 - Compliance, Risk Management, and Security: chapters/11-compliance-risk-and-security/index.md
+    - Ch 12 - Digital Transformation and Advanced Topics: chapters/12-digital-transformation-and-advanced-topics/index.md
   - Learning Graph:
     - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
