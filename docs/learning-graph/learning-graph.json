@@ -42,7 +42,7 @@
       "classifierName": "Query Performance",
       "color": "cyan",
       "font": {
-        "color": "white"
+        "color": "black"
       }
     },
     "DATA": {
@@ -56,14 +56,14 @@
       "classifierName": "Observability",
       "color": "purple",
       "font": {
-        "color": "black"
+        "color": "white"
       }
     },
     "COMP": {
       "classifierName": "Compliance and Risk",
       "color": "brown",
       "font": {
-        "color": "black"
+        "color": "white"
       }
     },
     "BIZS": {
@@ -105,7 +105,7 @@
       "classifierName": "Operations",
       "color": "darkgreen",
       "font": {
-        "color": "black"
+        "color": "white"
       }
     }
   },
