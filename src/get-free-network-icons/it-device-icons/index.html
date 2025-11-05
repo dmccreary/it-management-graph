@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Device & Management Icons</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            background: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .stats p {
+            color: #2d3748;
+            line-height: 1.8;
+            margin: 5px 0;
+        }
+
+        .category {
+            margin-top: 40px;
+        }
+
+        .category h2 {
+            color: #2d3748;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .icon-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #0284c7;
+        }
+
+        .icon-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        .icon-name {
+            font-size: 0.8em;
+            color: #4a5568;
+            word-break: break-word;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💻 IT Device & Management Icons</h1>
+        <p class="subtitle">End-user devices, servers, databases, and IT management icons</p>
+
+        <div class="stats">
+            <p><strong>📦 Total Icons:</strong> 47 SVG files</p>
+            <p><strong>🎨 Style:</strong> Clean, monochrome line icons</p>
+            <p><strong>📝 License:</strong> MIT License (Bootstrap Icons) - Free for commercial use</p>
+            <p><strong>💾 Source:</strong> <a href="https://github.com/twbs/icons" target="_blank">Bootstrap Icons by Twitter</a></p>
+            <p><strong>✅ Perfect for:</strong> Desktops, laptops, Macs, databases, servers, storage, printers</p>
+        </div>
+
+        <div id="iconContainer"></div>
+
+        <div class="footer">
+            <p>Icons from <a href="https://github.com/twbs/icons" target="_blank">Bootstrap Icons</a> (MIT License)</p>
+            <p>Free for commercial use - No attribution required</p>
+            <p><strong>Click any icon to copy its filename</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const icons = {
+            'Computers & Workstations': [
+                'desktop-pc.svg',
+                'desktop-horizontal.svg',
+                'laptop.svg',
+                'monitor.svg',
+                'tablet.svg',
+                'phone.svg',
+                'smartwatch.svg',
+                'apple-mac.svg'
+            ],
+            'Servers & Infrastructure': [
+                'server.svg',
+                'hard-drive.svg',
+                'hdd-rack.svg',
+                'hdd-stack.svg',
+                'network-storage.svg',
+                'device-storage.svg',
+                'ssd-drive.svg'
+            ],
+            'Databases': [
+                'database.svg',
+                'database-add.svg',
+                'database-check.svg',
+                'database-gear.svg',
+                'save.svg'
+            ],
+            'Peripherals': [
+                'printer.svg',
+                'mouse.svg',
+                'keyboard.svg',
+                'headset.svg',
+                'webcam.svg'
+            ],
+            'Network Devices': [
+                'router.svg',
+                'wifi.svg',
+                'ethernet.svg'
+            ],
+            'Cloud & Virtual': [
+                'cloud.svg',
+                'cloud-upload.svg',
+                'cloud-download.svg'
+            ],
+            'Users & Access': [
+                'user.svg',
+                'users.svg',
+                'user-workstation.svg'
+            ],
+            'Security': [
+                'security.svg',
+                'lock.svg',
+                'unlock.svg',
+                'key.svg'
+            ],
+            'Monitoring & Performance': [
+                'activity.svg',
+                'performance.svg',
+                'metrics.svg',
+                'processor.svg',
+                'memory.svg'
+            ],
+            'Locations': [
+                'office-building.svg',
+                'home.svg',
+                'location.svg'
+            ],
+            'Operating Systems': [
+                'apple-mac.svg',
+                'linux-logo.svg'
+            ]
+        };
+
+        function renderIcons() {
+            const container = document.getElementById('iconContainer');
+            container.innerHTML = '';
+
+            Object.keys(icons).forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                const heading = document.createElement('h2');
+                heading.textContent = `${category} (${icons[category].length})`;
+                categoryDiv.appendChild(heading);
+
+                const grid = document.createElement('div');
+                grid.className = 'grid';
+
+                icons[category].forEach(icon => {
+                    const card = document.createElement('div');
+                    card.className = 'icon-card';
+
+                    card.onclick = () => {
+                        navigator.clipboard.writeText(icon);
+                        card.style.background = '#f0fff4';
+                        setTimeout(() => card.style.background = '#ffffff', 500);
+                    };
+
+                    const img = document.createElement('img');
+                    img.src = icon;
+                    img.alt = icon;
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.textContent = '❌';
+                        placeholder.style.fontSize = '48px';
+                        card.insertBefore(placeholder, card.firstChild);
+                    };
+
+                    const name = document.createElement('div');
+                    name.className = 'icon-name';
+                    name.textContent = icon.replace('.svg', '').replace(/-/g, ' ');
+
+                    card.appendChild(img);
+                    card.appendChild(name);
+                    grid.appendChild(card);
+                });
+
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        renderIcons();
+    </script>
+</body>
+</html>

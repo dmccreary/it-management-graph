@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Infrastructure Icons - Visual Index</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .stats p {
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .icon-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .icon-card img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .icon-name {
+            font-size: 0.85em;
+            color: #4a5568;
+            word-break: break-all;
+            font-weight: 500;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IT Infrastructure Icons</h1>
+        <p class="subtitle">Free, open-source SVG icons for network and IT diagrams</p>
+
+        <div class="stats">
+            <p><strong>Total Icons:</strong> 51</p>
+            <p><strong>Format:</strong> SVG (Scalable Vector Graphics)</p>
+            <p><strong>License:</strong> CC0 Public Domain (Simple Icons)</p>
+            <p><strong>Total Size:</strong> 87 KB</p>
+        </div>
+
+        <div class="grid" id="iconGrid"></div>
+
+        <div class="footer">
+            <p>Icons sourced from <a href="https://simpleicons.org/" target="_blank">Simple Icons</a></p>
+            <p>Licensed under CC0 1.0 Universal - Free for any use, no attribution required</p>
+            <p>Click any icon to copy its filename</p>
+        </div>
+    </div>
+
+    <script>
+        const icons = [
+            'alpine.svg', 'ansible.svg', 'apache.svg', 'bitbucket.svg',
+            'caddy.svg', 'centos.svg', 'chef.svg', 'cisco.svg',
+            'cloudflare.svg', 'datadog.svg', 'debian.svg', 'digitalocean.svg',
+            'docker.svg', 'elasticsearch.svg', 'envoy.svg', 'fedora.svg',
+            'gcp.svg', 'git.svg', 'github.svg', 'gitlab.svg',
+            'grafana.svg', 'istio.svg', 'jenkins.svg', 'kafka.svg',
+            'kibana.svg', 'kubernetes.svg', 'letsencrypt.svg', 'linux.svg',
+            'mariadb.svg', 'mongodb.svg', 'mysql.svg', 'neo4j.svg',
+            'newrelic.svg', 'nginx.svg', 'openvpn.svg', 'podman.svg',
+            'postgresql.svg', 'prometheus.svg', 'puppet.svg', 'qemu.svg',
+            'rabbitmq.svg', 'redhat.svg', 'redis.svg', 'splunk.svg',
+            'sqlite.svg', 'terraform.svg', 'ubuntu.svg', 'vault.svg',
+            'virtualbox.svg', 'vmware.svg', 'wireguard.svg'
+        ];
+
+        const grid = document.getElementById('iconGrid');
+
+        icons.forEach(icon => {
+            const card = document.createElement('div');
+            card.className = 'icon-card';
+            card.onclick = () => {
+                navigator.clipboard.writeText(icon);
+                card.style.background = '#f0fff4';
+                setTimeout(() => card.style.background = '#ffffff', 500);
+            };
+
+            const img = document.createElement('img');
+            img.src = icon;
+            img.alt = icon;
+
+            const name = document.createElement('div');
+            name.className = 'icon-name';
+            name.textContent = icon.replace('.svg', '');
+
+            card.appendChild(img);
+            card.appendChild(name);
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

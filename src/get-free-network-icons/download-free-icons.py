@@ -54,9 +54,4 @@ for url, fname in icons:
             f.write(r.content)
         print("Saved", fname)
 
-# create zip
-with zipfile.ZipFile("network_icons.zip", "w", zipfile.ZIP_DEFLATED) as z:
-    for f in os.listdir("icons"):
-        z.write(os.path.join("icons", f), f)
-
-print("✅ Created network_icons.zip with", len(icons), "icons")
+print("✅ Downloaded", len(icons), "icons")
