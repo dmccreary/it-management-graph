@@ -86,15 +86,15 @@ def count_learning_graph_concepts(docs_dir: Path) -> int:
 
 
 def count_glossary_terms(docs_dir: Path) -> int:
-    """Count number of level 2 headers (##) in the glossary.md file."""
+    """Count number of level 4 headers (####) in the glossary.md file."""
     glossary_path = docs_dir / 'glossary.md'
     if not glossary_path.exists():
         return 0
 
     with open(glossary_path, 'r', encoding='utf-8') as f:
         content = f.read()
-        # Count level 2 headers (##) excluding the main title
-        terms = re.findall(r'^##\s+[^#]', content, re.MULTILINE)
+        # Count level 4 headers (####)
+        terms = re.findall(r'^####\s+', content, re.MULTILINE)
         return len(terms)
 
 
@@ -210,6 +210,27 @@ def generate_markdown_report(metrics: Dict, output_file: Path) -> None:
         reading_hours = reading_minutes / 60
         f.write(f"Based on an average reading speed of 225 words per minute:\n\n")
         f.write(f"- **{reading_minutes:.0f} minutes** ({reading_hours:.1f} hours)\n\n")
+
+        f.write("## Estimated Print Length\n\n")
+        # Standard trade paperback: ~250-300 words per page
+        # Use 275 as average for technical books with code examples
+        # Adjust for 20% image content (images take more space than text)
+        text_words = metrics['total_words'] * 0.8  # 80% text, 20% images
+        image_words = metrics['total_words'] * 0.2  # 20% allocated to images
+
+        # Text pages: 275 words per page
+        text_pages = text_words / 275
+        # Image pages: assuming images take 2x the space of equivalent text
+        # (images with captions, diagrams, etc.)
+        image_pages = (image_words / 275) * 2
+
+        total_pages = text_pages + image_pages
+
+        f.write(f"Estimated printed page count for a standard trade paperback (6\" × 9\"):\n\n")
+        f.write(f"- **Text content (80%):** ~{text_pages:.0f} pages\n")
+        f.write(f"- **Images & diagrams (20%):** ~{image_pages:.0f} pages\n")
+        f.write(f"- **Total estimated pages:** ~{total_pages:.0f} pages\n\n")
+        f.write(f"*Based on ~275 words per page for technical content with code examples and diagrams.*\n\n")
 
         f.write("## Repository Structure\n\n")
         f.write("```\n")

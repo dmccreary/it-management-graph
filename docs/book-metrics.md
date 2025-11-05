@@ -1,6 +1,6 @@
 # Book Metrics
 
-*Generated: 2025-11-05 07:44:19*
+*Generated: 2025-11-05 07:53:31*
 
 ## Overview
 
@@ -13,11 +13,11 @@ This page provides comprehensive metrics for the IT Management Graph intelligent
 | **Chapters** | 12 |
 | **Total Sections** | 174 |
 | **Learning Graph Concepts** | 200 |
-| **Glossary Terms** | 0 |
+| **Glossary Terms** | 200 |
 | **MicroSims** | 6 |
-| **AI Prompts** | 10 |
-| **Total Words** | 170,942 |
-| **Markdown Files** | 50 |
+| **AI Prompts** | 11 |
+| **Total Words** | 171,372 |
+| **Markdown Files** | 52 |
 | **Total Images** | 59 |
 
 ### Image Breakdown
@@ -53,15 +53,25 @@ This page provides comprehensive metrics for the IT Management Graph intelligent
 
 - **Interactive Visualizations (MicroSims):** 6
 - **Collapsible Content Sections:** 57
-- **AI Generation Prompts:** 10
-- **Structured Glossary:** 0 terms
+- **AI Generation Prompts:** 11
+- **Structured Glossary:** 200 terms
 - **Concept Dependencies:** 200 nodes in learning graph
 
 ## Estimated Reading Time
 
 Based on an average reading speed of 225 words per minute:
 
-- **760 minutes** (12.7 hours)
+- **762 minutes** (12.7 hours)
+
+## Estimated Print Length
+
+Estimated printed page count for a standard trade paperback (6" × 9"):
+
+- **Text content (80%):** ~499 pages
+- **Images & diagrams (20%):** ~249 pages
+- **Total estimated pages:** ~748 pages
+
+*Based on ~275 words per page for technical content with code examples and diagrams.*
 
 ## Repository Structure
 
@@ -69,7 +79,7 @@ Based on an average reading speed of 225 words per minute:
 docs/
 ├── chapters/           (12 chapters)
 ├── sims/               (6 MicroSims)
-├── prompts/            (10 AI prompts)
+├── prompts/            (11 AI prompts)
 ├── learning-graph/     (200 concepts)
-└── glossary.md         (0 terms)
+└── glossary.md         (200 terms)
 ```
