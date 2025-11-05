@@ -1,0 +1,1882 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/it-management-graph/details-analysis/">
+      
+      
+        <link rel="prev" href="../book-metrics/">
+      
+      
+        <link rel="next" href="../how-we-built-this-site/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Details Analysis - IT Management with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-W7BFLBRXZ9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-W7BFLBRXZ9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-W7BFLBRXZ9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Details Analysis - IT Management with Graphs" >
+      
+        <meta  property="og:description"  content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/it-management-graph/assets/images/social/details-analysis.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/it-management-graph/details-analysis/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Details Analysis - IT Management with Graphs" >
+      
+        <meta  name="twitter:description"  content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/it-management-graph/assets/images/social/details-analysis.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#details-tag-content-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IT Management with Graphs" class="md-header__button md-logo" aria-label="IT Management with Graphs" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT Management with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Details Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/it-management-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IT Management with Graphs" class="md-nav__button md-logo" aria-label="IT Management with Graphs" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    IT Management with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/it-management-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-highlight-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Highlight Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Details Analysis
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Details Analysis
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization-type-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualization Type Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority-matrix-for-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Matrix for Skill Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Priority Matrix for Skill Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority-scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Scores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpretation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-priority-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Priority Matrix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Priority Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quadrant-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quadrant Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-breakdown-by-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Breakdown by Type
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Breakdown by Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-15-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram (15 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-model-10-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Model (10 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chart-9-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chart (9 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-7-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow (7 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infographic-5-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infographic (5 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-5-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsim (5 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeline-3-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeline (3 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio-quadrant-chart-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portfolio-Quadrant-Chart (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown-table-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown-Table (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualization-type-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visualization Type Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#priority-matrix-for-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Matrix for Skill Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Priority Matrix for Skill Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority-scores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Scores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpretation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-priority-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Priority Matrix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Visual Priority Matrix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quadrant-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quadrant Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detailed-breakdown-by-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Breakdown by Type
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detailed Breakdown by Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-15-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram (15 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph-model-10-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graph-Model (10 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chart-9-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chart (9 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workflow-7-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow (7 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infographic-5-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infographic (5 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microsim-5-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microsim (5 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeline-3-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Timeline (3 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#portfolio-quadrant-chart-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Portfolio-Quadrant-Chart (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown-table-1-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Markdown-Table (1 instances)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/it-management-graph/blob/master/docs/details-analysis.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="details-tag-content-analysis">Details Tag Content Analysis</h1>
+<p>This report analyzes all <code>&lt;details&gt;</code> tags in the textbook chapters to categorize visualization types and prioritize skill development.</p>
+<h2 id="summary-statistics">Summary Statistics</h2>
+<ul>
+<li><strong>Total <code>&lt;details&gt;</code> tags:</strong> 57</li>
+<li><strong>Unique visualization types:</strong> 10</li>
+</ul>
+<h2 id="visualization-type-distribution">Visualization Type Distribution</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>diagram</td>
+<td>15</td>
+<td>26.3%</td>
+</tr>
+<tr>
+<td>graph-model</td>
+<td>10</td>
+<td>17.5%</td>
+</tr>
+<tr>
+<td>chart</td>
+<td>9</td>
+<td>15.8%</td>
+</tr>
+<tr>
+<td>workflow</td>
+<td>7</td>
+<td>12.3%</td>
+</tr>
+<tr>
+<td>infographic</td>
+<td>5</td>
+<td>8.8%</td>
+</tr>
+<tr>
+<td>microsim</td>
+<td>5</td>
+<td>8.8%</td>
+</tr>
+<tr>
+<td>timeline</td>
+<td>3</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td>portfolio-quadrant-chart</td>
+<td>1</td>
+<td>1.8%</td>
+</tr>
+<tr>
+<td>map</td>
+<td>1</td>
+<td>1.8%</td>
+</tr>
+<tr>
+<td>markdown-table</td>
+<td>1</td>
+<td>1.8%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="priority-matrix-for-skill-development">Priority Matrix for Skill Development</h2>
+<p>Prioritization based on <strong>Impact</strong> (frequency of use) vs. <strong>Effort</strong> (similarity to existing MicroSims).</p>
+<h3 id="priority-scores">Priority Scores</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Type</th>
+<th>Count</th>
+<th>Impact (0-10)</th>
+<th>Effort (0-10)</th>
+<th>Priority Score</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>graph-model</strong></td>
+<td>10</td>
+<td>6.7</td>
+<td>1</td>
+<td>6.67</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>microsim</strong></td>
+<td>5</td>
+<td>3.3</td>
+<td>0</td>
+<td>3.33</td>
+<td>✅ Exists</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>diagram</strong></td>
+<td>15</td>
+<td>10</td>
+<td>4</td>
+<td>2.5</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>infographic</strong></td>
+<td>5</td>
+<td>3.3</td>
+<td>2</td>
+<td>1.67</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>chart</strong></td>
+<td>9</td>
+<td>6.0</td>
+<td>5</td>
+<td>1.2</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>workflow</strong></td>
+<td>7</td>
+<td>4.7</td>
+<td>6</td>
+<td>0.78</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>timeline</strong></td>
+<td>3</td>
+<td>2.0</td>
+<td>7</td>
+<td>0.29</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>map</strong></td>
+<td>1</td>
+<td>0.7</td>
+<td>5</td>
+<td>0.13</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>markdown-table</strong></td>
+<td>1</td>
+<td>0.7</td>
+<td>5</td>
+<td>0.13</td>
+<td>🔨 Build</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>portfolio-quadrant-chart</strong></td>
+<td>1</td>
+<td>0.7</td>
+<td>5</td>
+<td>0.13</td>
+<td>🔨 Build</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interpretation">Interpretation</h3>
+<ul>
+<li><strong>Impact</strong>: Higher values indicate more instances of this visualization type across chapters</li>
+<li><strong>Effort</strong>: Higher values indicate more development effort required (less similar to existing MicroSims)</li>
+<li><strong>Priority Score</strong>: Impact/Effort ratio - higher scores suggest better ROI for skill development</li>
+</ul>
+<h2 id="visual-priority-matrix">Visual Priority Matrix</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code>Impact (Frequency)
+     ↑
+  10 │
+   9 │
+   8 │
+   7 │
+   6 │
+   5 │
+   4 │
+   3 │
+   2 │
+   1 │
+   0 └──────────────────────────────────────────────────→ Effort (Dissimilarity)
+     0  1  2  3  4  5  6  7  8  9  10
+
+   [1, 6]: graph-model (n=10)
+   [0, 3]: microsim (n=5)
+   [4, 10]: diagram (n=15)
+   [2, 3]: infographic (n=5)
+   [5, 6]: chart (n=9)
+   [6, 4]: workflow (n=7)
+   [7, 2]: timeline (n=3)
+   [5, 0]: map (n=1)
+   [5, 0]: markdown-table (n=1)
+   [5, 0]: portfolio-quadrant-chart (n=1)
+</code></pre></div></td></tr></table></div>
+<h3 id="quadrant-analysis">Quadrant Analysis</h3>
+<p><strong>High Impact, Low Effort (Priority 1):</strong>
+- <strong>graph-model</strong> (Impact: 6.7, Effort: 1, Count: 10)
+- <strong>diagram</strong> (Impact: 10, Effort: 4, Count: 15)
+- <strong>chart</strong> (Impact: 6.0, Effort: 5, Count: 9)</p>
+<p><strong>High Impact, High Effort (Priority 2):</strong>
+- None</p>
+<p><strong>Low Impact, Low Effort (Priority 3):</strong>
+- <strong>microsim</strong> (Impact: 3.3, Effort: 0, Count: 5)
+- <strong>infographic</strong> (Impact: 3.3, Effort: 2, Count: 5)
+- <strong>map</strong> (Impact: 0.7, Effort: 5, Count: 1)
+- <strong>markdown-table</strong> (Impact: 0.7, Effort: 5, Count: 1)
+- <strong>portfolio-quadrant-chart</strong> (Impact: 0.7, Effort: 5, Count: 1)</p>
+<p><strong>Low Impact, High Effort (Priority 4):</strong>
+- <strong>workflow</strong> (Impact: 4.7, Effort: 6, Count: 7)
+- <strong>timeline</strong> (Impact: 2.0, Effort: 7, Count: 3)</p>
+<h2 id="detailed-breakdown-by-type">Detailed Breakdown by Type</h2>
+<h3 id="diagram-15-instances">Diagram (15 instances)</h3>
+<p><strong>Chapter:</strong> Introduction to ITIL and Configuration Management</p>
+<p><strong>Summary:</strong> ITIL Framework Structure Diagram</p>
+<p><strong>Purpose:</strong> Illustrate the hierarchical structure of ITIL v1-v3 showing the relationship between Service Support, Service Delivery, and Configuration Management</p>
+<hr />
+<p><strong>Chapter:</strong> Introduction to ITIL and Configuration Management</p>
+<p><strong>Summary:</strong> Traditional CMDB Data Flow and Integration Architecture</p>
+<p><strong>Purpose:</strong> Illustrate the complex integration challenges of traditional CMDB implementations showing data flows from multiple sources</p>
+<hr />
+<p><strong>Chapter:</strong> IT Asset Management Fundamentals</p>
+<p><strong>Summary:</strong> Hardware vs. Software Asset Management Architecture Diagram</p>
+<p><strong>Purpose:</strong> Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph</p>
+<hr />
+<p><strong>Chapter:</strong> IT Asset Management Fundamentals</p>
+<p><strong>Summary:</strong> IT Asset Lifecycle State Machine Diagram</p>
+<p><strong>Purpose:</strong> Illustrate the complete lifecycle states of an IT asset from acquisition through disposition, including state transitions and governance triggers</p>
+<hr />
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> Relational Database Schema Visualization</p>
+<p><strong>Purpose:</strong> Illustrate the schema structure for an IT asset management database showing tables, columns, data types, and foreign key relationships</p>
+<hr />
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> Primary Key and Foreign Key Relationship Diagram</p>
+<p><strong>Purpose:</strong> Visually demonstrate how primary keys and foreign keys establish relationships between tables, showing data flow through key references</p>
+<hr />
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> B-Tree Index Structure and Search Visualization</p>
+<p><strong>Purpose:</strong> Illustrate how a B-tree index accelerates data lookup compared to sequential table scanning, showing tree structure and search path</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> The Three Pillars of Observability Diagram</p>
+<p><strong>Purpose:</strong> Illustrate how logs, metrics, and traces work together to provide complete observability of IT systems</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> OpenTelemetry Data Flow Architecture</p>
+<p><strong>Purpose:</strong> Show how OpenTelemetry collects telemetry from applications and sends it to observability backends, enabling automated IT graph updates</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> Automated Discovery Architecture Diagram</p>
+<p><strong>Purpose:</strong> Show the complete architecture of a modern automated discovery system that populates an IT management graph from multiple data sources</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> HIPAA Data Flow Tracing Diagram</p>
+<p><strong>Purpose:</strong> Illustrate how graph traversal identifies all systems processing ePHI in a healthcare organization</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> Compliance Audit Evidence Generation Flow Diagram</p>
+<p><strong>Purpose:</strong> Illustrate how IT management graphs enable rapid, comprehensive audit evidence generation compared to traditional manual processes</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Digital Transformation Maturity Model for IT Management</p>
+<p><strong>Purpose:</strong> Illustrate the progression from traditional IT management to fully transformed graph-based approaches</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> AI-Enhanced IT Management Graph Architecture Diagram</p>
+<p><strong>Purpose:</strong> Show how AI/ML components integrate with the core IT management graph to provide intelligent capabilities</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Exception Reporting Dashboard Mockup</p>
+<p><strong>Purpose:</strong> Show a realistic IT governance dashboard displaying business rule exceptions</p>
+<hr />
+<h3 id="graph-model-10-instances">Graph-Model (10 instances)</h3>
+<p><strong>Chapter:</strong> IT Asset Management Fundamentals</p>
+<p><strong>Summary:</strong> IT Asset Relationship Graph Interactive Model</p>
+<p><strong>Purpose:</strong> Demonstrate the relationship types connecting IT assets in a management graph, showing how asset, application, and service layers interconnect</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Theory and Graph Database Foundations</p>
+<p><strong>Summary:</strong> IT Infrastructure Nodes Interactive Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate how different IT infrastructure entities are represented as nodes in a graph database, showing node labels, properties, and visual styling</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Theory and Graph Database Foundations</p>
+<p><strong>Summary:</strong> IT Infrastructure Graph with Nodes and Relationships</p>
+<p><strong>Purpose:</strong> Extend the previous nodes visualization by adding directed relationships, demonstrating how edges connect IT infrastructure entities to create a meaningful dependency graph</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Theory and Graph Database Foundations</p>
+<p><strong>Summary:</strong> Deployment Dependencies as a Directed Acyclic Graph (DAG)</p>
+<p><strong>Purpose:</strong> Demonstrate how IT component dependencies naturally form a DAG structure, showing deployment order requirements and illustrating how topological sorting determines safe deployment sequences</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Database Technologies and Query Languages</p>
+<p><strong>Summary:</strong> Dependency Graph with Cycle Detection Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate cycle detection in an IT dependency graph, showing both healthy DAG structures and problematic circular dependencies that need architectural attention</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Database Technologies and Query Languages</p>
+<p><strong>Summary:</strong> Cypher Pattern Matching Interactive Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate how Cypher pattern matching works by showing a query pattern (template) and highlighting all matching subgraphs in a larger IT infrastructure graph</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Traversal and Dependency Analysis</p>
+<p><strong>Summary:</strong> Bidirectional Dependency Tracing Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate upstream and downstream dependency tracing from a central component, showing how direction affects the scope of analysis</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Traversal and Dependency Analysis</p>
+<p><strong>Summary:</strong> Multi-Layer Dependency Map Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate how different dependency types (business service, technical service, application, infrastructure) form layers in an IT management graph, showing cross-layer dependencies</p>
+<hr />
+<p><strong>Chapter:</strong> Business Services and IT Portfolio Management</p>
+<p><strong>Summary:</strong> Business Service Mapping Visualization: End-to-End Dependencies</p>
+<p><strong>Purpose:</strong> Demonstrate complete business service mapping from customer-facing business service through technical services and applications down to infrastructure, showing the value chain</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> RBAC Permission Graph Visualization</p>
+<p><strong>Purpose:</strong> Demonstrate how Role-Based Access Control is modeled in an IT management graph, showing users, roles, resources, and permission flows</p>
+<hr />
+<h3 id="chart-9-instances">Chart (9 instances)</h3>
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count</p>
+<p><strong>Purpose:</strong> Demonstrate exponential performance degradation in RDBMS multi-hop queries compared to constant-time graph database traversal</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Database Technologies and Query Languages</p>
+<p><strong>Summary:</strong> Native Graph Storage vs Graph Layer Performance Comparison</p>
+<p><strong>Purpose:</strong> Visually demonstrate the performance difference between native graph storage and graph layers as traversal depth increases, showing why native architecture matters for deep graph queries</p>
+<hr />
+<p><strong>Chapter:</strong> Data Quality and Data Management Excellence</p>
+<p><strong>Summary:</strong> No summary</p>
+<p><strong>Purpose:</strong> Visualize data quality across multiple dimensions for an IT management graph, showing strengths and areas needing improvement in a clear, intuitive format that enables quick assessment and tracking over time</p>
+<hr />
+<p><strong>Chapter:</strong> Query Performance and Real-Time Operations</p>
+<p><strong>Summary:</strong> Query Performance Comparison: Graph vs Relational Databases</p>
+<p><strong>Purpose:</strong> Demonstrate the dramatic performance difference between graph and relational databases as query complexity increases</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> Network vs. Service Topology Comparison Chart</p>
+<p><strong>Purpose:</strong> Illustrate the differences in discovery methods, data sources, and use cases between network topology and service topology mapping</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> Compliance Dashboard Overview Chart</p>
+<p><strong>Purpose:</strong> Provide executive-level overview of compliance status across multiple regulatory frameworks</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Migration Timeline with Risk and Value Curves</p>
+<p><strong>Purpose:</strong> Show the four-phase migration journey with overlaid risk and value curves, demonstrating how risk decreases and value increases over time</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> TCO Comparison Chart: Three Options Over Five Years</p>
+<p><strong>Purpose:</strong> Compare total cost of ownership across three solution options (ServiceNow, Atlassian, Custom Build) over a 5-year period, showing cost breakdown by category</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> ROI Waterfall Chart: From Costs to Net Value</p>
+<p><strong>Purpose:</strong> Visually show how an initial investment of $647K transforms into net value of $2.336M through various benefit categories, making the ROI calculation intuitive and compelling</p>
+<hr />
+<h3 id="workflow-7-instances">Workflow (7 instances)</h3>
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> SQL Query Execution Visualization</p>
+<p><strong>Purpose:</strong> Show the step-by-step process of how an SQL query is parsed, optimized, and executed by an RDBMS</p>
+<hr />
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> Schema Evolution Timeline: Adding Heterogeneous Device Types</p>
+<p><strong>Purpose:</strong> Demonstrate the challenges of evolving a relational schema when adding new, heterogeneous entity types with different attributes</p>
+<hr />
+<p><strong>Chapter:</strong> Query Performance and Real-Time Operations</p>
+<p><strong>Summary:</strong> Performance Monitoring Dashboard Workflow</p>
+<p><strong>Purpose:</strong> Illustrate the continuous improvement cycle for IT management graph performance monitoring and optimization</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> Configuration Drift Detection Workflow</p>
+<p><strong>Purpose:</strong> Illustrate the process of detecting, alerting, and remediating configuration drift using automated discovery and graph comparison</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> Risk Assessment Workflow Diagram</p>
+<p><strong>Purpose:</strong> Illustrate the continuous risk assessment process using graph-based IT management data</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Technology Selection Workflow with Decision Gates</p>
+<p><strong>Purpose:</strong> Illustrate the structured process for evaluating and selecting IT management graph technology, with decision gates at key points</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Graph RAG Query Flow Interactive Diagram</p>
+<p><strong>Purpose:</strong> Show the step-by-step process of how a natural language question flows through a Graph RAG system to produce an answer</p>
+<hr />
+<h3 id="infographic-5-instances">Infographic (5 instances)</h3>
+<p><strong>Chapter:</strong> Introduction to ITIL and Configuration Management</p>
+<p><strong>Summary:</strong> IT Asset Hierarchy Infographic</p>
+<p><strong>Purpose:</strong> Show the hierarchical relationships between different types of IT assets with examples and clickable details</p>
+<hr />
+<p><strong>Chapter:</strong> IT Asset Management Fundamentals</p>
+<p><strong>Summary:</strong> Application Portfolio Strategic Quadrant with Dependency Visualization</p>
+<p><strong>Purpose:</strong> Create an interactive application portfolio quadrant (business value vs. technical quality) where clicking applications reveals their dependency networks, demonstrating why portfolio decisions cannot be made in isolation</p>
+<hr />
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> JOIN Types Comparison Interactive Visualization</p>
+<p><strong>Purpose:</strong> Create an interactive visualization demonstrating different JOIN types using Venn diagrams and sample data, showing how each JOIN type affects which rows appear in results</p>
+<hr />
+<p><strong>Chapter:</strong> Query Performance and Real-Time Operations</p>
+<p><strong>Summary:</strong> Scaling Strategies Comparison Infographic</p>
+<p><strong>Purpose:</strong> Provide an interactive visual comparison of vertical vs horizontal scaling with clear pros, cons, and use cases</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> IT Modernization Interconnected Domains Infographic</p>
+<p><strong>Purpose:</strong> Show how different modernization streams interconnect and reinforce each other, with IT Management Graph at the center</p>
+<hr />
+<h3 id="microsim-5-instances">Microsim (5 instances)</h3>
+<p><strong>Chapter:</strong> Relational Database Fundamentals</p>
+<p><strong>Summary:</strong> Multi-Hop Query Dependency Traversal Visualization</p>
+<p><strong>Learning Objective:</strong> Demonstrate how multi-hop queries traverse dependency chains in relational databases, showing the increasing complexity and intermediate result sets as hop count increases</p>
+<hr />
+<p><strong>Chapter:</strong> Graph Theory and Graph Database Foundations</p>
+<p><strong>Summary:</strong> Graph Traversal Algorithm Comparison: DFS vs BFS</p>
+<p><strong>Learning Objective:</strong> Demonstrate the differences between Depth-First Search and Breadth-First Search traversal algorithms through interactive animation, showing how each algorithm explores a dependency graph</p>
+<hr />
+<p><strong>Chapter:</strong> Query Performance and Real-Time Operations</p>
+<p><strong>Summary:</strong> Graph Density Visualization MicroSim</p>
+<p><strong>Learning Objective:</strong> Help students understand how graph density affects traversal performance and query complexity</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> eBPF Network Connection Discovery Interactive MicroSim</p>
+<p><strong>Learning Objective:</strong> Demonstrate how eBPF monitors kernel-level network events to automatically discover service dependencies without application instrumentation</p>
+<hr />
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Build vs Buy Decision Matrix Interactive Tool</p>
+<p><strong>Learning Objective:</strong> Help students understand the multi-dimensional nature of build vs buy decisions by exploring how different factors influence the recommendation</p>
+<hr />
+<h3 id="timeline-3-instances">Timeline (3 instances)</h3>
+<p><strong>Chapter:</strong> IT Asset Management Fundamentals</p>
+<p><strong>Summary:</strong> Multi-Source Asset Discovery Integration Timeline</p>
+<p><strong>Purpose:</strong> Show the evolution of IT asset discovery techniques from manual inventory through modern automated telemetry integration</p>
+<hr />
+<p><strong>Chapter:</strong> Observability, Monitoring, and Automated Discovery</p>
+<p><strong>Summary:</strong> Dynamic Topology Update Timeline Visualization</p>
+<p><strong>Purpose:</strong> Illustrate how dynamic topology discovery responds to infrastructure changes over a 10-minute period in a cloud-native environment</p>
+<hr />
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> Regulatory Framework Timeline</p>
+<p><strong>Purpose:</strong> Illustrate the evolution of major IT compliance regulations from 1990 to present, showing the increasing sophistication and scope of regulatory requirements</p>
+<hr />
+<h3 id="portfolio-quadrant-chart-1-instances">Portfolio-Quadrant-Chart (1 instances)</h3>
+<p><strong>Chapter:</strong> Business Services and IT Portfolio Management</p>
+<p><strong>Summary:</strong> No summary</p>
+<p><strong>Purpose:</strong> Visualize applications positioned across TIME (Time-Invested-Money-Eliminate) quadrants based on strategic value and technical quality, with bubble sizes representing cost and colors indicating dependency complexity</p>
+<hr />
+<h3 id="map-1-instances">Map (1 instances)</h3>
+<p><strong>Chapter:</strong> Compliance, Risk Management, and Security</p>
+<p><strong>Summary:</strong> GDPR Cross-Border Data Flow Map</p>
+<p><strong>Purpose:</strong> Visualize data flows subject to GDPR restrictions, showing which transfers require additional safeguards</p>
+<hr />
+<h3 id="markdown-table-1-instances">Markdown-Table (1 instances)</h3>
+<p><strong>Chapter:</strong> Digital Transformation and Advanced Topics</p>
+<p><strong>Summary:</strong> Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian</p>
+<hr />
+<h2 id="recommendations">Recommendations</h2>
+<p>Based on the priority analysis, focus on developing skills for:</p>
+<ol>
+<li><strong>graph-model</strong> - 10 instances, priority score 6.67</li>
+<li>Example: IT Asset Relationship Graph Interactive Model</li>
+<li><strong>diagram</strong> - 15 instances, priority score 2.5</li>
+<li>Example: ITIL Framework Structure Diagram</li>
+<li><strong>infographic</strong> - 5 instances, priority score 1.67</li>
+<li>Example: IT Asset Hierarchy Infographic</li>
+<li><strong>chart</strong> - 9 instances, priority score 1.2</li>
+<li>Example: Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../book-metrics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Book Metrics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Book Metrics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../how-we-built-this-site/" class="md-footer__link md-footer__link--next" aria-label="Next: How We Built This Site">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                How We Built This Site
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+    
+  </body>
+</html>
