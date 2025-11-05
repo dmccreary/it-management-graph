@@ -43,7 +43,7 @@ nav:
     - P5 Infographic Template: sims/p5-infographic-template/index.md
     - Show Icons: sims/show-icons/index.md
     - IT Graph Nodes: sims/it-graph-nodes/index.md
-    - IT Graph Requirements: sims/it-graph-nodes/requirements.m
+    - IT Graph Requirements: sims/it-graph-nodes/requirements.md
     # - Timeline: sims/timeline/index.md
   
   - Prompts:
