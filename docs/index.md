@@ -2,6 +2,7 @@
 hide:
     toc
 ---
+# IT Management with Graphs
 <style>
 .md-content__inner h1 {display: none !important;}
 </style>
