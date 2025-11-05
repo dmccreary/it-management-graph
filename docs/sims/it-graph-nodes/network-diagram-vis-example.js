@@ -2,7 +2,8 @@ var nodes = null;
 var edges = null;
 var network = null;
 
-var DIR = "../img/refresh-cl/";
+// Icon directory with trailing slash which contains the SVG bootstrap icons to use for nodes.
+var DIR = "../../it-icons/";
 var EDGE_LENGTH_MAIN = 150;
 var EDGE_LENGTH_SUB = 50;
 

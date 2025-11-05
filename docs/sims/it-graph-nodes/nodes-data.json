@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Online Banking Portal",
+      "type": "BusinessService",
+      "properties": {
+        "name": "Online Banking Portal",
+        "SLA_tier": "Tier 1",
+        "business_owner": "Jane Smith",
+        "revenue_impact_annual": "$45M"
+      },
+      "shape": "circle",
+      "color": "#ec4899",
+      "size": 40
+    },
+    {
+      "id": 2,
+      "label": "Customer API v2.3",
+      "type": "Application",
+      "properties": {
+        "name": "Customer API v2.3",
+        "version": "2.3",
+        "language": "Java",
+        "deployment_env": "Production",
+        "health_status": "Healthy"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 30
+    },
+    {
+      "id": 3,
+      "label": "Auth Service v1.8",
+      "type": "Application",
+      "properties": {
+        "name": "Auth Service v1.8",
+        "version": "1.8",
+        "language": "Python",
+        "deployment_env": "Production",
+        "health_status": "Healthy"
+      },
+      "shape": "box",
+      "color": "#7dd3fc",
+      "size": 30
+    },
+    {
+      "id": 4,
+      "label": "CustomerDB",
+      "type": "Database",
+      "properties": {
+        "name": "CustomerDB",
+        "db_type": "PostgreSQL",
+        "size_gb": "2400",
+        "backup_frequency": "Daily",
+        "last_backup": "2024-11-05T02:00:00"
+      },
+      "shape": "database",
+      "color": "#fb923c",
+      "size": 30,
+      "icon": "../../it-icons/database.svg"
+    },
+    {
+      "id": 5,
+      "label": "SessionStore",
+      "type": "Database",
+      "properties": {
+        "name": "SessionStore",
+        "db_type": "Redis",
+        "size_gb": "128",
+        "backup_frequency": "Hourly",
+        "last_backup": "2024-11-05T06:00:00"
+      },
+      "shape": "database",
+      "color": "#fb923c",
+      "size": 30,
+      "icon": "../../it-icons/database.svg"
+    },
+    {
+      "id": 6,
+      "label": "web-prod-01",
+      "type": "Server",
+      "properties": {
+        "hostname": "web-prod-01",
+        "ip_address": "10.0.1.50",
+        "os": "Ubuntu 22.04",
+        "cpu_cores": "16",
+        "ram_gb": "64",
+        "status": "Running"
+      },
+      "shape": "box",
+      "color": "#94a3b8",
+      "size": 30,
+      "icon": "../../it-icons/server.svg"
+    },
+    {
+      "id": 7,
+      "label": "db-prod-01",
+      "type": "Server",
+      "properties": {
+        "hostname": "db-prod-01",
+        "ip_address": "10.0.2.20",
+        "os": "Ubuntu 22.04",
+        "cpu_cores": "32",
+        "ram_gb": "128",
+        "status": "Running"
+      },
+      "shape": "box",
+      "color": "#94a3b8",
+      "size": 30,
+      "icon": "../../it-icons/server.svg"
+    },
+    {
+      "id": 8,
+      "label": "DC-EAST-1",
+      "type": "Location",
+      "properties": {
+        "name": "DC-EAST-1",
+        "city": "New York",
+        "region": "US-EAST",
+        "facility_type": "Tier 3",
+        "power_redundancy": "N+1"
+      },
+      "shape": "triangle",
+      "color": "#4ade80",
+      "size": 25,
+      "icon": "../../it-icons/office-building.svg"
+    },
+    {
+      "id": 9,
+      "label": "Platform Engineering",
+      "type": "Team",
+      "properties": {
+        "name": "Platform Engineering",
+        "department": "Engineering",
+        "team_lead": "Alex Johnson",
+        "on_call_rotation": "24/7"
+      },
+      "shape": "hexagon",
+      "color": "#a78bfa",
+      "size": 25,
+      "icon": "../../it-icons/users.svg"
+    },
+    {
+      "id": 10,
+      "label": "Sue Smith",
+      "type": "User",
+      "properties": {
+        "name": "Sue Smith",
+        "department": "Helpdesk",
+        "role": "Developer",
+        "supervisor": "Peg Anderson",
+        "on_call_calendar_id": "CAL34568"
+      },
+      "shape": "dot",
+      "color": "#f59e0b",
+      "size": 25,
+      "icon": "../../it-icons/user.svg"
+    }
+  ]
+}
