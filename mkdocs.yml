@@ -34,9 +34,10 @@ nav:
     - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
     - Glossary Quality Report: learning-graph/glossary-quality-report.md
   
-  - MicroSins:
+  - MicroSims:
     - Introduction: sims/index.md
     - Graph Viewer: sims/graph-viewer/index.md
+    - IT Assets Hierarchy: sims/it-asset-hierarchy/index.md
     # - Timeline: sims/timeline/index.md
   
   - Prompts:

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Assets Hierarchy - Interactive Infographic</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        #visualization {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        svg {
+            display: block;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .node-circle {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node-circle:hover {
+            filter: brightness(1.1);
+            stroke-width: 3px;
+        }
+
+        .node-text {
+            pointer-events: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .link {
+            fill: none;
+            stroke: #999;
+            stroke-width: 2;
+            opacity: 0.6;
+        }
+
+        .tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            max-width: 300px;
+            line-height: 1.4;
+            z-index: 1000;
+        }
+
+        .tooltip.active {
+            opacity: 1;
+        }
+
+        #detail-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100%;
+            background: white;
+            padding: 30px;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        #detail-panel.active {
+            transform: translateX(0);
+        }
+
+        #detail-panel h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+        }
+
+        #detail-panel h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        #detail-panel p, #detail-panel ul {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        #detail-panel ul {
+            padding-left: 20px;
+        }
+
+        #detail-panel li {
+            margin-bottom: 8px;
+        }
+
+        .close-btn {
+            float: right;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .close-btn:hover {
+            background: #da190b;
+        }
+
+        .lifecycle-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+
+        .lifecycle-step {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .lifecycle-step::before {
+            content: '→';
+            margin: 0 8px;
+            color: #999;
+        }
+
+        .lifecycle-step:first-child::before {
+            content: '';
+            margin: 0;
+        }
+
+        .icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="visualization">
+            <svg id="svg"></svg>
+            <div class="tooltip"></div>
+        </div>
+        <div id="detail-panel">
+            <button class="close-btn" onclick="closePanel()">Close</button>
+            <div id="panel-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data structure with all IT asset categories
+        const data = {
+            name: "IT Assets",
+            color: "#2196F3",
+            icon: "🏢",
+            definition: "All technology resources that provide value to the organization",
+            children: [
+                {
+                    name: "Hardware Assets",
+                    color: "#FF9800",
+                    icon: "🖥️",
+                    definition: "Physical computing infrastructure and equipment",
+                    managementConsiderations: "Physical security, maintenance schedules, warranty tracking, EOL management",
+                    lifecycle: ["Procurement", "Deployment", "Operation", "Retirement"],
+                    challenges: [
+                        "Hardware refresh cycles (3-5 years)",
+                        "Physical space and power requirements",
+                        "Warranty and support contract management",
+                        "Disposal and e-waste compliance"
+                    ],
+                    cmdbIntegration: "Track physical location, serial numbers, warranty dates, maintenance history, and dependencies",
+                    stakeholders: "IT Operations, Facilities, Procurement",
+                    managementFocus: "Operational - focus on uptime and reliability",
+                    updateFrequency: "Stable - changes quarterly or less",
+                    trackingAttributes: ["Serial Number", "Location", "Warranty Expiry", "Configuration", "Dependencies"],
+                    children: [
+                        {
+                            name: "Servers",
+                            color: "#FFB74D",
+                            icon: "🖥️",
+                            examples: ["Dell PowerEdge R750", "HP ProLiant DL380", "Cisco UCS C240"]
+                        },
+                        {
+                            name: "Network Equipment",
+                            color: "#FFB74D",
+                            icon: "🌐",
+                            examples: ["Cisco Catalyst 9300 Switch", "Palo Alto PA-5200 Firewall", "Aruba 2930F Switch"]
+                        },
+                        {
+                            name: "End-User Devices",
+                            color: "#FFB74D",
+                            icon: "💻",
+                            examples: ["Dell Latitude 7420", "MacBook Pro M2", "Surface Pro 9", "iPhone 14"]
+                        },
+                        {
+                            name: "Storage Systems",
+                            color: "#FFB74D",
+                            icon: "💾",
+                            examples: ["NetApp FAS8300", "Dell EMC Unity XT", "Pure Storage FlashArray"]
+                        }
+                    ]
+                },
+                {
+                    name: "Software Assets",
+                    color: "#FFC107",
+                    icon: "📦",
+                    definition: "Licensed software applications and platforms",
+                    managementConsiderations: "License compliance, version control, security patching, vendor relationships",
+                    lifecycle: ["License Procurement", "Installation", "Updates/Patches", "Decommission"],
+                    challenges: [
+                        "Complex licensing models (per user, per core, concurrent)",
+                        "Software audit compliance and true-up costs",
+                        "Version compatibility across environments",
+                        "Security vulnerability management"
+                    ],
+                    cmdbIntegration: "Track license counts, version numbers, installation locations, dependencies, and compliance status",
+                    stakeholders: "IT Operations, Security, Software Asset Managers, Finance",
+                    managementFocus: "Financial & Compliance - license optimization and audit readiness",
+                    updateFrequency: "Dynamic - monthly patches and updates",
+                    trackingAttributes: ["License Count", "Version", "Install Base", "Renewal Date", "Compliance Status"],
+                    children: [
+                        {
+                            name: "Applications",
+                            color: "#FFD54F",
+                            icon: "📱",
+                            examples: ["Microsoft Office 365", "Salesforce", "SAP S/4HANA", "Adobe Creative Cloud"]
+                        },
+                        {
+                            name: "Operating Systems",
+                            color: "#FFD54F",
+                            icon: "⚙️",
+                            examples: ["Windows Server 2022", "Red Hat Enterprise Linux 9", "macOS Ventura"]
+                        },
+                        {
+                            name: "Middleware",
+                            color: "#FFD54F",
+                            icon: "🔗",
+                            examples: ["Apache Tomcat", "IBM WebSphere", "Oracle Fusion Middleware"]
+                        },
+                        {
+                            name: "Licenses",
+                            color: "#FFD54F",
+                            icon: "📜",
+                            examples: ["SQL Server Enterprise CALs", "VMware vSphere Licenses", "Oracle Database Licenses"]
+                        }
+                    ]
+                },
+                {
+                    name: "Digital Services",
+                    color: "#4CAF50",
+                    icon: "☁️",
+                    definition: "Cloud-based services and digital resources consumed as services",
+                    managementConsiderations: "Subscription management, cost optimization, SLA monitoring, data sovereignty",
+                    lifecycle: ["Subscription", "Onboarding", "Utilization", "Cancellation"],
+                    challenges: [
+                        "Shadow IT and unmanaged subscriptions",
+                        "Cost control and usage optimization",
+                        "Data integration and vendor lock-in",
+                        "Security and compliance in shared environments"
+                    ],
+                    cmdbIntegration: "Track subscription details, API endpoints, data flows, cost allocation, and service dependencies",
+                    stakeholders: "Cloud Architects, DevOps, Finance, Business Units",
+                    managementFocus: "Financial & Operational - cost optimization and service integration",
+                    updateFrequency: "Highly Dynamic - changes weekly or daily",
+                    trackingAttributes: ["Subscription ID", "Monthly Cost", "Usage Metrics", "API Endpoints", "Data Classification"],
+                    children: [
+                        {
+                            name: "SaaS Subscriptions",
+                            color: "#81C784",
+                            icon: "📊",
+                            examples: ["Slack Enterprise", "Zoom Business", "Jira Cloud", "GitHub Enterprise"]
+                        },
+                        {
+                            name: "Cloud Resources",
+                            color: "#81C784",
+                            icon: "☁️",
+                            examples: ["AWS EC2 Instances", "Azure SQL Database", "Google Cloud Storage"]
+                        },
+                        {
+                            name: "Data Assets",
+                            color: "#81C784",
+                            icon: "🗄️",
+                            examples: ["Customer Database", "Analytics Data Lake", "Document Repository"]
+                        },
+                        {
+                            name: "APIs/Integrations",
+                            color: "#81C784",
+                            icon: "🔌",
+                            examples: ["Stripe Payment API", "Twilio SMS API", "Google Maps API"]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        // Set up SVG dimensions based on actual container size
+        function getDimensions() {
+            const vizContainer = document.getElementById("visualization");
+            const containerWidth = vizContainer.clientWidth - 20; // Account for padding
+            const containerHeight = vizContainer.clientHeight - 20;
+            const size = Math.min(containerWidth, containerHeight);
+            return {
+                width: containerWidth,
+                height: containerHeight,
+                radius: size / 2 - 80
+            };
+        }
+
+        let { width, height, radius } = getDimensions();
+
+        const svg = d3.select("#svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const g = svg.append("g")
+            .attr("transform", `translate(${width/2},${height/2})`);
+
+        // Create hierarchical layout
+        const root = d3.hierarchy(data);
+        const tree = d3.tree()
+            .size([2 * Math.PI, radius])
+            .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+
+        tree(root);
+
+        // Draw links
+        g.selectAll(".link")
+            .data(root.links())
+            .join("path")
+            .attr("class", "link")
+            .attr("d", d3.linkRadial()
+                .angle(d => d.x)
+                .radius(d => d.y));
+
+        // Draw nodes
+        const nodes = g.selectAll(".node")
+            .data(root.descendants())
+            .join("g")
+            .attr("class", "node")
+            .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
+
+        // Node circles with size based on depth
+        nodes.append("circle")
+            .attr("class", "node-circle")
+            .attr("r", d => d.depth === 0 ? 50 : d.depth === 1 ? 40 : 25)
+            .attr("fill", d => d.data.color)
+            .attr("stroke", d => d3.color(d.data.color).darker(1))
+            .attr("stroke-width", 2)
+            .on("mouseover", showTooltip)
+            .on("mouseout", hideTooltip)
+            .on("click", showDetailPanel);
+
+        // Node icons (counter-rotated to stay upright)
+        nodes.append("text")
+            .attr("class", "icon")
+            .attr("text-anchor", "middle")
+            .attr("dy", d => d.depth === 0 ? 12 : d.depth === 1 ? 9 : 6)
+            .attr("transform", d => `rotate(${90 - d.x * 180 / Math.PI})`)
+            .style("font-size", d => d.depth === 0 ? "45px" : d.depth === 1 ? "36px" : "24px")
+            .text(d => d.data.icon)
+            .on("mouseover", showTooltip)
+            .on("mouseout", hideTooltip)
+            .on("click", showDetailPanel);
+
+        // Node labels (counter-rotated to stay upright and centered below)
+        nodes.append("text")
+            .attr("class", "node-text")
+            .attr("dy", d => d.depth === 0 ? 75 : d.depth === 1 ? 65 : 45)
+            .attr("text-anchor", "middle")
+            .attr("transform", d => `rotate(${90 - d.x * 180 / Math.PI})`)
+            .text(d => d.data.name)
+            .style("fill", "#333");
+
+        // Tooltip functionality
+        const tooltip = d3.select(".tooltip");
+
+        function showTooltip(event, d) {
+            if (!d.data.definition) return;
+
+            tooltip
+                .html(`<strong>${d.data.name}</strong><br/>${d.data.definition}`)
+                .style("left", (event.clientX + 10) + "px")
+                .style("top", (event.clientY - 28) + "px")
+                .classed("active", true);
+        }
+
+        function hideTooltip() {
+            tooltip.classed("active", false);
+        }
+
+        // Detail panel functionality
+        function showDetailPanel(event, d) {
+            event.stopPropagation();
+
+            const panel = document.getElementById("detail-panel");
+            const content = document.getElementById("panel-content");
+
+            let html = `<h2 style="border-color: ${d.data.color}">${d.data.icon} ${d.data.name}</h2>`;
+
+            if (d.data.definition) {
+                html += `<p><strong>Definition:</strong> ${d.data.definition}</p>`;
+            }
+
+            if (d.data.lifecycle) {
+                html += `<h3>Typical Lifecycle</h3>`;
+                html += `<div class="lifecycle-steps">`;
+                d.data.lifecycle.forEach(step => {
+                    html += `<div class="lifecycle-step">${step}</div>`;
+                });
+                html += `</div>`;
+            }
+
+            if (d.data.challenges) {
+                html += `<h3>Key Management Challenges</h3><ul>`;
+                d.data.challenges.forEach(challenge => {
+                    html += `<li>${challenge}</li>`;
+                });
+                html += `</ul>`;
+            }
+
+            if (d.data.cmdbIntegration) {
+                html += `<h3>CMDB Integration</h3>`;
+                html += `<p>${d.data.cmdbIntegration}</p>`;
+            }
+
+            if (d.data.examples) {
+                html += `<h3>Example Items</h3><ul>`;
+                d.data.examples.forEach(example => {
+                    html += `<li>${example}</li>`;
+                });
+                html += `</ul>`;
+            }
+
+            if (d.data.stakeholders) {
+                html += `<h3>Primary Stakeholders</h3>`;
+                html += `<p>${d.data.stakeholders}</p>`;
+            }
+
+            if (d.data.managementFocus) {
+                html += `<h3>Management Focus</h3>`;
+                html += `<p>${d.data.managementFocus}</p>`;
+            }
+
+            if (d.data.updateFrequency) {
+                html += `<h3>Update Frequency</h3>`;
+                html += `<p>${d.data.updateFrequency}</p>`;
+            }
+
+            if (d.data.trackingAttributes) {
+                html += `<h3>Typical Tracking Attributes</h3><ul>`;
+                d.data.trackingAttributes.forEach(attr => {
+                    html += `<li>${attr}</li>`;
+                });
+                html += `</ul>`;
+            }
+
+            content.innerHTML = html;
+            panel.classList.add("active");
+        }
+
+        function closePanel() {
+            document.getElementById("detail-panel").classList.remove("active");
+        }
+
+        // Handle window resize
+        window.addEventListener("resize", () => {
+            const dims = getDimensions();
+            width = dims.width;
+            height = dims.height;
+            radius = dims.radius;
+
+            svg.attr("width", width).attr("height", height);
+            g.attr("transform", `translate(${width/2},${height/2})`);
+
+            // Update tree layout with new radius
+            tree.size([2 * Math.PI, radius]);
+            tree(root);
+
+            // Update links
+            g.selectAll(".link")
+                .attr("d", d3.linkRadial()
+                    .angle(d => d.x)
+                    .radius(d => d.y));
+
+            // Update nodes
+            g.selectAll(".node")
+                .attr("transform", d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
+
+            // Update icon rotations to keep them upright
+            g.selectAll(".icon")
+                .attr("transform", d => `rotate(${90 - d.x * 180 / Math.PI})`);
+
+            // Update label rotations to keep them upright
+            g.selectAll(".node-text")
+                .attr("transform", d => `rotate(${90 - d.x * 180 / Math.PI})`);
+        });
+    </script>
+</body>
+</html>
