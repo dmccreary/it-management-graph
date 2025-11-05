@@ -1,0 +1,83 @@
+{
+  "title": "ITIL Framework Structure (v1-v3)",
+  "description": "Hierarchical structure of ITIL showing Service Support, Service Delivery, and Configuration Management relationships with the CMDB",
+  "background": "aliceblue",
+  "titleColor": "#2c3e50",
+
+  "serviceSupport": {
+    "title": "Service Support",
+    "label": "Operational Processes",
+    "color": "#4A90E2",
+    "textColor": "white",
+    "processes": [
+      {
+        "name": "Incident Management",
+        "description": "Restores normal service operation as quickly as possible and minimizes adverse impact on business operations",
+        "color": "#4A90E2"
+      },
+      {
+        "name": "Problem Management",
+        "description": "Minimizes adverse impact of incidents and problems caused by errors within the IT infrastructure",
+        "color": "#4A90E2"
+      },
+      {
+        "name": "Change Management",
+        "description": "Ensures that standardized methods and procedures are used for efficient handling of all changes",
+        "color": "#4A90E2"
+      },
+      {
+        "name": "Release Management",
+        "description": "Takes a holistic view of changes to IT services, ensuring all aspects are considered together",
+        "color": "#4A90E2"
+      },
+      {
+        "name": "Configuration Management",
+        "description": "Maintains information about Configuration Items (CIs) required to deliver an IT service",
+        "color": "#FFD700",
+        "highlight": true
+      }
+    ]
+  },
+
+  "serviceDelivery": {
+    "title": "Service Delivery",
+    "label": "Strategic Processes",
+    "color": "#5CB85C",
+    "textColor": "white",
+    "processes": [
+      {
+        "name": "Service Level Management",
+        "description": "Negotiates, agrees, and monitors service level agreements with customers and suppliers",
+        "color": "#5CB85C"
+      },
+      {
+        "name": "Capacity Management",
+        "description": "Ensures IT infrastructure capabilities meet agreed service level targets in a cost-effective manner",
+        "color": "#5CB85C"
+      },
+      {
+        "name": "Availability Management",
+        "description": "Defines, analyzes, plans, measures and improves all aspects of service availability",
+        "color": "#5CB85C"
+      },
+      {
+        "name": "IT Service Continuity Management",
+        "description": "Supports business continuity management by ensuring IT services can be recovered within required timescales",
+        "color": "#5CB85C"
+      },
+      {
+        "name": "Financial Management",
+        "description": "Provides cost-effective stewardship of IT assets and resources used in providing IT services",
+        "color": "#5CB85C"
+      }
+    ]
+  },
+
+  "cmdb": {
+    "title": "Configuration Management Database (CMDB)",
+    "label": "Authoritative Source of Truth",
+    "color": "#FF8C42",
+    "textColor": "white",
+    "description": "Central repository that stores information about all Configuration Items (CIs) and their relationships, providing a single source of truth for the IT infrastructure"
+  }
+}
