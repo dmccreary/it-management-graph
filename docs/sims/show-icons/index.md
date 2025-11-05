@@ -38,7 +38,8 @@ The gallery organizes 47 SVG icons into 11 categories:
 
 ## Data Source
 
-Icons are stored in the [IT Icons directory](../../it-icons/)
+Icons are stored in the IT Icons directory See [/docs/it-icons/index.html](../../it-icons/index.html).
+These are selected MIT Licensed Bootstrap Icons.
 
 ## Usage Tips
 
