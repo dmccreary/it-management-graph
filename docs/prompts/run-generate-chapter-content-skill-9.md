@@ -1,7 +1,7 @@
 # Run Generate Chapter Content
 
 !!! prompt
-    Run the chapter-content-generator on chapter 10 - use a reading level of an undergraduate student 
+    Run the chapter-content-generator on chapter 9 - use a reading level of an undergraduate student 
     for this chapter.  Use a positive tone.  Describe any charts in detail including all the visual 
     components within the chart. 
 

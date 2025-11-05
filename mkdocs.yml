@@ -24,6 +24,7 @@ nav:
     - Ch 10 - Observability, Monitoring, and Automated Discovery: chapters/10-observability-and-automated-discovery/index.md
     - Ch 11 - Compliance, Risk Management, and Security: chapters/11-compliance-risk-and-security/index.md
     - Ch 12 - Digital Transformation and Advanced Topics: chapters/12-digital-transformation-and-advanced-topics/index.md
+  
   - Learning Graph:
     - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
@@ -32,16 +33,24 @@ nav:
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution: learning-graph/taxonomy-distribution.md
     - Glossary Quality Report: learning-graph/glossary-quality-report.md
+  
   - MicroSins:
     - Introduction: sims/index.md
     - Graph Viewer: sims/graph-viewer/index.md
     # - Timeline: sims/timeline/index.md
+  
   - Prompts:
     - Introduction: prompts/index.md
     - Generate Course Description: prompts/generate-course-description.md
     - Run Course Description Analyzer Skill: prompts/run-course-description-analysis-skill.md
     - Run Learning Graph Generator Skill: prompts/run-learning-graph-generator.md
     - Generate Glossary Skill: prompts/generate-glossary-skill.md
+    - Generate Ch 9: prompts/run-generate-chapter-content-skill-9.md
+    - Generate Ch 10: prompts/run-generate-chapter-content-skill-10.md
+    - Generate Ch 11: prompts/run-generate-chapter-content-skill-11.md
+    - Generate Ch 12: prompts/run-generate-chapter-content-skill-12.md
+    - Generate Ch 13: prompts/it-network-diagram-skill.md
+
   - Checklist: checklist.md
   - Code Highlight Test: code-highlight-test.md
   - Glossary: glossary.md
