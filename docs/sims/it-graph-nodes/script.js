@@ -56,28 +56,40 @@ function initializeFilterCheckboxes() {
 function initializeLegend() {
     const container = document.getElementById('legendItems');
 
-    // Create a map of types to colors
-    const typeColorMap = {};
+    // Create a map of types to colors and icons
+    const typeInfoMap = {};
     allNodesData.forEach(node => {
-        if (!typeColorMap[node.type]) {
-            typeColorMap[node.type] = node.color;
+        if (!typeInfoMap[node.type]) {
+            typeInfoMap[node.type] = {
+                color: node.color,
+                icon: node.icon || null
+            };
         }
     });
 
     // Create legend items
-    Object.entries(typeColorMap).forEach(([type, color]) => {
+    Object.entries(typeInfoMap).forEach(([type, info]) => {
         const item = document.createElement('div');
         item.className = 'legend-item';
 
-        const colorBox = document.createElement('div');
-        colorBox.className = 'legend-color';
-        colorBox.style.backgroundColor = color;
+        // Use icon if available, otherwise use colored circle
+        if (info.icon) {
+            const iconImg = document.createElement('img');
+            iconImg.className = 'legend-icon';
+            iconImg.src = info.icon;
+            iconImg.alt = type;
+            item.appendChild(iconImg);
+        } else {
+            const colorBox = document.createElement('div');
+            colorBox.className = 'legend-color';
+            colorBox.style.backgroundColor = info.color;
+            item.appendChild(colorBox);
+        }
 
         const label = document.createElement('div');
         label.className = 'legend-label';
         label.textContent = type;
 
-        item.appendChild(colorBox);
         item.appendChild(label);
         container.appendChild(item);
     });
@@ -88,28 +100,40 @@ function initializeNetwork() {
     const container = document.getElementById('network');
 
     // Transform data for vis-network
-    const visNodes = allNodesData.map(node => ({
-        id: node.id,
-        label: node.label,
-        shape: node.shape,
-        color: {
-            background: node.color,
-            border: '#334155',
-            highlight: {
+    const visNodes = allNodesData.map(node => {
+        const nodeConfig = {
+            id: node.id,
+            label: node.label,
+            font: {
+                size: 14,
+                color: '#1e293b'
+            },
+            borderWidth: 2,
+            borderWidthSelected: 4,
+            title: createTooltip(node),
+            nodeData: node // Store original data
+        };
+
+        // Use icon if available, otherwise use shape with color
+        if (node.icon) {
+            nodeConfig.shape = 'image';
+            nodeConfig.image = node.icon;
+            nodeConfig.size = node.size || 30;
+        } else {
+            nodeConfig.shape = node.shape;
+            nodeConfig.size = node.size;
+            nodeConfig.color = {
                 background: node.color,
-                border: '#1e293b'
-            }
-        },
-        size: node.size,
-        font: {
-            size: 14,
-            color: '#1e293b'
-        },
-        borderWidth: 2,
-        borderWidthSelected: 4,
-        title: createTooltip(node),
-        nodeData: node // Store original data
-    }));
+                border: '#334155',
+                highlight: {
+                    background: node.color,
+                    border: '#1e293b'
+                }
+            };
+        }
+
+        return nodeConfig;
+    });
 
     nodes = new vis.DataSet(visNodes);
 
@@ -259,6 +283,28 @@ function searchNodes() {
     }
 }
 
+// Select all filter checkboxes
+function selectAllFilters() {
+    const checkboxes = document.querySelectorAll('#filterCheckboxes input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+        if (!cb.checked) {
+            cb.checked = true;
+        }
+    });
+    applyFilters();
+}
+
+// Unselect all filter checkboxes
+function unselectAllFilters() {
+    const checkboxes = document.querySelectorAll('#filterCheckboxes input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+        if (cb.checked) {
+            cb.checked = false;
+        }
+    });
+    applyFilters();
+}
+
 // Setup event listeners
 function setupEventListeners() {
     document.getElementById('searchBtn').addEventListener('click', searchNodes);
@@ -266,6 +312,19 @@ function setupEventListeners() {
         if (e.key === 'Enter') {
             searchNodes();
         }
+    });
+    document.getElementById('selectAllBtn').addEventListener('click', selectAllFilters);
+    document.getElementById('unselectAllBtn').addEventListener('click', unselectAllFilters);
+
+    // Setup callout OK button handlers
+    const calloutOkButtons = document.querySelectorAll('.callout-ok-btn');
+    calloutOkButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const callout = e.target.closest('.callout');
+            if (callout) {
+                callout.style.display = 'none';
+            }
+        });
     });
 }
 

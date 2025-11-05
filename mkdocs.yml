@@ -42,6 +42,8 @@ nav:
     - ITIL Framework Diagram: sims/itil-framework-diagram/index.md
     - P5 Infographic Template: sims/p5-infographic-template/index.md
     - Show Icons: sims/show-icons/index.md
+    - IT Graph Nodes: sims/it-graph-nodes/index.md
+    - IT Graph Requirements: sims/it-graph-nodes/requirements.m
     # - Timeline: sims/timeline/index.md
   
   - Prompts:
@@ -55,6 +57,8 @@ nav:
     - Generate Ch 11: prompts/run-generate-chapter-content-skill-11.md
     - Generate Ch 12: prompts/run-generate-chapter-content-skill-12.md
     - Generate Ch 13: prompts/it-network-diagram-skill.md
+    - IT Network Diagram: prompts/it-network-diagram.md
+
 
   - Checklist: checklist.md
   - Code Highlight Test: code-highlight-test.md

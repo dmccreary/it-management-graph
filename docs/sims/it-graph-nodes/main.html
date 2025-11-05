@@ -10,25 +10,26 @@
 <body>
     <div class="container">
         <header>
-            <h1>IT Infrastructure Graph Nodes</h1>
-            <p class="subtitle">Exploring node types, properties, and labels in graph databases</p>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>IT Infrastructure Graph Nodes</h1>
+                    <p class="subtitle">Exploring node types, properties, and labels in graph databases</p>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search nodes...">
+                    <button id="searchBtn">Search</button>
+                </div>
+            </div>
         </header>
 
-        <div class="educational-notes">
-            <div class="note">📌 Notice how different node types have completely different properties</div>
-            <div class="note">💡 This flexibility would require multiple tables or sparse schemas in relational databases</div>
-            <div class="note">🎯 Graph databases embrace heterogeneous data naturally</div>
-        </div>
-
         <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search nodes by name or property...">
-                <button id="searchBtn">Search</button>
-            </div>
-
             <div class="filter-box">
                 <h3>Filter by Type:</h3>
                 <div class="filter-checkboxes" id="filterCheckboxes"></div>
+                <div class="filter-actions">
+                    <button id="selectAllBtn" class="filter-action-btn">Select All</button>
+                    <button id="unselectAllBtn" class="filter-action-btn">Unselect All</button>
+                </div>
             </div>
         </div>
 
@@ -42,10 +43,22 @@
                 </div>
 
                 <div class="callouts">
-                    <div class="callout">Each node represents a unique entity in your IT infrastructure</div>
-                    <div class="callout">Nodes can have different properties—no rigid schema required!</div>
-                    <div class="callout">Labels help categorize and filter nodes efficiently</div>
-                    <div class="callout">In the next section, we'll connect these nodes with relationships</div>
+                    <div class="callout">
+                        <span class="callout-text">Each node represents a unique entity in your IT infrastructure</span>
+                        <button class="callout-ok-btn">OK</button>
+                    </div>
+                    <div class="callout">
+                        <span class="callout-text">Nodes can have different properties—no rigid schema required!</span>
+                        <button class="callout-ok-btn">OK</button>
+                    </div>
+                    <div class="callout">
+                        <span class="callout-text">Labels help categorize and filter nodes efficiently</span>
+                        <button class="callout-ok-btn">OK</button>
+                    </div>
+                    <div class="callout">
+                        <span class="callout-text">In the next section, we'll connect these nodes with relationships</span>
+                        <button class="callout-ok-btn">OK</button>
+                    </div>
                 </div>
             </div>
 
@@ -56,6 +69,12 @@
                 </div>
             </div>
         </div>
+        
+        <div class="educational-notes">
+                <div class="note">📌 Notice how different node types have completely different properties</div>
+                <div class="note">💡 This flexibility would require multiple tables or sparse schemas in relational databases</div>
+                <div class="note">🎯 Graph databases embrace heterogeneous data naturally</div>
+            </div>
     </div>
 
     <script src="script.js"></script>
