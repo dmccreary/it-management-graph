@@ -1,4 +1,6 @@
 // Load data from JSON file and initialize visualization
+// Assumes data.json is in the same directory and contains the hierarchical asset data
+// will not run locally due to CORS; use a local server for testing or put data inline
 fetch('data.json')
     .then(response => response.json())
     .then(data => {
