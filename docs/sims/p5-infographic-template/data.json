@@ -1,0 +1,88 @@
+{
+  "title": "GenAI Center of Excellence: Idea Task",
+  "description": "GenAI Center of Excellence Idea Task showing the flow from training through deployment with interactive hover details.",
+  "background": "aliceblue",
+  "titleColor": "#2c3e50",
+  "taskStages": [
+    {
+      "name": "Training Program",
+      "shortLabel": "AI Training",
+      "color": "#FF6B6B",
+      "textColor": "white",
+      "description": "1-hour online training program teaches employees to identify high-value AI opportunities, understand feasibility constraints, and calculate ROI for potential projects."
+    },
+    {
+      "name": "Idea Submission",
+      "shortLabel": "Submit Ideas",
+      "color": "#4ECDC4",
+      "textColor": "white",
+      "description": "Universal web form allows all employees to submit GenAI ideas with problem statements, proposed solutions, expected benefits, and resource requirements."
+    },
+    {
+      "name": "Expert Review",
+      "shortLabel": "Review & Feedback",
+      "color": "#45B7D1",
+      "textColor": "white",
+      "description": "GenAI expert panel conducts technical feasibility assessment, business value analysis, and provides detailed feedback to submitters and managers within 2 weeks."
+    },
+    {
+      "name": "Scoring & Categorization",
+      "shortLabel": "Score & Categorize",
+      "color": "#96CEB4",
+      "textColor": "black",
+      "description": "Ideas scored on feasibility, risk, and benefits (1-5 scale). Categorized by problem type, complexity level, department, and implementation timeframe."
+    },
+    {
+      "name": "Monthly Selection",
+      "shortLabel": "Fund Projects",
+      "color": "#FECA57",
+      "textColor": "black",
+      "description": "Expert panel meets monthly to select 2-5 highest-scoring ideas for development funding based on strategic alignment and available resources."
+    },
+    {
+      "name": "Development",
+      "shortLabel": "Build Solution",
+      "color": "#FF9FF3",
+      "textColor": "black",
+      "description": "Dedicated development teams build solutions with bi-weekly progress reports, technical support from GenAI CoE, and milestone tracking."
+    },
+    {
+      "name": "Deployment",
+      "shortLabel": "Go Live",
+      "color": "#54A0FF",
+      "textColor": "white",
+      "description": "Successful solutions deployed to production with user training, performance monitoring, and measurement of ROI and business impact."
+    }
+  ],
+  "leftPanel": {
+    "title": "New GenAI Idea Form",
+    "backgroundColor": "#e8f4fd",
+    "borderColor": "#3498db",
+    "titleColor": "#2980b9",
+    "items": [
+      "• Problem Statement",
+      "• Proposed Solution",
+      "• Expected Benefits",
+      "• Resource Needs",
+      "• Success Metrics",
+      "• Risk Assessment"
+    ],
+    "buttonText": "Submit Idea",
+    "buttonColor": "#27ae60"
+  },
+  "rightPanel": {
+    "title": "Summary Dashboard",
+    "backgroundColor": "#fff5e6",
+    "borderColor": "#f39c12",
+    "titleColor": "#e67e22",
+    "stats": [
+      "Ideas Submitted: 156",
+      "In Review: 23",
+      "In Development: 8",
+      "Deployed: 12",
+      "Total ROI: $2.4M",
+      "Avg Time: 45 days"
+    ],
+    "chartColors": ["#3498db", "#e74c3c", "#2ecc71"]
+  }
+}

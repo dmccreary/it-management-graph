@@ -10,6 +10,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Course Description: course-description.md
+  
   - Chapters:
     - Overview: chapters/index.md
     - Ch 1 - Introduction to ITIL and Configuration Management: chapters/01-intro-to-itil-and-config-mgmt/index.md
@@ -38,6 +39,8 @@ nav:
     - Introduction: sims/index.md
     - Graph Viewer: sims/graph-viewer/index.md
     - IT Assets Hierarchy: sims/it-asset-hierarchy/index.md
+    - ITIL Framework Diagram: sims/itil-framework-diagram/index.md
+    - P5 Infographic Template: sims/p5-infographic-template/index.md
     # - Timeline: sims/timeline/index.md
   
   - Prompts:

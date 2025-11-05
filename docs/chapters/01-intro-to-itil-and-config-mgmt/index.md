@@ -50,6 +50,8 @@ The fundamental assumption underlying this approach was that IT infrastructure c
 
 The ITIL framework organizes IT service management around two core domains: Service Support and Service Delivery. Service Support encompasses the operational processes that maintain day-to-day IT services, while Service Delivery focuses on strategic planning and long-term service quality. This bifurcation reflects ITIL's process-centric worldview, where IT management is decomposed into distinct, coordinated workflows rather than viewed as a unified data management challenge.
 
+<iframe src="../../sims/itil-framework-diagram/main.html" width="100%" height="820px" scrolling="no"></iframe>
+
 <details>
     <summary>ITIL Framework Structure Diagram</summary>
     Type: diagram
