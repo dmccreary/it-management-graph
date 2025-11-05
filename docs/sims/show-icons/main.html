@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Device & Management Icons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>💻 IT Device & Management Icons</h1>
+        <p class="subtitle">End-user devices, servers, databases, and IT management icons</p>
+
+        <div class="mode-toggle">
+            <label>
+                <input type="radio" name="mode" value="light" checked>
+                Light Mode
+            </label>
+            <label>
+                <input type="radio" name="mode" value="dark">
+                Dark Mode
+            </label>
+        </div>
+
+        <div class="stats">
+            <p><strong>📦 Total Icons:</strong> 47 SVG files</p>
+            <p><strong>🎨 Style:</strong> Clean, monochrome line icons</p>
+            <p><strong>📝 License:</strong> MIT License (Bootstrap Icons) - Free for commercial use</p>
+            <p><strong>💾 Source:</strong> <a href="https://github.com/twbs/icons" target="_blank">Bootstrap Icons by Twitter</a></p>
+            <p><strong>✅ Perfect for:</strong> Desktops, laptops, Macs, databases, servers, storage, printers</p>
+        </div>
+
+        <div id="iconContainer"></div>
+
+        <div class="footer">
+            <p>Icons from <a href="https://github.com/twbs/icons" target="_blank">Bootstrap Icons</a> (MIT License)</p>
+            <p>Free for commercial use - No attribution required</p>
+            <p><strong>Click any icon to copy its filename</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const icons = {
+            'Computers & Workstations': [
+                'desktop-pc.svg',
+                'desktop-horizontal.svg',
+                'laptop.svg',
+                'monitor.svg',
+                'tablet.svg',
+                'phone.svg',
+                'smartwatch.svg',
+                'apple-mac.svg'
+            ],
+            'Servers & Infrastructure': [
+                'server.svg',
+                'hard-drive.svg',
+                'hdd-rack.svg',
+                'hdd-stack.svg',
+                'network-storage.svg',
+                'device-storage.svg',
+                'ssd-drive.svg'
+            ],
+            'Databases': [
+                'database.svg',
+                'database-add.svg',
+                'database-check.svg',
+                'database-gear.svg',
+                'save.svg'
+            ],
+            'Peripherals': [
+                'printer.svg',
+                'mouse.svg',
+                'keyboard.svg',
+                'headset.svg',
+                'webcam.svg'
+            ],
+            'Network Devices': [
+                'router.svg',
+                'wifi.svg',
+                'ethernet.svg'
+            ],
+            'Cloud & Virtual': [
+                'cloud.svg',
+                'cloud-upload.svg',
+                'cloud-download.svg'
+            ],
+            'Users & Access': [
+                'user.svg',
+                'users.svg',
+                'user-workstation.svg'
+            ],
+            'Security': [
+                'security.svg',
+                'lock.svg',
+                'unlock.svg',
+                'key.svg'
+            ],
+            'Monitoring & Performance': [
+                'activity.svg',
+                'performance.svg',
+                'metrics.svg',
+                'processor.svg',
+                'memory.svg'
+            ],
+            'Locations': [
+                'office-building.svg',
+                'home.svg',
+                'location.svg'
+            ],
+            'Operating Systems': [
+                'apple-mac.svg',
+                'linux-logo.svg'
+            ]
+        };
+
+        function renderIcons() {
+            const container = document.getElementById('iconContainer');
+            container.innerHTML = '';
+
+            Object.keys(icons).forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                const heading = document.createElement('h2');
+                heading.textContent = `${category} (${icons[category].length})`;
+                categoryDiv.appendChild(heading);
+
+                const grid = document.createElement('div');
+                grid.className = 'grid';
+
+                icons[category].forEach(icon => {
+                    const card = document.createElement('div');
+                    card.className = 'icon-card';
+
+                    card.onclick = () => {
+                        navigator.clipboard.writeText(icon);
+                        card.style.background = '#f0fff4';
+                        setTimeout(() => card.style.background = '#ffffff', 500);
+                    };
+
+                    const img = document.createElement('img');
+                    // Use relative path from sims/show-icons to it-icons
+                    img.src = '../../it-icons/' + icon;
+                    img.alt = icon;
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.textContent = '❌';
+                        placeholder.style.fontSize = '48px';
+                        card.insertBefore(placeholder, card.firstChild);
+                    };
+
+                    const name = document.createElement('div');
+                    name.className = 'icon-name';
+                    name.textContent = icon.replace('.svg', '').replace(/-/g, ' ');
+
+                    card.appendChild(img);
+                    card.appendChild(name);
+                    grid.appendChild(card);
+                });
+
+                categoryDiv.appendChild(grid);
+                container.appendChild(categoryDiv);
+            });
+        }
+
+        renderIcons();
+
+        // Mode toggle functionality
+        const modeRadios = document.querySelectorAll('input[name="mode"]');
+
+        modeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'dark') {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
