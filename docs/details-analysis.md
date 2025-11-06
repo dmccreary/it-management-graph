@@ -2,6 +2,10 @@
 
 This report analyzes all `<details>` tags in the textbook chapters to categorize visualization types and prioritize skill development.
 
+<iframe src="../sims/skill-impact-chart/main.html" width="100%" height="900" scrolling="no"></iframe>
+[View Chart Fullscreen](../sims/skill-impact-chart/main.html)
+
+
 ## Summary Statistics
 
 - **Total `<details>` tags:** 57
@@ -49,7 +53,6 @@ Prioritization based on **Impact** (frequency of use) vs. **Effort** (similarity
 
 ## Visual Priority Matrix
 
-<iframe src="../sims/skill-impact-chart/main.html" width="100%" height="900" frameborder="0" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
 
 ### Quadrant Analysis
 
