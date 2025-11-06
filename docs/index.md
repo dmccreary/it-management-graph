@@ -1,4 +1,8 @@
 ---
+title: IT Management with Graphs
+description: A textbook on how to use graph database to manage IT resources such as list of servers, applications, networks, desktops and licenses
+image: /img/cover.png
+og:image: /img/cover.png
 hide:
     toc
 ---
