@@ -45,6 +45,7 @@ nav:
     - IT Graph Nodes: sims/it-graph-nodes/index.md
     - IT Graph Requirements: sims/it-graph-nodes/requirements.md
     - Web Application Architecture: sims/web-app-architecture/index.md
+    - Deployment Dependencies DAG: sims/deployment-dag/index.md
     # - Timeline: sims/timeline/index.md
   
   - Prompts:
@@ -63,7 +64,8 @@ nav:
     - Details Impact Analysis: prompts/details-impact-analysis.md
     - Create IT Graph Generator Skill: prompts/create-it-graph-generator-skill.md
     - Create IT Graph for Web App: prompts/create-it-graph-big-web-application.md
-
+    - Run All IT Graph Diagrams: prompts/run-all-it-graph-diagrams.md
+  
   - Checklist: checklist.md
   - Code Highlight Test: code-highlight-test.md
   - Glossary: glossary.md

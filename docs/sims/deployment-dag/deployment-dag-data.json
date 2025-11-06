@@ -1,0 +1,221 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Database Server",
+      "type": "InfrastructureComponent",
+      "properties": {
+        "name": "Database Server",
+        "deployment_order": 1,
+        "deployment_time": 15,
+        "criticality": "high",
+        "layer": "Infrastructure"
+      },
+      "shape": "box",
+      "color": "#94a3b8",
+      "size": 40
+    },
+    {
+      "id": 2,
+      "label": "Application Server",
+      "type": "InfrastructureComponent",
+      "properties": {
+        "name": "Application Server",
+        "deployment_order": 1,
+        "deployment_time": 10,
+        "criticality": "high",
+        "layer": "Infrastructure"
+      },
+      "shape": "box",
+      "color": "#94a3b8",
+      "size": 40
+    },
+    {
+      "id": 3,
+      "label": "Load Balancer",
+      "type": "InfrastructureComponent",
+      "properties": {
+        "name": "Load Balancer",
+        "deployment_order": 1,
+        "deployment_time": 5,
+        "criticality": "high",
+        "layer": "Infrastructure"
+      },
+      "shape": "box",
+      "color": "#94a3b8",
+      "size": 40
+    },
+    {
+      "id": 4,
+      "label": "Database Schema",
+      "type": "DataComponent",
+      "properties": {
+        "name": "Database Schema",
+        "deployment_order": 2,
+        "deployment_time": 8,
+        "criticality": "high",
+        "layer": "Data"
+      },
+      "shape": "database",
+      "color": "#fb923c",
+      "size": 35
+    },
+    {
+      "id": 5,
+      "label": "Configuration Service",
+      "type": "DataComponent",
+      "properties": {
+        "name": "Configuration Service",
+        "deployment_order": 2,
+        "deployment_time": 5,
+        "criticality": "medium",
+        "layer": "Data"
+      },
+      "shape": "database",
+      "color": "#fb923c",
+      "size": 35
+    },
+    {
+      "id": 6,
+      "label": "API Service",
+      "type": "ApplicationComponent",
+      "properties": {
+        "name": "API Service",
+        "deployment_order": 3,
+        "deployment_time": 12,
+        "criticality": "high",
+        "layer": "Application"
+      },
+      "shape": "circle",
+      "color": "#7dd3fc",
+      "size": 40
+    },
+    {
+      "id": 7,
+      "label": "Web Frontend",
+      "type": "ApplicationComponent",
+      "properties": {
+        "name": "Web Frontend",
+        "deployment_order": 3,
+        "deployment_time": 8,
+        "criticality": "medium",
+        "layer": "Application"
+      },
+      "shape": "circle",
+      "color": "#7dd3fc",
+      "size": 35
+    },
+    {
+      "id": 8,
+      "label": "Monitoring Agent",
+      "type": "IntegrationComponent",
+      "properties": {
+        "name": "Monitoring Agent",
+        "deployment_order": 4,
+        "deployment_time": 3,
+        "criticality": "low",
+        "layer": "Integration"
+      },
+      "shape": "hexagon",
+      "color": "#a78bfa",
+      "size": 30
+    },
+    {
+      "id": 9,
+      "label": "Log Collector",
+      "type": "IntegrationComponent",
+      "properties": {
+        "name": "Log Collector",
+        "deployment_order": 4,
+        "deployment_time": 3,
+        "criticality": "low",
+        "layer": "Integration"
+      },
+      "shape": "hexagon",
+      "color": "#a78bfa",
+      "size": 30
+    }
+  ],
+  "edges": [
+    {
+      "from": 4,
+      "to": 1,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 5,
+      "to": 2,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 6,
+      "to": 4,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 6,
+      "to": 5,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 6,
+      "to": 2,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 7,
+      "to": 6,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 7,
+      "to": 3,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 8,
+      "to": 6,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 9,
+      "to": 6,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    },
+    {
+      "from": 9,
+      "to": 7,
+      "label": "DEPENDS_ON",
+      "arrows": "to",
+      "color": "#64748b",
+      "width": 2
+    }
+  ]
+}

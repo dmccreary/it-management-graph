@@ -156,7 +156,7 @@ Custom educational notes:
 **Suggested Prompt:**
 
 ```
-Create an interactive IT graph microsim called "deployment-dag" that demonstrates
+Use the it-graph-generator skill to create an interactive IT graph microsim called "deployment-dag" that demonstrates
 deployment dependencies as a Directed Acyclic Graph (DAG).
 
 Include these components in deployment order layers:

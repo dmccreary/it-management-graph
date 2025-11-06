@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Dependencies DAG</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-content">
+            <div>
+                <h1>Deployment Dependencies DAG</h1>
+                <p class="subtitle">Understanding Deployment Order through DAG Analysis</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search nodes...">
+                <button onclick="searchNodes()">Search</button>
+                <button onclick="showDeploymentPath()" class="deployment-btn" style="margin-left: 10px; background-color: #10b981;">Show Deployment Path</button>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-box">
+            <div class="filter-header">
+                <span style="font-weight: 600;">Filter by Node Type:</span>
+            </div>
+            <div id="filterCheckboxes" class="filter-checkboxes">
+                <!-- Dynamically generated checkboxes -->
+            </div>
+            <div class="filter-buttons">
+                <button onclick="selectAllFilters()" class="filter-btn">Select All</button>
+                <button onclick="unselectAllFilters()" class="filter-btn">Unselect All</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Canvas Container -->
+            <div class="canvas-container">
+                <div id="network"></div>
+
+                <!-- Legend Overlay -->
+                <div class="legend">
+                    <h3>Node Types</h3>
+                    <div id="legendContent">
+                        <!-- Dynamically generated legend items -->
+                    </div>
+                </div>
+
+                <!-- Callouts Overlay -->
+                <div class="callouts" id="callouts">
+                    <div class="callout-header">
+                        <span style="font-weight: 600;">💡 Learn About Deployment DAGs</span>
+                        <button onclick="document.getElementById('callouts').style.display='none'" class="close-btn">OK</button>
+                    </div>
+                    <div class="callout-message">DAG structure ensures no circular dependencies - deployment order is always possible</div>
+                    <div class="callout-message">Arrows point from dependent to dependency - follow backwards to find deployment order</div>
+                    <div class="callout-message">Topological sorting produces a safe deployment sequence</div>
+                    <div class="callout-message">Any valid topological sort respects all dependency constraints</div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Node Details</h3>
+                <div id="nodeDetails">
+                    <p style="color: #64748b; text-align: center; padding: 20px;">
+                        Click on a node to view its details
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Notes -->
+        <div class="educational-notes">
+            <h3>🎓 Educational Insights</h3>
+            <div class="note-item">📌 Notice how infrastructure components (database, servers) have no dependencies - they deploy first</div>
+            <div class="note-item">💡 Applications can only deploy after their dependencies are ready - the graph enforces this constraint</div>
+            <div class="note-item">🎯 A deployment cycle would make it impossible to determine order - DAG structure prevents this</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
