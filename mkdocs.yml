@@ -60,7 +60,9 @@ nav:
     - Generate Ch 13: prompts/it-network-diagram-skill.md
     - IT Network Diagram: prompts/it-network-diagram.md
     - Book Metrics:  prompts/book-metrics-report.md
-
+    - Details Impact Analysis: prompts/details-impact-analysis.md
+    - Create IT Graph Generator Skill: prompts/create-it-graph-generator-skill.md
+    - Create IT Graph for Web App: prompts/create-it-graph-big-web-application.md
 
   - Checklist: checklist.md
   - Code Highlight Test: code-highlight-test.md
