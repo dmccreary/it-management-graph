@@ -1,0 +1,1492 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/it-management-graph/prompts/create-it-graph-generator-skill/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Specification: IT Graph Generator Skill - IT Management with Graphs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-W7BFLBRXZ9"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-W7BFLBRXZ9",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-W7BFLBRXZ9",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Specification: IT Graph Generator Skill - IT Management with Graphs" >
+      
+        <meta  property="og:description"  content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/it-management-graph/assets/images/social/prompts/create-it-graph-generator-skill.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/it-management-graph/prompts/create-it-graph-generator-skill/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Specification: IT Graph Generator Skill - IT Management with Graphs" >
+      
+        <meta  name="twitter:description"  content="An in-depth course on IT management using graph databases, covering ITIL, configuration management, asset management, and advanced graph techniques." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/it-management-graph/assets/images/social/prompts/create-it-graph-generator-skill.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#specification-it-graph-generator-skill" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IT Management with Graphs" class="md-header__button md-logo" aria-label="IT Management with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IT Management with Graphs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Specification: IT Graph Generator Skill
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/it-management-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IT Management with Graphs" class="md-nav__button md-logo" aria-label="IT Management with Graphs" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    IT Management with Graphs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/it-management-graph" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../checklist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Checklist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-highlight-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Highlight Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../details-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Details Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Context
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/it-management-graph/blob/master/docs/prompts/create-it-graph-generator-skill.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="specification-it-graph-generator-skill">Specification: IT Graph Generator Skill</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Create a Claude skill that generates interactive graph-model visualizations using vis-network library for IT management educational content. These microsims will be embedded in chapter content via iframes and follow the established pattern from <a href="vscode-webview://1811g1adu5d4a6d2td0ev05h357cd74c7pusfacjenslc0jddeis/docs/sims/it-graph-nodes/main.html">docs/sims/it-graph-nodes</a>.</p>
+<p><strong>Skill Name</strong> - it-graph-generator</p>
+<h2 id="business-context">Business Context</h2>
+<ul>
+<li><strong>Problem</strong>: 10 graph-model visualizations are needed across the textbook (17.5% of all visualizations)</li>
+<li><strong>Highest ROI</strong>: Priority score 6.67 (best effort-to-impact ratio)</li>
+<li><strong>Low effort</strong>: Similar to existing microsims (effort rating: 1/10)</li>
+<li><strong>Target audience</strong>: Graduate students (ISMG 620) learning IT management graphs</li>
+</ul>
+<h1 id="technical-architecture">Technical Architecture</h1>
+<p><strong>Definition;</strong> A MicroSim is an educational program that run in a web browser with no dependency on backend databases.</p>
+<h3 id="file-structure">File Structure</h3>
+<p>Each microsim resides in <code>/docs/sims/&lt;microsim-name&gt;/</code> with:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>/docs/it-icons            # over 70 SVG icons for network components
+/docs/sims/&lt;microsim-name&gt;/
+├── index.md              # Documentation and iframe link
+├── main.html             # Main visualization page
+├── script.js             # Core JavaScript logic
+├── style.css             # Styling
+├── &lt;data-file&gt;.json      # Graph data (nodes and optionally edges)
+└── requirements.md       # Original specification (optional)
+</code></pre></div></td></tr></table></div>
+<h3 id="core-technology-stack">Core Technology Stack</h3>
+<ul>
+<li><strong>Library</strong>: vis-network (<a href="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js">https://unpkg.com/vis-network/standalone/umd/vis-network.min.js</a>)</li>
+<li><strong>Data Format</strong>: JSON with nodes array and optional edges array</li>
+<li><strong>Layout Engine</strong>: Force-directed (Barnes-Hut physics)</li>
+<li><strong>Icons</strong>: MIT-licensed SVG icons from <code>/docs/it-icons/</code> (optional)</li>
+</ul>
+<h2 id="data-schema">Data Schema</h2>
+<h3 id="node-schema">Node Schema</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code>{
+  &quot;id&quot;: &lt;number&gt;,
+  &quot;label&quot;: &quot;&lt;display text&gt;&quot;,
+  &quot;type&quot;: &quot;&lt;NodeType&gt;&quot;,
+  &quot;properties&quot;: {
+    &quot;&lt;key&gt;&quot;: &quot;&lt;value&gt;&quot;,
+    ...
+  },
+  &quot;shape&quot;: &quot;circle|box|database|triangle|hexagon|dot&quot;,
+  &quot;color&quot;: &quot;#hexcode&quot;,
+  &quot;size&quot;: &lt;number&gt;,
+  &quot;icon&quot;: &quot;../../it-icons/&lt;icon-name&gt;.svg&quot; (optional)
+}
+</code></pre></div></td></tr></table></div>
+<h3 id="edge-schema-optional">Edge Schema (optional)</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>{
+  &quot;from&quot;: &lt;node_id&gt;,
+  &quot;to&quot;: &lt;node_id&gt;,
+  &quot;label&quot;: &quot;&lt;relationship_type&gt;&quot;,
+  &quot;arrows&quot;: &quot;to|from|to,from&quot;,
+  &quot;color&quot;: &quot;#hexcode&quot; (optional),
+  &quot;dashes&quot;: &lt;boolean&gt; (optional)
+}
+</code></pre></div></td></tr></table></div>
+<h2 id="required-features">Required Features</h2>
+<h3 id="1-core-interactive-features">1. Core Interactive Features</h3>
+<ul>
+<li><strong>Hover tooltips</strong>: Display node type and all properties</li>
+<li><strong>Click for details</strong>: Show full property panel in right sidebar</li>
+<li><strong>Search functionality</strong>: Type-ahead search by node name or property value</li>
+<li><strong>Filter by type</strong>: Checkboxes to show/hide specific node types</li>
+<li><strong>Select All/Unselect All</strong>: Bulk filter controls</li>
+<li><strong>Force-directed layout</strong>: Automatic node positioning with physics</li>
+</ul>
+<h3 id="2-visual-elements">2. Visual Elements</h3>
+<h4 id="canvas-container">Canvas Container</h4>
+<ul>
+<li>Dimensions: Flexible width × 600px height</li>
+<li>Background: Light gray (#f8fafc)</li>
+<li>Border: 2px solid (#e2e8f0)</li>
+<li>Border radius: 8px</li>
+</ul>
+<h4 id="legend-top-left-overlay">Legend (top-left overlay)</h4>
+<ul>
+<li>White background with border</li>
+<li>Shows node types with icons/shapes and colors</li>
+<li>Title: "Node Types"</li>
+<li>Icons (if available) or colored shapes</li>
+<li>Always look in /docs/it-icons first and only use shapes if an icon is not available</li>
+</ul>
+<h4 id="callouts-bottom-left-overlay">Callouts (bottom-left overlay)</h4>
+<ul>
+<li>Blue background with white text</li>
+<li>Dismissible with "OK" button</li>
+<li>3-4 educational messages</li>
+<li>Fade out when dismissed</li>
+</ul>
+<h4 id="sidebar-right-panel">Sidebar (right panel)</h4>
+<ul>
+<li>Width: 280px</li>
+<li>Height: 600px (matches canvas)</li>
+<li>Shows selected node details</li>
+<li>Displays node type (e.g., <code>:BusinessService</code>)</li>
+<li>Lists all properties with formatted key-value pairs</li>
+<li>Property count badge at bottom</li>
+</ul>
+<h4 id="educational-notes-below-canvas">Educational Notes (below canvas)</h4>
+<ul>
+<li>Green background (#f0fdf4)</li>
+<li>Left border: 4px solid green</li>
+<li>3 notes with emoji icons</li>
+<li>Explains educational insights</li>
+</ul>
+<h3 id="3-layout-and-controls">3. Layout and Controls</h3>
+<h4 id="header">Header</h4>
+<ul>
+<li>Title (h1) and subtitle</li>
+<li>Search box (right-aligned)<ul>
+<li>Input field with placeholder</li>
+<li>Blue search button</li>
+</ul>
+</li>
+</ul>
+<h4 id="filter-controls">Filter Controls</h4>
+<ul>
+<li>Horizontal layout with checkboxes</li>
+<li>One checkbox per node type</li>
+<li>"Select All" and "Unselect All" buttons</li>
+<li>Gray background panel</li>
+</ul>
+<h4 id="main-content-area">Main Content Area</h4>
+<ul>
+<li>Two-column layout: canvas (flex) + sidebar (280px fixed)</li>
+<li>Gap: 20px</li>
+</ul>
+<h2 id="user-interface-patterns">User Interface Patterns</h2>
+<h3 id="color-scheme">Color Scheme</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>// Standard color palette
+const nodeColors = {
+  BusinessService: &quot;#ec4899&quot;,  // Pink
+  Application: &quot;#7dd3fc&quot;,       // Light blue
+  Database: &quot;#fb923c&quot;,          // Orange
+  Server: &quot;#94a3b8&quot;,            // Gray
+  Location: &quot;#4ade80&quot;,          // Green
+  Team: &quot;#a78bfa&quot;,              // Purple
+  User: &quot;#f59e0b&quot;               // Amber
+};
+</code></pre></div></td></tr></table></div>
+<h3 id="shape-mappings">Shape Mappings</h3>
+<p>Use icons from /docs/</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code>const nodeShapes = {
+  BusinessService: &quot;circle&quot;,
+  Application: &quot;box&quot;,
+  Database: &quot;database&quot;,
+  Server: &quot;box&quot;,
+  Location: &quot;triangle&quot;,
+  Team: &quot;hexagon&quot;,
+  User: &quot;dot&quot;
+};
+</code></pre></div></td></tr></table></div>
+<h3 id="size-guidelines">Size Guidelines</h3>
+<ul>
+<li><strong>Large</strong> (40px): High-level business entities</li>
+<li><strong>Medium</strong> (30px): Applications, databases, servers</li>
+<li><strong>Small</strong> (25px): Supporting entities (teams, users, locations)</li>
+</ul>
+<h3 id="vis-network-configuration">Vis-Network Configuration</h3>
+<h3 id="physics-options">Physics Options</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>physics: {
+  enabled: true,
+  stabilization: {
+    iterations: 200
+  },
+  barnesHut: {
+    gravitationalConstant: -4000,
+    centralGravity: 0.3,
+    springLength: 150,
+    springConstant: 0.04,
+    damping: 0.09,
+    avoidOverlap: 0.5
+  }
+}
+</code></pre></div></td></tr></table></div>
+<h3 id="interaction-options">Interaction Options</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>interaction: {
+  hover: true,
+  tooltipDelay: 100
+}
+</code></pre></div></td></tr></table></div>
+<h3 id="node-styling">Node Styling</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>nodes: {
+  font: { size: 14, color: &#39;#1e293b&#39; },
+  borderWidth: 2,
+  borderWidthSelected: 4
+}
+</code></pre></div></td></tr></table></div>
+<h2 id="educational-components">Educational Components</h2>
+<h3 id="callout-messages-4-standard-messages">Callout Messages (4 standard messages)</h3>
+<ol>
+<li>"Each node represents a unique entity in your IT infrastructure"</li>
+<li>"Nodes can have different properties---no rigid schema required!"</li>
+<li>"Labels help categorize and filter nodes efficiently"</li>
+<li>"In the next section, we'll connect these nodes with relationships"</li>
+</ol>
+<h3 id="educational-notes-3-standard-notes">Educational Notes (3 standard notes)</h3>
+<ol>
+<li>"📌 Notice how different node types have completely different properties"</li>
+<li>"💡 This flexibility would require multiple tables or sparse schemas in relational databases"</li>
+<li>"🎯 Graph databases embrace heterogeneous data naturally"</li>
+</ol>
+<h2 id="implementation-requirements">Implementation Requirements</h2>
+<h3 id="indexmd-template">index.md Template</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code># &lt;Title&gt;
+
+[View &lt;Title&gt; Fullscreen](main.html){ .md-button .md-button--primary }
+
+&lt;Description paragraph&gt;
+
+## Overview
+
+&lt;Explain the concept being demonstrated&gt;
+
+## Features
+
+### Node Types
+
+&lt;List each node type with properties&gt;
+
+### Interactive Features
+
+- **Hover Tooltips**: ...
+- **Click for Details**: ...
+- **Search**: ...
+- **Filter by Type**: ...
+
+## Educational Insights
+
+&lt;3 key learning points&gt;
+
+## Data Structure
+
+&lt;Show sample JSON&gt;
+
+## Implementation Notes
+
+- **Library**: vis-network JavaScript library
+- **Layout**: Force-directed using Barnes-Hut algorithm
+- **Icons**: IT infrastructure icons from `/docs/it-icons/` (MIT License)
+</code></pre></div></td></tr></table></div>
+<h3 id="mainhtml-structure">main.html Structure</h3>
+<ul>
+<li>HTML5 doctype</li>
+<li>Viewport meta tag for responsiveness</li>
+<li>Link to style.css</li>
+<li>CDN link to vis-network</li>
+<li>Container with header, controls, main-content, sidebar</li>
+<li>Script tag loading script.js</li>
+</ul>
+<h3 id="scriptjs-core-functions">script.js Core Functions</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>// Required global functions
+async function init()
+function initializeFilterCheckboxes()
+function initializeLegend()
+function initializeNetwork()
+function createTooltip(node)
+function displayNodeDetails(nodeData)
+function applyFilters()
+function searchNodes()
+function selectAllFilters()
+function unselectAllFilters()
+function setupEventListeners()
+</code></pre></div></td></tr></table></div>
+<h3 id="stylecss-key-classes">style.css Key Classes</h3>
+<ul>
+<li><code>.container</code> - Main wrapper</li>
+<li><code>.header-content</code> - Flex header with title and search</li>
+<li><code>.search-box</code> - Search input and button</li>
+<li><code>.filter-box</code> - Filter controls panel</li>
+<li><code>.main-content</code> - Two-column layout</li>
+<li><code>.canvas-container</code> - Visualization area</li>
+<li><code>#network</code> - Vis-network canvas</li>
+<li><code>.legend</code> - Overlay legend</li>
+<li><code>.callouts</code> - Educational callouts</li>
+<li><code>.sidebar</code> - Node details panel</li>
+<li><code>.educational-notes</code> - Bottom notes section</li>
+</ul>
+<h2 id="skill-input-parameters">Skill Input Parameters</h2>
+<p>The skill should accept:</p>
+<ol>
+<li><strong>microsim_name</strong> (required): Directory name (kebab-case)</li>
+<li><strong>title</strong> (required): Human-readable title</li>
+<li><strong>description</strong> (required): One-paragraph description</li>
+<li><strong>purpose</strong> (required): Educational purpose statement</li>
+<li>
+<p><strong>node_types</strong> (required): Array of node type objects:
+    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>{
+  type: &quot;BusinessService&quot;,
+  shape: &quot;circle&quot;,
+  color: &quot;#ec4899&quot;,
+  size: 40,
+  icon: &quot;../../it-icons/service.svg&quot; (optional),
+  properties: [&quot;name&quot;, &quot;SLA_tier&quot;, &quot;owner&quot;, ...]
+}
+</code></pre></div></td></tr></table></div></p>
+</li>
+<li>
+<p><strong>sample_nodes</strong> (required): Array of sample node data (8-10 nodes)</p>
+</li>
+<li><strong>include_edges</strong> (optional): Boolean (default: false)</li>
+<li><strong>edges</strong> (optional): Array of edge data if include_edges is true</li>
+<li><strong>educational_insights</strong> (required): Array of 3 key learning points</li>
+<li><strong>custom_callouts</strong> (optional): Override default callout messages</li>
+<li><strong>custom_notes</strong> (optional): Override default educational notes</li>
+</ol>
+<h2 id="skill-output">Skill Output</h2>
+<p>The skill will:</p>
+<ol>
+<li><strong>Create directory</strong>: <code>/docs/sims/&lt;microsim-name&gt;/</code></li>
+<li><strong>Generate files</strong>:<ul>
+<li><code>index.md</code> - Documentation with iframe link</li>
+<li><code>main.html</code> - Complete visualization page</li>
+<li><code>script.js</code> - JavaScript implementation</li>
+<li><code>style.css</code> - Complete stylesheet</li>
+<li><code>&lt;microsim-name&gt;-data.json</code> - Graph data</li>
+</ul>
+</li>
+<li><strong>Update navigation</strong>: Add link to <code>/docs/sims/index.md</code> (optional)</li>
+<li><strong>Report</strong>: Summary of created files with file paths</li>
+</ol>
+<h2 id="quality-assurance-checklist">Quality Assurance Checklist</h2>
+<ul>
+<li>All node IDs are unique integers</li>
+<li>All node types have consistent color/shape mappings</li>
+<li>Properties are heterogeneous (different per node type)</li>
+<li>Legend displays all node types correctly</li>
+<li>Search finds nodes by label and property values</li>
+<li>Filter checkboxes work for all node types</li>
+<li>Sidebar displays selected node details</li>
+<li>Callouts are dismissible</li>
+<li>Force-directed layout stabilizes within 5 seconds</li>
+<li>Hover tooltips show formatted properties</li>
+<li>Educational notes are contextually relevant</li>
+<li>Icons load correctly (if used)</li>
+<li>Responsive design works on 1400px+ screens</li>
+</ul>
+<h2 id="example-use-cases-from-details-analysismd">Example Use Cases (from details-analysis.md)</h2>
+<ol>
+<li><strong>IT Asset Relationship Graph</strong> (Chapter: IT Asset Management Fundamentals)</li>
+<li><strong>IT Infrastructure Nodes</strong> (Chapter: Graph Theory)</li>
+<li><strong>Deployment Dependencies DAG</strong> (Chapter: Graph Theory)</li>
+<li><strong>Dependency Graph with Cycle Detection</strong> (Chapter: Graph Database Technologies)</li>
+<li><strong>Cypher Pattern Matching</strong> (Chapter: Query Languages)</li>
+<li><strong>Bidirectional Dependency Tracing</strong> (Chapter: Graph Traversal)</li>
+<li><strong>Multi-Layer Dependency Map</strong> (Chapter: Graph Traversal)</li>
+<li><strong>Business Service Mapping</strong> (Chapter: Business Services)</li>
+<li><strong>RBAC Permission Graph</strong> (Chapter: Compliance)</li>
+</ol>
+<h2 id="integration-with-intelligent-textbook">Integration with Intelligent Textbook</h2>
+<h3 id="embedding-in-chapter-content">Embedding in Chapter Content</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>## Section Title
+
+&lt;explanation text&gt;
+
+&lt;iframe src=&quot;../../sims/&lt;microsim-name&gt;/main.html&quot; width=&quot;100%&quot; height=&quot;700px&quot;
+        style=&quot;border: 2px solid #e2e8f0; border-radius: 8px;&quot;&gt;
+&lt;/iframe&gt;
+
+[View Fullscreen](../../sims/&lt;microsim-name&gt;/main.html){ .md-button }
+
+&lt;followup text&gt;
+</code></pre></div></td></tr></table></div>
+<h3 id="mkdocs-configuration">MkDocs Configuration</h3>
+<p>Add to <code>mkdocs.yml</code> navigation:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>nav:
+  - MicroSims:
+    - sims/index.md
+    - &lt;Title&gt;: sims/&lt;microsim-name&gt;/index.md
+</code></pre></div></td></tr></table></div>
+<h2 id="skill-behavior-guidelines">Skill Behavior Guidelines</h2>
+<h3 id="when-to-generate-icons-vs-shapes">When to Generate Icons vs Shapes</h3>
+<ul>
+<li><strong>Use icons</strong>: If icon path is provided and file exists</li>
+<li><strong>Use shapes</strong>: As default or fallback</li>
+<li><strong>Icon sources</strong>: <code>/docs/it-icons/</code> directory (MIT-licensed Bootstrap icons)</li>
+</ul>
+<h3 id="data-validation">Data Validation</h3>
+<ul>
+<li>Validate node IDs are unique</li>
+<li>Validate edge references point to existing nodes</li>
+<li>Validate colors are valid hex codes</li>
+<li>Validate shapes are supported vis-network shapes</li>
+<li>Warn if properties are missing or malformed</li>
+</ul>
+<h3 id="error-handling">Error Handling</h3>
+<ul>
+<li>Graceful fallback if icons don't load</li>
+<li>Display error message if JSON fails to load</li>
+<li>Console warnings for data validation issues</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations</h3>
+<ul>
+<li>Optimal node count: 8-20 nodes</li>
+<li>Physics stabilization timeout: 5 seconds</li>
+<li>Disable physics after stabilization for better performance</li>
+</ul>
+<h2 id="success-metrics">Success Metrics</h2>
+<p>A successful it-graph microsim should:</p>
+<ol>
+<li>Load and render within 2 seconds</li>
+<li>Be interactive immediately after stabilization</li>
+<li>Clearly demonstrate the intended concept</li>
+<li>Match the visual style of existing it-graph microsims</li>
+<li>Work on screens 1280px+ wide</li>
+<li>Be embeddable in chapter content via iframe</li>
+</ol>
+<h2 id="skill-storage">Skill Storage</h2>
+<p>When finished, the skill will be written to /skills/it-graph-generator in the current repository.</p>
+<h2 id="next-steps-to-create-the-skill">Next Steps to Create the Skill</h2>
+<ol>
+<li><strong>Use the skill-creator skill</strong> to generate this new skill</li>
+<li><strong>Test with one example</strong> (e.g., IT Asset Relationship Graph)</li>
+<li><strong>Validate output</strong> against this specification</li>
+<li><strong>Iterate</strong> based on quality assurance checklist</li>
+<li><strong>Document skill usage</strong> in skill's README</li>
+</ol>
+<p>Would you like me to now invoke the <code>skill-creator</code> skill to build this <code>it-graph-generator</code> generator skill using this specification?</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
