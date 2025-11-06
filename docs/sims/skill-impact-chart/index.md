@@ -4,7 +4,9 @@ An interactive Chart.js bubble chart that visualizes the priority matrix for ski
 
 ## Interactive Chart
 
-<iframe src="main.html" width="100%" height="900" frameborder="0" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
+<iframe src="main.html" width="100%" height="700px" scrolling="no"></iframe>
+
+[View Chart Fullscreen](./main.html){ .md-button .md-button--primary }
 
 ## Overview
 

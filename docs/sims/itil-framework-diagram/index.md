@@ -1,6 +1,7 @@
 # ITIL Framework Structure Diagram
 
 <iframe src="./main.html" width="100%" height="820px" scrolling="no"></iframe>
+[View Fullscreen](main.html){ .md-button .md-button--primary }
 
 An interactive hierarchical block diagram illustrating the structure of ITIL (Information Technology Infrastructure Library) versions 1-3, showing the relationship between Service Support, Service Delivery, and Configuration Management processes with the CMDB as the authoritative source of truth.
 

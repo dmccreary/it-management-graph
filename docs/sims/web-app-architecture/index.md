@@ -1,5 +1,7 @@
 # High-Volume Web Application Architecture
 
+<iframe src="./main.html" width="100%"></iframe>
+
 [View High-Volume Web Application Architecture Fullscreen](main.html){ .md-button .md-button--primary }
 
 This interactive visualization demonstrates a scalable web application architecture designed to handle high traffic volumes. The architecture shows how user requests flow through security layers, load balancing, application servers, and database infrastructure with synchronization capabilities.

@@ -1,7 +1,8 @@
 # P5.js Funnel Infographic Template
 
-<iframe src="./main.html" width="100%" height="720px" scrolling="no"
-  style="border: 1px solid #ccc; border-radius: 8px;"></iframe>
+<iframe src="./main.html" width="100%" height="720px" scrolling="no"></iframe>
+
+[View Infographic Fullscreen](./main.html){ .md-button .md-button--primary }
 
 A generic, data-driven infographic visualization built with p5.js. This template loads all configuration and content from a `data.json` file, making it easy to customize for different use cases.
 

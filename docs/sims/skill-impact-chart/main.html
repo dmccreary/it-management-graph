@@ -34,16 +34,16 @@
     <script>
         // Data from the priority matrix table
         const data = [
-            { type: 'graph-model', count: 10, impact: 6.7, effort: 1, priority: 6.67, status: 'Build' },
-            { type: 'microsim', count: 5, impact: 3.3, effort: 0, priority: 3.33, status: 'Exists' },
-            { type: 'diagram', count: 15, impact: 10, effort: 4, priority: 2.5, status: 'Build' },
-            { type: 'infographic', count: 5, impact: 3.3, effort: 2, priority: 1.67, status: 'Build' },
-            { type: 'chart', count: 9, impact: 6.0, effort: 5, priority: 1.2, status: 'Build' },
-            { type: 'workflow', count: 7, impact: 4.7, effort: 6, priority: 0.78, status: 'Build' },
-            { type: 'timeline', count: 3, impact: 2.0, effort: 7, priority: 0.29, status: 'Build' },
-            { type: 'map', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Build' },
-            { type: 'markdown-table', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Build' },
-            { type: 'portfolio-quadrant-chart', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Build' }
+            { type: 'Graph Model', count: 10, impact: 6.7, effort: 1, priority: 6.67, status: 'Exists' },
+            { type: 'Microsim', count: 5, impact: 3.3, effort: 0, priority: 3.33, status: 'Exists' },
+            { type: 'Diagram', count: 15, impact: 10, effort: 4, priority: 2.5, status: 'Build' },
+            { type: 'Infographic', count: 5, impact: 3.3, effort: 2, priority: 1.67, status: 'Build' },
+            { type: 'Chart', count: 9, impact: 6.0, effort: 5, priority: 1.2, status: 'Build' },
+            { type: 'Workflow', count: 7, impact: 4.7, effort: 6, priority: 0.78, status: 'Build' },
+            { type: 'Timeline', count: 3, impact: 2.0, effort: 7, priority: 0.29, status: 'Build' },
+            { type: 'Map', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Build' },
+            { type: 'Markdown Table', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Exists' },
+            { type: 'Portfolio Quadrant Chart', count: 1, impact: 0.7, effort: 5, priority: 0.13, status: 'Build' }
         ];
 
         // Color scheme based on status
@@ -105,8 +105,7 @@
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: true,
-                aspectRatio: 1.5,
+                maintainAspectRatio: false,
                 plugins: {
                     title: {
                         display: true,
@@ -174,7 +173,7 @@
                                 weight: 'bold'
                             }
                         },
-                        min: 0,
+                        min: -1,
                         max: 10,
                         ticks: {
                             stepSize: 1
@@ -193,7 +192,7 @@
                             }
                         },
                         min: 0,
-                        max: 10,
+                        max: 12,
                         ticks: {
                             stepSize: 1
                         },
