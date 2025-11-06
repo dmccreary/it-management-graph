@@ -1,0 +1,284 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "label": "Mobile User",
+      "type": "User",
+      "properties": {
+        "username": "alice_mobile",
+        "device": "iPhone 14",
+        "location": "Remote",
+        "session_type": "Mobile App"
+      },
+      "shape": "image",
+      "image": "../../it-icons/user.svg",
+      "color": "#f59e0b",
+      "size": 25
+    },
+    {
+      "id": 2,
+      "label": "Desktop User",
+      "type": "User",
+      "properties": {
+        "username": "bob_desktop",
+        "device": "MacBook Pro",
+        "location": "Office",
+        "session_type": "Web Browser"
+      },
+      "shape": "image",
+      "image": "../../it-icons/user.svg",
+      "color": "#f59e0b",
+      "size": 25
+    },
+    {
+      "id": 3,
+      "label": "Firewall",
+      "type": "Security",
+      "properties": {
+        "name": "perimeter-fw-01",
+        "vendor": "Palo Alto",
+        "rules": "2500",
+        "throughput": "10 Gbps",
+        "status": "Active"
+      },
+      "shape": "image",
+      "image": "../../it-icons/security.svg",
+      "color": "#ef4444",
+      "size": 35
+    },
+    {
+      "id": 4,
+      "label": "Load Balancer",
+      "type": "Network",
+      "properties": {
+        "name": "lb-prod-01",
+        "type": "F5 BIG-IP",
+        "algorithm": "Round Robin",
+        "health_checks": "Enabled",
+        "SSL_termination": "Yes"
+      },
+      "shape": "image",
+      "image": "../../it-icons/router.svg",
+      "color": "#06b6d4",
+      "size": 35
+    },
+    {
+      "id": 5,
+      "label": "Web Server 1",
+      "type": "Server",
+      "properties": {
+        "hostname": "web-prod-01",
+        "IP": "10.0.2.10",
+        "OS": "Ubuntu 22.04",
+        "memory": "32GB",
+        "CPU": "16 cores",
+        "app": "Node.js v18"
+      },
+      "shape": "image",
+      "image": "../../it-icons/server.svg",
+      "color": "#94a3b8",
+      "size": 30
+    },
+    {
+      "id": 6,
+      "label": "Web Server 2",
+      "type": "Server",
+      "properties": {
+        "hostname": "web-prod-02",
+        "IP": "10.0.2.11",
+        "OS": "Ubuntu 22.04",
+        "memory": "32GB",
+        "CPU": "16 cores",
+        "app": "Node.js v18"
+      },
+      "shape": "image",
+      "image": "../../it-icons/server.svg",
+      "color": "#94a3b8",
+      "size": 30
+    },
+    {
+      "id": 7,
+      "label": "Web Server 3",
+      "type": "Server",
+      "properties": {
+        "hostname": "web-prod-03",
+        "IP": "10.0.2.12",
+        "OS": "Ubuntu 22.04",
+        "memory": "32GB",
+        "CPU": "16 cores",
+        "app": "Node.js v18"
+      },
+      "shape": "image",
+      "image": "../../it-icons/server.svg",
+      "color": "#94a3b8",
+      "size": 30
+    },
+    {
+      "id": 8,
+      "label": "Database 1",
+      "type": "Database",
+      "properties": {
+        "name": "db-prod-01",
+        "type": "PostgreSQL",
+        "version": "15.3",
+        "size": "500GB",
+        "replication": "Master",
+        "connections": "200"
+      },
+      "shape": "image",
+      "image": "../../it-icons/database.svg",
+      "color": "#fb923c",
+      "size": 30
+    },
+    {
+      "id": 9,
+      "label": "Database 2",
+      "type": "Database",
+      "properties": {
+        "name": "db-prod-02",
+        "type": "PostgreSQL",
+        "version": "15.3",
+        "size": "500GB",
+        "replication": "Master",
+        "connections": "200"
+      },
+      "shape": "image",
+      "image": "../../it-icons/database.svg",
+      "color": "#fb923c",
+      "size": 30
+    },
+    {
+      "id": 10,
+      "label": "Database 3",
+      "type": "Database",
+      "properties": {
+        "name": "db-prod-03",
+        "type": "PostgreSQL",
+        "version": "15.3",
+        "size": "500GB",
+        "replication": "Master",
+        "connections": "200"
+      },
+      "shape": "image",
+      "image": "../../it-icons/database.svg",
+      "color": "#fb923c",
+      "size": 30
+    },
+    {
+      "id": 11,
+      "label": "Sync Server",
+      "type": "Database",
+      "properties": {
+        "name": "sync-prod-01",
+        "type": "PostgreSQL Replication",
+        "version": "15.3",
+        "role": "Synchronization Master",
+        "sync_interval": "100ms",
+        "backup_schedule": "Hourly"
+      },
+      "shape": "image",
+      "image": "../../it-icons/database-gear.svg",
+      "color": "#8b5cf6",
+      "size": 35
+    }
+  ],
+  "edges": [
+    {
+      "from": 1,
+      "to": 3,
+      "label": "HTTPS",
+      "arrows": "to",
+      "width": 2
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "label": "HTTPS",
+      "arrows": "to",
+      "width": 2
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "label": "FORWARDS",
+      "arrows": "to",
+      "width": 3,
+      "color": "#ef4444"
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "label": "ROUTES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#06b6d4"
+    },
+    {
+      "from": 4,
+      "to": 6,
+      "label": "ROUTES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#06b6d4"
+    },
+    {
+      "from": 4,
+      "to": 7,
+      "label": "ROUTES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#06b6d4"
+    },
+    {
+      "from": 5,
+      "to": 8,
+      "label": "QUERIES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#94a3b8"
+    },
+    {
+      "from": 6,
+      "to": 9,
+      "label": "QUERIES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#94a3b8"
+    },
+    {
+      "from": 7,
+      "to": 10,
+      "label": "QUERIES",
+      "arrows": "to",
+      "width": 2,
+      "color": "#94a3b8"
+    },
+    {
+      "from": 8,
+      "to": 11,
+      "label": "SYNCS_TO",
+      "arrows": "to",
+      "width": 2,
+      "color": "#fb923c",
+      "dashes": true
+    },
+    {
+      "from": 9,
+      "to": 11,
+      "label": "SYNCS_TO",
+      "arrows": "to",
+      "width": 2,
+      "color": "#fb923c",
+      "dashes": true
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "label": "SYNCS_TO",
+      "arrows": "to",
+      "width": 2,
+      "color": "#fb923c",
+      "dashes": true
+    }
+  ]
+}
