@@ -1401,7 +1401,6 @@
 <ul>
 <li><a href="../01-intro-to-itil-and-config-mgmt/">Chapter 1: Introduction to ITIL and Configuration Management</a></li>
 </ul>
-<hr />
 <h2 id="the-distinction-between-configuration-management-and-asset-management">The Distinction Between Configuration Management and Asset Management</h2>
 <p>While Chapter 1 established configuration management as a discipline focused on element-level parameter control and version tracking, IT asset management represents a fundamentally different paradigm centered on financial tracking, lifecycle governance, and portfolio optimization of IT resources. This distinction has been systematically conflated in enterprise IT for decades, contributing significantly to CMDB initiative failures. Asset management emerged from financial accounting practices requiring capitalization, depreciation tracking, and license compliance, whereas configuration management derives from military-specification change control focused on maintaining known-good states of individual system components.</p>
 <p>The conceptual misalignment becomes evident when examining their respective data models and governance frameworks. Asset management systems track acquisition costs, depreciation schedules, vendor contracts, and end-of-life planning—attributes fundamentally financial in nature and governed by accounting standards (GAAP, IFRS). Configuration management systems, conversely, track version numbers, configuration parameters, baseline states, and change histories—attributes fundamentally technical in nature and governed by ITIL service management frameworks. When organizations attempt to unify these concerns into a single CMDB, they create impedance mismatches between financial governance requirements and operational technical needs, resulting in systems that serve neither purpose effectively.</p>
@@ -1454,49 +1453,39 @@
 </tbody>
 </table>
 <details>
-    <summary>Hardware vs. Software Asset Management Architecture Diagram</summary>
-    Type: diagram
-
-    Purpose: Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph
-
-    Components to show:
-    - Top layer: Financial Systems (ERP, procurement, accounts payable)
-    - Middle layer: IT Management Graph (central)
-    - Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)
-
-    Left side (Hardware Asset Flow):
-    - Procurement → Hardware Asset node (with serial number, purchase order, cost)
-    - Network discovery → Device CI node (with IP, hostname, specifications)
-    - Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)
-    - Relationship: INSTALLED_IN (Device CI → Physical Location)
-
-    Right side (Software Asset Flow):
-    - Procurement → License Entitlement node (with SKU, quantity, contract)
-    - Software discovery → Software Instance node (with version, installation path)
-    - Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)
-    - Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)
-
-    Connections between sides:
-    - Bidirectional relationship: RUNS_ON (Software Instance → Device CI)
-    - Aggregation query path (shown with dotted line): "Compliance Check" traversal from License Entitlement through all consuming instances
-
-    Style: Layered architecture diagram with directional arrows showing data flow and relationship types
-
-    Labels:
-    - "Financial Domain" on procurement systems
-    - "Operational Domain" on discovery sources
-    - "IT Management Graph" in center with node type examples
-    - Relationship labels on all edges
-
-    Color scheme:
-    - Blue for hardware-related elements
-    - Orange for software-related elements
-    - Green for the central IT Management Graph
-    - Purple for cross-domain relationships
-
-    Implementation: SVG or draw.io style diagram with clear separation of concerns
+<summary>Hardware vs. Software Asset Management Architecture Diagram</summary>
+<p><strong>Type:</strong> infographic</p>
+<p><strong>Purpose:</strong> Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph</p>
+<p>Components to show:
+- Top layer: Financial Systems (ERP, procurement, accounts payable)
+- Middle layer: IT Management Graph (central)
+- Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)</p>
+<p>Left side (Hardware Asset Flow):
+- Procurement → Hardware Asset node (with serial number, purchase order, cost)
+- Network discovery → Device CI node (with IP, hostname, specifications)
+- Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)
+- Relationship: INSTALLED_IN (Device CI → Physical Location)</p>
+<p>Right side (Software Asset Flow):
+- Procurement → License Entitlement node (with SKU, quantity, contract)
+- Software discovery → Software Instance node (with version, installation path)
+- Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)
+- Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)</p>
+<p>Connections between sides:
+- Bidirectional relationship: RUNS_ON (Software Instance → Device CI)
+- Aggregation query path (shown with dotted line): "Compliance Check" traversal from License Entitlement through all consuming instances</p>
+<p>Style: Layered architecture diagram with directional arrows showing data flow and relationship types</p>
+<p>Labels:
+- "Financial Domain" on procurement systems
+- "Operational Domain" on discovery sources
+- "IT Management Graph" in center with node type examples
+- Relationship labels on all edges</p>
+<p>Color scheme:
+- Blue for hardware-related elements
+- Orange for software-related elements
+- Green for the central IT Management Graph
+- Purple for cross-domain relationships</p>
+<p>Implementation: SVG or draw.io style diagram with clear separation of concerns</p>
 </details>
-
 <h2 id="portfolio-management-aggregating-assets-into-strategic-views">Portfolio Management: Aggregating Assets into Strategic Views</h2>
 <p>IT portfolio management represents the aggregation and strategic analysis of IT assets across multiple dimensions to inform investment decisions, technology rationalization, and digital transformation planning. While individual asset tracking focuses on tactical lifecycle management, portfolio management elevates perspective to answer strategic questions: What is our total investment in legacy versus modern technology stacks? Which applications create technical debt that impedes business agility? Where should we allocate capital to maximize business value?</p>
 <p>An <strong>application portfolio</strong> comprises all software applications supporting business capabilities, typically categorized by business function, technology stack, lifecycle stage, and strategic value. Application Portfolio Management (APM) frameworks often employ quadrant models assessing applications across dimensions such as business value versus technical quality, resulting in classifications like "invest," "maintain," "migrate," or "retire." However, these classifications prove meaningless without understanding the dependency networks constraining transformation options—an application assessed as "retire" may be deeply embedded in critical business processes with dozens of dependent systems, making retirement infeasible without multi-year modernization programs.</p>
@@ -1993,11 +1982,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
