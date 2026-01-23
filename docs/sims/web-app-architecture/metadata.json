@@ -43,5 +43,10 @@
     "interactive-demo",
     "network",
     "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of high-volume web application architecture",
+    "Apply high-volume web application architecture to solve problems",
+    "Visualize and interpret high-volume web application architecture relationships"
   ]
 }

@@ -42,5 +42,11 @@
     "interactive-demo",
     "network",
     "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of deployment dependencies dag",
+    "Apply deployment dependencies dag to solve problems",
+    "Visualize and interpret deployment dependencies dag relationships",
+    "Test understanding of deployment dependencies dag through interactive exercises"
   ]
 }

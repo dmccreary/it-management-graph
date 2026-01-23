@@ -41,5 +41,10 @@
     "interactive-demo",
     "network",
     "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of it infrastructure graph nodes",
+    "Apply it infrastructure graph nodes to solve problems",
+    "Visualize and interpret it infrastructure graph nodes relationships"
   ]
 }

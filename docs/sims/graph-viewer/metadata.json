@@ -41,5 +41,11 @@
     "chart",
     "graph",
     "network"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of learning graph viewer",
+    "Apply learning graph viewer to solve problems",
+    "Visualize and interpret learning graph viewer relationships",
+    "Test understanding of learning graph viewer through interactive exercises"
   ]
 }
