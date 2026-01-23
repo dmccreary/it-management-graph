@@ -1,0 +1,47 @@
+{
+  "title": "High-Volume Web Application Architecture",
+  "description": "<iframe src=\"./main.html\" width=\"100%\"></iframe>",
+  "subject": "Mathematics",
+  "topic": "High-Volume Web Application Architecture",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "vis-network",
+  "url": "https://dmccreary.github.io/it-management-graph/sims/web-app-architecture/",
+  "identifier": "https://dmccreary.github.io/it-management-graph/sims/web-app-architecture/",
+  "_source": {
+    "repo": "it-management-graph",
+    "sim": "web-app-architecture",
+    "github_url": "https://github.com/dmccreary/it-management-graph/tree/main/docs/sims/web-app-architecture",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Computer Science",
+    "Chemistry",
+    "Statistics",
+    "Engineering",
+    "Economics"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "interactive-demo",
+    "network",
+    "map"
+  ]
+}

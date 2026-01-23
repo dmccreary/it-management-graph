@@ -1,0 +1,46 @@
+{
+  "title": "Deployment Dependencies DAG",
+  "description": "[View Deployment Dependencies DAG Fullscreen](main.html){ .md-button .md-button--primary }",
+  "subject": "Mathematics",
+  "topic": "Deployment Dependencies DAG",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "vis-network",
+  "url": "https://dmccreary.github.io/it-management-graph/sims/deployment-dag/",
+  "identifier": "https://dmccreary.github.io/it-management-graph/sims/deployment-dag/",
+  "_source": {
+    "repo": "it-management-graph",
+    "sim": "deployment-dag",
+    "github_url": "https://github.com/dmccreary/it-management-graph/tree/main/docs/sims/deployment-dag",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Computer Science",
+    "Chemistry",
+    "Statistics",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "interactive-demo",
+    "network",
+    "map"
+  ]
+}

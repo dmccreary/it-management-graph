@@ -1,0 +1,46 @@
+{
+  "title": "Skill Development Priority Matrix Visualization",
+  "description": "An interactive Chart.js bubble chart that visualizes the priority matrix for skill development in creating educational visualizations. This chart helps identify which visualization types should be prioritized based on their impact (frequency of use) versus effort (similarity to existing MicroSims).",
+  "subject": "Mathematics",
+  "topic": "Skill Development Priority Matrix Visualization",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "chart.js",
+  "url": "https://dmccreary.github.io/it-management-graph/sims/skill-impact-chart/",
+  "identifier": "https://dmccreary.github.io/it-management-graph/sims/skill-impact-chart/",
+  "_source": {
+    "repo": "it-management-graph",
+    "sim": "skill-impact-chart",
+    "github_url": "https://github.com/dmccreary/it-management-graph/tree/main/docs/sims/skill-impact-chart",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Computer Science",
+    "Chemistry",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "diagram",
+    "interactive-demo",
+    "network",
+    "timeline",
+    "map"
+  ]
+}

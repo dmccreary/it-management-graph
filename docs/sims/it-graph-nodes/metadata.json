@@ -1,0 +1,45 @@
+{
+  "title": "IT Infrastructure Graph Nodes",
+  "description": "[View IT Infrastructure Nodes Fullscreen](main.html){ .md-button .md-button--primary }",
+  "subject": "Mathematics",
+  "topic": "IT Infrastructure Graph Nodes",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "p5.js",
+  "url": "https://dmccreary.github.io/it-management-graph/sims/it-graph-nodes/",
+  "identifier": "https://dmccreary.github.io/it-management-graph/sims/it-graph-nodes/",
+  "_source": {
+    "repo": "it-management-graph",
+    "sim": "it-graph-nodes",
+    "github_url": "https://github.com/dmccreary/it-management-graph/tree/main/docs/sims/it-graph-nodes",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Computer Science",
+    "Chemistry",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "animation",
+    "simulation",
+    "chart",
+    "graph",
+    "interactive-demo",
+    "network",
+    "map"
+  ]
+}

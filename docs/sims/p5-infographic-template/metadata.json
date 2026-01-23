@@ -1,0 +1,41 @@
+{
+  "title": "P5.js Funnel Infographic Template",
+  "description": "<iframe src=\"./main.html\" width=\"100%\" height=\"720px\" scrolling=\"no\"></iframe>",
+  "subject": "Mathematics",
+  "topic": "P5.js Funnel Infographic Template",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "p5.js",
+  "url": "https://dmccreary.github.io/it-management-graph/sims/p5-infographic-template/",
+  "identifier": "https://dmccreary.github.io/it-management-graph/sims/p5-infographic-template/",
+  "_source": {
+    "repo": "it-management-graph",
+    "sim": "p5-infographic-template",
+    "github_url": "https://github.com/dmccreary/it-management-graph/tree/main/docs/sims/p5-infographic-template",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Computer Science",
+    "Chemistry",
+    "Biology"
+  ],
+  "visualizationType": [
+    "chart",
+    "graph",
+    "interactive-demo",
+    "map"
+  ]
+}
