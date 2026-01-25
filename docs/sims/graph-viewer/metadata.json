@@ -47,5 +47,29 @@
     "Apply learning graph viewer to solve problems",
     "Visualize and interpret learning graph viewer relationships",
     "Test understanding of learning graph viewer through interactive exercises"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "reference",
+    "bloomAlignment": [
+      "remember",
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "identify",
+      "list",
+      "recognize",
+      "classify",
+      "apply"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "immediate",
+      "corrective",
+      "explanatory"
+    ],
+    "interactionStyle": "observe"
+  }
 }

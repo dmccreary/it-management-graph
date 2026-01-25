@@ -42,5 +42,28 @@
     "Apply it assets hierarchy - interactive infographic to solve problems",
     "Visualize and interpret it assets hierarchy - interactive infographic relationships",
     "Test understanding of it assets hierarchy - interactive infographic through interactive exercises"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "remember",
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "define",
+      "identify",
+      "recognize",
+      "compare",
+      "describe"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "immediate",
+      "corrective"
+    ],
+    "interactionStyle": "observe"
+  }
 }

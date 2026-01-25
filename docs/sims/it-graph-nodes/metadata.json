@@ -46,5 +46,28 @@
     "Understand the mathematical concept of it infrastructure graph nodes",
     "Apply it infrastructure graph nodes to solve problems",
     "Visualize and interpret it infrastructure graph nodes relationships"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "demonstration",
+    "bloomAlignment": [
+      "remember",
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "identify",
+      "list",
+      "recognize",
+      "classify",
+      "summarize"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "corrective",
+      "explanatory"
+    ],
+    "interactionStyle": "respond"
+  }
 }

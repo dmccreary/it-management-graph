@@ -48,5 +48,29 @@
     "Apply skill development priority matrix visualization to solve problems",
     "Visualize and interpret skill development priority matrix visualization relationships",
     "Experiment with parameters to observe their effects on skill development priority matrix visualization"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "reference",
+    "bloomAlignment": [
+      "understand",
+      "apply",
+      "analyze"
+    ],
+    "bloomVerbs": [
+      "classify",
+      "compare",
+      "interpret",
+      "summarize",
+      "calculate"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "medium",
+    "feedbackType": [
+      "immediate",
+      "corrective",
+      "explanatory"
+    ],
+    "interactionStyle": "construct"
+  }
 }
