@@ -1,0 +1,14 @@
+{
+  "sim_id": "hardware-vs-software-asset-management-architecture",
+  "diagram_name": "Hardware vs. Software Asset Management Architecture",
+  "chapter_number": 2,
+  "chapter_title": "It Asset Management",
+  "chapter_dir": "02-it-asset-management",
+  "library": "SVG or draw.io style diagram with clear separation of concerns",
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "**Type:** infographic\n\n**Purpose:** Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph\n\nComponents to show:\n- Top layer: Financial Systems (ERP, procurement, accounts payable)\n- Middle layer: IT Management Graph (central)\n- Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)\n\nLeft side (Hardware Asset Flow):\n- Procurement → Hardware Asset node (with serial number, purchase order, cost)\n- Network discovery → Device CI node (with IP, hostname, specifications)\n- Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)\n- Relationship: INSTALLED_IN (Device CI → Physical Location)\n\nRight side (Software Asset Flow):\n- Procurement → License Entitlement node (with SKU, quantity, contract)\n- Software discovery → Software Instance node (with version, installation path)\n- Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)\n- Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)\n\nConnections between sides:\n- Bidirectional relationship: RUNS_ON (Software Instance → Device CI)\n- Aggregation query path (shown with dotted line): \"Compliance Check\" traversal from License Entitlement through all consuming instances\n\nStyle: Layered architecture diagram with directional arrows showing data flow and relationship types\n\nLabels:\n- \"Financial Domain\" on procurement systems\n- \"Operational Domain\" on discovery sources\n- \"IT Management Graph\" in center with node type examples\n- Relationship labels on all edges\n\nColor scheme:\n- Blue for hardware-related elements\n- Orange for software-related elements\n- Green for the central IT Management Graph\n- Purple for cross-domain relationships\n\nImplementation: SVG or draw.io style diagram with clear separation of concerns"
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cypher Pattern Matching Interactive Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Cypher Pattern Matching Interactive Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> cypher-pattern-matching-interactive-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    
+        Purpose: Demonstrate how Cypher pattern matching works by showing a query pattern (template) and highlighting all matching subgraphs in a larger IT infrastructure graph
+    
+        Canvas layout: 1200x800px split into two sections
+    
+        Section 1 (Top, 1200x150px): Query pattern template
+        Shows the Cypher query pattern being matched as a small graph diagram
+    
+        Example pattern:
+        ```cypher
+        MATCH (bs:BusinessService)-[:SUPPORTS]->(app:Application)-[:DEPENDS_ON]->(db:Database)
+        WHERE db.last_backup < datetime() - duration({days: 7})
+        RETURN bs.name, app.name, db.name
+        ```
+    
+        Visual pattern representation (small graph):
+        - Node: BusinessService (pink circle)
+        - Edge: SUPPORTS (pink arrow) →
+        - Node: Application (blue square)
+        - Edge: DEPENDS_ON (blue arrow) →
+        - Node: Database (orange cylinder)
+        - Annotation: "WHERE db.last_backup > 7 days ago"
+    
+        Section 2 (Bottom, 1200x650px): Full IT infrastructure graph
+    
+        Large graph with 30+ nodes showing complete IT infrastructure:
+    
+        Business Services (5 nodes):
+        - "Online Banking", "Mobile App", "Admin Portal", "Customer Service", "Analytics Dashboard"
+    
+        Applications (12 nodes):
+        - "Web Frontend", "API Gateway", "Auth Service", "Payment Service", "Order Service", "User Service", "Notification Service", "Report Generator", "Admin API", "Chat Service", "Data Sync", "Batch Processor"
+    
+        Databases (8 nodes):
+        - "CustomerDB" (last_backup: 2 days ago)
+        - "PaymentDB" (last_backup: 10 days ago) ← MATCH!
+        - "OrderDB" (last_backup: 1 day ago)
+        - "UserDB" (last_backup: 15 days ago) ← MATCH!
+        - "AnalyticsDB" (last_backup: 3 days ago)
+        - "SessionStore" (last_backup: 1 day ago)
+        - "AuditDB" (last_backup: 20 days ago) ← MATCH!
+        - "ConfigDB" (last_backup: 1 day ago)
+    
+        Servers, Locations, Teams (5+ additional nodes for context)
+    
+        Full graph relationships:
+        - All business services connected to applications via SUPPORTS
+        - All applications connected to databases via DEPENDS_ON
+        - Applications connected to servers via HOSTED_ON
+        - Additional relationships for complete infrastructure picture
+    
+        Interactive features:
+    
+        Pattern Selection Panel (left sidebar):
+        - Dropdown: "Select query pattern"
+          - Option 1: "Business services with outdated database backups" (default, shown above)
+          - Option 2: "Applications with high-criticality dependencies"
+          - Option 3: "Servers hosting multiple production applications"
+          - Option 4: "End-to-end path: Service → App → DB → Server"
+        - Button: "Find Matches" - Runs pattern matching
+        - Button: "Clear Highlighting" - Resets to default view
+        - Checkbox: "Animate match discovery" - Shows matches appearing sequentially
+    
+        When "Find Matches" clicked:
+        1. Display query pattern template in top section
+        2. In bottom graph, highlight ALL subgraphs matching the pattern:
+           - Match 1: "Online Banking" → "Payment Service" → "PaymentDB" (10 days old backup)
+           - Match 2: "Admin Portal" → "Auth Service" → "UserDB" (15 days old backup)
+           - Match 3: "Customer Service" → "Chat Service" → "AuditDB" (20 days old backup)
+        3. Non-matching portions of graph fade to low opacity (20%)
+        4. Each match gets distinct highlight color (yellow, cyan, magenta) for clarity
+        5. Match count displayed: "3 matches found"
+    
+        Hover on highlighted match:
+        - Brightens that specific match
+        - Shows tooltip with query result for that match:
+          - Business Service: [name]
+          - Application: [name]
+          - Database: [name]
+          - Last backup: [X] days ago
+    
+        Click on highlighted match:
+        - Isolates that match (only shows those 3 nodes and 2 edges)
+        - Displays full properties in right panel:
+          - All node properties
+          - All edge properties
+          - Query predicate evaluation (WHY this matched)
+        - Button: "Return to full graph"
+    
+        Animation mode (if checkbox enabled):
+        - Pattern template pulses in top section
+        - Each match appears sequentially with 1-second delay
+        - Highlight ripples outward from first matched node
+        - Counter shows: "Match 1 of 3... Match 2 of 3... Match 3 of 3... Complete!"
+    
+        Right sidebar panel: Match details
+        - Total matches: 3
+        - Match list with expand/collapse:
+          - Match 1: "Online Banking" → "Payment Service" → "PaymentDB"
+            Backup age: 10 days (WARNING)
+          - Match 2: "Admin Portal" → "Auth Service" → "UserDB"
+            Backup age: 15 days (CRITICAL)
+          - Match 3: "Customer Service" → "Chat Service" → "AuditDB"
+            Backup age: 20 days (CRITICAL)
+        - Severity summary: 1 warning, 2 critical
+        - Action recommendations: "Schedule immediate backups for UserDB and AuditDB"
+    
+        Educational callouts:
+        - "Pattern matching finds ALL instances of the template pattern"
+        - "Yellow highlights show subgraphs matching the query pattern"
+        - "Non-matching nodes fade out—pattern matching filters the graph"
+        - "Notice how pattern describes STRUCTURE (Service→App→DB) and PROPERTIES (backup age)"
+        - "Try different query patterns to see how matching changes!"
+    
+        Legend (top-right):
+        - Node types (shapes and colors)
+        - Match highlighting (yellow/cyan/magenta for different matches)
+        - Opacity levels (full = matched, faded = not matched)
+        - Pattern components (template nodes vs data nodes)
+    
+        Visual styling:
+        - Pattern template (top): Larger nodes, bold edges, annotations
+        - Data graph (bottom): Full infrastructure with standard styling
+        - Matched subgraphs: Bright highlights (yellow, cyan, magenta), thick borders, animated glow
+        - Non-matched portions: 20% opacity, gray tint
+        - Hover effects: Brighten, show tooltip
+        - Click selection: Isolate match, show properties panel
+    
+        Canvas size: 1200x800px (150px pattern + 650px graph + sidebars)
+    
+        Color scheme:
+        - Pattern template: Bold colors with white background
+        - Matched subgraphs: Yellow (Match 1), Cyan (Match 2), Magenta (Match 3)
+        - Unmatched portions: Desaturated gray at low opacity
+        - Critical alerts: Red badges on nodes with critical issues
+    
+        Implementation: vis-network JavaScript library with custom pattern matching algorithm (subgraph isomorphism), highlighting system, animation engine, property-based filtering
+    
+        Interactive query builder (advanced feature):
+        - Drag-and-drop pattern builder: Construct query patterns visually
+        - Add nodes (select type), add edges (select relationship), add filters (property constraints)
+        - Auto-generate Cypher query from visual pattern
+        - Execute and see matches in real-time
+    
+        Educational insight panel (bottom):
+        "Pattern matching is the heart of graph queries! Instead of procedurally navigating the graph (visit this node, check that property, follow this edge), you declare the pattern you seek and let the database find all instances. This declarative approach makes complex analytical queries simple and readable!"
+    -->
+</body>
+</html>

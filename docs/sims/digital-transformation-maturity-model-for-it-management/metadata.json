@@ -1,0 +1,21 @@
+{
+  "title": "Digital Transformation Maturity Model for IT Management",
+  "description": "Digital Transformation Maturity Model for IT Management",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "digital-transformation-maturity-model-for-it-management",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 12,
+  "chapter_title": "Digital Transformation And Advanced Topics",
+  "chapter_dir": "12-digital-transformation-and-advanced-topics"
+}

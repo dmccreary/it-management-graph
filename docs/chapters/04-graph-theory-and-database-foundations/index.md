@@ -59,6 +59,8 @@ Nodes can be categorized using **labels** or **types** that indicate what kind o
 
 Let's visualize how nodes represent IT infrastructure entities:
 
+#### Diagram: IT Infrastructure Nodes Interactive Visualization
+
 <details>
     <summary>IT Infrastructure Nodes Interactive Visualization</summary>
     Type: graph-model
@@ -167,6 +169,8 @@ Edges have several important characteristics:
 **Edge properties:** This is where edges become truly powerful! Edges can carry properties just like nodes. A DEPENDS_ON relationship might have properties for dependency_strength (critical/high/medium/low), added_date, last_verified, and criticality_score. A HOSTS relationship could include properties like deployment_date, resource_allocation_percentage, and health_check_frequency. These properties enrich relationships with contextual information essential for decision-making.
 
 Let's see how edges connect our infrastructure nodes:
+
+#### Diagram: IT Infrastructure Graph with Nodes and Relationships
 
 <details>
     <summary>IT Infrastructure Graph with Nodes and Relationships</summary>
@@ -351,6 +355,8 @@ There are two fundamental approaches to traversing graphs, each with different c
 **Breadth-First Search (BFS)** explores all neighbors at the current depth before moving to nodes at the next depth level. Think of it like ripples expanding outward from a stone dropped in water—you explore all nodes one hop away, then all nodes two hops away, then three hops, and so on. BFS is perfect for finding shortest paths, calculating blast radius (nodes within N hops), and ensuring you discover all nodes at each distance level before going deeper.
 
 Let's visualize these traversal algorithms in action:
+
+#### Diagram: Graph Traversal Algorithm Comparison: DFS vs BFS
 
 <details>
     <summary>Graph Traversal Algorithm Comparison: DFS vs BFS</summary>
@@ -583,6 +589,8 @@ DAGs enable powerful algorithms and guarantees:
 **Efficient traversals:** Many graph algorithms run more efficiently on DAGs since the acyclic property simplifies computation. You don't need to track visited nodes to avoid infinite loops—the graph structure guarantees you won't cycle back.
 
 Let's visualize a DAG representing deployment dependencies:
+
+#### Diagram: Deployment Dependencies as a Directed Acyclic Graph (DAG)
 
 <details>
     <summary>Deployment Dependencies as a Directed Acyclic Graph (DAG)</summary>

@@ -1,0 +1,21 @@
+{
+  "title": "Traditional CMDB Data Flow and Integration Architecture",
+  "description": "Traditional CMDB Data Flow and Integration Architecture",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "traditional-cmdb-data-flow-and-integration-architecture",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 1,
+  "chapter_title": "Intro To Itil And Config Mgmt",
+  "chapter_dir": "01-intro-to-itil-and-config-mgmt"
+}

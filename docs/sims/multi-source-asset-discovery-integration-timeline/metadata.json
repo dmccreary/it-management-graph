@@ -1,0 +1,21 @@
+{
+  "title": "Multi-Source Asset Discovery Integration Timeline",
+  "description": "Multi-Source Asset Discovery Integration Timeline",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "multi-source-asset-discovery-integration-timeline",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 2,
+  "chapter_title": "It Asset Management",
+  "chapter_dir": "02-it-asset-management"
+}

@@ -65,6 +65,8 @@ In this dynamic environment, manual tracking and periodic audits quickly become 
 
 Digital transformation in IT management means adopting systems that can keep pace with change, provide instant impact analysis, and enable data-driven decision making. It's a shift from "managing configurations" to "understanding relationships," from static snapshots to continuous discovery, and from reactive firefighting to proactive risk management.
 
+#### Diagram: Digital Transformation Maturity Model for IT Management
+
 <details>
     <summary>Digital Transformation Maturity Model for IT Management</summary>
     Type: diagram
@@ -140,6 +142,8 @@ Organizations that successfully modernize their IT management capabilities repor
 - Real-time visibility that was previously impossible
 
 These aren't just incremental improvements—they represent fundamental changes in how IT organizations operate and deliver value.
+
+#### Diagram: IT Modernization Interconnected Domains Infographic
 
 <details>
     <summary>IT Modernization Interconnected Domains Infographic</summary>
@@ -272,6 +276,8 @@ Several strategic decisions will shape your specific migration approach:
 **Skillset Strategy**: Do you build internal expertise in graph databases and modern IT management, or do you partner with consultants and vendors? Most organizations find that a blend works best—external expertise for initial setup and knowledge transfer, internal teams for ongoing operations.
 
 **Vendor Strategy**: Do you build a custom solution, adopt a vendor platform, or use a hybrid approach? We'll explore this critical decision in the next section.
+
+#### Diagram: Migration Timeline with Risk and Value Curves
 
 <details>
     <summary>Migration Timeline with Risk and Value Curves</summary>
@@ -463,6 +469,8 @@ When deciding between build, buy, or hybrid, evaluate these factors:
 **Strategic Importance**: Is IT management a differentiating capability for your organization, or is it better handled through standard solutions?
 
 There's no universally correct answer to the build vs. buy question. The right choice depends on your specific context, constraints, and strategic priorities. However, industry trends suggest that most organizations benefit from adopting vendor platforms for core capabilities while customizing around the edges.
+
+#### Diagram: Build vs Buy Decision Matrix Interactive Tool
 
 <details>
     <summary>Build vs Buy Decision Matrix Interactive Tool</summary>
@@ -657,6 +665,8 @@ When evaluating these or other vendors, consider these key dimensions:
 
 There's no single "best" vendor—the right choice depends on your specific requirements, existing technology investments, and strategic priorities.
 
+#### Diagram: Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian
+
 <details>
     <summary>Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian</summary>
     Type: markdown-table
@@ -764,6 +774,8 @@ After systematic evaluation, synthesize your findings into a clear recommendatio
 This quantitative approach helps you justify your decision to stakeholders and ensures you've considered all important factors systematically.
 
 However, remember that numbers don't tell the whole story. Qualitative factors matter too—vendor relationships, strategic alignment, organizational fit, and gut instinct based on experience all play legitimate roles in technology decisions.
+
+#### Diagram: Technology Selection Workflow with Decision Gates
 
 <details>
     <summary>Technology Selection Workflow with Decision Gates</summary>
@@ -1024,6 +1036,8 @@ TCO tells you what something costs, but not whether it's worth the cost. That's 
 
 We'll explore ROI calculation in the next section, but the key insight is this: **the lowest TCO option isn't necessarily the best choice if it delivers less value**. A solution that costs $647,000 but delivers $2,000,000 in value (ROI = 209%) is better than one that costs $345,000 but delivers only $600,000 in value (ROI = 74%).
 
+#### Diagram: TCO Comparison Chart: Three Options Over Five Years
+
 <details>
     <summary>TCO Comparison Chart: Three Options Over Five Years</summary>
     Type: chart
@@ -1224,6 +1238,8 @@ The biggest challenge in business case development is credibility. Finance teams
 **Get stakeholder buy-in on assumptions**: Review your benefit assumptions with operational teams who will realize those benefits. Their endorsement adds credibility.
 
 A well-constructed business case doesn't just justify the investment—it creates momentum and buy-in for successful implementation.
+
+#### Diagram: ROI Waterfall Chart: From Costs to Net Value
 
 <details>
     <summary>ROI Waterfall Chart: From Costs to Net Value</summary>
@@ -1428,6 +1444,8 @@ Humans handle:
 - Continuous improvement of AI models
 
 This partnership approach ensures you get the efficiency benefits of automation while maintaining human oversight for critical decisions.
+
+#### Diagram: AI-Enhanced IT Management Graph Architecture Diagram
 
 <details>
     <summary>AI-Enhanced IT Management Graph Architecture Diagram</summary>
@@ -1707,6 +1725,8 @@ However, there are also considerations:
 - **Cost**—LLM API calls can be expensive at scale
 
 Graph RAG represents the convergence of knowledge graphs, database technology, and artificial intelligence—creating systems that combine the strengths of each approach.
+
+#### Diagram: Graph RAG Query Flow Interactive Diagram
 
 <details>
     <summary>Graph RAG Query Flow Interactive Diagram</summary>
@@ -2029,6 +2049,8 @@ A practical exception reporting implementation includes a dashboard showing:
 - Remediation status
 
 This dashboard becomes a key governance tool, reviewed regularly by IT leadership and architecture teams to drive continuous improvement.
+
+#### Diagram: Exception Reporting Dashboard Mockup
 
 <details>
     <summary>Exception Reporting Dashboard Mockup</summary>

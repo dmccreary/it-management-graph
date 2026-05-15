@@ -106,6 +106,8 @@ Here's a comparison of these three major frameworks:
 | GDPR | Personal data privacy | EU + extraterritorial | Personal data of EU residents | Data mapping, consent management, deletion capabilities, breach notification |
 | DORA | Operational resilience | EU financial sector | All ICT systems and data | Dependency mapping, resilience testing, incident reporting, third-party risk management |
 
+#### Diagram: Regulatory Framework Timeline
+
 <details>
     <summary>Regulatory Framework Timeline</summary>
     Type: timeline
@@ -153,6 +155,8 @@ One of the most powerful applications of IT management graphs is real-time depen
 With a graph-based approach, you model your IT infrastructure as nodes (servers, applications, databases, network components) connected by relationship edges (HOSTS, DEPENDS_ON, CONNECTS_TO, PROCESSES). To find all systems processing ePHI, you start with nodes labeled as containing ePHI and traverse all incoming and outgoing relationships. This traversal operates in constant time per hop regardless of total graph size, delivering results in milliseconds even across complex infrastructures with thousands of components.
 
 The advantages compound when dealing with multi-hop dependencies. Suppose a database containing ePHI is accessed by an API gateway, which is called by a web application, which is hosted on a virtual machine, which runs on physical infrastructure in a data center. Traditional SQL queries would require four levels of joins, with performance degrading exponentially. Graph traversal handles this elegantly with a simple depth-bounded search that follows relationship paths naturally.
+
+#### Diagram: HIPAA Data Flow Tracing Diagram
 
 <details>
     <summary>HIPAA Data Flow Tracing Diagram</summary>
@@ -206,6 +210,8 @@ This capability becomes even more valuable when third-party vendors are involved
 - If we terminate our relationship with Vendor X, which business processes are affected?
 - Which vendors have access to both financial and personal data (elevated risk)?
 - What is our concentration risk if AWS experiences an outage?
+
+#### Diagram: GDPR Cross-Border Data Flow Map
 
 <details>
     <summary>GDPR Cross-Border Data Flow Map</summary>
@@ -293,6 +299,8 @@ Traditional compliance reporting often involves data collection from multiple sy
 - All security incidents involving ePHI systems and their resolution status
 
 These reports can be generated on-demand with current data, rather than relying on point-in-time snapshots that may be outdated by the time auditors review them.
+
+#### Diagram: Compliance Dashboard Overview Chart
 
 <details>
     <summary>Compliance Dashboard Overview Chart</summary>
@@ -413,6 +421,8 @@ Graph databases naturally support these methodologies by allowing you to model c
 
 This analysis, which might take hours or days with traditional tools, executes in seconds with graph traversal and provides comprehensive visibility into cascading impacts.
 
+#### Diagram: Risk Assessment Workflow Diagram
+
 <details>
     <summary>Risk Assessment Workflow Diagram</summary>
     Type: workflow
@@ -519,6 +529,8 @@ RBAC models map naturally to graph structures:
 To determine if a user can perform an operation, the graph traversal follows: User → HAS_ROLE → Role → CAN_ACCESS → Resource, checking if the permission property matches the requested operation. This two-hop traversal executes in microseconds even in graphs with millions of nodes.
 
 Advanced RBAC implementations add role hierarchies (senior roles inherit permissions from junior roles) and constraints (separation of duty rules preventing users from holding conflicting roles). Graph databases handle these extensions naturally through additional relationship types and traversal filters.
+
+#### Diagram: RBAC Permission Graph Visualization
 
 <details>
     <summary>RBAC Permission Graph Visualization</summary>
@@ -668,6 +680,8 @@ The key to successful audits with graph-based systems is establishing trust in t
 - Integration with authoritative source systems (HR systems for user data, asset management for infrastructure inventory)
 - Automated discovery tools that detect and report discrepancies
 - Regular reconciliation between the graph and reality through sampling and testing
+
+#### Diagram: Compliance Audit Evidence Generation Flow Diagram
 
 <details>
     <summary>Compliance Audit Evidence Generation Flow Diagram</summary>

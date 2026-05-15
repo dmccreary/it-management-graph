@@ -1,0 +1,14 @@
+{
+  "sim_id": "digital-transformation-maturity-model-for-it-management",
+  "diagram_name": "Digital Transformation Maturity Model for IT Management",
+  "chapter_number": 12,
+  "chapter_title": "Digital Transformation And Advanced Topics",
+  "chapter_dir": "12-digital-transformation-and-advanced-topics",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: diagram\n\n    Purpose: Illustrate the progression from traditional IT management to fully transformed graph-based approaches\n\n    Visual style: Staircase diagram with 5 levels, ascending from left to right\n\n    Levels (with descriptions):\n\n    Level 1 - Manual Tracking (bottom left):\n    - Icon: Clipboard and spreadsheet\n    - Description: \"Spreadsheets, manual audits, periodic reviews\"\n    - Characteristics: Static, error-prone, outdated information\n    - Color: Red\n\n    Level 2 - Database-Driven CMDB:\n    - Icon: Traditional database cylinder\n    - Description: \"RDBMS-based CMDB, structured data entry\"\n    - Characteristics: Rigid schema, difficult to query relationships\n    - Color: Orange\n\n    Level 3 - Automated Discovery:\n    - Icon: Radar or scanning symbol\n    - Description: \"Agent-based discovery, scheduled scans\"\n    - Characteristics: Improved accuracy, still periodic updates\n    - Color: Yellow\n\n    Level 4 - Real-Time Graph:\n    - Icon: Network graph\n    - Description: \"Graph database, continuous discovery, real-time queries\"\n    - Characteristics: Dynamic, relationship-focused, instant impact analysis\n    - Color: Light green\n\n    Level 5 - AI-Enhanced Intelligence (top right):\n    - Icon: Brain or AI symbol\n    - Description: \"Graph + AI/ML, predictive analytics, automated curation\"\n    - Characteristics: Self-healing, intelligent recommendations, proactive risk detection\n    - Color: Dark green\n\n    Visual elements:\n    - Arrows connecting each level showing progression\n    - Small text labels on arrows: \"Automation,\" \"Real-time,\" \"Intelligence\"\n    - Dotted line showing \"Time to value\" decreasing as maturity increases\n    - X-axis label: \"Maturity Level\"\n    - Y-axis label: \"Business Value\"\n\n    Layout: Width 800px, height 500px\n    Style: Modern, clean design with subtle gradients in the step colors"
+}

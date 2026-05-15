@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> query-performance-comparison-chart-rdbms-join-performance-by-hop-count</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: chart
+    
+        Chart type: Line chart with logarithmic Y-axis
+    
+        Purpose: Demonstrate exponential performance degradation in RDBMS multi-hop queries compared to constant-time graph database traversal
+    
+        X-axis: Number of hops (1, 2, 3, 4, 5, 6)
+        Y-axis: Query response time (milliseconds, logarithmic scale: 1, 10, 100, 1000, 10000, 60000+)
+    
+        Data series:
+    
+        1. "RDBMS without indexes" (red line, dashed):
+           - 1 hop: 50ms
+           - 2 hops: 800ms
+           - 3 hops: 8,500ms
+           - 4 hops: 45,000ms
+           - 5 hops: 180,000ms (timeout indicator)
+           - 6 hops: N/A (query timeout)
+    
+        2. "RDBMS with optimal indexes" (orange line, solid):
+           - 1 hop: 8ms
+           - 2 hops: 95ms
+           - 3 hops: 1,200ms
+           - 4 hops: 12,000ms
+           - 5 hops: 65,000ms (timeout warning)
+           - 6 hops: N/A (query timeout)
+    
+        3. "Graph database (for comparison)" (green line, solid):
+           - 1 hop: 5ms
+           - 2 hops: 9ms
+           - 3 hops: 13ms
+           - 4 hops: 17ms
+           - 5 hops: 21ms
+           - 6 hops: 25ms
+    
+        Title: "Multi-Hop Query Performance: RDBMS vs Graph Database"
+        Subtitle: "Why relational databases struggle with transitive dependencies"
+    
+        Legend: Position top-right, with line style indicators
+    
+        Annotations:
+        - Horizontal line at 1000ms (1 second) with label: "Acceptable user experience threshold"
+        - Horizontal line at 60000ms (1 minute) with label: "Typical query timeout"
+        - Arrow pointing to RDBMS 4-hop: "Enterprise CMDBs often require 5-10 hops for impact analysis"
+        - Annotation on graph database line: "Nearly constant time per hop (index-free adjacency)"
+        - Shaded region above 10,000ms labeled: "Unusable for real-time queries"
+    
+        Data table below chart showing exact values:
+        | Hops | RDBMS (no index) | RDBMS (indexed) | Graph DB |
+        |------|------------------|-----------------|----------|
+        | 1 | 50ms | 8ms | 5ms |
+        | 2 | 800ms | 95ms | 9ms |
+        | 3 | 8,500ms | 1,200ms | 13ms |
+        | 4 | 45,000ms | 12,000ms | 17ms |
+        | 5 | 180,000ms (timeout) | 65,000ms | 21ms |
+        | 6 | N/A | N/A | 25ms |
+    
+        Interactive features:
+        - Hover over data points to see exact values and context
+        - Click legend items to show/hide series
+        - Tooltip on hover showing: "At 4 hops, RDBMS requires 4 JOIN operations scanning intermediate result sets. Graph DB follows direct pointers."
+    
+        Visual style: Professional line chart with clear axis labels, grid lines, and contrasting colors
+    
+        Color scheme:
+        - Red (RDBMS no index): Danger/slow
+        - Orange (RDBMS indexed): Warning/moderate
+        - Green (Graph DB): Success/fast
+        - Gray grid lines
+        - Logarithmic scale clearly labeled on Y-axis
+    
+        Implementation: Chart.js, D3.js, or similar JavaScript charting library with interactive tooltips and legend controls
+    
+        Note at bottom: "Data based on benchmarks with 100,000 node dataset, average fan-out of 3 dependencies per node, PostgreSQL vs Neo4j"
+    -->
+</body>
+</html>

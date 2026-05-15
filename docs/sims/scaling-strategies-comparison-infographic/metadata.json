@@ -1,0 +1,21 @@
+{
+  "title": "Scaling Strategies Comparison Infographic",
+  "description": "Scaling Strategies Comparison Infographic",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "scaling-strategies-comparison-infographic",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 9,
+  "chapter_title": "Query Performance And Real Time Ops",
+  "chapter_dir": "09-query-performance-and-real-time-ops"
+}

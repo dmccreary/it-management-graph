@@ -1,0 +1,14 @@
+{
+  "sim_id": "hipaa-data-flow-tracing-diagram",
+  "diagram_name": "HIPAA Data Flow Tracing Diagram",
+  "chapter_number": 11,
+  "chapter_title": "Compliance Risk And Security",
+  "chapter_dir": "11-compliance-risk-and-security",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: diagram\n\n    Purpose: Illustrate how graph traversal identifies all systems processing ePHI in a healthcare organization\n\n    Components to show:\n    - Central database node (cylinder shape, blue): \"Patient Records DB\" with label \"Contains ePHI\"\n    - API layer node (rectangle, light blue): \"FHIR API Gateway\"\n    - Application nodes (rectangles, green): \"Patient Portal\", \"Clinical Dashboard\", \"Billing System\"\n    - Infrastructure nodes (diamonds, gray): \"VM-Host-01\", \"VM-Host-02\", \"Storage Array\"\n    - Network nodes (hexagons, purple): \"Load Balancer\", \"Firewall\"\n    - External system node (dashed rectangle, orange): \"Insurance Claims Processor\"\n\n    Connections:\n    - \"CONNECTS_TO\" arrows from API Gateway to Patient Records DB\n    - \"DEPENDS_ON\" arrows from each application to API Gateway\n    - \"HOSTS\" arrows from VM hosts to applications\n    - \"CONNECTS_TO\" arrows from applications to load balancer\n    - \"ROUTES_THROUGH\" arrows showing network path through firewall\n    - \"SHARES_TO\" arrow to external claims processor\n\n    Highlighting:\n    - All nodes and edges highlighted in yellow to show \"ePHI compliance scope\"\n    - Starting node (Patient Records DB) highlighted in bright blue\n    - Arrows showing traversal direction with animated flow\n\n    Style: Network diagram with hierarchical layout (data at bottom, infrastructure in middle, applications at top)\n\n    Labels:\n    - Each node labeled with name and type\n    - Each edge labeled with relationship type\n    - Annotation: \"Graph traversal identifies all systems in 15ms\"\n    - Annotation: \"Traditional SQL query: 3.4 seconds with 6-way JOIN\"\n\n    Color scheme: Blue for data layer, gray for infrastructure, green for applications, purple for networking\n\n    Implementation: SVG diagram with clear hierarchy and relationship labels, could be generated from vis-network library"
+}

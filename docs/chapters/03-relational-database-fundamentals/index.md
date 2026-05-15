@@ -90,6 +90,8 @@ Consider a simple IT asset management schema with three tables:
 
 This schema defines three entity types (Servers, Applications, Locations) and their attributes. Foreign key references establish relationships: Applications reference Servers (indicating which server hosts each application), and Servers reference Locations (indicating physical placement). While this structure works well for straightforward one-to-many relationships, we'll see later how it becomes problematic for complex many-to-many relationships and multi-hop dependency chains.
 
+#### Diagram: Relational Database Schema Visualization
+
 <details>
     <summary>Relational Database Schema Visualization</summary>
     Type: diagram
@@ -185,6 +187,8 @@ The relationship between primary and foreign keys creates the "relational" aspec
 - **Many-to-many relationships:** Many applications depend on many other applications. Requires a junction table (Application_Dependencies) with two foreign keys, one referencing each side of the relationship.
 
 - **One-to-one relationships:** One employee has one security badge (rare in practice). Can be implemented with foreign key in either table, or by merging tables entirely.
+
+#### Diagram: Primary Key and Foreign Key Relationship Diagram
 
 <details>
     <summary>Primary Key and Foreign Key Relationship Diagram</summary>
@@ -286,6 +290,8 @@ WHERE a.app_id IS NULL;
 ```
 
 SQL's declarative nature provides significant advantages. The same query can execute efficiently on small databases and scale to tables with billions of rows, with the query optimizer adapting execution strategies based on data volume. Developers don't need to manually navigate data structures or manage memory—the RDBMS handles these concerns. However, as we'll see when discussing joins and multi-hop queries, SQL's performance characteristics change dramatically when queries require traversing multiple relationship levels.
+
+#### Diagram: SQL Query Execution Visualization
 
 <details>
     <summary>SQL Query Execution Visualization</summary>
@@ -389,6 +395,8 @@ The distinction between INNER and OUTER JOINs affects both result correctness an
 | CROSS JOIN | `FROM A CROSS JOIN B` | Cartesian product: every A row with every B row | Generating all possible combinations (rarely used, often accidental) |
 
 JOIN performance depends on several factors: table sizes, availability of indexes on join columns, selectivity of WHERE filters, and join order. RDBMS query optimizers attempt to execute joins in the most efficient order, processing smaller result sets first when possible. However, as the number of joined tables increases, the optimizer's search space for possible execution plans grows exponentially, and performance can degrade significantly—a key challenge we'll explore further in the multi-hop query section.
+
+#### Diagram: JOIN Types Comparison Interactive Visualization
 
 <details>
     <summary>JOIN Types Comparison Interactive Visualization</summary>
@@ -511,6 +519,8 @@ WHERE a1.app_name = 'Customer Portal';
 The complexity of multi-hop queries increases dramatically with each additional hop. For a 3-hop query, you need four tables joined together. For a 5-hop query (not uncommon in complex IT estates), you need six tables. Each additional JOIN multiplies the potential intermediate result set size, and query performance often degrades exponentially rather than linearly. This performance degradation is a fundamental limitation of the relational model for highly connected data, which we'll examine in detail in the query performance section.
 
 Moreover, writing multi-hop queries in SQL becomes increasingly awkward as hop count increases. Recursive common table expressions (CTEs) introduced in SQL:1999 provide a more elegant syntax for variable-depth queries, but they don't address the underlying performance concerns. Graph databases, by contrast, make multi-hop traversal a first-class operation with constant-time performance per hop, which is why they've gained traction for use cases like IT dependency management.
+
+#### Diagram: Multi-Hop Query Dependency Traversal Visualization
 
 <details>
     <summary>Multi-Hop Query Dependency Traversal Visualization</summary>
@@ -642,6 +652,8 @@ The following table compares performance characteristics of different query type
 
 This performance degradation for multi-hop queries is precisely why traditional CMDB implementations struggle with IT dependency management, and why graph databases have emerged as an alternative for relationship-intensive use cases.
 
+#### Diagram: Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count
+
 <details>
     <summary>Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count</summary>
     Type: chart
@@ -755,6 +767,8 @@ Effective indexing strategy requires understanding query patterns:
 
 For IT management databases, typical index candidates include: server identifiers, application identifiers, hostname fields, IP addresses, status fields, and foreign keys establishing relationships between tables. However, even with optimal indexing, multi-hop transitive dependency queries remain challenging due to the fundamental architectural differences between relational and graph storage models.
 
+#### Diagram: B-Tree Index Structure and Search Visualization
+
 <details>
     <summary>B-Tree Index Structure and Search Visualization</summary>
     Type: diagram
@@ -864,6 +878,8 @@ The following table contrasts schema approaches:
 | **Query performance** | Excellent with proper indexes | Excellent for traversals, varied for filters |
 | **Evolution difficulty** | High: schema changes require migrations | Low: add properties as needed |
 | **Developer experience** | Clear structure aids understanding | Flexibility can lead to inconsistency |
+
+#### Diagram: Schema Evolution Timeline: Adding Heterogeneous Device Types
 
 <details>
     <summary>Schema Evolution Timeline: Adding Heterogeneous Device Types</summary>

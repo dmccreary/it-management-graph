@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Layer Dependency Map Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Multi-Layer Dependency Map Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> multi-layer-dependency-map-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    
+        Purpose: Demonstrate how different dependency types (business service, technical service, application, infrastructure) form layers in an IT management graph, showing cross-layer dependencies
+    
+        Node types:
+    
+        1. Business Service (:BusinessService - pink circles, large)
+           - Layer: Top (customer-facing)
+           - Properties: name, revenue_impact, SLA_tier
+           - Examples: "Online Banking", "E-Commerce", "Customer Portal"
+    
+        2. Technical Service (:TechnicalService - purple hexagons, medium)
+           - Layer: Mid-upper (internal services)
+           - Properties: name, api_version, usage_count
+           - Examples: "Auth Service", "Payment Gateway", "Notification Hub"
+    
+        3. Application (:Application - light blue rounded squares, medium)
+           - Layer: Mid-lower (running software)
+           - Properties: name, version, language
+           - Examples: "Web Frontend", "API Server", "Batch Processor"
+    
+        4. Database (:Database - orange cylinders, medium)
+           - Layer: Mid-lower (data tier)
+           - Properties: name, db_type, size_gb
+           - Examples: "CustomerDB", "OrderDB", "SessionStore"
+    
+        5. Server (:Server - gray rectangles, small)
+           - Layer: Bottom (infrastructure)
+           - Properties: hostname, cpu_cores, ram_gb
+           - Examples: "web-prod-01", "db-prod-02"
+    
+        6. Datacenter (:Datacenter - green triangles, small)
+           - Layer: Foundation (physical)
+           - Properties: name, region, tier
+           - Examples: "DC-East-1", "DC-West-1"
+    
+        Sample graph structure (30 nodes in hierarchical layers):
+    
+        Layer 1 - Business Services (3 nodes):
+        - "Online Banking"
+        - "E-Commerce Platform"
+        - "Customer Portal"
+    
+        Layer 2 - Technical Services (4 nodes):
+        - "Auth Service"
+        - "Payment Gateway"
+        - "Notification Hub"
+        - "Analytics Engine"
+    
+        Layer 3 - Applications (8 nodes):
+        - "Web Frontend"
+        - "Mobile API"
+        - "Admin Dashboard"
+        - "Background Worker"
+        - "API Gateway"
+        - "Search Service"
+        - "Recommendation Engine"
+        - "Reporting Service"
+    
+        Layer 4 - Databases (6 nodes):
+        - "CustomerDB"
+        - "OrderDB"
+        - "ProductDB"
+        - "SessionStore"
+        - "AnalyticsDB"
+        - "ConfigDB"
+    
+        Layer 5 - Servers (6 nodes):
+        - "web-prod-01"
+        - "web-prod-02"
+        - "api-prod-01"
+        - "db-prod-01"
+        - "db-prod-02"
+        - "cache-prod-01"
+    
+        Layer 6 - Datacenters (3 nodes):
+        - "DC-East-1"
+        - "DC-West-1"
+        - "DC-Central-1"
+    
+        Relationships (cross-layer connections):
+        - Business Service → SUPPORTS → Technical Service
+        - Business Service → SUPPORTS → Application
+        - Technical Service → DEPENDS_ON → Application
+        - Application → DEPENDS_ON → Application
+        - Application → DEPENDS_ON → Database
+        - Application → HOSTED_ON → Server
+        - Database → HOSTED_ON → Server
+        - Server → LOCATED_IN → Datacenter
+    
+        Layout algorithm: Hierarchical layout with strict layering
+        - Layer 1 (Business Services) at top
+        - Layer 2 (Technical Services) below
+        - Layer 3 (Applications) middle
+        - Layer 4 (Databases) mid-lower
+        - Layer 5 (Servers) near bottom
+        - Layer 6 (Datacenters) at foundation
+        - Edges flow downward showing dependency direction
+    
+        Interactive features:
+    
+        - Layer toggle buttons:
+          - [ ] Show Business Service Layer
+          - [x] Show Technical Service Layer (default on)
+          - [x] Show Application Layer (default on)
+          - [x] Show Database Layer (default on)
+          - [x] Show Infrastructure Layer (default on)
+          - [x] Show Datacenter Layer (default on)
+    
+        - Dependency type filter:
+          - Checkbox: "Service Dependencies" (SUPPORTS relationships)
+          - Checkbox: "Application Dependencies" (DEPENDS_ON between apps)
+          - Checkbox: "Infrastructure Dependencies" (HOSTED_ON, LOCATED_IN)
+          - Checkbox: "Show all relationships"
+    
+        - Click node: Highlight complete dependency stack
+          - If business service clicked: Show all layers supporting it down to datacenters
+          - If application clicked: Show upstream services and downstream infrastructure
+          - If server clicked: Show all applications hosted and upstream services
+          - Use gradient highlighting (bright to dim) showing dependency flow
+    
+        - Button: "Show Critical Path"
+          - Identifies longest end-to-end path from business service to datacenter
+          - Highlights in yellow/orange with hop count badges
+          - Shows total latency if available in properties
+    
+        - Button: "Blast Radius from Layer"
+          - Dropdown: Select layer (Business, Technical, Application, Infrastructure)
+          - Click any node in that layer
+          - Highlights all upstream dependencies (what it needs)
+          - Highlights all downstream dependents (what needs it)
+          - Shows count in each layer
+    
+        - Hover node: Show layer information
+          - Display: "Layer: Application (3 of 6)"
+          - Show all properties
+          - Show dependency count: "3 upstream, 5 downstream"
+    
+        Statistics panel (bottom):
+        - Nodes per layer: Business(3), Technical(4), Application(8), Database(6), Server(6), DC(3)
+        - Total relationships: X
+        - Average dependencies per node: Y
+        - Longest dependency chain: Z hops
+        - Cross-datacenter dependencies: W (potential latency issues)
+    
+        Visual styling:
+        - Layer background shading: Alternating light/dark backgrounds for each layer
+        - Layer separators: Horizontal dashed lines between layers
+        - Node colors: By type (pink/purple/blue/orange/gray/green as specified)
+        - Node sizes: Larger at higher layers (business services biggest, DCs smallest)
+        - Edge colors:
+          - Pink: Service dependencies (SUPPORTS)
+          - Blue: Application dependencies (DEPENDS_ON)
+          - Gray: Infrastructure dependencies (HOSTED_ON, LOCATED_IN)
+        - Edge thickness: Thicker for higher criticality
+    
+        Educational callouts:
+        - "Notice the layered architecture: Business → Technical → Application → Infrastructure"
+        - "Dependencies flow downward: Upper layers depend on lower layers"
+        - "Failures propagate upward: Infrastructure failures affect all higher layers"
+        - "Each layer has different stakeholders and concerns"
+        - "Click any node to see its complete dependency stack across all layers!"
+    
+        Legend (top-right):
+        - Layer indicators with colors
+        - Node types per layer
+        - Relationship types with colors
+        - Criticality indicators
+    
+        Canvas size: 1200x900px with bottom panel (150px) for statistics
+    
+        Color scheme:
+        - Pink: Business services (customer value)
+        - Purple: Technical services (internal APIs)
+        - Light blue: Applications (running software)
+        - Orange: Databases (data tier)
+        - Gray: Servers (compute)
+        - Green: Datacenters (physical foundation)
+        - Edge colors: Pink (service), Blue (application), Gray (infrastructure)
+    
+        Implementation: vis-network JavaScript library with hierarchical layout enforcing layers, layer filtering, cross-layer traversal highlighting, interactive exploration with re-centering
+    -->
+</body>
+</html>

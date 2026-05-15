@@ -1,0 +1,14 @@
+{
+  "sim_id": "vendor-comparison-table-servicenow-vs-dynatrace-vs-atlassian",
+  "diagram_name": "Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian",
+  "chapter_number": 12,
+  "chapter_title": "Digital Transformation And Advanced Topics",
+  "chapter_dir": "12-digital-transformation-and-advanced-topics",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: markdown-table\n\n    Here is a detailed comparison of the three leading vendors across key evaluation dimensions:\n\n    | Evaluation Dimension | ServiceNow | Dynatrace | Atlassian (Assets) |\n    |---------------------|------------|-----------|-------------------|\n    | **Primary Focus** | ITSM & Service Management | Observability & APM | Flexible Asset Management |\n    | **Data Model Type** | Relational with graph views | Dynamic topology graph | Flexible object schema |\n    | **Discovery Method** | Agent-based scanning | Instrumentation & tracing | Integration-based + agents |\n    | **Real-Time Updates** | Minutes to hours | Seconds | Minutes to hours |\n    | **Query Performance** | Good for simple, slower for complex | Excellent for all queries | Good, varies by complexity |\n    | **Cloud-Native Support** | Moderate, improving | Excellent | Good |\n    | **Integration Ecosystem** | Very large (1000+ apps) | Moderate (200+ integrations) | Large (Atlassian marketplace) |\n    | **Workflow Automation** | Comprehensive | Limited to alerting | Moderate (via Jira) |\n    | **Governance & Audit** | Excellent | Basic | Good |\n    | **Customization** | Moderate (platform constraints) | Limited | High (very flexible) |\n    | **Learning Curve** | Steep | Moderate | Moderate |\n    | **Implementation Time** | 6-12 months | 1-3 months | 2-4 months |\n    | **Licensing Model** | Per-user or per-node (expensive) | Per-host (moderate-expensive) | Per-agent (moderate) |\n    | **Best Fit** | Large enterprises, regulated industries | DevOps teams, cloud-native orgs | Mid-market, agile organizations |\n    | **Graph Query Language** | GlideQuery (proprietary) | None (topology API) | Object QL + Jira Query Language |\n    | **AI/ML Capabilities** | Predictive Intelligence (add-on) | Davis AI (built-in, advanced) | Limited (basic automation) |\n    | **Compliance Certifications** | Extensive (SOC 2, ISO, FedRAMP) | Extensive (SOC 2, ISO) | Good (SOC 2, ISO) |\n    | **Multi-Tenancy Support** | Excellent | Good | Good |\n    | **Typical 3-Year TCO** | $500K - $2M+ | $300K - $1M | $100K - $500K |"
+}

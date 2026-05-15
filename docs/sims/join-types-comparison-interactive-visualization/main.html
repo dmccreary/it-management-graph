@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN Types Comparison Interactive Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>JOIN Types Comparison Interactive Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> join-types-comparison-interactive-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: infographic
+    
+        Purpose: Create an interactive visualization demonstrating different JOIN types using Venn diagrams and sample data, showing how each JOIN type affects which rows appear in results
+    
+        Layout: 1000x800px canvas with three sections
+    
+        Section 1 (1000x150px): Table data display
+        Show two small sample tables side by side:
+    
+        Servers Table:
+        | server_id | hostname |
+        |-----------|----------|
+        | 1 | web-prod-01 |
+        | 2 | db-prod-01 |
+        | 3 | app-dev-01 |
+    
+        Applications Table:
+        | app_id | app_name | server_id |
+        |--------|----------|-----------|
+        | 501 | Customer Portal | 1 |
+        | 502 | Payment API | 1 |
+        | 503 | Inventory System | 2 |
+        | 504 | Orphan App | 99 |
+    
+        Note: Server 3 has no applications. Application 504 references non-existent server 99.
+    
+        Section 2 (1000x400px): Interactive JOIN type selector with Venn diagrams
+    
+        Five buttons arranged horizontally:
+        [INNER JOIN] [LEFT JOIN] [RIGHT JOIN] [FULL OUTER JOIN] [CROSS JOIN]
+    
+        When button clicked, display:
+        - Venn diagram showing which portions of tables are included (shaded regions)
+        - SQL syntax example
+        - Result table with actual rows
+    
+        INNER JOIN visualization:
+        - Venn diagram: Only intersection shaded
+        - SQL: `SELECT * FROM Servers s INNER JOIN Applications a ON s.server_id = a.server_id`
+        - Results: 3 rows (server 1 appears twice for its two apps, server 2 once, server 3 excluded, orphan app excluded)
+    
+        LEFT JOIN visualization:
+        - Venn diagram: Entire left circle + intersection shaded
+        - SQL: `SELECT * FROM Servers s LEFT JOIN Applications a ON s.server_id = a.server_id`
+        - Results: 4 rows (includes server 3 with NULL for app columns, excludes orphan app)
+    
+        FULL OUTER JOIN visualization:
+        - Venn diagram: Both circles entirely shaded
+        - SQL: `SELECT * FROM Servers s FULL OUTER JOIN Applications a ON s.server_id = a.server_id`
+        - Results: 5 rows (includes server 3 with NULL app columns, includes orphan app with NULL server columns)
+    
+        Section 3 (1000x250px): Result interpretation panel
+    
+        Displays explanation based on selected JOIN type:
+        - Row count and composition
+        - Which entities are included/excluded and why
+        - NULL handling explanation
+        - Common use cases for this JOIN type
+    
+        Interactive elements:
+        - Click JOIN type button to switch visualization
+        - Hover over Venn diagram regions to highlight corresponding rows in result table
+        - Toggle switch: "Show NULL values explicitly" vs "Hide NULL cells"
+        - Highlight button: "Show orphan rows" (rows with no matching counterpart)
+    
+        Visual style: Clean, modern design with clear typography and color coding
+    
+        Color scheme:
+        - Left Venn circle (Servers): Blue
+        - Right Venn circle (Applications): Orange
+        - Intersection: Purple (blend of blue and orange)
+        - Result table: Alternate row shading for readability
+        - NULL values: Gray italic text or empty with dashed border
+        - Orphan rows: Light red background highlight
+    
+        Implementation: HTML/CSS/JavaScript with SVG for Venn diagrams, dynamic table rendering based on JOIN type selection
+    
+        Educational notes included in hover text:
+        - "INNER JOIN most common in practice (80%+ of queries)"
+        - "LEFT JOIN useful for finding missing relationships"
+        - "FULL OUTER JOIN rare, often indicates data quality issues"
+        - "CROSS JOIN creates row count = Table A rows × Table B rows (use with caution!)"
+    -->
+</body>
+</html>

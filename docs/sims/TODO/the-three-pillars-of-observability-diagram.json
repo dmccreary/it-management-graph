@@ -1,0 +1,14 @@
+{
+  "sim_id": "the-three-pillars-of-observability-diagram",
+  "diagram_name": "The Three Pillars of Observability Diagram",
+  "chapter_number": 10,
+  "chapter_title": "Observability And Automated Discovery",
+  "chapter_dir": "10-observability-and-automated-discovery",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: diagram\n\n    Purpose: Illustrate how logs, metrics, and traces work together to provide complete observability of IT systems\n\n    Components to show:\n    - Central hexagon labeled \"Complete Observability\"\n    - Three equal-sized circles surrounding the hexagon, one for each pillar\n    - Circle 1 (top): \"Logs\" with icon of document/file lines\n    - Circle 2 (bottom-left): \"Metrics\" with icon of line chart\n    - Circle 3 (bottom-right): \"Traces\" with icon of connected nodes/flowchart\n\n    Visual details for each pillar:\n    - Logs circle (blue): Shows example log entry \"2025-01-15 14:32:10 ERROR: Connection timeout to DB server\"\n    - Metrics circle (green): Shows small line graph trending upward with label \"Request Rate\"\n    - Traces circle (orange): Shows simple service flow diagram \"API → Auth → Database\"\n\n    Connections:\n    - Bidirectional arrows connecting each pillar circle to the central hexagon\n    - Arrow labels showing the value each pillar provides:\n      * Logs → Center: \"What happened?\"\n      * Metrics → Center: \"How much/many?\"\n      * Traces → Center: \"Where in the flow?\"\n\n    Additional visual elements:\n    - Light gray dashed lines connecting the three pillar circles to each other, forming a triangle\n    - Labels on these connecting lines: \"Correlated insights\"\n    - Small icons around the central hexagon: magnifying glass, lightbulb, shield (representing investigation, insights, and reliability)\n\n    Style: Modern, clean diagram with rounded shapes\n\n    Color scheme:\n    - Central hexagon: Gold with white text\n    - Logs circle: Blue (#4A90E2)\n    - Metrics circle: Green (#7ED321)\n    - Traces circle: Orange (#F5A623)\n    - Background: White or very light gray\n    - Arrows: Dark gray (#4A4A4A)\n\n    Labels and annotations:\n    - Title at top: \"The Three Pillars of Observability\"\n    - Subtitle below each circle briefly describing its purpose:\n      * Logs: \"Event-level detail\"\n      * Metrics: \"Aggregated measurements\"\n      * Traces: \"Request journey\"\n\n    Implementation: SVG diagram or tool like draw.io, Lucidchart"
+}

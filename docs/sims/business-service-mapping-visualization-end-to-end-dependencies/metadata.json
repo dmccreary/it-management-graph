@@ -1,0 +1,21 @@
+{
+  "title": "Business Service Mapping Visualization: End-to-End Dependencies",
+  "description": "Business Service Mapping Visualization: End-to-End Dependencies",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "business-service-mapping-visualization-end-to-end-dependencies",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 7,
+  "chapter_title": "Business Services And Portfolio",
+  "chapter_dir": "07-business-services-and-portfolio"
+}

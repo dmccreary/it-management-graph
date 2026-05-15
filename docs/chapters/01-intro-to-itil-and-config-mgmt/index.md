@@ -52,6 +52,8 @@ The ITIL framework organizes IT service management around two core domains: Serv
 
 <iframe src="../../sims/itil-framework-diagram/main.html" width="100%" height="820px" scrolling="no"></iframe>
 
+#### Diagram: ITIL Framework Structure Diagram
+
 <details>
     <summary>ITIL Framework Structure Diagram</summary>
     Type: diagram
@@ -201,6 +203,8 @@ Within the asset management domain, IT assets are typically categorized into sev
 <iframe src="../../sims/it-asset-hierarchy/main.html" width="100%" height="700"></iframe>
 [Run the IT Assets Hierarchy Viewer Fullscreen](../../sims/it-asset-hierarchy/main.html){ .md-button .md-button--primary }
 
+#### Diagram: IT Asset Hierarchy Infographic
+
 <details>
     <summary>IT Asset Hierarchy Infographic</summary>
     Type: infographic
@@ -282,6 +286,8 @@ This vision proved extraordinarily difficult to realize in practice. Studies con
 5. **Data quality erosion** created vicious cycles—once CMDB accuracy declined, teams stopped trusting it, stopped updating it, and accuracy declined further
 
 The fundamental architectural issue—that relational databases are poorly suited for relationship-intensive queries—would not be fully appreciated until graph database alternatives demonstrated orders of magnitude performance improvements for multi-hop dependency traversal.
+
+#### Diagram: Traditional CMDB Data Flow and Integration Architecture
 
 <details>
     <summary>Traditional CMDB Data Flow and Integration Architecture</summary>

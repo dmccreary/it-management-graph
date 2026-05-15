@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RBAC Permission Graph Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>RBAC Permission Graph Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> rbac-permission-graph-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: graph-model
+    
+        Purpose: Demonstrate how Role-Based Access Control is modeled in an IT management graph, showing users, roles, resources, and permission flows
+    
+        Node types:
+    
+        1. User (light blue circles, icon: person silhouette)
+           - Properties: name, employee_id, department, employment_date
+           - Examples:
+             * Dr. Sarah Chen (EmployeeID: E12345, Dept: Cardiology)
+             * John Martinez RN (EmployeeID: E23456, Dept: Emergency)
+             * Maria Silva (EmployeeID: E34567, Dept: IT Security)
+    
+        2. Role (purple hexagons, icon: badge)
+           - Properties: role_name, description, privilege_level
+           - Examples:
+             * Physician (Privilege: High)
+             * Nurse (Privilege: Medium)
+             * Billing_Clerk (Privilege: Low)
+             * System_Administrator (Privilege: Full)
+    
+        3. Resource (orange cylinders for data, green rectangles for systems)
+           - Properties: resource_name, classification, compliance_scope
+           - Examples:
+             * Patient_Records_DB (Classification: Restricted, HIPAA)
+             * Billing_System (Classification: Confidential, HIPAA)
+             * Lab_Results_DB (Classification: Restricted, HIPAA)
+             * HR_System (Classification: Internal)
+    
+        4. Permission Node (small yellow diamonds, labeled with permission type)
+           - Properties: permission_type, granted_date, expiration_date
+           - Types: READ, WRITE, DELETE, ADMIN
+    
+        Edge types:
+    
+        1. HAS_ROLE (solid blue arrows, User → Role)
+           - Properties: assignment_date, assigned_by, justification
+           - Visual: Thick blue arrows
+           - Example: Dr. Sarah Chen → HAS_ROLE → Physician
+    
+        2. CAN_ACCESS (dashed green arrows, Role → Resource)
+           - Properties: permission_types (array: [READ, WRITE]), constraints
+           - Visual: Dashed green arrows with permission labels
+           - Example: Physician → CAN_ACCESS (READ, WRITE) → Patient_Records_DB
+    
+        3. MEMBER_OF (dotted purple arrows, Role → Role for hierarchy)
+           - Properties: inheritance_type (full, partial)
+           - Visual: Dotted purple arrows showing role hierarchy
+           - Example: Senior_Physician → MEMBER_OF → Physician (inherits all Physician permissions)
+    
+        4. REQUIRES (red double-arrow, Role ←→ Role for separation of duty)
+           - Properties: constraint_type (mutual_exclusion)
+           - Visual: Red double-headed arrow with "X" symbol
+           - Example: Purchasing_Agent ←→ REQUIRES → Accounts_Payable_Approver (cannot hold both)
+    
+        Sample data structure:
+    
+        Users:
+        - Dr. Sarah Chen → HAS_ROLE → Physician → CAN_ACCESS (READ, WRITE) → Patient_Records_DB
+        - Dr. Sarah Chen → HAS_ROLE → Physician → CAN_ACCESS (READ) → Lab_Results_DB
+        - John Martinez RN → HAS_ROLE → Nurse → CAN_ACCESS (READ, WRITE) → Patient_Records_DB
+        - John Martinez RN → HAS_ROLE → Nurse → CAN_ACCESS (READ) → Billing_System
+        - Maria Silva → HAS_ROLE → System_Administrator → CAN_ACCESS (FULL) → All Systems
+    
+        Role Hierarchy:
+        - Senior_Physician → MEMBER_OF → Physician (inherits all Physician permissions)
+        - Nurse_Practitioner → MEMBER_OF → Nurse (inherits Nurse permissions plus additional privileges)
+    
+        Separation of Duty:
+        - Physician ←→ REQUIRES (mutual_exclusion) ←→ Billing_Manager
+        - System_Administrator ←→ REQUIRES (mutual_exclusion) ←→ Auditor
+    
+        Layout: Hierarchical with users at top, roles in middle tier, resources at bottom
+    
+        Interactive features:
+        - Hover over User node: Shows all roles assigned and effective permissions summary
+        - Click User node: Highlights all accessible resources with permission paths
+        - Hover over Role node: Shows role description, privilege level, number of members
+        - Click Role node: Highlights all users with that role and all accessible resources
+        - Hover over Resource node: Shows classification, compliance requirements, access statistics
+        - Click Resource node: Highlights all roles and users with access, shows permission types
+        - Double-click any node: Expands to show full property panel in sidebar
+        - Right-click edge: Shows relationship properties (assignment date, constraints, etc.)
+        - Search box: Type-ahead search for users, roles, or resources
+        - Filter controls: Show only specific permission types (READ, WRITE, DELETE, ADMIN)
+        - Toggle view: "Effective Permissions" vs "Direct Assignments" (showing inherited vs explicit)
+    
+        Visual styling:
+        - Node size proportional to number of connections (important roles appear larger)
+        - Edge thickness proportional to permission breadth (FULL access = thickest)
+        - Color intensity indicates privilege level (darker = higher privilege)
+        - Animated particle flow along edges when a permission path is highlighted (showing permission flow from user → role → resource)
+        - Hover highlights: Node and all connected edges highlighted with glow effect
+        - Warning indicators: Red exclamation marks on nodes violating separation of duty
+    
+        Legend (fixed position, top-right):
+        - Node shapes: Circle (User), Hexagon (Role), Cylinder (Database), Rectangle (System)
+        - Edge styles: Solid (HAS_ROLE), Dashed (CAN_ACCESS), Dotted (MEMBER_OF), Double-arrow (REQUIRES)
+        - Permission types: Color-coded badges (READ=green, WRITE=blue, DELETE=red, ADMIN=purple)
+        - Privilege levels: Color gradient bar (Low=light, Medium=medium, High=dark, Full=black)
+    
+        Canvas size: 1000x800px
+    
+        Implementation: vis-network JavaScript library with custom styling, data pulled from Neo4j graph database via Cypher queries, real-time updates when permissions change, export capability to PNG or SVG for documentation
+    -->
+</body>
+</html>

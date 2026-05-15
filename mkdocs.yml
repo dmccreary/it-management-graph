@@ -47,6 +47,62 @@ nav:
     - IT Graph Requirements: sims/it-graph-nodes/requirements.md
     - Web Application Architecture: sims/web-app-architecture/index.md
     - Deployment Dependencies DAG: sims/deployment-dag/index.md
+    - AI-Enhanced IT Management Graph Architecture Diagram: sims/ai-enhanced-it-management-graph-architecture-diagram/index.md
+    - "Application Portfolio Management Quadrant Visualization: Strategic Decision Matrix": sims/application-portfolio-management-quadrant-visualization-strategic-decision-matrix/index.md
+    - Application Portfolio Strategic Quadrant with Dependency Visualization: sims/application-portfolio-strategic-quadrant-with-dependency-visualization/index.md
+    - Automated Discovery Architecture Diagram: sims/automated-discovery-architecture-diagram/index.md
+    - B-Tree Index Structure and Search Visualization: sims/b-tree-index-structure-and-search-visualization/index.md
+    - Bidirectional Dependency Tracing Visualization: sims/bidirectional-dependency-tracing-visualization/index.md
+    - Build vs Buy Decision Matrix Interactive Tool: sims/build-vs-buy-decision-matrix-interactive-tool/index.md
+    - "Business Service Mapping Visualization: End-to-End Dependencies": sims/business-service-mapping-visualization-end-to-end-dependencies/index.md
+    - Compliance Audit Evidence Generation Flow Diagram: sims/compliance-audit-evidence-generation-flow-diagram/index.md
+    - Compliance Dashboard Overview Chart: sims/compliance-dashboard-overview-chart/index.md
+    - Configuration Drift Detection Workflow: sims/configuration-drift-detection-workflow/index.md
+    - Cypher Pattern Matching Interactive Visualization: sims/cypher-pattern-matching-interactive-visualization/index.md
+    - "Data Quality Dimensions Radar Chart: IT Management Data Health Assessment": sims/data-quality-dimensions-radar-chart-it-management-data-health-assessment/index.md
+    - Dependency Graph with Cycle Detection Visualization: sims/dependency-graph-with-cycle-detection-visualization/index.md
+    - Deployment Dependencies as a Directed Acyclic Graph (DAG): sims/deployment-dependencies-as-a-directed-acyclic-graph-dag/index.md
+    - Digital Transformation Maturity Model for IT Management: sims/digital-transformation-maturity-model-for-it-management/index.md
+    - Dynamic Topology Update Timeline Visualization: sims/dynamic-topology-update-timeline-visualization/index.md
+    - eBPF Network Connection Discovery Interactive MicroSim: sims/ebpf-network-connection-discovery-interactive-microsim/index.md
+    - Exception Reporting Dashboard Mockup: sims/exception-reporting-dashboard-mockup/index.md
+    - GDPR Cross-Border Data Flow Map: sims/gdpr-cross-border-data-flow-map/index.md
+    - Graph Density Visualization MicroSim: sims/graph-density-visualization-microsim/index.md
+    - Graph RAG Query Flow Interactive Diagram: sims/graph-rag-query-flow-interactive-diagram/index.md
+    - "Graph Traversal Algorithm Comparison: DFS vs BFS": sims/graph-traversal-algorithm-comparison-dfs-vs-bfs/index.md
+    - Hardware vs. Software Asset Management Architecture: sims/hardware-vs-software-asset-management-architecture/index.md
+    - HIPAA Data Flow Tracing Diagram: sims/hipaa-data-flow-tracing-diagram/index.md
+    - IT Asset Hierarchy Infographic: sims/it-asset-hierarchy-infographic/index.md
+    - IT Asset Lifecycle State Machine Diagram: sims/it-asset-lifecycle-state-machine-diagram/index.md
+    - IT Asset Relationship Graph Interactive Model: sims/it-asset-relationship-graph-interactive-model/index.md
+    - IT Infrastructure Graph with Nodes and Relationships: sims/it-infrastructure-graph-with-nodes-and-relationships/index.md
+    - IT Infrastructure Nodes Interactive Visualization: sims/it-infrastructure-nodes-interactive-visualization/index.md
+    - IT Modernization Interconnected Domains Infographic: sims/it-modernization-interconnected-domains-infographic/index.md
+    - JOIN Types Comparison Interactive Visualization: sims/join-types-comparison-interactive-visualization/index.md
+    - Migration Timeline with Risk and Value Curves: sims/migration-timeline-with-risk-and-value-curves/index.md
+    - Multi-Hop Query Dependency Traversal Visualization: sims/multi-hop-query-dependency-traversal-visualization/index.md
+    - Multi-Layer Dependency Map Visualization: sims/multi-layer-dependency-map-visualization/index.md
+    - Multi-Source Asset Discovery Integration Timeline: sims/multi-source-asset-discovery-integration-timeline/index.md
+    - Native Graph Storage vs Graph Layer Performance Comparison: sims/native-graph-storage-vs-graph-layer-performance-comparison/index.md
+    - Network vs. Service Topology Comparison Chart: sims/network-vs-service-topology-comparison-chart/index.md
+    - OpenTelemetry Data Flow Architecture: sims/opentelemetry-data-flow-architecture/index.md
+    - Performance Monitoring Dashboard Workflow: sims/performance-monitoring-dashboard-workflow/index.md
+    - Primary Key and Foreign Key Relationship Diagram: sims/primary-key-and-foreign-key-relationship-diagram/index.md
+    - "Query Performance Comparison Chart: RDBMS JOIN Performance by Hop Count": sims/query-performance-comparison-chart-rdbms-join-performance-by-hop-count/index.md
+    - "Query Performance Comparison: Graph vs Relational Databases": sims/query-performance-comparison-graph-vs-relational-databases/index.md
+    - RBAC Permission Graph Visualization: sims/rbac-permission-graph-visualization/index.md
+    - Regulatory Framework Timeline: sims/regulatory-framework-timeline/index.md
+    - Relational Database Schema Visualization: sims/relational-database-schema-visualization/index.md
+    - Risk Assessment Workflow Diagram: sims/risk-assessment-workflow-diagram/index.md
+    - "ROI Waterfall Chart: From Costs to Net Value": sims/roi-waterfall-chart-from-costs-to-net-value/index.md
+    - Scaling Strategies Comparison Infographic: sims/scaling-strategies-comparison-infographic/index.md
+    - "Schema Evolution Timeline: Adding Heterogeneous Device Types": sims/schema-evolution-timeline-adding-heterogeneous-device-types/index.md
+    - SQL Query Execution Visualization: sims/sql-query-execution-visualization/index.md
+    - "TCO Comparison Chart: Three Options Over Five Years": sims/tco-comparison-chart-three-options-over-five-years/index.md
+    - Technology Selection Workflow with Decision Gates: sims/technology-selection-workflow-with-decision-gates/index.md
+    - The Three Pillars of Observability Diagram: sims/the-three-pillars-of-observability-diagram/index.md
+    - Traditional CMDB Data Flow and Integration Architecture: sims/traditional-cmdb-data-flow-and-integration-architecture/index.md
+    - "Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian": sims/vendor-comparison-table-servicenow-vs-dynatrace-vs-atlassian/index.md
     # - Timeline: sims/timeline/index.md
   
   - Prompts:

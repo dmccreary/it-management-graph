@@ -1,0 +1,21 @@
+{
+  "title": "IT Infrastructure Graph with Nodes and Relationships",
+  "description": "IT Infrastructure Graph with Nodes and Relationships",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "it-infrastructure-graph-with-nodes-and-relationships",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 4,
+  "chapter_title": "Graph Theory And Database Foundations",
+  "chapter_dir": "04-graph-theory-and-database-foundations"
+}

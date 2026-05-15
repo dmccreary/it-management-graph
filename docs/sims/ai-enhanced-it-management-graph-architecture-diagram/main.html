@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Enhanced IT Management Graph Architecture Diagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>AI-Enhanced IT Management Graph Architecture Diagram</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> ai-enhanced-it-management-graph-architecture-diagram</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: diagram
+    
+        Purpose: Show how AI/ML components integrate with the core IT management graph to provide intelligent capabilities
+    
+        Visual style: Layered architecture diagram with data flow arrows
+    
+        Layout: Three main layers (top to bottom) plus two side components
+    
+        **Layer 1 - Data Sources (Top):**
+    
+        Components (left to right):
+        - "Automated Discovery" (icon: radar)
+        - "Monitoring & Telemetry" (icon: dashboard)
+        - "CMDB Data" (icon: database)
+        - "Change Records" (icon: document)
+        - "Incident History" (icon: alert)
+        - "Documentation" (icon: book)
+    
+        Visual: Six rectangles arranged horizontally
+        Color: Light gray
+        Arrows: Downward arrows from each source to Layer 2
+    
+        **Layer 2 - Core IT Management Graph (Middle):**
+    
+        Main component:
+        - Large rectangle containing graph visualization icon
+        - Label: "IT Management Graph"
+        - Sub-label: "Nodes: Assets & Services | Edges: Dependencies & Relationships"
+        - Color: Gold
+    
+        Two-way arrows:
+        - Receiving data from Layer 1 (downward arrows)
+        - Providing data to Layer 3 (downward arrows)
+        - Bidirectional connections to side components
+    
+        **Layer 3 - AI/ML Processing Layer (Lower Middle):**
+    
+        Components (4 boxes arranged horizontally):
+    
+        1. "Data Quality AI" (light blue box)
+           - Bullet: Anomaly detection
+           - Bullet: Duplicate resolution
+           - Bullet: Relationship inference
+           - Icon: Magnifying glass with sparkles
+    
+        2. "Predictive Analytics" (green box)
+           - Bullet: Failure prediction
+           - Bullet: Capacity forecasting
+           - Bullet: Change risk scoring
+           - Icon: Crystal ball or trend line
+    
+        3. "Intelligent Recommendations" (purple box)
+           - Bullet: Optimization opportunities
+           - Bullet: Consolidation candidates
+           - Bullet: Security prioritization
+           - Icon: Lightbulb
+    
+        4. "Impact Analysis AI" (orange box)
+           - Bullet: Conditional dependencies
+           - Bullet: Business impact quantification
+           - Bullet: Alternative path identification
+           - Icon: Network with highlighted path
+    
+        Arrows:
+        - Each AI component receives data from Core Graph (upward arrows)
+        - Each AI component sends insights back to Core Graph (curved feedback arrows)
+    
+        **Side Component 1 - Machine Learning Models (Left Side):**
+    
+        Vertical stack of ML model types:
+        - "Anomaly Detection Models" (neural network icon)
+        - "Classification Models" (decision tree icon)
+        - "Time Series Forecasting" (line chart icon)
+        - "NLP Models" (text/language icon)
+        - "Entity Resolution" (matching icon)
+    
+        Visual: Vertical stack with border
+        Color: Light purple
+        Arrows: Bidirectional to Layer 3 components (dashed lines showing "trained by" and "used by")
+    
+        **Side Component 2 - Human Interface (Right Side):**
+    
+        Components (vertical stack):
+    
+        1. "Analyst Dashboard" (top)
+           - Shows: AI recommendations
+           - Action: Accept/reject suggestions
+           - Icon: Computer screen
+    
+        2. "Automated Actions" (middle)
+           - Shows: High-confidence AI decisions
+           - Action: Automatic execution with logging
+           - Icon: Robot or automation symbol
+    
+        3. "Feedback Loop" (bottom)
+           - Shows: Human corrections
+           - Action: Model retraining
+           - Icon: Circular arrow
+    
+        Visual: Three stacked boxes with border
+        Color: Light green
+        Arrows: Bidirectional to Layer 3 (solid lines showing human-AI interaction)
+    
+        **Data Flow Indicators:**
+    
+        Different arrow types showing:
+        - Solid blue arrows: Raw data ingestion
+        - Solid gold arrows: Graph queries
+        - Dashed purple arrows: ML training data
+        - Solid green arrows: AI insights
+        - Curved orange arrows: Feedback loops
+    
+        **Annotations:**
+    
+        1. Top of diagram:
+           - "Continuous data ingestion from multiple sources"
+    
+        2. Core Graph:
+           - "Central system of record with real-time query capability"
+    
+        3. AI Layer:
+           - "AI components augment human decision-making"
+    
+        4. Feedback arrow:
+           - "Human validation improves AI accuracy over time"
+    
+        5. Bottom note:
+           - "Human-AI Partnership: Automation for scale + Human judgment for context"
+    
+        **Legend (bottom right corner):**
+    
+        - Solid blue arrow: "Data ingestion"
+        - Solid gold arrow: "Graph queries"
+        - Dashed purple arrow: "ML training"
+        - Solid green arrow: "AI insights"
+        - Curved orange arrow: "Feedback loop"
+    
+        Dimensions: 1200px wide × 900px tall
+    
+        Color palette:
+        - Layer 1 (Data Sources): Light gray (#E0E0E0)
+        - Layer 2 (Graph): Gold (#FFD700)
+        - Layer 3 (AI Components): Multi-color (blue, green, purple, orange)
+        - Side ML Models: Light purple (#E6D5F0)
+        - Side Human Interface: Light green (#D5F0D5)
+        - Arrows: Colors as specified above
+        - Background: White
+    
+        Visual styling:
+        - Clean, modern design
+        - Rounded corners on all boxes (8px radius)
+        - Subtle drop shadows for depth
+        - Clear, readable labels
+        - Icons enhance understanding (use Font Awesome or similar)
+    
+        Implementation: SVG-based diagram with HTML/CSS for styling
+    -->
+</body>
+</html>

@@ -22,8 +22,6 @@ This chapter builds on concepts from:
 
 - [Chapter 1: Introduction to ITIL and Configuration Management](../01-intro-to-itil-and-config-mgmt/index.md)
 
----
-
 ## The Distinction Between Configuration Management and Asset Management
 
 While Chapter 1 established configuration management as a discipline focused on element-level parameter control and version tracking, IT asset management represents a fundamentally different paradigm centered on financial tracking, lifecycle governance, and portfolio optimization of IT resources. This distinction has been systematically conflated in enterprise IT for decades, contributing significantly to CMDB initiative failures. Asset management emerged from financial accounting practices requiring capitalization, depreciation tracking, and license compliance, whereas configuration management derives from military-specification change control focused on maintaining known-good states of individual system components.
@@ -53,50 +51,51 @@ The following table contrasts key characteristics of hardware versus software as
 | **Lifecycle Triggers** | Physical failure, warranty expiration, technology refresh | License expiration, version end-of-support, subscription renewal |
 | **Discovery Method** | Physical inventory, network scanning, agent-based reporting | Software metering, license key tracking, usage telemetry |
 
-<details>
-    <summary>Hardware vs. Software Asset Management Architecture Diagram</summary>
-    Type: diagram
+#### Diagram: Hardware vs. Software Asset Management Architecture
 
-    Purpose: Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph
+<details markdown="1">
+  <summary>Hardware vs. Software Asset Management Architecture Diagram</summary>
+**Type:** infographic
 
-    Components to show:
-    - Top layer: Financial Systems (ERP, procurement, accounts payable)
-    - Middle layer: IT Management Graph (central)
-    - Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)
+**Purpose:** Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph
 
-    Left side (Hardware Asset Flow):
-    - Procurement → Hardware Asset node (with serial number, purchase order, cost)
-    - Network discovery → Device CI node (with IP, hostname, specifications)
-    - Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)
-    - Relationship: INSTALLED_IN (Device CI → Physical Location)
+Components to show:
+- Top layer: Financial Systems (ERP, procurement, accounts payable)
+- Middle layer: IT Management Graph (central)
+- Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)
 
-    Right side (Software Asset Flow):
-    - Procurement → License Entitlement node (with SKU, quantity, contract)
-    - Software discovery → Software Instance node (with version, installation path)
-    - Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)
-    - Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)
+Left side (Hardware Asset Flow):
+- Procurement → Hardware Asset node (with serial number, purchase order, cost)
+- Network discovery → Device CI node (with IP, hostname, specifications)
+- Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)
+- Relationship: INSTALLED_IN (Device CI → Physical Location)
 
-    Connections between sides:
-    - Bidirectional relationship: RUNS_ON (Software Instance → Device CI)
-    - Aggregation query path (shown with dotted line): "Compliance Check" traversal from License Entitlement through all consuming instances
+Right side (Software Asset Flow):
+- Procurement → License Entitlement node (with SKU, quantity, contract)
+- Software discovery → Software Instance node (with version, installation path)
+- Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)
+- Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)
 
-    Style: Layered architecture diagram with directional arrows showing data flow and relationship types
+Connections between sides:
+- Bidirectional relationship: RUNS_ON (Software Instance → Device CI)
+- Aggregation query path (shown with dotted line): "Compliance Check" traversal from License Entitlement through all consuming instances
 
-    Labels:
-    - "Financial Domain" on procurement systems
-    - "Operational Domain" on discovery sources
-    - "IT Management Graph" in center with node type examples
-    - Relationship labels on all edges
+Style: Layered architecture diagram with directional arrows showing data flow and relationship types
 
-    Color scheme:
-    - Blue for hardware-related elements
-    - Orange for software-related elements
-    - Green for the central IT Management Graph
-    - Purple for cross-domain relationships
+Labels:
+- "Financial Domain" on procurement systems
+- "Operational Domain" on discovery sources
+- "IT Management Graph" in center with node type examples
+- Relationship labels on all edges
 
-    Implementation: SVG or draw.io style diagram with clear separation of concerns
+Color scheme:
+- Blue for hardware-related elements
+- Orange for software-related elements
+- Green for the central IT Management Graph
+- Purple for cross-domain relationships
+
+Implementation: SVG or draw.io style diagram with clear separation of concerns
 </details>
-
 ## Portfolio Management: Aggregating Assets into Strategic Views
 
 IT portfolio management represents the aggregation and strategic analysis of IT assets across multiple dimensions to inform investment decisions, technology rationalization, and digital transformation planning. While individual asset tracking focuses on tactical lifecycle management, portfolio management elevates perspective to answer strategic questions: What is our total investment in legacy versus modern technology stacks? Which applications create technical debt that impedes business agility? Where should we allocate capital to maximize business value?
@@ -116,6 +115,8 @@ The following list outlines key portfolio analysis capabilities enabled by graph
 - **Cloud migration candidate identification:** Score applications for cloud suitability based on dependency complexity, data residency requirements, and infrastructure coupling, prioritizing migration sequences that minimize disruption.
 - **Vendor concentration risk assessment:** Aggregate all assets, licenses, and services from individual vendors, identifying single-vendor dependencies that create business continuity risks.
 - **Regulatory compliance impact analysis:** Trace from regulated data assets (PHI, PII, financial records) through all processing applications and infrastructure to identify compliance scope boundaries.
+
+#### Diagram: Application Portfolio Strategic Quadrant with Dependency Visualization
 
 <details>
     <summary>Application Portfolio Strategic Quadrant with Dependency Visualization</summary>
@@ -188,6 +189,8 @@ Modern digital estate inventory leverages automated discovery integrating multip
 - **Observability and APM tools:** Leveraging OpenTelemetry, eBPF, and distributed tracing to map application dependencies and communication patterns
 
 Graph-based integration of these disparate discovery sources enables reconciliation and conflict resolution that proves infeasible in traditional asset databases. When network discovery identifies a server at IP 10.0.1.50, cloud API discovery reports a VM instance with resource ID vm-abc123, and software metering reports an application server on hostname app-prod-01, graph matching algorithms can probabilistically merge these observations into a single asset node with confidence scoring. Unresolved conflicts (potentially representing distinct assets versus duplicate observations) surface as exception reports for manual review rather than silently creating duplicate records or discarding valid data.
+
+#### Diagram: Multi-Source Asset Discovery Integration Timeline
 
 <details>
     <summary>Multi-Source Asset Discovery Integration Timeline</summary>
@@ -269,6 +272,8 @@ The following depreciation comparison illustrates financial treatment difference
 | SaaS subscriptions | N/A | N/A | OpEx, expensed monthly | Salesforce subscription |
 | Cloud reserved instances | 1-3 years (commitment period) | Straight-line or upfront expense | Hybrid CapEx/OpEx depending on payment model | AWS RI 3-year commitment |
 
+#### Diagram: IT Asset Lifecycle State Machine Diagram
+
 <details>
     <summary>IT Asset Lifecycle State Machine Diagram</summary>
     Type: diagram
@@ -345,6 +350,8 @@ Key relationship types in IT asset management graphs include:
 - **FINANCIALLY_REPRESENTS:** Linking financial asset records to technical configuration items (e.g., asset record FINANCIALLY_REPRESENTS physical device)
 
 These relationship types enable portfolio-level queries that prove infeasible in traditional asset management systems. Consider the compliance query: "Identify all servers running end-of-support operating systems that host applications processing regulated data." This requires traversing from data classification nodes through application nodes to infrastructure nodes, filtering by OS version attributes—a multi-hop traversal combining relationship types (PROCESSES, HOSTED_BY) with attribute filters. In RDBMS implementations, this manifests as complex multi-table JOINs with performance degrading exponentially as the query touches additional relationship hops. In graph implementations, this executes as a straightforward traversal pattern completing in milliseconds even across enterprise-scale graphs with millions of nodes.
+
+#### Diagram: IT Asset Relationship Graph Interactive Model
 
 <details>
     <summary>IT Asset Relationship Graph Interactive Model</summary>

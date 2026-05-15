@@ -224,6 +224,8 @@ The benefits of effective business service mapping include:
 
 Organizations with mature business service mapping report 60-70% faster incident response (knowing business impact accelerates prioritization), 40-50% reduction in business-impacting changes (better pre-change assessment), and dramatically improved business-IT alignment (speaking common language). These benefits make business service mapping one of the highest-value graph database use cases!
 
+#### Diagram: Business Service Mapping Visualization: End-to-End Dependencies
+
 <details>
     <summary>Business Service Mapping Visualization: End-to-End Dependencies</summary>
     Type: graph-model
@@ -549,6 +551,8 @@ LIMIT 50
 This query analyzes each application's portfolio position (INVEST/MIGRATE/TOLERATE/RETIRE based on value and quality), dependency complexity (how many connections), and business service support. The results enable strategic portfolio decisions grounded in complete dependency context—exactly the insight executives need for application rationalization initiatives!
 
 Organizations with mature application portfolio management report impressive results: 20-30% reduction in total application count (eliminating redundancy), 30-40% reduction in application maintenance costs (retiring low-value applications), and 40-50% reduction in technical debt (prioritizing migration investments). Graph-based APM accelerates these outcomes by providing dependency visibility traditional portfolio tools lack!
+
+#### Diagram: Application Portfolio Management Quadrant Visualization: Strategic Decision Matrix
 
 <details>
     <summary>Application Portfolio Management Quadrant Visualization: Strategic Decision Matrix

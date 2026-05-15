@@ -82,6 +82,8 @@ The most widely recognized data quality dimensions include:
 
 Understanding these dimensions helps you diagnose quality problems systematically and communicate quality issues clearly to stakeholders!
 
+#### Diagram: Data Quality Dimensions Radar Chart: IT Management Data Health Assessment
+
 <details>
     <summary>Data Quality Dimensions Radar Chart: IT Management Data Health Assessment
     Type: chart

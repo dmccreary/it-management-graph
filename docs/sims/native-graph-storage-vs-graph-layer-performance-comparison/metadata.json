@@ -1,0 +1,21 @@
+{
+  "title": "Native Graph Storage vs Graph Layer Performance Comparison",
+  "description": "Native Graph Storage vs Graph Layer Performance Comparison",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "native-graph-storage-vs-graph-layer-performance-comparison",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Graph Database Technologies",
+  "chapter_dir": "05-graph-database-technologies"
+}

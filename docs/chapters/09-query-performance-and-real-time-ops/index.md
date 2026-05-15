@@ -67,6 +67,8 @@ When we talk about query performance, we're really discussing three closely rela
 
 **Performance Metrics** are the quantitative measurements we use to track and optimize these timing characteristics. By establishing baselines and continuously monitoring performance metrics, you can detect degradation before it affects operations and validate that optimizations actually improve performance.
 
+#### Diagram: Query Performance Comparison: Graph vs Relational Databases
+
 <details>
     <summary>Query Performance Comparison: Graph vs Relational Databases</summary>
     Type: chart
@@ -147,6 +149,8 @@ Beyond standard database metrics, graph databases introduce specialized measurem
 **Graph Complexity** describes how intricate your graph structure is. A graph with many different node types, relationship types, and property variations is more complex than a simple graph with uniform structure. Higher complexity doesn't necessarily mean worse performance, but it does require more careful query optimization.
 
 **Graph Density** measures how interconnected your graph is—specifically, the ratio of actual edges to the maximum possible edges. IT management graphs typically have low to medium density (2-5% is common) because not every component connects to every other component. Understanding density helps you predict query performance: highly dense graphs require more careful traversal filtering to avoid exploring unnecessary paths.
+
+#### Diagram: Graph Density Visualization MicroSim
 
 <details>
     <summary>Graph Density Visualization MicroSim</summary>
@@ -319,6 +323,8 @@ As your IT environment grows, your management graph needs to scale to accommodat
 However, vertical scaling has limits. Eventually you reach the maximum capacity of available hardware, and the cost of each incremental improvement increases dramatically. A server with 128 cores costs much more than twice the price of a 64-core server.
 
 **Horizontal Scaling** means adding more servers and distributing the graph across them. This approach has essentially unlimited scaling potential—you can always add another server. Modern graph databases support horizontal scaling through techniques like sharding (partitioning the graph across servers) and replication (copying data to multiple servers for redundancy and read performance).
+
+#### Diagram: Scaling Strategies Comparison Infographic
 
 <details>
     <summary>Scaling Strategies Comparison Infographic</summary>
@@ -509,6 +515,8 @@ Following **best practices** for graph database performance doesn't require deep
 **Use query timeouts.** Even with a well-designed graph, occasionally a user might submit a poorly-constructed query that attempts to traverse the entire graph. Setting reasonable query timeouts (2-5 seconds for most operations) prevents runaway queries from consuming resources and affecting other users.
 
 **Partition thoughtfully for horizontal scaling.** When you do need to distribute your graph across multiple servers, partition by natural boundaries that minimize cross-server traversals. For IT management, geographic regions or business divisions often provide good partitioning keys—most queries stay within a region, reducing network hops.
+
+#### Diagram: Performance Monitoring Dashboard Workflow
 
 <details>
     <summary>Performance Monitoring Dashboard Workflow</summary>

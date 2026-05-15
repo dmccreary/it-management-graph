@@ -62,6 +62,8 @@ For IT management applications where you frequently need to traverse 5-10 hops t
 
 The performance difference becomes strikingly apparent as hop count increases. A native graph database maintains consistent per-hop traversal time—following 1 hop takes about the same time as following 10 hops. Graph layers exhibit exponential performance degradation similar to the RDBMS multi-hop query problem we analyzed in Chapter 3. This distinction makes native graph storage essential for real-time IT management queries that need sub-second response times even for complex dependency analysis.
 
+#### Diagram: Native Graph Storage vs Graph Layer Performance Comparison
+
 <details>
     <summary>Native Graph Storage vs Graph Layer Performance Comparison</summary>
     Type: chart
@@ -248,6 +250,8 @@ In practice, IT infrastructure graphs often contain some legitimate cycles (mutu
 The real power of cycle detection in graph databases lies in how quickly and easily you can identify these patterns. Running cycle detection across thousands of applications and their dependencies completes in seconds or minutes—analysis that would be prohibitively expensive in relational databases. This enables continuous architectural health monitoring rather than infrequent manual reviews.
 
 Let's visualize a dependency graph with cycles to see what we're detecting:
+
+#### Diagram: Dependency Graph with Cycle Detection Visualization
 
 <details>
     <summary>Dependency Graph with Cycle Detection Visualization</summary>
@@ -637,6 +641,8 @@ The following table compares graph query approaches to traditional SQL:
 For IT management applications, pattern matching enables powerful analytical queries that would be impractical in SQL. Questions like "find all applications supporting Tier 1 business services, depending on end-of-life databases, with no documented disaster recovery plan" become straightforward pattern-matching queries in Cypher. This expressiveness transforms how you analyze and manage IT infrastructure!
 
 Let's visualize how pattern matching works:
+
+#### Diagram: Cypher Pattern Matching Interactive Visualization
 
 <details>
     <summary>Cypher Pattern Matching Interactive Visualization</summary>

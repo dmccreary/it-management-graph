@@ -1,0 +1,14 @@
+{
+  "sim_id": "it-modernization-interconnected-domains-infographic",
+  "diagram_name": "IT Modernization Interconnected Domains Infographic",
+  "chapter_number": 12,
+  "chapter_title": "Digital Transformation And Advanced Topics",
+  "chapter_dir": "12-digital-transformation-and-advanced-topics",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: infographic\n\n    Purpose: Show how different modernization streams interconnect and reinforce each other, with IT Management Graph at the center\n\n    Layout: Circular design with IT Management Graph in the center, four modernization domains around the perimeter\n\n    Center element:\n    - \"IT Management Graph\" (large circle, gold color)\n    - Icon: Network graph visualization\n    - Size: 150px diameter\n\n    Surrounding elements (arranged in circular layout, 90 degrees apart):\n\n    1. Infrastructure Modernization (top, blue):\n       - Icon: Cloud and servers\n       - Key technologies: \"Cloud, Containers, Kubernetes\"\n       - Connected benefit: \"Dynamic discovery\"\n\n    2. Data Modernization (right, green):\n       - Icon: Database with schema symbols\n       - Key technologies: \"Graph DB, Flexible Schema\"\n       - Connected benefit: \"Relationship modeling\"\n\n    3. Process Modernization (bottom, orange):\n       - Icon: Workflow diagram\n       - Key technologies: \"Automation, Real-time Analysis\"\n       - Connected benefit: \"Instant impact assessment\"\n\n    4. Tooling Modernization (left, purple):\n       - Icon: Toolbox or wrench\n       - Key technologies: \"Observability, Discovery, Orchestration\"\n       - Connected benefit: \"Continuous data feed\"\n\n    Interactive elements:\n    - Hover over any domain: Highlight connections to IT Management Graph\n    - Click domain: Expand panel showing specific technologies and benefits\n    - Hover over connecting lines: Show data flows and dependencies\n    - Click center: Show integration points for all domains\n\n    Connecting lines:\n    - Bidirectional arrows from each domain to center (showing data flow)\n    - Curved lines connecting adjacent domains (showing interdependencies)\n    - Line thickness indicates strength of relationship\n\n    Legend (bottom right):\n    - Arrow types and their meanings\n    - Color coding explanation\n    - \"Click to explore\" instruction\n\n    Visual style: Modern, clean design with subtle animations on hover\n    Canvas size: 800x800px\n    Implementation: HTML/CSS/JavaScript with SVG for graphics"
+}

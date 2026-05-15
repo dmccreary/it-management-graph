@@ -1,0 +1,14 @@
+{
+  "sim_id": "traditional-cmdb-data-flow-and-integration-architecture",
+  "diagram_name": "Traditional CMDB Data Flow and Integration Architecture",
+  "chapter_number": 1,
+  "chapter_title": "Intro To Itil And Config Mgmt",
+  "chapter_dir": "01-intro-to-itil-and-config-mgmt",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: diagram\n\n    Purpose: Illustrate the complex integration challenges of traditional CMDB implementations showing data flows from multiple sources\n\n    Components to show:\n    - Center: CMDB (large orange cylinder/database shape)\n    - Around CMDB: Multiple source systems (arranged in circular pattern)\n      - Network Discovery Tools (top-left, purple box)\n      - Server Monitoring (top, blue box)\n      - Application Performance Management (top-right, cyan box)\n      - Service Desk / Ticketing (right, green box)\n      - Change Management System (bottom-right, yellow box)\n      - Asset Management DB (bottom, red box)\n      - Cloud Management Platforms (bottom-left, teal box)\n      - Manual Entry / Spreadsheets (left, gray box)\n    - Integration Layer (dotted circle around CMDB, light gray)\n    - Output Systems (arranged in outer circle)\n      - Change Impact Analysis (top-left)\n      - Incident Management (top)\n      - Capacity Planning (top-right)\n      - Compliance Reporting (right)\n\n    Connections:\n    - Solid arrows from source systems to CMDB (labeled with \"Push\" or \"Pull\")\n    - Dotted arrows from CMDB to output systems (labeled with \"Query\")\n    - Red \"X\" symbols on several arrows indicating common integration failures\n    - Numbers on arrows indicating \"integration points\" (e.g., \"API v2.1\", \"XML Feed\", \"CSV Import\")\n\n    Visual style: System integration diagram with emphasis on complexity\n\n    Labels:\n    - \"Discovery Sources\" label over source systems\n    - \"ETL / Integration Layer\" on dotted circle\n    - \"Consuming Processes\" label over output systems\n    - \"Manual Reconciliation Required\" label with arrow pointing to conflicts\n    - \"Data Quality Issues\" label on arrows with red X\n\n    Annotations:\n    - Small callout boxes showing common problems:\n      - \"Conflicting data from multiple sources\"\n      - \"Stale data (discovery runs weekly)\"\n      - \"Schema mismatches\"\n      - \"Integration breaks with version upgrades\"\n\n    Color scheme:\n    - Various colors for source systems (to show diversity)\n    - Orange for CMDB (central focus)\n    - Gray for integration layer (showing it as overhead)\n    - Red for failure points\n\n    Implementation: Diagram tool (Lucidchart, Draw.io) or SVG with clear labeling"
+}

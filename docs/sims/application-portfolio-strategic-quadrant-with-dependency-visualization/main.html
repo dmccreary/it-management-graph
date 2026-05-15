@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Portfolio Strategic Quadrant with Dependency Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Application Portfolio Strategic Quadrant with Dependency Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> application-portfolio-strategic-quadrant-with-dependency-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: infographic
+    
+        Purpose: Create an interactive application portfolio quadrant (business value vs. technical quality) where clicking applications reveals their dependency networks, demonstrating why portfolio decisions cannot be made in isolation
+    
+        Layout: 800x700px canvas divided into two sections
+    
+        Section 1 (800x500px): Portfolio quadrant chart
+        - X-axis: Technical Quality (0-10, left to right)
+        - Y-axis: Business Value (0-10, bottom to top)
+        - Four quadrants with labels:
+          - Top-right (high value, high quality): "Invest" (green)
+          - Top-left (high value, low quality): "Migrate" (yellow)
+          - Bottom-right (low value, high quality): "Maintain" (blue)
+          - Bottom-left (low value, low quality): "Retire" (red)
+    
+        Section 2 (800x200px): Dependency detail panel (initially hidden)
+    
+        Sample applications plotted as bubbles (size = user count):
+        - "Customer Portal" (9,8) - Invest quadrant - 5,000 users
+        - "Legacy Billing System" (2,9) - Migrate quadrant - 800 users
+        - "Internal Tools Suite" (7,3) - Maintain quadrant - 200 users
+        - "Old Reporting Engine" (3,2) - Retire quadrant - 50 users
+        - "ERP Core" (6,8) - Invest quadrant - 2,000 users
+        - "Spreadsheet Automation Tool" (4,2) - Retire quadrant - 30 users
+    
+        Interactive elements:
+        - Hover over bubble: Show application name, value score, quality score, user count
+        - Click bubble: Expand dependency panel showing:
+          - Upstream dependencies: "Depends on X applications"
+          - Downstream dependencies: "Supports Y applications and Z business services"
+          - Mini graph visualization showing clicked app and immediate neighbors
+          - Dependency complexity score (calculated from graph metrics)
+        - Hover over quadrant: Highlight all applications in that quadrant
+        - Toggle button: Show/hide dependency complexity as bubble color intensity
+    
+        Example insight for "Old Reporting Engine" (Retire quadrant):
+        - When clicked, dependency panel reveals:
+          - "Depends on: Legacy Billing System, ERP Core"
+          - "Supports: 3 regulatory reporting business services (CRITICAL)"
+          - "Cannot retire until replacement reporting capability deployed"
+          - Dependency complexity: HIGH (blocks critical business functions)
+    
+        Visual style: Modern scatter plot with translucent bubbles, grid lines, and professional color scheme
+    
+        Color scheme:
+        - Quadrant backgrounds: Light tints of green/yellow/blue/red
+        - Application bubbles: Solid colors based on quadrant or gradient based on dependency complexity
+        - Dependency panel: White background with graph visualization in navy blue
+    
+        Implementation: D3.js for interactive quadrant chart with click handlers to reveal dependency analysis pulled from IT management graph data
+    -->
+</body>
+</html>

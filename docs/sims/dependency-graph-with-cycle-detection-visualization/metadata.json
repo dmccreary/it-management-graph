@@ -1,0 +1,21 @@
+{
+  "title": "Dependency Graph with Cycle Detection Visualization",
+  "description": "Dependency Graph with Cycle Detection Visualization",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "dependency-graph-with-cycle-detection-visualization",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 5,
+  "chapter_title": "Graph Database Technologies",
+  "chapter_dir": "05-graph-database-technologies"
+}

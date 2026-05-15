@@ -1,0 +1,21 @@
+{
+  "title": "SQL Query Execution Visualization",
+  "description": "SQL Query Execution Visualization",
+  "creator": "Dementia Education Project",
+  "date": "2026-05-15",
+  "subject": [
+    "dementia"
+  ],
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY 4.0",
+  "identifier": "sql-query-execution-visualization",
+  "library": "TBD",
+  "bloomLevel": "TBD",
+  "bloomVerb": "TBD",
+  "completion_status": "scaffold",
+  "chapter_number": 3,
+  "chapter_title": "Relational Database Fundamentals",
+  "chapter_dir": "03-relational-database-fundamentals"
+}

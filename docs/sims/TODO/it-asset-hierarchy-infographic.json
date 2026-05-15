@@ -1,0 +1,14 @@
+{
+  "sim_id": "it-asset-hierarchy-infographic",
+  "diagram_name": "IT Asset Hierarchy Infographic",
+  "chapter_number": 1,
+  "chapter_title": "Intro To Itil And Config Mgmt",
+  "chapter_dir": "01-intro-to-itil-and-config-mgmt",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: infographic\n\n    Purpose: Show the hierarchical relationships between different types of IT assets with examples and clickable details\n\n    Layout: Circular/radial design with \"IT Assets\" at center, three major categories radiating outward\n\n    Center: \"IT Assets\" (large circle, blue)\n\n    Primary Branches (from center):\n    1. Hardware Assets (orange segment, top)\n    2. Software Assets (gold segment, right)\n    3. Digital Services/Information Assets (green segment, left)\n\n    Secondary Level - Hardware Assets:\n    - Servers (with icon)\n    - Network Equipment (with icon)\n    - End-User Devices (with icon)\n    - Storage Systems (with icon)\n\n    Secondary Level - Software Assets:\n    - Applications (with icon)\n    - Operating Systems (with icon)\n    - Middleware (with icon)\n    - Licenses (with icon)\n\n    Secondary Level - Digital Services:\n    - SaaS Subscriptions (with icon)\n    - Cloud Resources (with icon)\n    - Data Assets (with icon)\n    - APIs/Integrations (with icon)\n\n    Interactive elements:\n    - Hover over any category: Show definition and management considerations\n    - Click on category: Expand panel showing:\n      - Typical lifecycle (procurement → deployment → operation → retirement)\n      - Key management challenges\n      - Integration with CMDB\n      - Example items\n    - Size of segments proportional to typical percentage of IT portfolio\n\n    Visual styling:\n    - Modern flat design with subtle gradients\n    - Clear icons for each asset type\n    - Connecting lines from center to categories\n    - Color coding: Orange (hardware), Gold (software), Green (digital services)\n\n    Additional details panel (shown on click):\n    For each category, show:\n    - Management focus (financial vs. operational)\n    - Update frequency (stable vs. dynamic)\n    - Primary stakeholders\n    - Typical tracking attributes\n\n    Implementation: HTML/CSS/JavaScript with SVG for radial layout, JSON data for content"
+}

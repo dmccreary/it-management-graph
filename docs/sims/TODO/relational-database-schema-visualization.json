@@ -1,0 +1,14 @@
+{
+  "sim_id": "relational-database-schema-visualization",
+  "diagram_name": "Relational Database Schema Visualization",
+  "chapter_number": 3,
+  "chapter_title": "Relational Database Fundamentals",
+  "chapter_dir": "03-relational-database-fundamentals",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: diagram\n\n    Purpose: Illustrate the schema structure for an IT asset management database showing tables, columns, data types, and foreign key relationships\n\n    Components to show:\n    Three tables represented as boxes with table name as header:\n\n    1. Locations table (green box, left side)\n       - location_id (PK) - INTEGER\n       - data_center - VARCHAR(100)\n       - city - VARCHAR(100)\n       - region - VARCHAR(50)\n\n    2. Servers table (blue box, center)\n       - server_id (PK) - INTEGER\n       - hostname - VARCHAR(255)\n       - ip_address - VARCHAR(15)\n       - location_id (FK) - INTEGER\n       - purchase_date - DATE\n       - status - VARCHAR(20)\n\n    3. Applications table (orange box, right side)\n       - app_id (PK) - INTEGER\n       - app_name - VARCHAR(255)\n       - version - VARCHAR(50)\n       - server_id (FK) - INTEGER\n       - owner_team - VARCHAR(100)\n\n    Relationships (arrows):\n    - Arrow from Servers.location_id to Locations.location_id\n      Label: \"LOCATED_IN\" (many-to-one)\n    - Arrow from Applications.server_id to Servers.server_id\n      Label: \"HOSTED_ON\" (many-to-one)\n\n    Visual conventions:\n    - Primary keys marked with \"PK\" and shown in bold\n    - Foreign keys marked with \"FK\" and shown in italic\n    - Arrows point from foreign key to primary key\n    - Crow's foot notation: single line at PK end (one), crow's foot at FK end (many)\n\n    Annotations:\n    - Note near Applications table: \"Each application hosted on exactly one server\"\n    - Note near Servers table: \"Each server located in exactly one data center\"\n    - Note showing potential limitation: \"What if applications depend on other applications?\" (shown with dotted line and question mark)\n\n    Style: Classic entity-relationship diagram with rectangular tables and connecting arrows\n\n    Color scheme:\n    - Green for Locations (physical infrastructure)\n    - Blue for Servers (compute infrastructure)\n    - Orange for Applications (software layer)\n    - Black arrows with labels\n\n    Implementation: Draw.io, Lucidchart, or SVG-based ER diagram"
+}

@@ -55,6 +55,8 @@ Modern observability practices rest on three foundational data types that work t
 - **Metrics**: Numerical measurements collected over time, such as CPU usage, request rates, or error counts
 - **Traces**: Records of the path that requests take as they flow through distributed systems, showing service-to-service interactions
 
+#### Diagram: The Three Pillars of Observability Diagram
+
 <details>
     <summary>The Three Pillars of Observability Diagram</summary>
     Type: diagram
@@ -142,6 +144,8 @@ OpenTelemetry offers tremendous benefits for IT management graph construction:
 - **Consistent data format**: All telemetry follows standard schemas, making it easier to process and analyze
 - **Vendor neutrality**: Data can be exported to any backend system, providing flexibility in tool selection
 - **Rich context**: Traces include detailed metadata about service relationships, enabling accurate dependency graph construction
+
+#### Diagram: OpenTelemetry Data Flow Architecture
 
 <details>
     <summary>OpenTelemetry Data Flow Architecture</summary>
@@ -237,6 +241,8 @@ eBPF programs can attach to various kernel events and collect data about network
 - **Service mesh discovery**: Identifying microservice interactions in containerized environments without requiring sidecar proxies
 - **Performance profiling**: Understanding resource dependencies and bottlenecks at the kernel level
 - **Security monitoring**: Detecting unusual communication patterns that might indicate security issues or unauthorized dependencies
+
+#### Diagram: eBPF Network Connection Discovery Interactive MicroSim
 
 <details>
     <summary>eBPF Network Connection Discovery Interactive MicroSim</summary>
@@ -407,6 +413,8 @@ Modern service discovery techniques include:
 - **DNS query monitoring**: Tracking DNS lookups reveals service dependencies before connections are even established
 - **API gateway logs**: Analyzing API traffic patterns to understand service interactions
 
+#### Diagram: Network vs. Service Topology Comparison Chart
+
 <details>
     <summary>Network vs. Service Topology Comparison Chart</summary>
     Type: chart
@@ -519,6 +527,8 @@ Technologies enabling dynamic topology discovery include:
 - **Cloud provider event streams**: AWS CloudWatch Events, Azure Event Grid, GCP Cloud Pub/Sub providing infrastructure change notifications
 - **Service mesh telemetry**: Continuous updates on service deployments, traffic routing, and health status
 - **Container runtime monitoring**: Real-time tracking of container lifecycle events (create, start, stop, destroy)
+
+#### Diagram: Dynamic Topology Update Timeline Visualization
 
 <details>
     <summary>Dynamic Topology Update Timeline Visualization</summary>
@@ -709,6 +719,8 @@ Effective automated discovery systems typically employ multiple complementary te
 - **Agentless discovery**: Network-based scanning, API queries, and packet inspection gather information without requiring software installation
 - **Passive observation**: Monitoring network traffic and telemetry streams to infer relationships from actual communication patterns
 - **Active probing**: Sending queries or test traffic to identify services, versions, and capabilities
+
+#### Diagram: Automated Discovery Architecture Diagram
 
 <details>
     <summary>Automated Discovery Architecture Diagram</summary>
@@ -928,6 +940,8 @@ Modern drift detection leverages the same automated discovery techniques we've d
 - **Configuration management validation**: Verify servers match desired state defined in Ansible/Puppet/Chef
 - **Policy enforcement**: Automatically detect violations of organizational policies (e.g., unencrypted storage, public access)
 - **Topology validation**: Ensure actual service dependencies match approved architecture diagrams
+
+#### Diagram: Configuration Drift Detection Workflow
 
 <details>
     <summary>Configuration Drift Detection Workflow</summary>

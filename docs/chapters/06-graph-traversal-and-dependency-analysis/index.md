@@ -101,6 +101,8 @@ ORDER BY hops, downstream_dependent
 
 The beauty of these queries is their simplicity and performance—following relationships in either direction executes in milliseconds even across complex infrastructure graphs with thousands of components! This bidirectional traversal capability makes graph databases indispensable for dependency management.
 
+#### Diagram: Bidirectional Dependency Tracing Visualization
+
 <details>
     <summary>Bidirectional Dependency Tracing Visualization</summary>
     Type: graph-model
@@ -445,6 +447,8 @@ LIMIT 20
 ```
 
 This query traces from business services through applications and technical services down to infrastructure and datacenters, showing the complete multi-layer dependency stack. Understanding these layers helps different roles focus on relevant concerns: executives care about business service dependencies, developers care about application dependencies, and operations teams care about infrastructure dependencies—but the unified graph connects all perspectives!
+
+#### Diagram: Multi-Layer Dependency Map Visualization
 
 <details>
     <summary>Multi-Layer Dependency Map Visualization</summary>

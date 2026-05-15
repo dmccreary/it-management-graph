@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Query Execution Visualization</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>SQL Query Execution Visualization</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> sql-query-execution-visualization</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: workflow
+    
+        Purpose: Show the step-by-step process of how an SQL query is parsed, optimized, and executed by an RDBMS
+    
+        Visual style: Flowchart with process boxes and data flow
+    
+        Steps:
+    
+        1. Start: "Developer writes SQL query"
+           Hover text: "Example: SELECT hostname FROM Servers WHERE status = 'active'"
+           Input: SQL text string
+    
+        2. Process: "Parser validates syntax"
+           Hover text: "Checks SQL grammar, table and column names exist, data types match. Builds parse tree."
+           Output: Parse tree or syntax error
+    
+        3. Decision: "Syntax valid?"
+           Hover text: "If syntax errors found, return error to user. Otherwise continue."
+           Paths: Yes → continue, No → return error
+    
+        4. Process: "Query optimizer generates execution plans"
+           Hover text: "Creates multiple possible ways to execute query: which indexes to use, join order, access methods. Estimates cost of each plan based on table statistics."
+           Output: Multiple candidate execution plans with cost estimates
+    
+        5. Process: "Select lowest-cost execution plan"
+           Hover text: "Chooses plan with minimum estimated I/O operations, CPU usage, and memory. Common optimizations: index seeks vs. table scans, join algorithms (nested loop, hash, merge)."
+           Output: Optimal execution plan
+    
+        6. Process: "Execute plan: Access storage layer"
+           Hover text: "Reads data pages from disk or buffer cache. Uses indexes if beneficial. Applies filters and joins according to plan."
+           Output: Intermediate result set
+    
+        7. Process: "Apply sorting, aggregation, limits"
+           Hover text: "Performs ORDER BY, GROUP BY, HAVING, LIMIT operations on result set. May require temporary storage for large sorts."
+           Output: Final result set
+    
+        8. End: "Return results to user"
+           Hover text: "Results formatted as rows and columns, returned to application or displayed to user"
+           Output: Query results
+    
+        Side panel: "Query statistics"
+        - Execution time: 45ms
+        - Rows scanned: 10,000
+        - Rows returned: 127
+        - Index used: idx_servers_status
+        - Query cost: 312 units
+    
+        Annotations:
+        - Note at optimizer step: "Optimization is where RDBMS 'intelligence' lives. Good indexes and statistics dramatically improve performance."
+        - Note at execution step: "This is where actual I/O happens. Disk access is slowest part."
+        - Highlight showing feedback loop: "Statistics collector updates table stats based on query execution, improving future optimizations"
+    
+        Color coding:
+        - Blue: Parsing and validation
+        - Orange: Optimization (most complex step)
+        - Green: Execution and results
+        - Red: Error paths
+    
+        Swimlanes:
+        - User/Application layer
+        - SQL Engine (parser, optimizer)
+        - Storage Engine (data access)
+    
+        Implementation: Flowchart with interactive hover text, possibly using D3.js or Mermaid.js for web-based rendering
+    -->
+</body>
+</html>

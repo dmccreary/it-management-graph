@@ -1,0 +1,14 @@
+{
+  "sim_id": "regulatory-framework-timeline",
+  "diagram_name": "Regulatory Framework Timeline",
+  "chapter_number": 11,
+  "chapter_title": "Compliance Risk And Security",
+  "chapter_dir": "11-compliance-risk-and-security",
+  "library": null,
+  "bloom_level": null,
+  "bloom_verb": null,
+  "learning_objective": null,
+  "completion_status": "specified",
+  "extracted_date": "2026-05-15",
+  "specification": "Type: timeline\n\n    Purpose: Illustrate the evolution of major IT compliance regulations from 1990 to present, showing the increasing sophistication and scope of regulatory requirements\n\n    Time period: 1996-2025\n\n    Orientation: Horizontal\n\n    Events:\n    - 1996: HIPAA enacted (Health Insurance Portability and Accountability Act)\n    - 2003: HIPAA Security Rule finalized, establishing ePHI protection requirements\n    - 2009: HITECH Act strengthens HIPAA enforcement and adds breach notification\n    - 2016: GDPR adopted by EU Parliament (two-year implementation period)\n    - 2018: GDPR enforcement begins (May 25), creating global data privacy standard\n    - 2020: Schrems II ruling invalidates Privacy Shield, complicating trans-Atlantic data transfers\n    - 2022: DORA regulation published by EU\n    - 2025: DORA enforcement begins (January 17), establishing financial sector resilience requirements\n\n    Visual style: Horizontal timeline with milestones marked as circles, with connecting line showing progression\n\n    Color coding:\n    - Blue: HIPAA/healthcare regulations\n    - Green: GDPR/privacy regulations\n    - Orange: DORA/resilience regulations\n    - Purple: Major enforcement events or court rulings\n\n    Interactive features:\n    - Hover over each milestone to see key provisions and requirements\n    - Click to expand with detailed description of technical implications\n    - Hover over connecting lines to see contextual developments between milestones\n\n    Implementation: HTML/CSS/JavaScript with SVG timeline, responsive design for mobile viewing"
+}

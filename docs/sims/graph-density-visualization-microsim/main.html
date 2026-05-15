@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Density Visualization MicroSim</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+        #container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a3a6c;
+        }
+        .placeholder {
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .placeholder .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #212529;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .placeholder h2 {
+            font-size: 18px;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+        .placeholder p {
+            font-size: 14px;
+            max-width: 480px;
+        }
+        .meta {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6c757d;
+            border-top: 1px solid #dee2e6;
+            padding-top: 12px;
+        }
+        .meta strong { color: #495057; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Graph Density Visualization MicroSim</h1>
+        <div class="placeholder">
+            <span class="badge">SCAFFOLD</span>
+            <h2>MicroSim Not Yet Implemented</h2>
+            <p>This MicroSim has been scaffolded from its specification but the
+            interactive content has not been built yet. See the chapter source
+            and the <code>index.md</code> in this directory for the full spec.</p>
+        </div>
+        <div class="meta">
+            <p><strong>Sim ID:</strong> graph-density-visualization-microsim</p>
+            <p><strong>Library:</strong> TBD</p>
+            <p><strong>Bloom Level:</strong> TBD</p>
+            <p><strong>Learning Objective:</strong> TBD</p>
+        </div>
+    </div>
+
+    <!--
+    SPECIFICATION (from chapter index.md):
+
+    Type: microsim
+    
+        Learning objective: Help students understand how graph density affects traversal performance and query complexity
+    
+        Canvas layout (900x600px):
+        - Left side (600x600): Main drawing area showing an interactive graph network
+        - Right side (300x600): Control panel with sliders, buttons, and statistics display
+    
+        Visual elements in main drawing area:
+        - Nodes represented as circles (20px diameter)
+        - Edges represented as lines with arrow heads
+        - Color coding:
+          - Starting node: Bright green with glow effect
+          - Nodes at 1 hop away: Light green
+          - Nodes at 2 hops away: Yellow
+          - Nodes at 3+ hops away: Orange
+          - Unconnected nodes: Light gray
+        - Layout: Force-directed with moderate repulsion to prevent overlap
+    
+        Interactive controls in right panel:
+    
+        1. "Number of Nodes" slider:
+           - Range: 10 to 100 nodes
+           - Default: 30 nodes
+           - Step: 5
+           - Display current value above slider
+    
+        2. "Graph Density" slider:
+           - Range: 1% to 50%
+           - Default: 5%
+           - Step: 1%
+           - Display current value as percentage
+           - Color indicator: Green (1-10%), Yellow (11-25%), Red (26-50%)
+    
+        3. "Regenerate Graph" button:
+           - Large blue button
+           - Creates new random graph with current parameters
+           - Animates nodes flying in from random positions
+    
+        4. "Start Traversal" button:
+           - Large green button (disabled until graph generated)
+           - Click to begin breadth-first traversal animation from random starting node
+    
+        5. "Reset Colors" button:
+           - Orange button
+           - Returns all nodes to default gray color
+    
+        6. "Animation Speed" slider:
+           - Range: 100ms to 2000ms per step
+           - Default: 500ms
+           - Label: "Traversal speed"
+    
+        Statistics display panel (below controls):
+        - Current Statistics (updated in real-time):
+          - "Total Nodes: [N]"
+          - "Total Edges: [E]"
+          - "Actual Density: [X.XX]%"
+          - "Max Possible Edges: [N*(N-1)/2]"
+          - "Average Node Degree: [X.X]"
+          - "Nodes Reachable from Start: [N] ([X]%)"
+    
+        - After traversal completes:
+          - "Traversal Depth: [N] hops"
+          - "Nodes Visited: [N]"
+          - "Edges Traversed: [N]"
+          - "Time Elapsed: [X.XX] seconds (simulated)"
+    
+        Default parameters:
+        - Nodes: 30
+        - Density: 5%
+        - Animation speed: 500ms
+        - Layout: Force-directed with Barnes-Hut optimization
+    
+        Behavior and interactions:
+    
+        1. When page loads:
+           - Display empty canvas with message: "Click 'Regenerate Graph' to begin"
+           - All buttons except "Regenerate Graph" are disabled
+    
+        2. When "Regenerate Graph" clicked:
+           - Calculate number of edges needed: edges = density * (nodes * (nodes-1) / 2)
+           - Create nodes at random positions
+           - Create edges randomly ensuring no duplicate edges
+           - Animate nodes settling into force-directed layout
+           - Enable "Start Traversal" button
+           - Update statistics panel
+    
+        3. When density slider changed:
+           - Update color indicator (green/yellow/red)
+           - Display warning if density > 25%: "Warning: High density may slow traversal"
+    
+        4. When "Start Traversal" clicked:
+           - Select random starting node
+           - Animate breadth-first traversal:
+             - Color starting node green
+             - For each hop level:
+               - Highlight edges being traversed (thicken and pulse)
+               - Color discovered nodes based on hop distance
+               - Wait for animation delay
+               - Update "Nodes Visited" counter
+           - When complete:
+             - Display completion message: "Traversal complete! Reachable: [N] of [Total] nodes"
+             - Show any unreachable nodes in dark gray with dashed outline
+    
+        5. Hover interactions:
+           - Hovering over node shows tooltip with:
+             - Node ID
+             - Degree (number of connections)
+             - Distance from starting node (if traversal run)
+           - Hovering over edge shows tooltip with:
+             - From node → To node
+             - Edge index
+    
+        6. Click interactions:
+           - Clicking a node makes it the new starting node for next traversal
+           - Node gets green outline to indicate selection
+           - Status message: "Node [ID] selected as new start"
+    
+        Educational callouts:
+        - Below graph: "Notice how higher density creates more paths to explore but also more connections to traverse"
+        - After first traversal: "In IT graphs, typical density is 2-5%. Most components don't connect to most others!"
+        - When density > 20%: "Real IT graphs rarely exceed 10% density. This would indicate unusual architecture."
+    
+        Implementation notes:
+        - Use p5.js for rendering and animation
+        - Use simple physics for force-directed layout (not full d3-force)
+        - Store graph as adjacency list for efficient traversal
+        - Implement BFS using queue data structure
+        - Use frameCount and modulo for animation timing
+        - Limit frame rate to 30fps for smooth animation
+        - Add "pause/resume" functionality if traversal is too fast
+    
+        Code structure suggestions:
+        - Class Graph: manages nodes, edges, density calculation
+        - Class Node: position, velocity, connections, display state
+        - Class Edge: from, to, display state
+        - Function generateGraph(numNodes, density)
+        - Function runBFS(startNode)
+        - Function updatePhysics() for force-directed layout
+        - Function drawGraph() for rendering
+    -->
+</body>
+</html>
