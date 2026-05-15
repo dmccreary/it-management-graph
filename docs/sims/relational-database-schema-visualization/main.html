@@ -3,143 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Relational Database Schema Visualization</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 960px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 15px; color: #1a3a6c; text-align: center; margin-bottom: 4px; }
+        .subtitle { font-size: 11px; color: #666; text-align: center; margin-bottom: 8px; }
+        #layout { display: flex; gap: 8px; }
+        #network { flex: 1; height: 450px; border: 1px solid #dee2e6; border-radius: 6px; background: #fafbfc; }
+        #sidebar { width: 230px; min-width: 230px; font-size: 11px; }
+        #schema-panel { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 6px; padding: 8px; }
+        #schema-panel h3 { font-size: 12px; color: #1a3a6c; margin-bottom: 6px; }
+        .schema-table { margin-bottom: 10px; }
+        .schema-table h4 { font-size: 11px; font-weight: bold; margin-bottom: 3px; padding: 3px 6px; border-radius: 3px; }
+        .schema-col { padding: 2px 6px; display: flex; gap: 4px; align-items: center; }
+        .col-name { font-family: monospace; font-size: 10px; }
+        .col-type { font-size: 9px; color: #888; }
+        .badge-pk { background: #f9a825; color: #333; font-size: 8px; padding: 0px 3px; border-radius: 2px; font-weight: bold; }
+        .badge-fk { background: #29b6f6; color: #fff; font-size: 8px; padding: 0px 3px; border-radius: 2px; font-weight: bold; }
+        #info-box { margin-top: 8px; padding: 8px; background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 6px; min-height: 60px; }
+        #info-box h4 { font-size: 12px; color: #2e7d32; margin-bottom: 4px; }
+        .instruction { font-size: 10px; color: #888; text-align: center; margin-top: 6px; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Relational Database Schema Visualization</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> relational-database-schema-visualization</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <h1>CMDB Relational Database Schema (ER Diagram)</h1>
+        <div class="subtitle">Click a table to highlight FK relationships — Locations → Servers → Applications</div>
+        <div id="layout">
+            <div id="network"></div>
+            <div id="sidebar">
+                <div id="schema-panel">
+                    <h3>Schema Reference</h3>
+                    <div class="schema-table">
+                        <h4 style="background:#c8e6c9;color:#2e7d32">Locations</h4>
+                        <div class="schema-col"><span class="badge-pk">PK</span><span class="col-name">location_id</span><span class="col-type">INTEGER</span></div>
+                        <div class="schema-col"><span class="col-name">data_center</span><span class="col-type">VARCHAR(100)</span></div>
+                        <div class="schema-col"><span class="col-name">city</span><span class="col-type">VARCHAR(100)</span></div>
+                        <div class="schema-col"><span class="col-name">region</span><span class="col-type">VARCHAR(50)</span></div>
+                    </div>
+                    <div class="schema-table">
+                        <h4 style="background:#bbdefb;color:#1565c0">Servers</h4>
+                        <div class="schema-col"><span class="badge-pk">PK</span><span class="col-name">server_id</span><span class="col-type">INTEGER</span></div>
+                        <div class="schema-col"><span class="col-name">hostname</span><span class="col-type">VARCHAR(255)</span></div>
+                        <div class="schema-col"><span class="col-name">ip_address</span><span class="col-type">VARCHAR(15)</span></div>
+                        <div class="schema-col"><span class="badge-fk">FK</span><span class="col-name">location_id</span><span class="col-type">INTEGER</span></div>
+                        <div class="schema-col"><span class="col-name">purchase_date</span><span class="col-type">DATE</span></div>
+                        <div class="schema-col"><span class="col-name">status</span><span class="col-type">VARCHAR(20)</span></div>
+                    </div>
+                    <div class="schema-table">
+                        <h4 style="background:#ffe0b2;color:#e65100">Applications</h4>
+                        <div class="schema-col"><span class="badge-pk">PK</span><span class="col-name">app_id</span><span class="col-type">INTEGER</span></div>
+                        <div class="schema-col"><span class="col-name">app_name</span><span class="col-type">VARCHAR(255)</span></div>
+                        <div class="schema-col"><span class="col-name">version</span><span class="col-type">VARCHAR(50)</span></div>
+                        <div class="schema-col"><span class="badge-fk">FK</span><span class="col-name">server_id</span><span class="col-type">INTEGER</span></div>
+                        <div class="schema-col"><span class="col-name">owner_team</span><span class="col-type">VARCHAR(100)</span></div>
+                    </div>
+                </div>
+                <div id="info-box">
+                    <h4>Click a table to explore</h4>
+                    <p>Click any table node to highlight its foreign key relationships and see cardinality details.</p>
+                </div>
+                <div class="instruction">Click nodes to highlight.<br>Scroll to zoom, drag to pan.</div>
+            </div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: diagram
-    
-        Purpose: Illustrate the schema structure for an IT asset management database showing tables, columns, data types, and foreign key relationships
-    
-        Components to show:
-        Three tables represented as boxes with table name as header:
-    
-        1. Locations table (green box, left side)
-           - location_id (PK) - INTEGER
-           - data_center - VARCHAR(100)
-           - city - VARCHAR(100)
-           - region - VARCHAR(50)
-    
-        2. Servers table (blue box, center)
-           - server_id (PK) - INTEGER
-           - hostname - VARCHAR(255)
-           - ip_address - VARCHAR(15)
-           - location_id (FK) - INTEGER
-           - purchase_date - DATE
-           - status - VARCHAR(20)
-    
-        3. Applications table (orange box, right side)
-           - app_id (PK) - INTEGER
-           - app_name - VARCHAR(255)
-           - version - VARCHAR(50)
-           - server_id (FK) - INTEGER
-           - owner_team - VARCHAR(100)
-    
-        Relationships (arrows):
-        - Arrow from Servers.location_id to Locations.location_id
-          Label: "LOCATED_IN" (many-to-one)
-        - Arrow from Applications.server_id to Servers.server_id
-          Label: "HOSTED_ON" (many-to-one)
-    
-        Visual conventions:
-        - Primary keys marked with "PK" and shown in bold
-        - Foreign keys marked with "FK" and shown in italic
-        - Arrows point from foreign key to primary key
-        - Crow's foot notation: single line at PK end (one), crow's foot at FK end (many)
-    
-        Annotations:
-        - Note near Applications table: "Each application hosted on exactly one server"
-        - Note near Servers table: "Each server located in exactly one data center"
-        - Note showing potential limitation: "What if applications depend on other applications?" (shown with dotted line and question mark)
-    
-        Style: Classic entity-relationship diagram with rectangular tables and connecting arrows
-    
-        Color scheme:
-        - Green for Locations (physical infrastructure)
-        - Blue for Servers (compute infrastructure)
-        - Orange for Applications (software layer)
-        - Black arrows with labels
-    
-        Implementation: Draw.io, Lucidchart, or SVG-based ER diagram
-    -->
+    <script src="relational-database-schema-visualization.js"></script>
 </body>
 </html>
