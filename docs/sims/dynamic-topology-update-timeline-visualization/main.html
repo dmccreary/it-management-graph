@@ -3,240 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Topology Update Timeline Visualization</title>
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Dynamic Topology Update Timeline</title>
+    <link rel="stylesheet" href="https://unpkg.com/vis-timeline/styles/vis-timeline-graph2d.min.css">
+    <script src="https://unpkg.com/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 16px; }
+        h1 { font-size: 18px; color: #1a3a6c; margin-bottom: 4px; text-align: center; }
+        .subtitle { text-align: center; font-size: 12px; color: #666; margin-bottom: 12px; }
+        #timeline { background: white; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 12px; }
+        .info-panel { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 14px; min-height: 80px; }
+        .info-panel h3 { font-size: 13px; color: #1a3a6c; margin-bottom: 6px; }
+        #event-detail { font-size: 12px; color: #444; }
+        .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+        .leg-item { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+        .leg-dot { width: 14px; height: 14px; border-radius: 3px; }
+        .vis-item.infra-event  { background: #1976d2; border-color: #0d47a1; color: white; }
+        .vis-item.discovery    { background: #f9a825; border-color: #e65100; color: #333; }
+        .vis-item.graph-update { background: #e91e63; border-color: #880e4f; color: white; }
+        .vis-item.graph-state  { background: #43a047; border-color: #1b5e20; color: white; }
+        .vis-item.vis-selected { border-width: 3px !important; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Dynamic Topology Update Timeline Visualization</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> dynamic-topology-update-timeline-visualization</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+<div id="container">
+    <h1>Dynamic Topology Discovery in Action</h1>
+    <p class="subtitle">Automated IT Management Graph Updates Over 10 Minutes — click any event for details</p>
+    <div id="timeline"></div>
+    <div class="info-panel">
+        <h3>Event Details</h3>
+        <div id="event-detail">Click any timeline event to see detailed information about that topology change.</div>
+        <div class="legend">
+            <div class="leg-item"><div class="leg-dot" style="background:#1976d2"></div>Infrastructure Event</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#f9a825"></div>Discovery Action</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#e91e63"></div>Graph Update</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#43a047"></div>Graph State Snapshot</div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: timeline
-    
-        Purpose: Illustrate how dynamic topology discovery responds to infrastructure changes over a 10-minute period in a cloud-native environment
-    
-        Time period: 10 minutes (0:00 to 0:10), with 1-minute intervals
-    
-        Orientation: Horizontal timeline with swim lanes
-    
-        Canvas size: 1000x700px
-    
-        Swim lanes (from top to bottom):
-        1. "Infrastructure Events" (light blue background)
-        2. "Discovery Actions" (light gold background)
-        3. "Graph Updates" (light pink background)
-        4. "IT Management Graph State" (light green background)
-    
-        Timeline structure:
-        - Horizontal time axis at bottom showing minutes 0-10
-        - Vertical lines at each minute mark (thin, light gray)
-        - Time labels below axis: "0:00", "0:01", "0:02", etc.
-    
-        Events plotted on timeline:
-    
-        Minute 0:00 - Infrastructure Events lane:
-        - Event box: "Initial State: 5 services running"
-        - Icon: Green checkmark
-        - Connected to Graph State lane with dotted line
-    
-        Minute 0:00 - Graph State lane:
-        - Small network diagram showing 5 nodes connected
-        - Label: "5 services, 8 dependencies"
-    
-        Minute 0:02 - Infrastructure Events lane:
-        - Event box: "Auto-scaler triggered: +3 new API pods"
-        - Icon: Blue upward arrow with "+3"
-        - Color: Light blue
-    
-        Minute 0:02 - Discovery Actions lane (5 seconds after infrastructure event):
-        - Action box: "Kubernetes API watch detects new pods"
-        - Icon: Eye symbol
-        - Arrow connecting from Infrastructure event above
-        - Color: Gold
-    
-        Minute 0:02 - Graph Updates lane (10 seconds after infrastructure event):
-        - Update box: "Added 3 API service nodes"
-        - Icon: Graph node symbol with "+"
-        - Arrow connecting from Discovery action above
-        - Color: Pink
-    
-        Minute 0:03 - Graph State lane:
-        - Updated network diagram showing 8 nodes
-        - Label: "8 services, 14 dependencies"
-        - Pulsing animation effect on new nodes
-        - Dotted line connecting to previous state showing evolution
-    
-        Minute 0:04 - Infrastructure Events lane:
-        - Event box: "Database migration started"
-        - Icon: Database symbol with refresh arrow
-        - Color: Orange
-    
-        Minute 0:04 - Discovery Actions lane:
-        - Action box: "OpenTelemetry traces show new DB connection pattern"
-        - Icon: Network trace symbol
-        - Color: Gold
-    
-        Minute 0:05 - Graph Updates lane:
-        - Update box: "Updated service→database relationships"
-        - Icon: Link/chain symbol
-        - Color: Pink
-    
-        Minute 0:06 - Infrastructure Events lane:
-        - Event box: "Old cache service decommissioned"
-        - Icon: Red downward arrow with trash can
-        - Color: Light red
-    
-        Minute 0:06 - Discovery Actions lane:
-        - Action box: "eBPF monitoring detects connection cessation"
-        - Icon: Crossed-out network symbol
-        - Color: Gold
-    
-        Minute 0:07 - Graph Updates lane:
-        - Update box: "Removed old cache node and edges"
-        - Icon: Graph node with minus sign
-        - Color: Pink
-    
-        Minute 0:07 - Graph State lane:
-        - Updated diagram showing 7 nodes (cache removed)
-        - Label: "7 services, 12 dependencies"
-        - Fading animation on removed node
-        - Dotted line from previous state
-    
-        Minute 0:08 - Infrastructure Events lane:
-        - Event box: "Load balancer configuration updated"
-        - Icon: Load balancer symbol (cloud with arrows)
-        - Color: Purple
-    
-        Minute 0:08 - Discovery Actions lane:
-        - Action box: "Service mesh control plane detected routing change"
-        - Icon: Mesh network symbol
-        - Color: Gold
-    
-        Minute 0:09 - Graph Updates lane:
-        - Update box: "Modified traffic routing edges, added weight properties"
-        - Icon: Arrow with percentage symbol
-        - Color: Pink
-    
-        Minute 0:10 - Graph State lane:
-        - Final diagram showing 7 nodes with weighted edges
-        - Label: "7 services, 12 dependencies (4 weighted routes)"
-        - Highlighting on weighted edges
-        - Summary note: "4 topology changes automatically discovered and applied"
-    
-        Visual styling for event boxes:
-        - Rounded rectangle boxes with drop shadow
-        - Icon on left side of box
-        - Text description on right side
-        - Box width: proportional to event duration (instant events vs. ongoing processes)
-        - Connecting arrows between lanes: curved, with arrowheads, labeled with timing (e.g., "5 sec delay")
-    
-        Color coding:
-        - Infrastructure Events lane background: #E3F2FD (light blue)
-        - Discovery Actions lane background: #FFF9C4 (light gold)
-        - Graph Updates lane background: #FCE4EC (light pink)
-        - Graph State lane background: #E8F5E9 (light green)
-        - Event boxes use brighter versions of lane colors
-        - Arrows: Dark gray (#616161)
-        - Text: Dark gray (#424242)
-    
-        Interactive features:
-        - Hover over any event box to see detailed timestamp and technical details
-        - Click on Graph State diagrams to zoom in and see full topology
-        - Hover over arrows between lanes to see latency information ("Discovery latency: 5.2 seconds")
-        - Timeline can be scrubbed (drag a slider) to see graph state at any point in time
-        - Play button to animate the sequence of events
-    
-        Legend (bottom right):
-        - Infrastructure event types with icons
-        - Discovery mechanism types with icons
-        - Update operation types with icons
-        - Arrow meanings (immediate, delayed, continuous)
-    
-        Annotations:
-        - Bracket spanning minutes 0:02 to 0:03 labeled "Typical discovery latency: <30 seconds"
-        - Note at minute 0:10: "All changes discovered automatically without manual intervention"
-        - Callout box highlighting the contrast: "Traditional CMDB: Manual updates, days/weeks lag" vs "Dynamic topology: Automated, real-time updates"
-    
-        Title (top, centered):
-        - Main: "Dynamic Topology Discovery in Action"
-        - Subtitle: "Automated IT Management Graph Updates Over 10 Minutes"
-    
-        Implementation: D3.js timeline library or custom HTML5 Canvas/SVG with JavaScript for interactivity
-    -->
+</div>
+<script src="dynamic-topology-update-timeline-visualization.js"></script>
 </body>
 </html>
