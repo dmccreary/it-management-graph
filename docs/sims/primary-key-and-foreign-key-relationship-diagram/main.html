@@ -3,142 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Primary Key and Foreign Key Relationship Diagram</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        main { width: 100%; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Primary Key and Foreign Key Relationship Diagram</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> primary-key-and-foreign-key-relationship-diagram</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
-    </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: diagram
-    
-        Purpose: Visually demonstrate how primary keys and foreign keys establish relationships between tables, showing data flow through key references
-    
-        Tables to show (with sample data):
-    
-        Servers Table:
-        | server_id (PK) | hostname | ip_address | location_id (FK) |
-        |----------------|----------|------------|------------------|
-        | 1 | web-prod-01 | 10.0.1.50 | 101 |
-        | 2 | db-prod-01 | 10.0.1.51 | 101 |
-        | 3 | app-dev-01 | 10.0.2.20 | 102 |
-    
-        Applications Table:
-        | app_id (PK) | app_name | server_id (FK) |
-        |-------------|----------|----------------|
-        | 501 | Customer Portal | 1 |
-        | 502 | Payment API | 1 |
-        | 503 | Inventory System | 2 |
-        | 504 | Dev Test App | 3 |
-    
-        Locations Table:
-        | location_id (PK) | data_center | city |
-        |------------------|-------------|------|
-        | 101 | DC-EAST-1 | New York |
-        | 102 | DC-WEST-1 | San Francisco |
-    
-        Visual elements:
-        - Arrows connecting foreign key values to matching primary key values
-        - Arrow from Applications.server_id = 1 to Servers.server_id = 1 (highlighting that "Customer Portal" and "Payment API" both reference the same server)
-        - Arrow from Servers.location_id = 101 to Locations.location_id = 101
-        - Color coding: Primary keys in gold background, Foreign keys in light blue background
-    
-        Annotations:
-        - "Primary Key: Unique identifier for each row" with arrow pointing to server_id in Servers
-        - "Foreign Key: References another table's primary key" with arrow pointing to server_id in Applications
-        - "Multiple applications can reference the same server (many-to-one)" showing the two arrows from Applications to Servers row 1
-        - "Referential Integrity: FK values must match existing PK values"
-    
-        Special callout showing what happens with invalid reference:
-        - Attempted insert: app_id = 505, app_name = "Invalid App", server_id = 999
-        - Red X symbol with text: "ERROR: Foreign key constraint violation. Server ID 999 does not exist."
-    
-        Style: Table-based diagram with actual data rows and connecting arrows between foreign key and primary key values
-    
-        Color scheme:
-        - Gold background for primary key columns
-        - Light blue background for foreign key columns
-        - Green arrows for valid references
-        - Red X for constraint violation example
-        - Tables in standard row/column format with borders
-    
-        Implementation: HTML table styling with SVG arrows overlaid, or draw.io diagram with table shapes
-    -->
+    <main></main>
+    <script src="primary-key-and-foreign-key-relationship-diagram.js"></script>
 </body>
 </html>
