@@ -3,90 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Quality Dimensions Radar Chart: IT Management Data Health Assessment</title>
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Data Quality Dimensions Radar Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 900px; margin: 0 auto; padding: 16px; }
+        h1 { font-size: 18px; color: #1a3a6c; margin-bottom: 4px; text-align: center; }
+        .subtitle { text-align: center; font-size: 12px; color: #666; margin-bottom: 14px; }
+        .layout { display: flex; gap: 14px; align-items: flex-start; }
+        #chart-wrap { flex: 1; background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px; }
+        .controls { width: 260px; background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 14px; }
+        .controls h3 { font-size: 13px; color: #1a3a6c; margin-bottom: 10px; }
+        .dim-row { margin-bottom: 10px; }
+        .dim-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+        .dim-label span { font-weight: 600; color: #1a3a6c; }
+        input[type=range] { width: 100%; cursor: pointer; }
+        .btn-group { display: flex; gap: 6px; margin-bottom: 12px; }
+        button { flex: 1; padding: 7px; border: none; border-radius: 4px; font-size: 11px; cursor: pointer; font-weight: 600; }
+        .btn-before { background: #e53935; color: white; }
+        .btn-after { background: #43a047; color: white; }
+        .btn-custom { background: #1976d2; color: white; }
+        .score-box { text-align: center; margin-top: 10px; padding: 10px; background: #f0f4ff; border-radius: 6px; }
+        .score-val { font-size: 32px; font-weight: 700; color: #1a3a6c; }
+        .score-lbl { font-size: 12px; color: #666; }
+        .delta { font-size: 13px; font-weight: 600; margin-top: 4px; }
+        .delta.pos { color: #43a047; }
+        .delta.neg { color: #e53935; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Data Quality Dimensions Radar Chart: IT Management Data Health Assessment</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+<div id="container">
+    <h1>Data Quality Dimensions: IT Management Data Health Assessment</h1>
+    <p class="subtitle">Compare data quality before and after implementing a graph-based IT management system</p>
+    <div class="layout">
+        <div id="chart-wrap">
+            <canvas id="radar-chart"></canvas>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> data-quality-dimensions-radar-chart-it-management-data-health-assessment</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div class="controls">
+            <h3>Scenario Presets</h3>
+            <div class="btn-group">
+                <button class="btn-before" onclick="loadPreset('before')">Before Graph</button>
+                <button class="btn-after" onclick="loadPreset('after')">After Graph</button>
+            </div>
+            <h3>Adjust Dimensions</h3>
+            <div id="sliders"></div>
+            <div class="score-box">
+                <div class="score-val" id="score-val">0</div>
+                <div class="score-lbl">Overall Quality Score / 100</div>
+                <div class="delta" id="delta-txt"></div>
+            </div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-
-    -->
+</div>
+<script src="data-quality-dimensions-radar-chart-it-management-data-health-assessment.js"></script>
 </body>
 </html>
