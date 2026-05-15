@@ -3,145 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Multi-Source Asset Discovery Integration Timeline</title>
+    <script src="https://unpkg.com/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-timeline/styles/vis-timeline-graph2d.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 900px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 17px; color: #1a3a6c; text-align: center; margin-bottom: 6px; }
+        #timeline { width: 100%; height: 420px; border: 1px solid #dee2e6; border-radius: 8px; background: white; }
+        #info-panel {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #f1f3f5;
             border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
             font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
+            min-height: 50px;
+            border-left: 4px solid #1a3a6c;
         }
-        .meta strong { color: #495057; }
+        #info-panel h3 { font-size: 14px; margin-bottom: 4px; color: #1a3a6c; }
+        .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; font-size: 11px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+        .vis-item.red { background: #ef5350 !important; border-color: #b71c1c !important; }
+        .vis-item.orange { background: #FF9800 !important; border-color: #E65100 !important; }
+        .vis-item.gold { background: #FFC107 !important; border-color: #FF8F00 !important; }
+        .vis-item.green { background: #4CAF50 !important; border-color: #1B5E20 !important; }
+        .vis-item .vis-item-content { color: #fff; font-size: 11px; font-weight: 600; padding: 2px 6px; }
+        .vis-item.gold .vis-item-content { color: #333; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Multi-Source Asset Discovery Integration Timeline</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <h1>Evolution of IT Asset Discovery Techniques (1990–2025)</h1>
+        <div id="timeline"></div>
+        <div id="info-panel">
+            <h3>Click any event to see details</h3>
+            <p>Hover or click on events to explore each era of IT asset discovery.</p>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> multi-source-asset-discovery-integration-timeline</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#ef5350"></div>Manual Era (1990-2000)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FF9800"></div>Network Discovery (2000-2010)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FFC107"></div>Cloud Integration (2010-2018)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div>Observability & Graph (2018-2025)</div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: timeline
-    
-        Time period: 1990-2025
-    
-        Orientation: Horizontal
-    
-        Purpose: Show the evolution of IT asset discovery techniques from manual inventory through modern automated telemetry integration
-    
-        Events:
-        - 1990: Manual inventory spreadsheets
-          Detail: IT staff physically inventory equipment with serial numbers recorded in Excel. Update frequency: annually or when problems arise.
-    
-        - 1995: Barcode scanning and asset tags
-          Detail: Physical asset tags with barcodes enable faster inventory counts. Still manual but more systematic. CMDB databases emerge to store asset records.
-    
-        - 2000: Network discovery tools (Nmap, enterprise scanners)
-          Detail: Automated network scanning identifies active devices by IP address. Detects hardware but limited software visibility. Discovery frequency: weekly.
-    
-        - 2005: Agent-based inventory solutions
-          Detail: Software agents installed on endpoints report hardware specs, installed software, and configuration to central servers. Real-time updates for managed devices.
-    
-        - 2010: Agentless discovery and WMI/SSH
-          Detail: Tools leverage Windows Management Instrumentation and SSH to remotely inventory devices without agent installation. Reduces deployment complexity.
-    
-        - 2012: Cloud API integration begins
-          Detail: Early AWS/Azure API connectors pull virtual machine and storage inventory into asset databases. Cloud resources become visible alongside on-premises.
-    
-        - 2015: SaaS discovery through SSO logs
-          Detail: Organizations discover shadow SaaS usage by analyzing SSO authentication logs and network traffic patterns. Reveals unsanctioned applications.
-    
-        - 2018: Observability tool integration (OpenTelemetry precursors)
-          Detail: APM and observability platforms map application dependencies through distributed tracing. Asset discovery merges with dependency mapping.
-    
-        - 2020: eBPF and kernel-level telemetry
-          Detail: Extended Berkeley Packet Filter enables deep visibility into system calls, network connections, and process execution without traditional agents.
-    
-        - 2023: Graph-based multi-source reconciliation
-          Detail: IT management graphs integrate network discovery, cloud APIs, software metering, financial systems, and observability into unified asset inventory with automated entity resolution.
-    
-        - 2025: AI-assisted discovery and classification
-          Detail: Machine learning models automatically classify discovered assets, predict relationships, and identify anomalies. Continuous real-time inventory becomes standard practice.
-    
-        Visual style: Horizontal timeline with nodes above and below alternating, connected by a central timeline bar
-    
-        Color coding:
-        - Red (1990-2000): Manual and semi-automated era
-        - Orange (2000-2010): Network discovery and agent deployment
-        - Gold (2010-2018): Cloud integration and agentless methods
-        - Green (2018-2025): Observability integration and graph-based reconciliation
-    
-        Interactive features:
-        - Hover to see detailed description and example tools from that era
-        - Click to expand with screenshots or diagrams of discovery architecture
-        - Visual indicators showing cumulative capabilities (earlier techniques remain relevant alongside newer methods)
-    
-        Implementation: HTML/CSS/JavaScript with SVG timeline rendering and expandable detail panels
-    -->
+    <script src="multi-source-asset-discovery-integration-timeline.js"></script>
 </body>
 </html>
