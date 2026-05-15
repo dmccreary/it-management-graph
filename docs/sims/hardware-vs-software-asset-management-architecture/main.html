@@ -1,131 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hardware vs. Software Asset Management Architecture</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+  <title>Hardware vs Software Asset Management Architecture</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #212529; }
+    #outer { max-width: 960px; margin: 0 auto; padding: 10px; }
+    h1 { font-size: 18px; color: #1a3a6c; text-align: center; margin-bottom: 8px; }
+    #net { width: 100%; height: 500px; border: 1px solid #dee2e6; border-radius: 8px; background: #fff; }
+    #legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; justify-content: center; }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Hardware vs. Software Asset Management Architecture</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> hardware-vs-software-asset-management-architecture</p>
-            <p><strong>Library:</strong> SVG or draw.io style diagram with clear separation of concerns</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
-    </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    **Type:** infographic
-    
-    **Purpose:** Illustrate the parallel yet distinct data flows for hardware and software asset management within an IT management graph
-    
-    Components to show:
-    - Top layer: Financial Systems (ERP, procurement, accounts payable)
-    - Middle layer: IT Management Graph (central)
-    - Bottom layer: Discovery Sources (network scanners, software metering, cloud APIs)
-    
-    Left side (Hardware Asset Flow):
-    - Procurement → Hardware Asset node (with serial number, purchase order, cost)
-    - Network discovery → Device CI node (with IP, hostname, specifications)
-    - Relationship: FINANCIALLY_REPRESENTS (Hardware Asset → Device CI)
-    - Relationship: INSTALLED_IN (Device CI → Physical Location)
-    
-    Right side (Software Asset Flow):
-    - Procurement → License Entitlement node (with SKU, quantity, contract)
-    - Software discovery → Software Instance node (with version, installation path)
-    - Relationship: CONSUMES_LICENSE (Software Instance → License Entitlement)
-    - Relationship: DEPLOYED_ON (Software Instance → Hardware/Virtual Host)
-    
-    Connections between sides:
-    - Bidirectional relationship: RUNS_ON (Software Instance → Device CI)
-    - Aggregation query path (shown with dotted line): "Compliance Check" traversal from License Entitlement through all consuming instances
-    
-    Style: Layered architecture diagram with directional arrows showing data flow and relationship types
-    
-    Labels:
-    - "Financial Domain" on procurement systems
-    - "Operational Domain" on discovery sources
-    - "IT Management Graph" in center with node type examples
-    - Relationship labels on all edges
-    
-    Color scheme:
-    - Blue for hardware-related elements
-    - Orange for software-related elements
-    - Green for the central IT Management Graph
-    - Purple for cross-domain relationships
-    
-    Implementation: SVG or draw.io style diagram with clear separation of concerns
-    -->
+  <div id="outer">
+    <h1>Hardware vs Software Asset Management Architecture</h1>
+    <div id="net"></div>
+    <div id="legend"></div>
+  </div>
+  <script src="hardware-vs-software-asset-management-architecture.js"></script>
 </body>
 </html>
