@@ -3,114 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian</title>
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Vendor Comparison: ServiceNow vs Dynatrace vs Atlassian</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        /* CANVAS_HEIGHT: 600 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; padding: 10px; color: #212529; }
+        h2 { font-size: 17px; color: #1a3a6c; margin-bottom: 4px; }
+        .subtitle { font-size: 12px; color: #666; margin-bottom: 10px; }
+
+        .controls { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+        .ctrl-label { font-size: 12px; font-weight: 600; color: #555; }
+        select { font-size: 12px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 6px; }
+
+        .score-summary { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .score-card {
+            flex: 1; min-width: 140px; padding: 8px 14px; border-radius: 8px;
+            text-align: center; border: 2px solid transparent;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .score-card.sn { background: #dbeafe; border-color: #3b82f6; }
+        .score-card.dy { background: #fef3c7; border-color: #f59e0b; }
+        .score-card.at { background: #d1fae5; border-color: #10b981; }
+        .score-card .vendor-name { font-size: 13px; font-weight: 700; }
+        .score-card .vendor-score { font-size: 22px; font-weight: 900; }
+        .score-card .vendor-sub { font-size: 10px; color: #666; }
+        .score-card.winner { box-shadow: 0 0 0 3px gold; }
+
+        .table-wrapper { overflow-x: auto; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+        table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
+        thead tr { background: #1a3a6c; color: white; }
+        thead th { padding: 10px 12px; text-align: left; font-size: 13px; position: sticky; top: 0; }
+        thead th:first-child { width: 200px; }
+        thead th:not(:first-child) { text-align: center; width: 160px; }
+
+        tbody tr { border-bottom: 1px solid #e9ecef; transition: background 0.15s; }
+        tbody tr:hover { background: #f0f4ff !important; cursor: pointer; }
+        tbody tr.highlighted { background: #fffde7; }
+        tbody tr.sorted-active { background: #e8f5e9; }
+
+        td { padding: 9px 12px; vertical-align: top; }
+        td:first-child { font-weight: 600; color: #495057; font-size: 12px; line-height: 1.4; }
+        td:not(:first-child) { text-align: center; }
+
+        .rating { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+        .stars { font-size: 14px; letter-spacing: 1px; }
+        .rating-label { font-size: 10px; color: #777; }
+
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+        .badge-green { background: #d1fae5; color: #065f46; }
+        .badge-blue { background: #dbeafe; color: #1e40af; }
+        .badge-yellow { background: #fef3c7; color: #92400e; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        .badge-gray { background: #f3f4f6; color: #374151; }
+
+        tfoot { border-top: 2px solid #1a3a6c; }
+        tfoot td { font-weight: 700; font-size: 12px; background: #f8f9fa; }
+        tfoot td:not(:first-child) { text-align: center; font-size: 15px; }
+        tfoot td.winner-col { background: #d1fae5; color: #065f46; }
+
+        .sort-btn { font-size: 11px; padding: 3px 8px; border: 1px solid #ccc; border-radius: 12px; cursor: pointer; background: white; }
+        .sort-btn:hover { background: #e0e7ff; }
+        .sort-btn.active { background: #3b82f6; color: white; border-color: #3b82f6; }
+
+        .hint { font-size: 11px; color: #888; margin-top: 6px; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Vendor Comparison Table: ServiceNow vs Dynatrace vs Atlassian</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+    <h2>Vendor Comparison: ServiceNow vs Dynatrace vs Atlassian</h2>
+    <p class="subtitle">Interactive comparison across key IT management evaluation criteria. Click rows to highlight. Sort by dimension.</p>
+
+    <div class="controls">
+        <span class="ctrl-label">Sort by:</span>
+        <button class="sort-btn active" id="btn-default" onclick="sortTable('default')">Default</button>
+        <button class="sort-btn" id="btn-sn" onclick="sortTable('sn')">ServiceNow Score</button>
+        <button class="sort-btn" id="btn-dy" onclick="sortTable('dy')">Dynatrace Score</button>
+        <button class="sort-btn" id="btn-at" onclick="sortTable('at')">Atlassian Score</button>
+        <button class="sort-btn" id="btn-gap" onclick="sortTable('gap')">Biggest Gap</button>
+    </div>
+
+    <div class="score-summary">
+        <div class="score-card sn" id="sc-sn">
+            <div class="vendor-name">ServiceNow</div>
+            <div class="vendor-score" id="total-sn">—</div>
+            <div class="vendor-sub">Weighted Score / 100</div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> vendor-comparison-table-servicenow-vs-dynatrace-vs-atlassian</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div class="score-card dy" id="sc-dy">
+            <div class="vendor-name">Dynatrace</div>
+            <div class="vendor-score" id="total-dy">—</div>
+            <div class="vendor-sub">Weighted Score / 100</div>
+        </div>
+        <div class="score-card at" id="sc-at">
+            <div class="vendor-name">Atlassian</div>
+            <div class="vendor-score" id="total-at">—</div>
+            <div class="vendor-sub">Weighted Score / 100</div>
         </div>
     </div>
 
-    <!--
-    SPECIFICATION (from chapter index.md):
+    <div class="table-wrapper">
+        <table id="compTable">
+            <thead>
+                <tr>
+                    <th>Evaluation Dimension</th>
+                    <th>ServiceNow</th>
+                    <th>Dynatrace</th>
+                    <th>Atlassian</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Overall Score (weighted)</td>
+                    <td id="foot-sn">—</td>
+                    <td id="foot-dy">—</td>
+                    <td id="foot-at">—</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <p class="hint">Click any row to highlight it. Scores are 1-5 weighted by importance. Data reflects general market positioning as of 2025.</p>
 
-    Type: markdown-table
-    
-        Here is a detailed comparison of the three leading vendors across key evaluation dimensions:
-    
-        | Evaluation Dimension | ServiceNow | Dynatrace | Atlassian (Assets) |
-        |---------------------|------------|-----------|-------------------|
-        | **Primary Focus** | ITSM & Service Management | Observability & APM | Flexible Asset Management |
-        | **Data Model Type** | Relational with graph views | Dynamic topology graph | Flexible object schema |
-        | **Discovery Method** | Agent-based scanning | Instrumentation & tracing | Integration-based + agents |
-        | **Real-Time Updates** | Minutes to hours | Seconds | Minutes to hours |
-        | **Query Performance** | Good for simple, slower for complex | Excellent for all queries | Good, varies by complexity |
-        | **Cloud-Native Support** | Moderate, improving | Excellent | Good |
-        | **Integration Ecosystem** | Very large (1000+ apps) | Moderate (200+ integrations) | Large (Atlassian marketplace) |
-        | **Workflow Automation** | Comprehensive | Limited to alerting | Moderate (via Jira) |
-        | **Governance & Audit** | Excellent | Basic | Good |
-        | **Customization** | Moderate (platform constraints) | Limited | High (very flexible) |
-        | **Learning Curve** | Steep | Moderate | Moderate |
-        | **Implementation Time** | 6-12 months | 1-3 months | 2-4 months |
-        | **Licensing Model** | Per-user or per-node (expensive) | Per-host (moderate-expensive) | Per-agent (moderate) |
-        | **Best Fit** | Large enterprises, regulated industries | DevOps teams, cloud-native orgs | Mid-market, agile organizations |
-        | **Graph Query Language** | GlideQuery (proprietary) | None (topology API) | Object QL + Jira Query Language |
-        | **AI/ML Capabilities** | Predictive Intelligence (add-on) | Davis AI (built-in, advanced) | Limited (basic automation) |
-        | **Compliance Certifications** | Extensive (SOC 2, ISO, FedRAMP) | Extensive (SOC 2, ISO) | Good (SOC 2, ISO) |
-        | **Multi-Tenancy Support** | Excellent | Good | Good |
-        | **Typical 3-Year TCO** | $500K - $2M+ | $300K - $1M | $100K - $500K |
-    -->
+    <script>
+    // Criteria: [dimension, weight(1-3), sn_score, dy_score, at_score, sn_badge, dy_badge, at_badge, notes]
+    const criteria = [
+      {
+        dim: 'Primary Focus',
+        weight: 2,
+        sn: 5, dy: 4, at: 3,
+        sn_text: 'ITSM & Service Mgmt',
+        dy_text: 'Observability & APM',
+        at_text: 'Asset Management',
+        sn_class: 'badge-blue', dy_class: 'badge-yellow', at_class: 'badge-green'
+      },
+      {
+        dim: 'Data Model Type',
+        weight: 3,
+        sn: 3, dy: 5, at: 4,
+        sn_text: 'Relational + graph views',
+        dy_text: 'Dynamic topology graph',
+        at_text: 'Flexible object schema',
+        sn_class: 'badge-yellow', dy_class: 'badge-green', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Discovery Method',
+        weight: 3,
+        sn: 4, dy: 5, at: 3,
+        sn_text: 'Agent-based scanning',
+        dy_text: 'Instrumentation & tracing',
+        at_text: 'Integration-based + agents',
+        sn_class: 'badge-blue', dy_class: 'badge-green', at_class: 'badge-yellow'
+      },
+      {
+        dim: 'Real-Time Updates',
+        weight: 3,
+        sn: 2, dy: 5, at: 2,
+        sn_text: 'Minutes to hours',
+        dy_text: 'Seconds',
+        at_text: 'Minutes to hours',
+        sn_class: 'badge-red', dy_class: 'badge-green', at_class: 'badge-red'
+      },
+      {
+        dim: 'Query Performance',
+        weight: 3,
+        sn: 3, dy: 5, at: 3,
+        sn_text: 'Good simple, slow complex',
+        dy_text: 'Excellent all queries',
+        at_text: 'Good, varies by complexity',
+        sn_class: 'badge-yellow', dy_class: 'badge-green', at_class: 'badge-yellow'
+      },
+      {
+        dim: 'Cloud-Native Support',
+        weight: 3,
+        sn: 3, dy: 5, at: 4,
+        sn_text: 'Moderate, improving',
+        dy_text: 'Excellent',
+        at_text: 'Good',
+        sn_class: 'badge-yellow', dy_class: 'badge-green', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Integration Ecosystem',
+        weight: 2,
+        sn: 5, dy: 3, at: 4,
+        sn_text: '1000+ integrations',
+        dy_text: '200+ integrations',
+        at_text: 'Atlassian Marketplace',
+        sn_class: 'badge-green', dy_class: 'badge-yellow', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Workflow Automation',
+        weight: 2,
+        sn: 5, dy: 2, at: 3,
+        sn_text: 'Comprehensive',
+        dy_text: 'Limited to alerting',
+        at_text: 'Moderate (via Jira)',
+        sn_class: 'badge-green', dy_class: 'badge-red', at_class: 'badge-yellow'
+      },
+      {
+        dim: 'Governance & Audit',
+        weight: 3,
+        sn: 5, dy: 2, at: 4,
+        sn_text: 'Excellent',
+        dy_text: 'Basic',
+        at_text: 'Good',
+        sn_class: 'badge-green', dy_class: 'badge-red', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Customization',
+        weight: 2,
+        sn: 3, dy: 2, at: 5,
+        sn_text: 'Moderate (constraints)',
+        dy_text: 'Limited',
+        at_text: 'High (very flexible)',
+        sn_class: 'badge-yellow', dy_class: 'badge-red', at_class: 'badge-green'
+      },
+      {
+        dim: 'AI / ML Capabilities',
+        weight: 3,
+        sn: 3, dy: 5, at: 2,
+        sn_text: 'Predictive (add-on)',
+        dy_text: 'Davis AI (built-in)',
+        at_text: 'Basic automation',
+        sn_class: 'badge-yellow', dy_class: 'badge-green', at_class: 'badge-red'
+      },
+      {
+        dim: 'Implementation Time',
+        weight: 2,
+        sn: 2, dy: 5, at: 4,
+        sn_text: '6-12 months',
+        dy_text: '1-3 months',
+        at_text: '2-4 months',
+        sn_class: 'badge-red', dy_class: 'badge-green', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Licensing / Pricing',
+        weight: 3,
+        sn: 2, dy: 3, at: 4,
+        sn_text: 'Per-user/node (high)',
+        dy_text: 'Per-host (moderate-high)',
+        at_text: 'Per-agent (moderate)',
+        sn_class: 'badge-red', dy_class: 'badge-yellow', at_class: 'badge-green'
+      },
+      {
+        dim: 'Typical 3-Year TCO',
+        weight: 3,
+        sn: 1, dy: 3, at: 5,
+        sn_text: '$500K – $2M+',
+        dy_text: '$300K – $1M',
+        at_text: '$100K – $500K',
+        sn_class: 'badge-red', dy_class: 'badge-yellow', at_class: 'badge-green'
+      },
+      {
+        dim: 'Graph Query Language',
+        weight: 2,
+        sn: 2, dy: 1, at: 2,
+        sn_text: 'GlideQuery (proprietary)',
+        dy_text: 'Topology API only',
+        at_text: 'Object QL + JQL',
+        sn_class: 'badge-yellow', dy_class: 'badge-red', at_class: 'badge-yellow'
+      },
+      {
+        dim: 'Compliance Certifications',
+        weight: 2,
+        sn: 5, dy: 4, at: 4,
+        sn_text: 'SOC2, ISO, FedRAMP',
+        dy_text: 'SOC2, ISO',
+        at_text: 'SOC2, ISO',
+        sn_class: 'badge-green', dy_class: 'badge-blue', at_class: 'badge-blue'
+      },
+      {
+        dim: 'Best Fit Org Type',
+        weight: 1,
+        sn: 4, dy: 4, at: 4,
+        sn_text: 'Large enterprise',
+        dy_text: 'DevOps / cloud-native',
+        at_text: 'Mid-market / agile',
+        sn_class: 'badge-blue', dy_class: 'badge-blue', at_class: 'badge-blue'
+      }
+    ];
+
+    let originalOrder = [...criteria];
+    let highlighted = null;
+
+    function starsHtml(score) {
+      const filled = '★'.repeat(score);
+      const empty = '☆'.repeat(5 - score);
+      const colors = ['#ef4444','#f97316','#eab308','#22c55e','#16a34a'];
+      return `<span class="stars" style="color:${colors[score-1]}">${filled}${empty}</span>`;
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+
+      let totalSN = 0, totalDY = 0, totalAT = 0, totalWeight = 0;
+
+      data.forEach((row, i) => {
+        const tr = document.createElement('tr');
+        tr.dataset.index = i;
+        if (highlighted === row.dim) tr.classList.add('highlighted');
+
+        const maxScore = Math.max(row.sn, row.dy, row.at);
+        const winnerCols = [];
+        if (row.sn === maxScore) winnerCols.push(1);
+        if (row.dy === maxScore) winnerCols.push(2);
+        if (row.at === maxScore) winnerCols.push(3);
+
+        tr.innerHTML = `
+          <td>${row.dim}<br><small style="color:#aaa;font-weight:400">Weight: ${'●'.repeat(row.weight)}${'○'.repeat(3-row.weight)}</small></td>
+          <td style="${winnerCols.includes(1) ? 'background:#e8f5e9' : ''}">
+            <div class="rating">
+              ${starsHtml(row.sn)}
+              <span class="badge ${row.sn_class}">${row.sn_text}</span>
+            </div>
+          </td>
+          <td style="${winnerCols.includes(2) ? 'background:#e8f5e9' : ''}">
+            <div class="rating">
+              ${starsHtml(row.dy)}
+              <span class="badge ${row.dy_class}">${row.dy_text}</span>
+            </div>
+          </td>
+          <td style="${winnerCols.includes(3) ? 'background:#e8f5e9' : ''}">
+            <div class="rating">
+              ${starsHtml(row.at)}
+              <span class="badge ${row.at_class}">${row.at_text}</span>
+            </div>
+          </td>
+        `;
+        tr.addEventListener('click', () => {
+          highlighted = (highlighted === row.dim) ? null : row.dim;
+          renderTable(data);
+        });
+        tbody.appendChild(tr);
+
+        totalSN += row.sn * row.weight;
+        totalDY += row.dy * row.weight;
+        totalAT += row.at * row.weight;
+        totalWeight += row.weight * 5;
+      });
+
+      const snPct = Math.round(totalSN / totalWeight * 100);
+      const dyPct = Math.round(totalDY / totalWeight * 100);
+      const atPct = Math.round(totalAT / totalWeight * 100);
+
+      document.getElementById('total-sn').textContent = snPct;
+      document.getElementById('total-dy').textContent = dyPct;
+      document.getElementById('total-at').textContent = atPct;
+      document.getElementById('foot-sn').textContent = snPct + '%';
+      document.getElementById('foot-dy').textContent = dyPct + '%';
+      document.getElementById('foot-at').textContent = atPct + '%';
+
+      const maxPct = Math.max(snPct, dyPct, atPct);
+      ['sc-sn', 'sc-dy', 'sc-at'].forEach(id => document.getElementById(id).classList.remove('winner'));
+      ['foot-sn', 'foot-dy', 'foot-at'].forEach(id => document.getElementById(id).style.color = '');
+
+      if (snPct === maxPct) { document.getElementById('sc-sn').classList.add('winner'); document.getElementById('foot-sn').style.color = '#065f46'; }
+      if (dyPct === maxPct) { document.getElementById('sc-dy').classList.add('winner'); document.getElementById('foot-dy').style.color = '#065f46'; }
+      if (atPct === maxPct) { document.getElementById('sc-at').classList.add('winner'); document.getElementById('foot-at').style.color = '#065f46'; }
+    }
+
+    function sortTable(mode) {
+      document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+      let sorted = [...originalOrder];
+
+      if (mode === 'sn') {
+        document.getElementById('btn-sn').classList.add('active');
+        sorted.sort((a, b) => b.sn - a.sn);
+      } else if (mode === 'dy') {
+        document.getElementById('btn-dy').classList.add('active');
+        sorted.sort((a, b) => b.dy - a.dy);
+      } else if (mode === 'at') {
+        document.getElementById('btn-at').classList.add('active');
+        sorted.sort((a, b) => b.at - a.at);
+      } else if (mode === 'gap') {
+        document.getElementById('btn-gap').classList.add('active');
+        sorted.sort((a, b) => {
+          const gapA = Math.max(a.sn, a.dy, a.at) - Math.min(a.sn, a.dy, a.at);
+          const gapB = Math.max(b.sn, b.dy, b.at) - Math.min(b.sn, b.dy, b.at);
+          return gapB - gapA;
+        });
+      } else {
+        document.getElementById('btn-default').classList.add('active');
+      }
+
+      renderTable(sorted);
+    }
+
+    renderTable(criteria);
+    </script>
 </body>
 </html>
