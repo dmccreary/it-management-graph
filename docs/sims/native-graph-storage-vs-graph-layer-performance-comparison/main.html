@@ -3,181 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Native Graph Storage vs Graph Layer Performance Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 900px; margin: 0 auto; padding: 12px; background: white; }
+        h1 { font-size: 17px; color: #1a3a6c; text-align: center; margin-bottom: 2px; }
+        .subtitle { font-size: 12px; color: #6c757d; text-align: center; margin-bottom: 8px; }
+        #chart-wrapper { position: relative; width: 100%; height: 380px; }
+        .controls { display: flex; gap: 12px; justify-content: center; margin: 10px 0; flex-wrap: wrap; }
+        .controls button {
+            padding: 6px 18px; border-radius: 6px; border: 2px solid #1a3a6c;
+            background: #fff; color: #1a3a6c; font-weight: 600; font-size: 13px; cursor: pointer;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .controls button.active { background: #1a3a6c; color: #fff; }
+        #perf-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+        #perf-table th { background: #1a3a6c; color: #fff; padding: 6px 8px; text-align: left; }
+        #perf-table td { padding: 5px 8px; border: 1px solid #dee2e6; }
+        #perf-table tr:nth-child(even) td { background: #f8f9fa; }
+        #perf-table .native { color: #2e7d32; font-weight: 700; }
+        #perf-table .timeout { color: #c62828; font-style: italic; }
+        .insight { background: #e8f5e9; border-left: 4px solid #4CAF50; padding: 8px 12px; margin-top: 8px; border-radius: 4px; font-size: 12px; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Native Graph Storage vs Graph Layer Performance Comparison</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <h1>Graph Traversal Performance: Native Storage vs Graph Layers</h1>
+        <p class="subtitle">Why architectural decisions matter for deep dependency queries</p>
+        <div class="controls">
+            <button id="btn-log" class="active">Logarithmic Scale</button>
+            <button id="btn-lin">Linear Scale</button>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> native-graph-storage-vs-graph-layer-performance-comparison</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div id="chart-wrapper">
+            <canvas id="chart"></canvas>
+        </div>
+        <table id="perf-table">
+            <thead>
+                <tr>
+                    <th>Hops</th>
+                    <th>Native Graph (Neo4j)</th>
+                    <th>Graph Layer (RDBMS)</th>
+                    <th>Graph Layer (Document)</th>
+                    <th>Performance Gap</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td class="native">4ms</td><td>12ms</td><td>18ms</td><td>3–4.5×</td></tr>
+                <tr><td>3</td><td class="native">11ms</td><td>1,400ms</td><td>2,100ms</td><td>127–191×</td></tr>
+                <tr><td>5</td><td class="native">18ms</td><td>35,000ms</td><td>48,000ms</td><td>1,944–2,667×</td></tr>
+                <tr><td>7</td><td class="native">25ms</td><td class="timeout">TIMEOUT</td><td class="timeout">TIMEOUT</td><td>&gt;1,700× (est.)</td></tr>
+                <tr><td>10</td><td class="native">35ms</td><td class="timeout">TIMEOUT</td><td class="timeout">TIMEOUT</td><td>&gt;1,700× (est.)</td></tr>
+            </tbody>
+        </table>
+        <div class="insight">
+            <strong>Key Insight:</strong> For IT dependency management requiring 5-10 hop traversals (incident response, change impact analysis), native graph storage isn't just faster — it's the only architecturally viable option!
+            <br><small>Benchmarks: 500K nodes, avg 4 connections/node, Intel Xeon, 32GB RAM, SSD. Neo4j 5.x vs Apache AGE on PostgreSQL 15 vs MongoDB with graph capabilities.</small>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: chart
-    
-        Chart type: Line chart with logarithmic Y-axis
-    
-        Purpose: Visually demonstrate the performance difference between native graph storage and graph layers as traversal depth increases, showing why native architecture matters for deep graph queries
-    
-        X-axis: Number of hops (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-        Y-axis: Query response time (milliseconds, logarithmic scale: 1, 10, 100, 1000, 10000, 60000+)
-    
-        Data series:
-    
-        1. "Native Graph Database (Neo4j)" (green line, solid, thick)
-           - 1 hop: 4ms
-           - 2 hops: 7ms
-           - 3 hops: 11ms
-           - 4 hops: 14ms
-           - 5 hops: 18ms
-           - 6 hops: 21ms
-           - 7 hops: 25ms
-           - 8 hops: 28ms
-           - 9 hops: 32ms
-           - 10 hops: 35ms
-    
-        2. "Graph Layer on RDBMS (PostgreSQL + AGE)" (orange line, dashed, medium)
-           - 1 hop: 12ms
-           - 2 hops: 145ms
-           - 3 hops: 1,400ms
-           - 4 hops: 8,500ms
-           - 5 hops: 35,000ms
-           - 6 hops: 58,000ms (near timeout)
-           - 7 hops: timeout
-           - 8 hops: timeout
-           - 9 hops: timeout
-           - 10 hops: timeout
-    
-        3. "Graph Layer on Document Store (MongoDB + graph plugin)" (blue line, dotted, medium)
-           - 1 hop: 18ms
-           - 2 hops: 210ms
-           - 3 hops: 2,100ms
-           - 4 hops: 12,000ms
-           - 5 hops: 48,000ms
-           - 6 hops: timeout
-           - 7 hops: timeout
-           - 8 hops: timeout
-           - 9 hops: timeout
-           - 10 hops: timeout
-    
-        Title: "Graph Traversal Performance: Native Storage vs Graph Layers"
-        Subtitle: "Why architectural decisions matter for deep dependency queries"
-    
-        Legend: Position top-left, with line style indicators and performance characteristics
-    
-        Annotations:
-        - Horizontal line at 1000ms (1 second) with label: "Acceptable response time for interactive queries"
-        - Horizontal line at 60000ms (1 minute) with label: "Typical query timeout threshold"
-        - Callout arrow pointing to native graph line at 10 hops: "Still under 40ms—ready for real-time use!"
-        - Callout arrow pointing to graph layer at 5 hops: "Already exceeding acceptable response time"
-        - Shaded "timeout region" above 60,000ms with label: "Queries fail—unusable for this depth"
-        - Annotation: "Native graph maintains near-linear growth—each hop adds ~3-4ms"
-        - Annotation: "Graph layers show exponential degradation—each hop multiplies query time"
-    
-        Performance summary table below chart:
-        | Hops | Native Graph | Graph Layer (RDBMS) | Graph Layer (Document) | Performance Gap |
-        |------|--------------|---------------------|------------------------|-----------------|
-        | 1 | 4ms | 12ms | 18ms | 3-4.5x |
-        | 3 | 11ms | 1,400ms | 2,100ms | 127-191x |
-        | 5 | 18ms | 35,000ms | 48,000ms | 1,944-2,667x |
-        | 10 | 35ms | timeout | timeout | >1,700x (estimated) |
-    
-        Interactive features:
-        - Hover over data points to see exact query times and context
-        - Click legend items to show/hide specific series
-        - Toggle button: "Show as linear scale" vs "Show as logarithmic scale"
-        - Zoom controls for examining specific hop ranges
-        - Tooltip on hover: "At X hops, native graph is Y times faster than graph layer"
-    
-        Visual style: Professional line chart with clear contrast between series, grid lines for readability
-    
-        Color scheme:
-        - Green (Native): Success/optimal performance
-        - Orange (RDBMS graph layer): Warning/degrading performance
-        - Blue (Document graph layer): Info/alternative approach
-        - Red shaded region: Timeout/failure zone
-        - Gray grid lines with logarithmic spacing
-    
-        Implementation: Chart.js or D3.js with logarithmic Y-axis scale, interactive legend, and dynamic tooltips
-    
-        Educational note at bottom:
-        "Benchmark conditions: 500,000 nodes, average 4 connections per node, Intel Xeon processor, 32GB RAM, SSD storage. Results representative of typical enterprise workloads. Native graph database (Neo4j 5.x) vs Apache AGE on PostgreSQL 15 vs MongoDB with graph capabilities."
-    
-        Key insight callout:
-        "For IT dependency management requiring 5-10 hop traversals in real-time (incident response, change impact analysis), native graph storage isn't just faster—it's the only architecturally viable option!"
-    -->
+    <script src="native-graph-storage-vs-graph-layer-performance-comparison.js"></script>
 </body>
 </html>
