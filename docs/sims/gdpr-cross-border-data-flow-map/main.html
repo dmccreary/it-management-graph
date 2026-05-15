@@ -3,134 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>GDPR Cross-Border Data Flow Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; }
+        h1 { font-size: 18px; color: #1a3a6c; margin-bottom: 4px; }
+        .subtitle { font-size: 12px; color: #666; margin-bottom: 10px; }
+        #map { height: 440px; border-radius: 8px; border: 1px solid #dee2e6; }
+        .controls { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+        button { padding: 6px 12px; border: none; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: 600; }
+        .btn-all  { background: #1a3a6c; color: white; }
+        .btn-restricted { background: #e53935; color: white; }
+        .btn-adequacy   { background: #f9a825; color: #333; }
+        .legend { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 10px; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px; }
+        .leg-item { display: flex; align-items: center; gap: 6px; font-size: 11px; }
+        .leg-line { width: 30px; height: 4px; border-radius: 2px; }
+        .flow-tooltip { font-size: 12px; line-height: 1.5; }
+        .dc-popup { font-size: 12px; }
+        .dc-popup b { color: #1a3a6c; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>GDPR Cross-Border Data Flow Map</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> gdpr-cross-border-data-flow-map</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
+<div id="container">
+    <h1>GDPR Cross-Border Data Flow Map</h1>
+    <p class="subtitle">Data transfers subject to GDPR restrictions — hover flows for legal basis, click data centers for details</p>
+    <div class="controls">
+        <button class="btn-all" onclick="showAllFlows()">Show All Flows</button>
+        <button class="btn-restricted" onclick="showRestrictedOnly()">Restricted Only</button>
+        <button class="btn-adequacy" onclick="showAdequacyOnly()">Adequacy Decisions</button>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: map
-    
-        Geographic scope: World map with emphasis on European Union, United Kingdom, United States, and Asia-Pacific regions
-    
-        Purpose: Visualize data flows subject to GDPR restrictions, showing which transfers require additional safeguards
-    
-        Locations:
-        - European Union (highlighted in green with "GDPR Protected Territory" label)
-        - United Kingdom (highlighted in yellow with "Adequacy Decision" label)
-        - United States (highlighted in orange with "SCC Required" label)
-        - Switzerland (highlighted in yellow with "Adequacy Decision" label)
-        - Japan (highlighted in yellow with "Adequacy Decision" label)
-        - Data center icons: Frankfurt (2 icons), Dublin (1 icon), London (2 icons), Virginia (3 icons), Singapore (1 icon), Sydney (1 icon)
-    
-        Data flows (arrows with animation):
-        - Thick green arrows: Internal EU data flows (Frankfurt ↔ Dublin) - labeled "Unrestricted"
-        - Yellow arrows with checkmark: EU to UK (Dublin → London) - labeled "Adequacy Decision, No Additional Safeguards"
-        - Orange arrows with document icon: EU to US (Frankfurt → Virginia) - labeled "SCCs Required"
-        - Red dashed arrows with warning icon: EU to Singapore (Dublin → Singapore) - labeled "Restricted, BCR or SCC Required"
-        - Blue dotted arrows: Backup replication routes (between all data centers)
-    
-        Labels and callouts:
-        - "27 EU Member States + EEA"
-        - "628 million data subjects protected"
-        - "Data transfer impact assessment required for high-risk transfers"
-        - "Article 45: Adequacy Decisions (11 countries)"
-        - "Article 46: Appropriate Safeguards (SCCs, BCRs)"
-    
-        Legend (bottom right):
-        - Arrow colors and their meanings (green = unrestricted, yellow = adequacy decision, orange = SCCs required, red = high-risk transfer)
-        - Icon explanations: data center icon, warning icon, checkmark icon, document icon
-        - Transfer volume indicators: arrow thickness represents data volume
-    
-        Interactive features:
-        - Hover over arrows to see: transfer type, legal basis, data categories, frequency
-        - Click on data centers to see: applications hosted, data residency compliance status, backup locations
-        - Click on countries to see: adequacy decision status, date of most recent assessment, key requirements
-        - Toggle layer: "Show only regulated data transfers" vs "Show all data flows"
-    
-        Visual styling:
-        - Modern flat design with soft shadows for data center icons
-        - Animated arrows showing directionality of flow
-        - Color intensity indicates data volume (darker = higher volume)
-    
-        Implementation: Leaflet.js or Mapbox GL for base map, custom SVG overlay for data centers and flows, D3.js for interactive elements and animations
-    -->
+    <div id="map"></div>
+    <div class="legend">
+        <div class="leg-item"><div class="leg-line" style="background:#43a047"></div>EU Internal — Unrestricted</div>
+        <div class="leg-item"><div class="leg-line" style="background:#f9a825"></div>Adequacy Decision (no extra safeguards)</div>
+        <div class="leg-item"><div class="leg-line" style="background:#e67e22;border: 2px dashed #e67e22;height:0"></div>SCCs Required (Standard Contractual Clauses)</div>
+        <div class="leg-item"><div class="leg-line" style="background:#e53935;border: 2px dashed #e53935;height:0"></div>High-Risk — BCR/SCC Required</div>
+    </div>
+</div>
+<script src="gdpr-cross-border-data-flow-map.js"></script>
 </body>
 </html>
