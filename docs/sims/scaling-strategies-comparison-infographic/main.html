@@ -3,226 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Scaling Strategies Comparison Infographic</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 960px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 15px; color: #1a3a6c; text-align: center; margin-bottom: 6px; }
+        #top-section { display: flex; gap: 10px; margin-bottom: 10px; }
+        #chart-wrapper { flex: 1; position: relative; height: 280px; }
+        #scale-info { width: 220px; min-width: 220px; font-size: 11px; }
+        .scale-card { border-radius: 6px; padding: 8px; margin-bottom: 8px; }
+        .scale-card h3 { font-size: 12px; margin-bottom: 4px; }
+        .scale-card ul { padding-left: 14px; }
+        .scale-card li { margin-bottom: 2px; line-height: 1.4; }
+        .vertical-card { background: #e3f2fd; border-left: 4px solid #1e88e5; }
+        .horizontal-card { background: #e8f5e9; border-left: 4px solid #43a047; }
+        #comparison-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        #comparison-table th { background: #1a3a6c; color: white; padding: 5px 8px; text-align: left; }
+        #comparison-table td { border: 1px solid #dee2e6; padding: 5px 8px; }
+        #comparison-table tr:nth-child(even) td { background: #f8f9fa; }
+        .td-v { color: #1565c0; font-weight: bold; }
+        .td-h { color: #2e7d32; font-weight: bold; }
+        .td-both { color: #e65100; }
+        .scale-guidance { margin-top: 8px; background: #fff8e1; border: 1px solid #fdd835; border-radius: 6px; padding: 8px; font-size: 11px; }
+        .scale-guidance h3 { font-size: 12px; color: #f57f17; margin-bottom: 4px; }
+        .guidance-item { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px; }
+        .guidance-range { font-weight: bold; color: #795548; min-width: 110px; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Scaling Strategies Comparison Infographic</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <h1>Scaling Strategies: Vertical (Scale Up) vs Horizontal (Scale Out)</h1>
+        <div id="top-section">
+            <div id="chart-wrapper">
+                <canvas id="chart"></canvas>
+            </div>
+            <div id="scale-info">
+                <div class="scale-card vertical-card">
+                    <h3>Vertical Scaling (Scale Up)</h3>
+                    <ul>
+                        <li>Simple architecture</li>
+                        <li>No distributed complexity</li>
+                        <li>Fast joins (single server)</li>
+                        <li>Hardware ceiling exists</li>
+                        <li>Single point of failure</li>
+                    </ul>
+                </div>
+                <div class="scale-card horizontal-card">
+                    <h3>Horizontal Scaling (Scale Out)</h3>
+                    <ul>
+                        <li>Virtually unlimited capacity</li>
+                        <li>High availability via replication</li>
+                        <li>Read performance scales linearly</li>
+                        <li>Complex distributed management</li>
+                        <li>Partitioning strategy required</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> scaling-strategies-comparison-infographic</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <table id="comparison-table">
+            <thead>
+                <tr>
+                    <th>Dimension</th>
+                    <th>Vertical Scaling</th>
+                    <th>Horizontal Scaling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Architecture</td><td class="td-v">Single large server</td><td class="td-h">Distributed cluster</td></tr>
+                <tr><td>Max Capacity</td><td class="td-v">Limited by hardware</td><td class="td-h">Virtually unlimited</td></tr>
+                <tr><td>Initial Cost</td><td class="td-v">Lower</td><td class="td-h">Higher</td></tr>
+                <tr><td>Operational Complexity</td><td class="td-v">Low</td><td class="td-h">High</td></tr>
+                <tr><td>Fault Tolerance</td><td class="td-v">Single point of failure</td><td class="td-h">Graceful degradation</td></tr>
+                <tr><td>Best CI Range</td><td class="td-v">0 – 100K CIs</td><td class="td-h">100K+ CIs</td></tr>
+                <tr><td>Downtime for Upgrade</td><td class="td-v">Yes (hardware swap)</td><td class="td-h">No (rolling updates)</td></tr>
+            </tbody>
+        </table>
+        <div class="scale-guidance">
+            <h3>When to Choose Each Strategy</h3>
+            <div class="guidance-item"><span class="guidance-range">0 – 10K CIs:</span> Either approach works. Start vertical for simplicity.</div>
+            <div class="guidance-item"><span class="guidance-range">10K – 100K CIs:</span> Vertical scaling effective with proper indexing.</div>
+            <div class="guidance-item"><span class="guidance-range">100K – 500K CIs:</span> Consider horizontal scaling or sharding strategies.</div>
+            <div class="guidance-item"><span class="guidance-range">500K+ CIs:</span> Horizontal scaling recommended. Graph DBs excel here.</div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: infographic
-    
-        Purpose: Provide an interactive visual comparison of vertical vs horizontal scaling with clear pros, cons, and use cases
-    
-        Layout: Split-screen design with vertical scaling on left half, horizontal scaling on right half, connected by a central comparison axis
-    
-        Visual Structure:
-    
-        LEFT SECTION - VERTICAL SCALING:
-        - Icon: Single large server tower growing progressively larger
-        - Color scheme: Blue gradient background
-        - Title at top: "Vertical Scaling (Scale Up)"
-    
-        Main visual:
-        - Animated progression showing 3 server states stacked vertically:
-          1. Small server labeled "8 cores, 32GB RAM" (bottom)
-          2. Medium server labeled "32 cores, 128GB RAM" (middle)
-          3. Large server labeled "64 cores, 512GB RAM" (top)
-        - Upward arrow between stages with labels:
-          - "Add CPU & Memory"
-          - "Upgrade Storage"
-        - Cost indicator: Dollar signs increase ($, $$, $$$$)
-        - Performance line graph overlay showing linear improvement then plateau
-    
-        RIGHT SECTION - HORIZONTAL SCALING:
-        - Icon: Multiple server towers of equal size arranged in expanding clusters
-        - Color scheme: Green gradient background
-        - Title at top: "Horizontal Scaling (Scale Out)"
-    
-        Main visual:
-        - Animated progression showing expanding cluster:
-          1. Single server (bottom)
-          2. Three servers in triangle formation (middle)
-          3. Seven servers in honeycomb pattern (top)
-        - Network connections shown as glowing lines between servers
-        - Labels: "Add More Servers", "Distribute Load"
-        - Cost indicator: Dollar signs ($$, $$$, $$$$) showing more predictable growth
-        - Performance line graph overlay showing continued linear improvement
-    
-        CENTER COMPARISON AXIS:
-        - Vertical timeline showing key decision points
-        - Interactive markers at:
-          - 0-10K CIs: "Start here" (either approach works)
-          - 10K-100K CIs: "Vertical scaling effective"
-          - 100K-500K CIs: "Consider horizontal scaling"
-          - 500K+ CIs: "Horizontal scaling recommended"
-    
-        Interactive Elements:
-    
-        1. Hover over server icons:
-           - Vertical section: Shows tooltip with "Single point of management, simple deployment, limited by hardware ceiling"
-           - Horizontal section: Shows tooltip with "Distributed complexity, unlimited scaling, requires coordination"
-    
-        2. Click on cost indicators ($):
-           - Expands panel showing cost comparison table:
-             | Capacity Level | Vertical Cost | Horizontal Cost |
-             |----------------|---------------|-----------------|
-             | Initial        | Lower         | Higher          |
-             | Mid-range      | Similar       | Similar         |
-             | Large-scale    | Much higher   | Moderate        |
-             | Maximum        | Not possible  | Continues       |
-    
-        3. Click on performance graphs:
-           - Overlay detailed metrics:
-             - Query latency at different scales
-             - Throughput (queries per second)
-             - Breaking points and limitations
-    
-        4. Click on decision points on center axis:
-           - Expands use case recommendations:
-             - When to choose vertical
-             - When to choose horizontal
-             - When to use hybrid approach
-    
-        Bottom Section - PROS & CONS (expandable panels):
-    
-        VERTICAL SCALING Panel (Blue):
-        Pros (green checkmarks):
-        - Simple architecture and management
-        - No distributed systems complexity
-        - All data in one place (fast joins)
-        - Easier to maintain consistency
-        - Lower operational overhead
-        - Ideal for small to medium deployments
-    
-        Cons (red X marks):
-        - Hardware ceiling limits growth
-        - Single point of failure (without replication)
-        - Costly at high end
-        - Downtime required for upgrades
-        - Limited by single-server performance
-    
-        HORIZONTAL SCALING Panel (Green):
-        Pros (green checkmarks):
-        - Virtually unlimited capacity
-        - High availability through replication
-        - Graceful degradation (partial failures)
-        - Cost-effective at large scale
-        - Read performance scales linearly
-        - No hardware ceiling
-    
-        Cons (red X marks):
-        - Complex distributed system management
-        - Network latency between nodes
-        - Consistency challenges
-        - More complex deployment
-        - Higher initial cost and complexity
-        - Requires partitioning strategy
-    
-        Visual Style:
-        - Modern flat design with subtle shadows
-        - Smooth animations (fade in, slide, grow effects)
-        - Color-coded sections for easy scanning
-        - Icons from Font Awesome or similar
-        - Responsive layout adapting to screen size
-    
-        State Management:
-        - Default: Shows basic comparison view
-        - Hover states: Highlight interactive areas with glow
-        - Expanded states: Smooth transitions to reveal details
-        - Active states: Visual feedback on clicked elements
-        - Reset button: Returns to default view
-    
-        Accessibility:
-        - Keyboard navigation support
-        - Screen reader friendly labels
-        - High contrast mode available
-        - Text alternatives for all visual information
-        - Focus indicators on interactive elements
-    
-        Mobile Responsiveness:
-        - Stacks vertically on small screens
-        - Tap instead of hover for mobile
-        - Simplified animations for performance
-        - Larger touch targets
-    
-        Implementation: HTML5/CSS3/JavaScript with SVG graphics and CSS animations, using libraries like GSAP for smooth transitions
-    -->
+    <script src="scaling-strategies-comparison-infographic.js"></script>
 </body>
 </html>
