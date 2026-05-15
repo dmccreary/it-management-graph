@@ -3,182 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Multi-Hop Query Dependency Traversal Visualization</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 900px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 18px; color: #1a3a6c; text-align: center; margin-bottom: 6px; }
+        #layout { display: flex; gap: 10px; }
+        #network { flex: 1; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; background: #fff; }
+        #controls {
+            width: 230px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
+            gap: 8px;
             font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
         }
-        .meta strong { color: #495057; }
+        .ctrl-group { background: #f1f3f5; border-radius: 8px; padding: 10px; }
+        .ctrl-group label { font-weight: 600; display: block; margin-bottom: 4px; color: #1a3a6c; }
+        select, button { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #adb5bd; font-size: 13px; cursor: pointer; }
+        button { background: #1a3a6c; color: #fff; border: none; font-weight: 600; margin-top: 4px; }
+        button:hover { background: #2756a0; }
+        button.reset { background: #6c757d; }
+        button.reset:hover { background: #495057; }
+        #stats { background: #f1f3f5; border-radius: 8px; padding: 10px; font-size: 12px; }
+        #stats h3 { font-size: 13px; margin-bottom: 6px; color: #1a3a6c; }
+        .stat-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #dee2e6; }
+        #sql-box { background: #1e1e2e; color: #a8e6a3; font-family: monospace; font-size: 11px; padding: 8px; border-radius: 6px; white-space: pre-wrap; min-height: 80px; }
+        #hop-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-size: 11px; }
+        .hop-badge { padding: 2px 8px; border-radius: 10px; color: #fff; font-weight: 600; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Multi-Hop Query Dependency Traversal Visualization</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> multi-hop-query-dependency-traversal-visualization</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <h1>Multi-Hop Query Dependency Traversal</h1>
+        <div id="layout">
+            <div id="network"></div>
+            <div id="controls">
+                <div class="ctrl-group">
+                    <label>Root Application</label>
+                    <select id="root-select">
+                        <option value="customer_portal">Customer Portal</option>
+                        <option value="api_gateway">API Gateway</option>
+                        <option value="auth_service">Auth Service</option>
+                        <option value="payment_service">Payment Service</option>
+                    </select>
+                    <label style="margin-top:8px">Hop Limit</label>
+                    <input type="range" id="hop-slider" min="1" max="5" value="3" style="width:100%">
+                    <div style="text-align:center;font-size:12px" id="hop-display">Hop limit: 3</div>
+                    <button id="traverse-btn">▶ Traverse All Hops</button>
+                    <button class="reset" id="reset-btn">↺ Reset</button>
+                </div>
+                <div id="stats">
+                    <h3>Statistics</h3>
+                    <div class="stat-row"><span>Current hop</span><span id="s-hop">—</span></div>
+                    <div class="stat-row"><span>Apps discovered</span><span id="s-apps">0</span></div>
+                    <div class="stat-row"><span>Intermediate rows</span><span id="s-rows">0</span></div>
+                    <div class="stat-row"><span>Table JOINs needed</span><span id="s-joins">0</span></div>
+                    <div class="stat-row"><span>Est. RDBMS time</span><span id="s-time">—</span></div>
+                </div>
+                <div class="ctrl-group">
+                    <label>SQL Query (equivalent)</label>
+                    <div id="sql-box">SELECT *\nFROM app a\n-- select root</div>
+                </div>
+                <div id="hop-legend">
+                    <span class="hop-badge" style="background:#27ae60">Root</span>
+                    <span class="hop-badge" style="background:#82c45b">Hop 1</span>
+                    <span class="hop-badge" style="background:#f1c40f;color:#333">Hop 2</span>
+                    <span class="hop-badge" style="background:#e67e22">Hop 3</span>
+                    <span class="hop-badge" style="background:#e74c3c">Hop 4-5</span>
+                    <span class="hop-badge" style="background:#bdc3c7;color:#333">Unvisited</span>
+                </div>
+            </div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: microsim
-    
-        Learning objective: Demonstrate how multi-hop queries traverse dependency chains in relational databases, showing the increasing complexity and intermediate result sets as hop count increases
-    
-        Canvas layout (900x700px):
-        - Left side (600x700): Drawing area showing application dependency network
-        - Right side (300x700): Control panel and statistics
-    
-        Visual elements in drawing area:
-        - 12 application nodes arranged in a directed acyclic graph structure
-        - Each node labeled with application name
-        - Directed edges showing dependencies (arrows point from dependent to dependency)
-        - Color coding for nodes based on hop distance from selected root application
-    
-        Sample application dependency network:
-        - Customer Portal (root) → [Auth Service, API Gateway, Session Store]
-        - Auth Service → [User Database, LDAP Service]
-        - API Gateway → [Payment Service, Inventory Service]
-        - Payment Service → [Payment Database, Fraud Detection]
-        - Inventory Service → [Inventory Database]
-        - Fraud Detection → [ML Model Service]
-    
-        Interactive controls (right panel):
-        - Dropdown: "Select root application" (default: Customer Portal)
-        - Button: "Reset visualization"
-        - Slider: "Hop limit" (1-5 hops, default: 3)
-        - Button: "Traverse 1 hop" (manual step-through)
-        - Button: "Traverse all hops" (animated traversal)
-        - Checkbox: "Show SQL query" (display equivalent SQL)
-        - Display panel: Statistics updated in real-time
-    
-        Behavior:
-        When user clicks "Traverse all hops":
-        1. Start at selected root application (highlight in green)
-        2. Animate traversal to 1-hop neighbors (highlight in yellow)
-        3. Show intermediate result count
-        4. Continue to 2-hop neighbors (highlight in orange)
-        5. Show growing intermediate result count
-        6. Continue up to hop limit
-        7. Final nodes highlighted in red
-    
-        When "Show SQL query" checked:
-        Display the equivalent SQL JOIN query for current hop level
-        - 1-hop: Single JOIN
-        - 2-hop: Double JOIN
-        - 3-hop: Triple JOIN
-        - Show query complexity growing with hop count
-    
-        Statistics display:
-        - Current hop level: X
-        - Applications discovered: Y
-        - Intermediate result set size: Z rows
-        - Query complexity: "N table JOINs required"
-        - Estimated RDBMS query time: (calculated based on hop count)
-    
-        Example stats after 3-hop traversal from Customer Portal:
-        - Hop level: 3
-        - Applications discovered: 11
-        - Intermediate results: 847 rows (showing join explosion)
-        - Query complexity: 4 table JOINs
-        - Estimated time: 450ms
-    
-        Visual styling:
-        - Node colors by hop distance:
-          - Green: Root (0 hops)
-          - Light green: 1 hop
-          - Yellow: 2 hops
-          - Orange: 3 hops
-          - Red: 4-5 hops
-          - Gray: Not yet discovered
-        - Edge thickness: Thin, uniform
-        - Edges highlight during traversal animation
-        - Smooth animation transitions between hops (500ms duration)
-    
-        Educational insights displayed:
-        - "Notice how intermediate result set size grows exponentially"
-        - "Each JOIN multiplies potential result rows"
-        - "At 5 hops, query may scan thousands of intermediate rows to find final results"
-        - "Graph databases avoid this explosion with direct pointer traversal"
-    
-        Default parameters:
-        - Root application: Customer Portal
-        - Hop limit: 3
-        - Animation speed: 500ms per hop
-        - Show SQL: enabled
-    
-        Implementation notes:
-        - Use p5.js for canvas rendering
-        - Store dependency graph as adjacency list
-        - Implement breadth-first search for hop-based traversal
-        - Calculate intermediate result set size by multiplying average fan-out per hop
-        - Generate SQL text dynamically based on hop count
-        - Use color interpolation for smooth hop distance visualization
-    -->
+    <script src="multi-hop-query-dependency-traversal-visualization.js"></script>
 </body>
 </html>
