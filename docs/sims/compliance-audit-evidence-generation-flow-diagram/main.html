@@ -3,159 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compliance Audit Evidence Generation Flow Diagram</title>
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Compliance Audit Evidence Generation Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="compliance-audit-evidence-generation-flow-diagram.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        body { margin: 0; padding: 10px; font-family: 'Segoe UI', sans-serif; background: #f8f9fa; }
+        h2 { text-align: center; color: #1a3a6c; margin: 0 0 4px 0; font-size: 17px; }
+        p.subtitle { text-align: center; color: #555; font-size: 12px; margin: 0 0 8px 0; }
+        #controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
+        button { padding: 4px 12px; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; background: white; font-size: 12px; }
+        button.active { background: #1a3a6c; color: white; }
+        #diagram-container { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 16px; overflow: auto; }
+        .mermaid { text-align: center; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Compliance Audit Evidence Generation Flow Diagram</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> compliance-audit-evidence-generation-flow-diagram</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
+    <h2>Compliance Audit Evidence Generation Flow</h2>
+    <p class="subtitle">Automated evidence collection pipeline from IT management graph to audit reports</p>
+    <div id="controls">
+        <button id="btnOverview" class="active">Overview Flow</button>
+        <button id="btnSOX">SOX Controls</button>
+        <button id="btnHIPAA">HIPAA Evidence</button>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: diagram
-    
-        Purpose: Illustrate how IT management graphs enable rapid, comprehensive audit evidence generation compared to traditional manual processes
-    
-        Visual style: Split diagram showing "Traditional Process" (left side, grayscale) vs "Graph-Based Process" (right side, color)
-    
-        Traditional Process (left side):
-    
-        1. Auditor Question (top)
-           - Icon: Person with question mark
-           - Text: "Show all systems processing credit card data"
-    
-        2. IT Team Actions (middle, stacked vertically):
-           - Box 1: "Search SharePoint for system inventory" (3-5 days)
-           - Box 2: "Email application owners for current architecture" (1-2 weeks)
-           - Box 3: "Manually trace data flows in network diagrams" (2-3 days)
-           - Box 4: "Compile spreadsheet of findings" (2-3 days)
-           - Box 5: "Review and validate with stakeholders" (1 week)
-           - Arrows connecting boxes vertically showing sequential process
-    
-        3. Evidence Delivery (bottom)
-           - Icon: Document with "?" indicating uncertainty
-           - Text: "Potentially outdated evidence delivered after 3-4 weeks"
-           - Warning icon: "Risk of missing systems or incorrect data"
-    
-        Graph-Based Process (right side):
-    
-        1. Auditor Question (top)
-           - Icon: Person with question mark
-           - Text: "Show all systems processing credit card data"
-    
-        2. Query Execution (middle):
-           - Box: "Graph Traversal Query" (bright blue)
-           - Code snippet shown:
-             ```
-             MATCH (data:DataStore {contains: 'credit_card'})
-             -[:CONNECTS_TO*]-(system:System)
-             -[:PROTECTED_BY]->(control:Control)
-             RETURN system, control
-             ```
-           - Clock icon: "15 milliseconds"
-    
-        3. Automated Report Generation (middle-bottom):
-           - Box: "Generate Evidence Report" (green)
-           - Includes: System list, data flows, security controls, audit trails
-           - Clock icon: "2 seconds"
-    
-        4. Evidence Delivery (bottom)
-           - Icon: Document with checkmark
-           - Text: "Current, comprehensive evidence delivered in <1 minute"
-           - Checkmark icon: "All systems identified, controls verified"
-    
-        Comparison metrics (center, connecting the two sides):
-        - Time: 3-4 weeks vs <1 minute (arrow showing 99.99% reduction)
-        - Accuracy: "Uncertain" vs "Verified current state"
-        - Coverage: "Manual search, potential gaps" vs "Automated traversal, complete coverage"
-        - Cost: "$5,000-$10,000 in labor" vs "<$1 in compute"
-    
-        Visual styling:
-        - Traditional process boxes in grayscale with red clock icons showing time delays
-        - Graph-based process boxes in vibrant colors (blue, green) with green checkmarks
-        - Large arrow in center showing dramatic improvement
-        - Timeline bars under each process showing duration (traditional = long bar spanning weeks, graph = tiny bar <1 minute)
-    
-        Annotations:
-        - Traditional side: "Manual, error-prone, expensive, slow"
-        - Graph side: "Automated, accurate, cost-effective, instant"
-        - Bottom: "Graph-based compliance evidence generation reduces audit preparation time by >99% while improving accuracy"
-    
-        Implementation: SVG diagram with clear visual hierarchy, could be animated to show the flow of activities, exportable for audit documentation or executive presentations
-    -->
+    <main>
+        <div id="diagram-container">
+            <div class="mermaid" id="mermaid-div"></div>
+        </div>
+    </main>
 </body>
 </html>
