@@ -1,231 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph Density Visualization MicroSim</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+  <title>Graph Density Visualization</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #212529; }
+    #wrapper { display: flex; max-width: 960px; margin: 0 auto; padding: 10px; gap: 12px; }
+    #graph-container { flex: 1; height: 600px; border: 1px solid #dee2e6; border-radius: 8px; background: #fff; }
+    #controls { width: 280px; display: flex; flex-direction: column; gap: 10px; }
+    h1 { font-size: 18px; color: #1a3a6c; text-align: center; margin-bottom: 6px; }
+    .card { background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 12px; }
+    .card h3 { font-size: 13px; font-weight: 700; color: #495057; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .5px; }
+    label { font-size: 12px; color: #495057; display: flex; justify-content: space-between; margin-bottom: 2px; }
+    input[type=range] { width: 100%; margin-bottom: 8px; accent-color: #1a3a6c; }
+    .density-row { display: flex; align-items: center; gap: 6px; }
+    #density-indicator { width: 14px; height: 14px; border-radius: 50%; background: #28a745; transition: background .3s; flex-shrink: 0; }
+    #density-warn { display: none; font-size: 11px; color: #dc3545; margin-top: 2px; }
+    button { width: 100%; padding: 8px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 4px; }
+    #btn-generate { background: #1a3a6c; color: #fff; }
+    #btn-traverse { background: #28a745; color: #fff; }
+    #btn-reset { background: #fd7e14; color: #fff; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    .stat-row { display: flex; justify-content: space-between; font-size: 12px; margin: 3px 0; }
+    .stat-label { color: #6c757d; }
+    .stat-value { font-weight: 700; color: #1a3a6c; }
+    #status-msg { font-size: 11px; color: #495057; margin-top: 4px; font-style: italic; min-height: 32px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Graph Density Visualization MicroSim</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+  <div id="wrapper">
+    <div id="graph-container"></div>
+    <div id="controls">
+      <h1>Graph Density</h1>
+      <div class="card">
+        <h3>Parameters</h3>
+        <label>Nodes <span id="nodes-val">30</span></label>
+        <input type="range" id="slider-nodes" min="10" max="60" value="30" step="5">
+        <label>Density <span class="density-row"><span id="density-val">5%</span><span id="density-indicator"></span></span></label>
+        <input type="range" id="slider-density" min="1" max="50" value="5" step="1">
+        <div id="density-warn">⚠ High density—unusual in real IT graphs!</div>
+        <label>Anim Speed <span id="speed-val">600ms</span></label>
+        <input type="range" id="slider-speed" min="100" max="2000" value="600" step="100">
+      </div>
+      <div class="card">
+        <button id="btn-generate">Generate Graph</button>
+        <button id="btn-traverse" disabled>Start BFS Traversal</button>
+        <button id="btn-reset" disabled>Reset Colors</button>
+        <div id="status-msg">Adjust sliders and click Generate Graph.</div>
+      </div>
+      <div class="card">
+        <h3>Statistics</h3>
+        <div class="stat-row"><span class="stat-label">Total Nodes</span><span class="stat-value" id="stat-nodes">—</span></div>
+        <div class="stat-row"><span class="stat-label">Total Edges</span><span class="stat-value" id="stat-edges">—</span></div>
+        <div class="stat-row"><span class="stat-label">Actual Density</span><span class="stat-value" id="stat-density">—</span></div>
+        <div class="stat-row"><span class="stat-label">Max Possible Edges</span><span class="stat-value" id="stat-max-edges">—</span></div>
+        <div class="stat-row"><span class="stat-label">Avg Node Degree</span><span class="stat-value" id="stat-avg-degree">—</span></div>
+        <div class="stat-row"><span class="stat-label">Reachable from Start</span><span class="stat-value" id="stat-reachable">—</span></div>
+      </div>
+      <div class="card">
+        <h3>Legend</h3>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#28a745"></div> Start</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#90ee90"></div> Hop 1</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffc107"></div> Hop 2</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#fd7e14"></div> Hop 3+</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#adb5bd"></div> Unvisited</div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> graph-density-visualization-microsim</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
+      </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: microsim
-    
-        Learning objective: Help students understand how graph density affects traversal performance and query complexity
-    
-        Canvas layout (900x600px):
-        - Left side (600x600): Main drawing area showing an interactive graph network
-        - Right side (300x600): Control panel with sliders, buttons, and statistics display
-    
-        Visual elements in main drawing area:
-        - Nodes represented as circles (20px diameter)
-        - Edges represented as lines with arrow heads
-        - Color coding:
-          - Starting node: Bright green with glow effect
-          - Nodes at 1 hop away: Light green
-          - Nodes at 2 hops away: Yellow
-          - Nodes at 3+ hops away: Orange
-          - Unconnected nodes: Light gray
-        - Layout: Force-directed with moderate repulsion to prevent overlap
-    
-        Interactive controls in right panel:
-    
-        1. "Number of Nodes" slider:
-           - Range: 10 to 100 nodes
-           - Default: 30 nodes
-           - Step: 5
-           - Display current value above slider
-    
-        2. "Graph Density" slider:
-           - Range: 1% to 50%
-           - Default: 5%
-           - Step: 1%
-           - Display current value as percentage
-           - Color indicator: Green (1-10%), Yellow (11-25%), Red (26-50%)
-    
-        3. "Regenerate Graph" button:
-           - Large blue button
-           - Creates new random graph with current parameters
-           - Animates nodes flying in from random positions
-    
-        4. "Start Traversal" button:
-           - Large green button (disabled until graph generated)
-           - Click to begin breadth-first traversal animation from random starting node
-    
-        5. "Reset Colors" button:
-           - Orange button
-           - Returns all nodes to default gray color
-    
-        6. "Animation Speed" slider:
-           - Range: 100ms to 2000ms per step
-           - Default: 500ms
-           - Label: "Traversal speed"
-    
-        Statistics display panel (below controls):
-        - Current Statistics (updated in real-time):
-          - "Total Nodes: [N]"
-          - "Total Edges: [E]"
-          - "Actual Density: [X.XX]%"
-          - "Max Possible Edges: [N*(N-1)/2]"
-          - "Average Node Degree: [X.X]"
-          - "Nodes Reachable from Start: [N] ([X]%)"
-    
-        - After traversal completes:
-          - "Traversal Depth: [N] hops"
-          - "Nodes Visited: [N]"
-          - "Edges Traversed: [N]"
-          - "Time Elapsed: [X.XX] seconds (simulated)"
-    
-        Default parameters:
-        - Nodes: 30
-        - Density: 5%
-        - Animation speed: 500ms
-        - Layout: Force-directed with Barnes-Hut optimization
-    
-        Behavior and interactions:
-    
-        1. When page loads:
-           - Display empty canvas with message: "Click 'Regenerate Graph' to begin"
-           - All buttons except "Regenerate Graph" are disabled
-    
-        2. When "Regenerate Graph" clicked:
-           - Calculate number of edges needed: edges = density * (nodes * (nodes-1) / 2)
-           - Create nodes at random positions
-           - Create edges randomly ensuring no duplicate edges
-           - Animate nodes settling into force-directed layout
-           - Enable "Start Traversal" button
-           - Update statistics panel
-    
-        3. When density slider changed:
-           - Update color indicator (green/yellow/red)
-           - Display warning if density > 25%: "Warning: High density may slow traversal"
-    
-        4. When "Start Traversal" clicked:
-           - Select random starting node
-           - Animate breadth-first traversal:
-             - Color starting node green
-             - For each hop level:
-               - Highlight edges being traversed (thicken and pulse)
-               - Color discovered nodes based on hop distance
-               - Wait for animation delay
-               - Update "Nodes Visited" counter
-           - When complete:
-             - Display completion message: "Traversal complete! Reachable: [N] of [Total] nodes"
-             - Show any unreachable nodes in dark gray with dashed outline
-    
-        5. Hover interactions:
-           - Hovering over node shows tooltip with:
-             - Node ID
-             - Degree (number of connections)
-             - Distance from starting node (if traversal run)
-           - Hovering over edge shows tooltip with:
-             - From node → To node
-             - Edge index
-    
-        6. Click interactions:
-           - Clicking a node makes it the new starting node for next traversal
-           - Node gets green outline to indicate selection
-           - Status message: "Node [ID] selected as new start"
-    
-        Educational callouts:
-        - Below graph: "Notice how higher density creates more paths to explore but also more connections to traverse"
-        - After first traversal: "In IT graphs, typical density is 2-5%. Most components don't connect to most others!"
-        - When density > 20%: "Real IT graphs rarely exceed 10% density. This would indicate unusual architecture."
-    
-        Implementation notes:
-        - Use p5.js for rendering and animation
-        - Use simple physics for force-directed layout (not full d3-force)
-        - Store graph as adjacency list for efficient traversal
-        - Implement BFS using queue data structure
-        - Use frameCount and modulo for animation timing
-        - Limit frame rate to 30fps for smooth animation
-        - Add "pause/resume" functionality if traversal is too fast
-    
-        Code structure suggestions:
-        - Class Graph: manages nodes, edges, density calculation
-        - Class Node: position, velocity, connections, display state
-        - Class Edge: from, to, display state
-        - Function generateGraph(numNodes, density)
-        - Function runBFS(startNode)
-        - Function updatePhysics() for force-directed layout
-        - Function drawGraph() for rendering
-    -->
+  </div>
+  <script src="graph-density-visualization-microsim.js"></script>
 </body>
 </html>
