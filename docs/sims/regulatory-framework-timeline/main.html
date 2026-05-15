@@ -3,121 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Regulatory Framework Timeline</title>
+    <script src="https://unpkg.com/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-timeline/styles/vis-timeline-graph2d.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 960px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 15px; color: #1a3a6c; text-align: center; margin-bottom: 4px; }
+        .subtitle { font-size: 11px; color: #666; text-align: center; margin-bottom: 8px; }
+        #timeline { height: 300px; border: 1px solid #dee2e6; border-radius: 6px; }
+        #detail-panel {
+            margin-top: 10px; padding: 12px; border-radius: 6px;
+            background: #f0f4ff; border: 1px solid #b3c8f0;
+            font-size: 12px; line-height: 1.6; min-height: 80px;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        #detail-panel h3 { font-size: 13px; color: #1a3a6c; margin-bottom: 6px; }
+        .legend { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; font-size: 11px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .vis-item.hipaa   { background-color: #bbdefb !important; border-color: #1565c0 !important; color: #0d47a1 !important; }
+        .vis-item.gdpr    { background-color: #c8e6c9 !important; border-color: #2e7d32 !important; color: #1b5e20 !important; }
+        .vis-item.dora    { background-color: #ffe0b2 !important; border-color: #e65100 !important; color: #bf360c !important; }
+        .vis-item.ruling  { background-color: #e1bee7 !important; border-color: #6a1b9a !important; color: #4a148c !important; }
+        .vis-item.vis-selected { border-width: 3px !important; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Regulatory Framework Timeline</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <h1>IT Regulatory Framework Timeline (1996–2025)</h1>
+        <div class="subtitle">Major IT compliance regulations — click an event for details</div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#1565c0"></div> HIPAA/Healthcare</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#2e7d32"></div> GDPR/Privacy</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#e65100"></div> DORA/Resilience</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#6a1b9a"></div> Court Rulings/Other</div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> regulatory-framework-timeline</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div id="timeline"></div>
+        <div id="detail-panel">
+            <h3>Click any event on the timeline for details</h3>
+            <p>The timeline spans from HIPAA in 1996 through DORA enforcement in 2025, showing how IT compliance requirements evolved from healthcare data protection to comprehensive digital operational resilience.</p>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: timeline
-    
-        Purpose: Illustrate the evolution of major IT compliance regulations from 1990 to present, showing the increasing sophistication and scope of regulatory requirements
-    
-        Time period: 1996-2025
-    
-        Orientation: Horizontal
-    
-        Events:
-        - 1996: HIPAA enacted (Health Insurance Portability and Accountability Act)
-        - 2003: HIPAA Security Rule finalized, establishing ePHI protection requirements
-        - 2009: HITECH Act strengthens HIPAA enforcement and adds breach notification
-        - 2016: GDPR adopted by EU Parliament (two-year implementation period)
-        - 2018: GDPR enforcement begins (May 25), creating global data privacy standard
-        - 2020: Schrems II ruling invalidates Privacy Shield, complicating trans-Atlantic data transfers
-        - 2022: DORA regulation published by EU
-        - 2025: DORA enforcement begins (January 17), establishing financial sector resilience requirements
-    
-        Visual style: Horizontal timeline with milestones marked as circles, with connecting line showing progression
-    
-        Color coding:
-        - Blue: HIPAA/healthcare regulations
-        - Green: GDPR/privacy regulations
-        - Orange: DORA/resilience regulations
-        - Purple: Major enforcement events or court rulings
-    
-        Interactive features:
-        - Hover over each milestone to see key provisions and requirements
-        - Click to expand with detailed description of technical implications
-        - Hover over connecting lines to see contextual developments between milestones
-    
-        Implementation: HTML/CSS/JavaScript with SVG timeline, responsive design for mobile viewing
-    -->
+    <script src="regulatory-framework-timeline.js"></script>
 </body>
 </html>
