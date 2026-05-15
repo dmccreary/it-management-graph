@@ -3,240 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Technology Selection Workflow with Decision Gates</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+        body { margin: 0; padding: 10px; background: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        h2 { font-size: 17px; color: #1a3a6c; margin: 0 0 6px 0; }
+        .subtitle { font-size: 12px; color: #666; margin-bottom: 10px; }
+        .timeline-bar { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+        .phase-badge { padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; color: white; }
+        #diagram-wrapper {
             background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
             border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 15px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            min-height: 500px;
         }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .mermaid svg { max-width: 100%; height: auto; }
+        .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; font-size: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Technology Selection Workflow with Decision Gates</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> technology-selection-workflow-with-decision-gates</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+    <h2>Technology Selection Workflow with Decision Gates</h2>
+    <p class="subtitle">Structured process for evaluating and selecting IT management graph technology. Decision gates (diamonds) mark go/no-go checkpoints.</p>
+    <div class="timeline-bar">
+        <span class="phase-badge" style="background:#3498db">Week 1-2: Requirements</span>
+        <span class="phase-badge" style="background:#f39c12">Week 3-4: Vendor Screening</span>
+        <span class="phase-badge" style="background:#e67e22">Week 5-10: PoC &amp; Evaluation</span>
+        <span class="phase-badge" style="background:#9b59b6">Week 11-12: Decision</span>
+        <span class="phase-badge" style="background:#27ae60">Week 13+: Contract</span>
+    </div>
+    <div id="diagram-wrapper">
+        <div class="mermaid" id="main-diagram">
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: workflow
-    
-        Purpose: Illustrate the structured process for evaluating and selecting IT management graph technology, with decision gates at key points
-    
-        Visual style: Swimlane flowchart with three lanes (left to right): Stakeholders, Evaluation Team, Vendors
-    
-        Swimlane 1 - Stakeholders (left):
-        - IT Leadership
-        - Business stakeholders
-        - Budget holders
-    
-        Swimlane 2 - Evaluation Team (center - main process flow):
-        - IT architects
-        - Data managers
-        - Operations leads
-    
-        Swimlane 3 - Vendors (right):
-        - Vendor A
-        - Vendor B
-        - Vendor C
-    
-        Process steps (flowing top to bottom in center lane):
-    
-        1. Start: "Technology Selection Initiated"
-           Hover text: "Triggered by digital transformation initiative or legacy system pain"
-           Shape: Rounded rectangle
-           Color: Light blue
-    
-        2. Process: "Define Requirements"
-           Hover text: "Document functional, non-functional, and organizational requirements"
-           Arrow from Stakeholders lane: "Input needs and constraints"
-           Shape: Rectangle
-           Color: Blue
-    
-        3. Process: "Prioritize & Weight Requirements"
-           Hover text: "Categorize as Critical (must have), Important (strongly desired), or Beneficial (nice to have)"
-           Shape: Rectangle
-           Color: Blue
-    
-        4. Decision Gate 1: "Build vs Buy?"
-           Hover text: "Initial decision: Custom build, vendor platform, or hybrid approach?"
-           Shape: Diamond
-           Color: Yellow
-           Three outgoing paths:
-           - "Build" path → goes to "Architect Custom Solution" (dotted line, exits workflow)
-           - "Buy" path → continues to step 5
-           - "Hybrid" path → continues to step 5 (evaluates vendors for core platform)
-    
-        5. Process: "Issue RFI to Vendors"
-           Hover text: "Request for Information sent to potential vendors"
-           Arrow to Vendors lane: "Send requirements document"
-           Arrow from Vendors lane: "Receive vendor responses"
-           Shape: Rectangle
-           Color: Green
-    
-        6. Process: "Initial Vendor Screening"
-           Hover text: "Eliminate vendors that don't meet critical requirements"
-           Shape: Rectangle
-           Color: Green
-    
-        7. Decision Gate 2: "At Least 2 Qualified Vendors?"
-           Hover text: "Need minimum 2 vendors for competitive evaluation"
-           Shape: Diamond
-           Color: Yellow
-           Outgoing paths:
-           - "No" → loops back to "Revisit Requirements" (adjustment loop)
-           - "Yes" → continues to step 8
-    
-        8. Process: "Conduct Proof of Concept"
-           Hover text: "Hands-on testing with real data and use cases (2-4 weeks per vendor)"
-           Arrow to Vendors lane: "Provide POC environment and support"
-           Shape: Rectangle
-           Color: Orange
-    
-        9. Process: "Reference Checks"
-           Hover text: "Interview existing customers about their experience"
-           Arrow to Vendors lane: "Provide customer references"
-           Shape: Rectangle
-           Color: Orange
-    
-        10. Process: "Calculate TCO & ROI"
-            Hover text: "Total cost of ownership and return on investment analysis"
-            Arrow from Stakeholders lane: "Provide budget constraints"
-            Shape: Rectangle
-            Color: Orange
-    
-        11. Process: "Score & Rank Options"
-            Hover text: "Apply decision matrix with weighted requirements"
-            Shape: Rectangle
-            Color: Orange
-    
-        12. Decision Gate 3: "Clear Winner?"
-            Hover text: "Is there a solution significantly better than alternatives?"
-            Shape: Diamond
-            Color: Yellow
-            Outgoing paths:
-            - "No" → "Conduct additional analysis" (mini-loop)
-            - "Yes" → continues to step 13
-    
-        13. Process: "Prepare Recommendation"
-            Hover text: "Document findings, scores, rationale, and implementation plan"
-            Arrow to Stakeholders lane: "Present recommendation"
-            Shape: Rectangle
-            Color: Purple
-    
-        14. Decision Gate 4: "Stakeholder Approval?"
-            Hover text: "Leadership approves recommendation and budget"
-            Shape: Diamond (in Stakeholders lane)
-            Color: Yellow
-            Outgoing paths:
-            - "No" → loops back to "Revisit Requirements" with feedback
-            - "Yes" → continues to step 15
-    
-        15. Process: "Finalize Contract & Begin Implementation"
-            Hover text: "Negotiate terms, sign contract, kick off project"
-            Arrow to Vendors lane: "Execute contract"
-            Shape: Rectangle
-            Color: Dark green
-    
-        16. End: "Technology Selected"
-            Hover text: "Selection complete, implementation begins"
-            Shape: Rounded rectangle
-            Color: Dark green
-    
-        Adjustment loop (from Gate 2 "No" path):
-        - "Revisit Requirements" → either relax constraints or expand vendor search → returns to "Issue RFI to Vendors"
-    
-        Timeline indicators (on right side of diagram):
-        - Steps 1-3: "Week 1-2"
-        - Steps 4-7: "Week 3-4"
-        - Steps 8-10: "Week 5-10" (POC phase is longest)
-        - Steps 11-14: "Week 11-12"
-        - Steps 15-16: "Week 13+"
-    
-        Color coding:
-        - Blue: Requirements phase
-        - Yellow: Decision gates
-        - Green: Vendor engagement
-        - Orange: Evaluation phase
-        - Purple: Decision documentation
-        - Dark green: Completion
-    
-        Visual elements:
-        - Dotted lines for information flow between lanes
-        - Solid lines for process flow
-        - Arrows indicate direction
-        - Loop-back arrows show iteration
-        - Gate symbols (diamonds) slightly larger than process boxes for emphasis
-    
-        Layout dimensions: 1200px wide x 1600px tall
-        Implementation: HTML/CSS with SVG for shapes and connections, JavaScript for hover text display
-    -->
+    <div class="legend">
+        <strong>Legend:</strong>
+        <span class="legend-item"><span class="legend-dot" style="background:#3498db"></span> Requirements Phase</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#f1c40f"></span> Decision Gates</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#27ae60"></span> Vendor Engagement</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#e67e22"></span> Evaluation Phase</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#9b59b6"></span> Documentation</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#1e8449"></span> Completion</span>
+    </div>
+    <script src="technology-selection-workflow-with-decision-gates.js"></script>
 </body>
 </html>
