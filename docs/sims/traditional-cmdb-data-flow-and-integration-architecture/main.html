@@ -3,140 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>Traditional CMDB Data Flow and Integration Architecture</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { margin: 0; padding: 10px; background: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        h2 { font-size: 17px; color: #1a3a6c; margin: 0 0 4px 0; }
+        .subtitle { font-size: 12px; color: #555; margin-bottom: 8px; }
+        .controls { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+        .toggle-btn {
+            padding: 6px 16px; border-radius: 20px; border: 2px solid #1a3a6c;
+            background: #1a3a6c; color: white; cursor: pointer; font-size: 13px; font-weight: 600;
+            transition: all 0.2s;
         }
-        #container {
+        .toggle-btn.alt { background: #e67e22; border-color: #e67e22; }
+        .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+        #network-container {
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+            height: 460px;
             background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
             border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
         }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
+        .problem-panel {
+            margin-top: 8px; padding: 10px 14px;
+            background: #fff3cd; border-left: 4px solid #f39c12;
+            border-radius: 4px; font-size: 12px; color: #555;
+            display: none;
         }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .problem-panel.visible { display: block; }
+        .problem-panel strong { color: #c0392b; }
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Traditional CMDB Data Flow and Integration Architecture</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> traditional-cmdb-data-flow-and-integration-architecture</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
+    <h2>Traditional CMDB Data Flow and Integration Architecture</h2>
+    <p class="subtitle">Click nodes to see details. Toggle between Traditional CMDB and Graph-Based approach.</p>
+    <div class="controls">
+        <button class="toggle-btn" id="modeBtn" onclick="toggleMode()">Switch to Graph-Based Approach</button>
+        <span id="modeLabel" style="font-size:13px;color:#1a3a6c;font-weight:600;">📊 Traditional CMDB Architecture</span>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: diagram
-    
-        Purpose: Illustrate the complex integration challenges of traditional CMDB implementations showing data flows from multiple sources
-    
-        Components to show:
-        - Center: CMDB (large orange cylinder/database shape)
-        - Around CMDB: Multiple source systems (arranged in circular pattern)
-          - Network Discovery Tools (top-left, purple box)
-          - Server Monitoring (top, blue box)
-          - Application Performance Management (top-right, cyan box)
-          - Service Desk / Ticketing (right, green box)
-          - Change Management System (bottom-right, yellow box)
-          - Asset Management DB (bottom, red box)
-          - Cloud Management Platforms (bottom-left, teal box)
-          - Manual Entry / Spreadsheets (left, gray box)
-        - Integration Layer (dotted circle around CMDB, light gray)
-        - Output Systems (arranged in outer circle)
-          - Change Impact Analysis (top-left)
-          - Incident Management (top)
-          - Capacity Planning (top-right)
-          - Compliance Reporting (right)
-    
-        Connections:
-        - Solid arrows from source systems to CMDB (labeled with "Push" or "Pull")
-        - Dotted arrows from CMDB to output systems (labeled with "Query")
-        - Red "X" symbols on several arrows indicating common integration failures
-        - Numbers on arrows indicating "integration points" (e.g., "API v2.1", "XML Feed", "CSV Import")
-    
-        Visual style: System integration diagram with emphasis on complexity
-    
-        Labels:
-        - "Discovery Sources" label over source systems
-        - "ETL / Integration Layer" on dotted circle
-        - "Consuming Processes" label over output systems
-        - "Manual Reconciliation Required" label with arrow pointing to conflicts
-        - "Data Quality Issues" label on arrows with red X
-    
-        Annotations:
-        - Small callout boxes showing common problems:
-          - "Conflicting data from multiple sources"
-          - "Stale data (discovery runs weekly)"
-          - "Schema mismatches"
-          - "Integration breaks with version upgrades"
-    
-        Color scheme:
-        - Various colors for source systems (to show diversity)
-        - Orange for CMDB (central focus)
-        - Gray for integration layer (showing it as overhead)
-        - Red for failure points
-    
-        Implementation: Diagram tool (Lucidchart, Draw.io) or SVG with clear labeling
-    -->
+    <div class="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#e67e22"></span> CMDB Core</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#8e44ad"></span> Discovery Sources</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#2980b9"></span> Consuming Systems</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#c0392b"></span> Failure Points</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#27ae60"></span> Graph Nodes (Graph mode)</span>
+    </div>
+    <div id="network-container"></div>
+    <div class="problem-panel" id="problemPanel">
+        <strong>⚠ Common Integration Problems:</strong>
+        <ul style="margin:4px 0 0 16px;padding:0">
+            <li>Conflicting data from multiple sources — manual reconciliation required</li>
+            <li>Stale data (discovery runs weekly, not real-time)</li>
+            <li>Schema mismatches across source systems</li>
+            <li>Integration breaks with version upgrades</li>
+        </ul>
+    </div>
+    <script src="traditional-cmdb-data-flow-and-integration-architecture.js"></script>
 </body>
 </html>
