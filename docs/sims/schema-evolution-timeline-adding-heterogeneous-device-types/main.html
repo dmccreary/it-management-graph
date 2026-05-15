@@ -3,212 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schema Evolution Timeline: Adding Heterogeneous Device Types</title>
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+    <title>Schema Evolution Timeline: Heterogeneous Device Types</title>
+    <script src="https://unpkg.com/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vis-timeline/styles/vis-timeline-graph2d.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 960px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 15px; color: #1a3a6c; text-align: center; margin-bottom: 4px; }
+        .subtitle { font-size: 11px; color: #666; text-align: center; margin-bottom: 8px; }
+        #timeline { height: 240px; border: 1px solid #dee2e6; border-radius: 6px; }
+        #detail-panel {
+            margin-top: 10px; padding: 12px; border-radius: 6px;
+            border: 1px solid #dee2e6; font-size: 12px; line-height: 1.6;
+            min-height: 140px; transition: background 0.3s;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
+        #detail-panel h3 { font-size: 13px; margin-bottom: 6px; }
+        #detail-panel pre {
+            background: #f5f5f5; border: 1px solid #e0e0e0; border-radius: 4px;
+            padding: 8px; font-size: 10px; overflow-x: auto; margin-top: 6px;
+            font-family: 'Courier New', monospace;
         }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        .legend { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; font-size: 11px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 2px; }
+        .vis-item.clean   { background: #bbdefb !important; border-color: #1565c0 !important; color: #0d47a1 !important; }
+        .vis-item.warning { background: #fff9c4 !important; border-color: #f9a825 !important; color: #5d4037 !important; }
+        .vis-item.crisis  { background: #ffcdd2 !important; border-color: #c62828 !important; color: #7f0000 !important; }
+        .vis-item.solution{ background: #c8e6c9 !important; border-color: #2e7d32 !important; color: #1b5e20 !important; }
     </style>
 </head>
 <body>
     <div id="container">
-        <h1>Schema Evolution Timeline: Adding Heterogeneous Device Types</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <h1>CMDB Schema Evolution: Adding Heterogeneous Device Types</h1>
+        <div class="subtitle">How relational schemas struggle as IT infrastructure grows — click an event for details</div>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#1565c0"></div> Clean Schema</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#f9a825"></div> Growing Complexity</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#c62828"></div> Crisis / Performance</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#2e7d32"></div> Solution</div>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> schema-evolution-timeline-adding-heterogeneous-device-types</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div id="timeline"></div>
+        <div id="detail-panel" style="background:#f0f4ff;border-color:#b3c8f0">
+            <h3>Click any event on the timeline for details</h3>
+            <p>This timeline shows how a simple relational CMDB schema for servers gradually became unmanageable
+            as new device types (switches, storage, IoT) were added, ultimately driving the decision to migrate to a graph database.</p>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: workflow
-    
-        Purpose: Demonstrate the challenges of evolving a relational schema when adding new, heterogeneous entity types with different attributes
-    
-        Scenario: An IT asset database initially tracks only servers. Business requirements expand to include network switches, storage arrays, and IoT devices—each with unique attributes.
-    
-        Visual style: Horizontal timeline with schema diagrams at each stage, showing table structures evolving
-    
-        Stage 1: "Initial schema - Servers only"
-        Date: January 2020
-    
-        Servers table:
-        - server_id (PK)
-        - hostname
-        - ip_address
-        - cpu_count
-        - ram_gb
-        - os_version
-    
-        Note: Clean, simple schema for homogeneous entity type
-    
-        Stage 2: "Requirement: Add network switches"
-        Date: June 2020
-    
-        Problem: Switches have different attributes (port_count, vlan_support, switch_type) that don't apply to servers
-    
-        Two possible approaches shown as decision branches:
-    
-        Approach A: "Single table with NULLs" (selected)
-    
-        Infrastructure table:
-        - device_id (PK)
-        - device_type (server|switch)
-        - hostname
-        - ip_address
-        - cpu_count (NULL for switches)
-        - ram_gb (NULL for switches)
-        - os_version (NULL for switches)
-        - port_count (NULL for servers)
-        - vlan_support (NULL for servers)
-        - switch_type (NULL for servers)
-    
-        Issues: Many NULL values, sparse table, unclear which columns apply to which device types
-    
-        Approach B: "Separate tables" (not chosen)
-    
-        Servers table (original) + Switches table (new)
-        Issues: Querying all infrastructure requires UNION, can't easily add shared attributes
-    
-        Stage 3: "Requirement: Add storage arrays"
-        Date: December 2020
-    
-        Infrastructure table grows:
-        - ... (all previous columns)
-        - storage_capacity_tb (NULL for servers and switches)
-        - raid_level (NULL for servers and switches)
-        - disk_count (NULL for servers and switches)
-    
-        Note: Table becoming increasingly sparse, with ~60% NULL values across all rows
-    
-        Stage 4: "Requirement: Add IoT sensors"
-        Date: June 2021
-    
-        Infrastructure table grows further:
-        - ... (all previous columns)
-        - sensor_type (NULL for servers, switches, storage)
-        - battery_level (NULL for servers, switches, storage)
-        - last_reading_timestamp (NULL for servers, switches, storage)
-    
-        Migration challenge: ALTER TABLE on 100,000-row table takes 4 hours, requires maintenance window
-    
-        Note: NULL values now 75% of table content, queries becoming complex with device_type filtering
-    
-        Stage 5: "Crisis: Performance degradation"
-        Date: January 2022
-    
-        Problems identified:
-        - Query performance declining due to table size and sparsity
-        - Indexes on device-type-specific columns ineffective (too many NULLs)
-        - Application logic complicated with device type conditionals
-        - Adding new device types requires coordinated schema changes and application deployments
-    
-        Decision: Consider alternative architectures
-    
-        Stage 6: "Solution: Refactor to graph database"
-        Date: June 2022
-    
-        Graph model:
-        - Device nodes with common properties (id, hostname, ip_address)
-        - Node labels by type: :Server, :Switch, :StorageArray, :IoTSensor
-        - Type-specific properties stored directly on nodes without NULL padding
-        - New device types added without schema migration
-    
-        Result:
-        - 75% reduction in NULL values
-        - Query performance improvement (type-specific queries faster)
-        - New device types deployable without database migrations
-        - Schema flexibility maintained while keeping type safety
-    
-        Interactive elements:
-        - Hover over each stage to see code examples (CREATE TABLE, ALTER TABLE statements)
-        - Click decision points to see detailed pros/cons analysis
-        - Toggle view: "Show actual queries" displays SQL at each stage, showing increasing complexity
-        - Metrics panel: Shows NULL percentage, query times, schema change deployment time at each stage
-    
-        Annotations:
-        - "Each ALTER TABLE requires testing, migration scripts, coordination with application teams"
-        - "EAV (Entity-Attribute-Value) pattern could help but sacrifices query performance"
-        - "This is why heterogeneous IT infrastructure struggles in relational schemas"
-        - "Graph databases excel at heterogeneous, evolving schemas"
-    
-        Color coding:
-        - Blue: Clean schema stages
-        - Yellow: Growing complexity warnings
-        - Red: Crisis/performance problems
-        - Green: Solution stage
-    
-        Swimlanes:
-        - Database schema layer
-        - Application impact layer
-        - Operations/deployment layer
-    
-        Implementation: Horizontal timeline with expandable stages, interactive SQL code examples, metrics visualization showing degradation over time
-    -->
+    <script src="schema-evolution-timeline-adding-heterogeneous-device-types.js"></script>
 </body>
 </html>
