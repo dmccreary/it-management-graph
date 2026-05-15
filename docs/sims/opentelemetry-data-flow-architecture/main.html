@@ -3,159 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
     <title>OpenTelemetry Data Flow Architecture</title>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f8f9fa; }
+        #container { width: 100%; max-width: 900px; margin: 0 auto; padding: 10px; background: white; }
+        h1 { font-size: 17px; color: #1a3a6c; text-align: center; margin-bottom: 6px; }
+        #network { width: 100%; height: 480px; border: 1px solid #dee2e6; border-radius: 8px; background: #fff; }
+        #info-panel {
+            margin-top: 10px; padding: 10px 14px;
+            background: #f1f3f5; border-radius: 8px; font-size: 13px;
+            min-height: 50px; border-left: 4px solid #FF9800;
         }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
+        #info-panel h3 { font-size: 14px; margin-bottom: 4px; color: #E65100; }
+        .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; font-size: 11px; }
+        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
     </style>
 </head>
 <body>
     <div id="container">
         <h1>OpenTelemetry Data Flow Architecture</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
+        <div id="network"></div>
+        <div id="info-panel">
+            <h3>Click any component to learn more</h3>
+            <p>OpenTelemetry provides a vendor-neutral standard for collecting logs, metrics, and traces from instrumented applications and routing them to observability backends.</p>
         </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> opentelemetry-data-flow-architecture</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
+        <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#E3F2FD;border:1px solid #2196F3"></div>Instrumented Apps</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FFD54F;border:1px solid #FF9800"></div>OTel SDKs</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#FF9800"></div>OTel Collector</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div>Observability Platform</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E91E63"></div>IT Management Graph</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#9C27B0"></div>SIEM / Analytics</div>
         </div>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: diagram
-    
-        Purpose: Show how OpenTelemetry collects telemetry from applications and sends it to observability backends, enabling automated IT graph updates
-    
-        Components to show (left to right flow):
-    
-        Layer 1 - Applications (left side):
-        - Three application boxes stacked vertically:
-          * "Web Application" (light blue box)
-          * "API Service" (light blue box)
-          * "Background Worker" (light blue box)
-        - Each box contains small icon: "{}" representing code
-        - Label above: "Instrumented Applications"
-    
-        Layer 2 - OpenTelemetry SDK (middle-left):
-        - Three small boxes attached to each application box:
-          * "OTel SDK" (gold boxes)
-        - Arrows showing data flowing from applications into SDK boxes
-        - Label: "Automatic instrumentation captures logs, metrics, traces"
-    
-        Layer 3 - OpenTelemetry Collector (center):
-        - Large central box labeled "OpenTelemetry Collector"
-        - Three sections inside:
-          * Top: "Receivers" (receives from SDKs)
-          * Middle: "Processors" (enriches, filters, batches)
-          * Bottom: "Exporters" (sends to backends)
-        - Color: Orange with white text
-        - Arrows from SDK boxes pointing into Receivers section
-    
-        Layer 4 - Backend Systems (right side):
-        - Three destination boxes stacked vertically:
-          * "Observability Platform" (green box) with chart icon
-          * "IT Management Graph" (pink box) with network icon
-          * "SIEM / Analytics" (purple box) with dashboard icon
-        - Arrows from Exporters section pointing to each backend
-    
-        Visual details:
-        - All arrows should be solid lines with arrowheads
-        - Flow direction: strictly left to right
-        - Include small data icons on arrows (log lines, metric points, trace spans)
-    
-        Annotations:
-        - Above arrows from apps to SDKs: "Telemetry generated"
-        - Above arrows from SDKs to Collector: "OTLP protocol"
-        - Above arrows from Collector to backends: "Exported to multiple destinations"
-        - Below IT Management Graph box: "Dependencies auto-discovered from traces"
-    
-        Additional visual elements:
-        - Dashed border around entire left side (apps + SDKs) labeled "Your Infrastructure"
-        - Dashed border around Collector labeled "Telemetry Pipeline"
-        - Dashed border around right side labeled "Observability Backends"
-    
-        Style: Clean, modern architecture diagram with clear directional flow
-    
-        Color scheme:
-        - Applications: Light blue (#E3F2FD)
-        - OTel SDKs: Gold (#FFD54F)
-        - Collector: Orange (#FF9800)
-        - Observability Platform: Green (#4CAF50)
-        - IT Management Graph: Pink (#E91E63)
-        - SIEM: Purple (#9C27B0)
-        - Arrows: Dark gray (#424242)
-        - Background: White
-        - Border boxes: Dashed light gray
-    
-        Labels:
-        - Clear, readable font
-        - Each component should have a name and brief description
-    
-        Implementation: Draw.io, Lucidchart, or SVG diagram
-    -->
+    <script src="opentelemetry-data-flow-architecture.js"></script>
 </body>
 </html>
