@@ -1,258 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph RAG Query Flow Interactive Diagram</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
-            color: #212529;
-        }
-        #container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-            color: #1a3a6c;
-        }
-        .placeholder {
-            border: 2px dashed #adb5bd;
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #6c757d;
-            margin: 20px 0;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .placeholder .badge {
-            display: inline-block;
-            background: #ffc107;
-            color: #212529;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        .placeholder h2 {
-            font-size: 18px;
-            color: #495057;
-            margin-bottom: 8px;
-        }
-        .placeholder p {
-            font-size: 14px;
-            max-width: 480px;
-        }
-        .meta {
-            margin-top: 20px;
-            font-size: 13px;
-            color: #6c757d;
-            border-top: 1px solid #dee2e6;
-            padding-top: 12px;
-        }
-        .meta strong { color: #495057; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+  <title>Graph RAG Query Flow</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; color: #212529; }
+    #outer { max-width: 960px; margin: 0 auto; padding: 10px; }
+    h1 { font-size: 18px; color: #1a3a6c; margin-bottom: 8px; text-align: center; }
+    #rag-network { width: 100%; height: 440px; border: 1px solid #dee2e6; border-radius: 8px; background: #fff; }
+    #detail-panel { margin-top: 8px; background: #fff; border-left: 4px solid #1a3a6c; border-radius: 6px; padding: 10px 14px; font-size: 13px; min-height: 52px; color: #333; }
+    #controls { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+    button { padding: 7px 18px; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    #btn-play  { background: #1a3a6c; color: #fff; }
+    #btn-step  { background: #28a745; color: #fff; }
+    #btn-reset { background: #6c757d; color: #fff; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    #step-counter { font-size: 13px; color: #495057; font-weight: 600; }
+    #lane-legend { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+  </style>
 </head>
 <body>
-    <div id="container">
-        <h1>Graph RAG Query Flow Interactive Diagram</h1>
-        <div class="placeholder">
-            <span class="badge">SCAFFOLD</span>
-            <h2>MicroSim Not Yet Implemented</h2>
-            <p>This MicroSim has been scaffolded from its specification but the
-            interactive content has not been built yet. See the chapter source
-            and the <code>index.md</code> in this directory for the full spec.</p>
-        </div>
-        <div class="meta">
-            <p><strong>Sim ID:</strong> graph-rag-query-flow-interactive-diagram</p>
-            <p><strong>Library:</strong> TBD</p>
-            <p><strong>Bloom Level:</strong> TBD</p>
-            <p><strong>Learning Objective:</strong> TBD</p>
-        </div>
+  <div id="outer">
+    <h1>Graph RAG Query Flow</h1>
+    <div id="rag-network"></div>
+    <div id="detail-panel">Click a step box or use the controls below to walk through the Graph RAG pipeline.</div>
+    <div id="controls">
+      <button id="btn-play">&#9654; Play All Steps</button>
+      <button id="btn-step">&#8594; Next Step</button>
+      <button id="btn-reset">&#8635; Reset</button>
+      <span id="step-counter">Step 0 of 10</span>
     </div>
-
-    <!--
-    SPECIFICATION (from chapter index.md):
-
-    Type: workflow
-    
-        Purpose: Show the step-by-step process of how a natural language question flows through a Graph RAG system to produce an answer
-    
-        Visual style: Horizontal workflow diagram with swim lanes and decision points
-    
-        Swim lanes (top to bottom):
-        1. User Interface
-        2. Natural Language Processing
-        3. Graph Query Layer
-        4. IT Management Graph
-        5. LLM Response Generation
-    
-        Workflow steps (left to right):
-    
-        **Step 1: User Question (Lane 1 - User Interface)**
-        - Box: "User asks natural language question"
-        - Example: "What will be affected if we upgrade database cluster 3?"
-        - Icon: User with speech bubble
-        - Color: Light blue
-        - Hover text: "User interacts with chatbot or Q&A interface"
-    
-        **Step 2: Intent Classification (Lane 2 - NLP)**
-        - Box: "Parse and classify question intent"
-        - Sub-steps:
-          - Entity extraction: "database cluster 3"
-          - Intent: "Impact analysis / dependency query"
-          - Action type: "Upgrade"
-        - Icon: Brain or AI symbol
-        - Color: Purple
-        - Hover text: "NLP identifies key entities and determines query type"
-        - Arrow from Step 1
-    
-        **Step 3: Query Pattern Selection (Lane 2 - NLP)**
-        - Box: "Select appropriate graph query pattern"
-        - Shows template: "MATCH (n:Asset {name: $entity}) -[:DEPENDS_ON*]-> (downstream) RETURN downstream"
-        - Icon: Template/pattern icon
-        - Color: Purple
-        - Hover text: "System selects predefined query pattern for impact analysis"
-        - Arrow from Step 2
-    
-        **Step 4: Query Generation (Lane 3 - Graph Query)**
-        - Box: "Generate specific graph query"
-        - Shows: Cypher query with actual parameters filled in
-        - Icon: Code brackets
-        - Color: Orange
-        - Hover text: "Template is filled with specific entities from user question"
-        - Arrow from Step 3
-    
-        **Step 5: Graph Execution (Lane 4 - Graph Database)**
-        - Box: "Execute query against IT management graph"
-        - Visual: Small graph visualization showing traversal
-        - Icon: Database with graph
-        - Color: Gold
-        - Hover text: "Query traverses graph following DEPENDS_ON relationships"
-        - Arrow from Step 4
-    
-        **Step 6: Results Retrieval (Lane 4 - Graph Database)**
-        - Box: "Return query results with metadata"
-        - Shows: List of affected nodes with properties
-        - Results example:
-          - "Customer API (critical)"
-          - "Billing Service (high)"
-          - "Analytics Service (medium)"
-        - Icon: Document with list
-        - Color: Gold
-        - Hover text: "Graph returns all downstream dependencies with metadata"
-        - Arrow from Step 5
-    
-        **Step 7: Context Assembly (Lane 5 - LLM)**
-        - Box: "Assemble context for LLM"
-        - Components:
-          - Graph query results
-          - Node metadata (criticality, owners, SLAs)
-          - Historical context (past upgrades, incidents)
-          - Current status (are systems healthy?)
-        - Icon: Puzzle pieces coming together
-        - Color: Green
-        - Hover text: "Combine graph data with additional context for rich LLM prompt"
-        - Arrow from Step 6
-    
-        **Step 8: LLM Prompt Construction (Lane 5 - LLM)**
-        - Box: "Construct prompt for LLM"
-        - Shows prompt template:
-          "Based on the following graph query results about database cluster 3 upgrade impact: [results]. Generate a comprehensive answer explaining which services will be affected, their criticality, and recommendations."
-        - Icon: Document with AI symbol
-        - Color: Green
-        - Hover text: "Structured prompt ensures LLM stays grounded in graph data"
-        - Arrow from Step 7
-    
-        **Step 9: LLM Generation (Lane 5 - LLM)**
-        - Box: "LLM generates natural language response"
-        - Icon: AI/robot generating text
-        - Color: Green
-        - Hover text: "LLM produces human-readable explanation based on graph context"
-        - Arrow from Step 8
-    
-        **Step 10: Response Formatting (Lane 1 - User Interface)**
-        - Box: "Format and display response to user"
-        - Shows formatted response with:
-          - Summary paragraph
-          - Bullet list of affected services
-          - Recommendations section
-          - Follow-up question suggestions
-        - Icon: Formatted document
-        - Color: Light blue
-        - Hover text: "Response presented with formatting, links, and conversation context"
-        - Arrow from Step 9
-    
-        **Step 11: Follow-up Capability (Lane 1 - User Interface)**
-        - Box: "User can ask follow-up questions"
-        - Examples: "What if we do this during off-peak hours?" or "Who should we notify?"
-        - Icon: Circular arrow (conversation continues)
-        - Color: Light blue
-        - Hover text: "System maintains conversation context for follow-up questions"
-        - Dotted arrow looping back to Step 1
-    
-        **Decision Points:**
-    
-        Decision 1 (after Step 2):
-        - Diamond: "Is this a graph-queryable question?"
-        - Yes path → Continue to Step 3
-        - No path → "Use traditional RAG" (text search) - exits to alternate flow
-        - Hover text: "Not all questions require graph queries; some are answered from documentation"
-    
-        Decision 2 (after Step 6):
-        - Diamond: "Results found?"
-        - Yes path → Continue to Step 7
-        - No path → "Generate 'no results' explanation" - skip to Step 9 with different context
-        - Hover text: "If query returns empty, LLM explains why and suggests alternatives"
-    
-        **Timing Indicators:**
-        - Small clocks showing approximate duration:
-          - Steps 2-4 (NLP + Query Gen): ~200ms
-          - Step 5-6 (Graph execution): ~50-500ms depending on complexity
-          - Steps 7-9 (LLM): ~2-5 seconds
-          - Total: ~3-6 seconds typical
-    
-        **Color coding:**
-        - Light blue: User interaction
-        - Purple: Natural language processing
-        - Orange: Query generation
-        - Gold: Graph database operations
-        - Green: LLM operations
-    
-        **Visual elements:**
-        - Arrows showing data flow between steps
-        - Icons for each step type
-        - Dotted arrows for feedback loops
-        - Decision diamonds in yellow
-        - Timing indicators (small clock icons with ms/sec labels)
-    
-        **Interactive hover text for entire diagram:**
-        - Each box expands on hover to show more technical detail
-        - Example responses visible on hover
-        - Arrows show data format at each transition
-    
-        Layout dimensions: 1400px wide × 800px tall
-    
-        Implementation: HTML/CSS/JavaScript with SVG for shapes and arrows, interactive hover effects using JavaScript
-    
-        Educational value:
-        - Shows complete end-to-end flow
-        - Makes abstract "Graph RAG" concept concrete
-        - Demonstrates why latency occurs (multiple processing steps)
-        - Shows decision points where logic branches
-        - Illustrates the human-AI-database collaboration
-    -->
+    <div id="lane-legend"></div>
+  </div>
+  <script src="graph-rag-query-flow-interactive-diagram.js"></script>
 </body>
 </html>
