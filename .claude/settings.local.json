@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/dan/Documents/ws/it-management-graph/scripts/install-claude-skills.sh)",
+      "Bash(cat:*)",
+      "Bash(chmod:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git clone:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "Bash(git fetch:*)",
+      "Bash(git merge:*)",
+      "Bash(git pull:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(mkdir:*)",
+      "Bash(mkdocs build:*)",
+      "Bash(open:*)",
+      "Bash(python3:*)",
+      "Bash(rm:*)",
+      "Skill(chapter-content-generator)",
+      "Skill(it-graph-generator)",
+      "Skill(skill-creator)",
+      "WebFetch(domain:github.com)",
+      "WebSearch"
+    ]
+  }
+}
